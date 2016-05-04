@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Buffet meal system</string>
+    <string name="lixing">扫一扫</string>
+    <string name="textview">第14届齐鲁软件大赛——自助点餐系统   组员：张治杰、董杰、娄树斌、宿斌、闫玉</string>
+    <string name="comment">评价一下吧！亲！</string>
+    <string name="skin_tabbar_icon_main">主页</string>
+    <string name="skin_tabbar_icon_check">点餐</string>
+    <string name="skin_tabbar_icon_pin">标记</string>
+    <string name="skin_tabbar_icon_settings">设置</string>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.a13051_000.buffetmealsystem.Topbar
+        android:id="@+id/topbar1"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorButton"
+        custom:title1="评论"
+        custom:titleTextcolor="@color/colorwhite"
+        custom:titleTextsize="20px"
+        ></com.example.a13051_000.buffetmealsystem.Topbar>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comment"
+        android:textSize="50px"
+        android:layout_marginTop="80dp"
+        android:id="@+id/textView3"
+        android:textColor="@color/colorblack"
+        />
+    <RatingBar
+        android:id="@+id/ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="15dp"
+        android:numStars="5"
+        android:rating="0"
+        android:isIndicator="true"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingbar"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:text="提交"
+        android:textColor="#fffffb"
+        android:background="@color/colorButton"
+        />
+</RelativeLayout>

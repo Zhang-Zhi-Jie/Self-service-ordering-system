@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <com.example.a13051_000.buffetmealsystem.Topbar
+        android:background="@color/colorButton"
+        android:id="@+id/topbar1"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        custom:title1="登陆"
+        custom:titleTextcolor="@color/colorwhite"
+        custom:titleTextsize="20px"
+        ></com.example.a13051_000.buffetmealsystem.Topbar>
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText1"
+            android:hint="输入账号："
+            android:layout_marginTop="100dp" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:hint="输入密码："
+        android:layout_below="@+id/editText1" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登陆"
+        android:textSize="50px"
+        android:textColor="@color/colorwhite"
+        android:id="@+id/button1"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/editText2"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorButton"
+        />
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="新用户"
+        android:textSize="35px"
+        android:textColor="@color/colorButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

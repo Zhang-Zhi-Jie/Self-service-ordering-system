@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.a13051_000.buffetmealsystem.Topbar
+        android:id="@+id/topbar1"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/colorButton"
+        custom:title1="菜品"
+        custom:titleTextcolor="@color/colorwhite"
+        custom:titleTextsize="20px"
+        ></com.example.a13051_000.buffetmealsystem.Topbar>
+
+    <FrameLayout
+        android:id="@+id/frameMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bottombar"
+            android:orientation="horizontal"
+            >
+
+            <FrameLayout
+                android:id="@+id/layout_at"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/image_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:src="@mipmap/home" />
+
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:id="@+id/layout_auth"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/image_spoon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:src="@mipmap/spoonknife" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_space"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/image_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:src="@mipmap/user" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layout_more"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+                <ImageView
+                    android:id="@+id/image_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center"
+                    android:src="@mipmap/cog" />
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@android:color/black" >
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>
