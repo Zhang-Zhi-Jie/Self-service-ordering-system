@@ -30,16 +30,6 @@ public class LoginActivity extends AppCompatActivity {
                 String loginpwd=((EditText)findViewById(R.id.logineditText2)).getText().toString();
                 String againpwd=((EditText)findViewById(R.id.logineditText3)).getText().toString();
                 boolean login=false;
-                for(int i=0;i<Date.USER.length;i++) {
-                    if (loginpwd.equals(againpwd)) {
-                        if(Date.USER[i][0]==""&&Date.USER[i][1]=="") {
-                            Date.USER[i][0] = loginnum;
-                            Date.USER[i][1] = loginpwd;
-                            login = true;
-                            break;
-                        }
-                    }
-                }
                 if(login){
                     Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
                     LoginActivity.this.startActivity(intent);
