@@ -12,4 +12,5 @@
     <color name="skin_tabbar_bg">#FCF8FC</color>
     <color name="colorwhite">#FFFFFF</color>
     <color name="bottombar">#FFE384</color>
+    <color name="bottombartext">#B0C4D1</color>
 </resources>

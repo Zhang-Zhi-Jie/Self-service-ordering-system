@@ -16,7 +16,7 @@ public class UserActivity extends AppCompatActivity{
     private ImageView imageView_main;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_uesr);
+        setContentView(R.layout.activity_user);
         imageView_setting= (ImageView) findViewById(R.id.image_setting);
         imageView_spoon= (ImageView) findViewById(R.id.image_spoon);
         imageView_main= (ImageView) findViewById(R.id.image_main);

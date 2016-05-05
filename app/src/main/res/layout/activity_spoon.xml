@@ -31,7 +31,7 @@
             <FrameLayout
                 android:id="@+id/layout_at"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottombay"
                 android:layout_weight="1" >
 
                 <ImageView
@@ -40,6 +40,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
                     android:src="@mipmap/home" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="@string/skin_tabbar_icon_main"
+                    android:textColor="@color/bottombartext"
+                    android:textSize="12sp" />
 
             </FrameLayout>
 
@@ -47,7 +54,7 @@
             <FrameLayout
                 android:id="@+id/layout_auth"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottombay"
                 android:layout_weight="1" >
 
                 <ImageView
@@ -57,12 +64,20 @@
                     android:layout_gravity="top|center"
                     android:src="@mipmap/spoonknife_select" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="@string/skin_tabbar_icon_check"
+                    android:textColor="@color/colorButton"
+                    android:textSize="12sp" />
+
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/layout_space"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottombay"
                 android:layout_weight="1" >
 
                 <ImageView
@@ -70,21 +85,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:src="@mipmap/user" />
+                    android:src="@mipmap/user2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="@string/skin_tabbar_icon_user"
+                    android:textColor="@color/bottombartext"
+                    android:textSize="12sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/layout_more"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottombay"
                 android:layout_weight="1" >
                 <ImageView
                     android:id="@+id/image_setting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:src="@mipmap/cog" />
+                    android:src="@mipmap/cog2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="@string/skin_tabbar_icon_settings"
+                    android:textColor="@color/bottombartext"
+                    android:textSize="12sp" />
 
             </FrameLayout>
         </LinearLayout>

@@ -10,7 +10,7 @@
     <android.support.v4.view.ViewPager
     android:id="@+id/image_slide_page"
     android:layout_width="fill_parent"
-    android:layout_height="180dip"
+    android:layout_height="190dip"
     android:focusable="true" />
 
 
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView1"
-        android:layout_marginStart="360dp"
+        android:layout_marginStart="350dp"
         android:layout_marginTop="9dp"
         android:src="@drawable/search"
         />
@@ -66,8 +66,9 @@
             <FrameLayout
                 android:id="@+id/layout_at"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" >
+                android:layout_height="@dimen/bottombay"
+                android:layout_weight="1"
+                >
 
                 <ImageView
                     android:id="@+id/image_main"
@@ -75,14 +76,20 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
                     android:src="@mipmap/home_select" />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="@string/skin_tabbar_icon_main"
+                    android:textColor="@color/colorButton"
+                    android:textSize="12sp" />
             </FrameLayout>
 
 
             <FrameLayout
                 android:id="@+id/layout_auth"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottombay"
                 android:layout_weight="1" >
 
                 <ImageView
@@ -91,13 +98,20 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
                     android:src="@mipmap/spoonknife" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="@string/skin_tabbar_icon_check"
+                    android:textColor="@color/bottombartext"
+                    android:textSize="12sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/layout_space"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottombay"
                 android:layout_weight="1" >
 
                 <ImageView
@@ -105,21 +119,35 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:src="@mipmap/user" />
+                    android:src="@mipmap/user2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="@string/skin_tabbar_icon_user"
+                    android:textColor="@color/bottombartext"
+                    android:textSize="12sp" />
 
             </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/layout_more"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/bottombay"
                 android:layout_weight="1" >
                 <ImageView
                     android:id="@+id/image_setting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:src="@mipmap/cog" />
+                    android:src="@mipmap/cog2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:text="@string/skin_tabbar_icon_settings"
+                    android:textColor="@color/bottombartext"
+                    android:textSize="12sp" />
 
             </FrameLayout>
         </LinearLayout>

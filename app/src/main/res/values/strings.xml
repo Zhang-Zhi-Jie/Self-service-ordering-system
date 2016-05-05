@@ -5,6 +5,6 @@
     <string name="comment">评价一下吧！亲！</string>
     <string name="skin_tabbar_icon_main">主页</string>
     <string name="skin_tabbar_icon_check">点餐</string>
-    <string name="skin_tabbar_icon_pin">标记</string>
+    <string name="skin_tabbar_icon_user">用户</string>
     <string name="skin_tabbar_icon_settings">设置</string>
 </resources>
