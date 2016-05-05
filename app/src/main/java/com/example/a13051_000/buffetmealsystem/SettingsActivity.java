@@ -20,7 +20,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         imageView_spoon= (ImageView) findViewById(R.id.image_spoon);
         imageView_user= (ImageView) findViewById(R.id.image_user);
-        imageView_main= (ImageView) findViewById(R.id.image_setting);
+        imageView_main= (ImageView) findViewById(R.id.image_main);
 
         imageView_spoon.setOnClickListener(new View.OnClickListener() {
             @Override

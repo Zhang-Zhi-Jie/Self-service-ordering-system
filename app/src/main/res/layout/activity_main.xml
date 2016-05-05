@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.a13051_000.buffetmealsystem.MainActivity">
 
+    <android.support.v4.view.ViewPager
+    android:id="@+id/image_slide_page"
+    android:layout_width="fill_parent"
+    android:layout_height="180dip"
+    android:focusable="true" />
+
+
     <com.example.a13051_000.buffetmealsystem.Topbar
     android:id="@+id/topbar1"
     android:layout_width="match_parent"
@@ -17,19 +24,7 @@
     custom:titleTextsize="20px"
     ></com.example.a13051_000.buffetmealsystem.Topbar>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        android:ellipsize="marquee"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:textSize="13sp"
-        android:text="@string/textview"
-        android:layout_below="@+id/topbar1"
-        android:id="@+id/textView"
-        android:layout_marginTop="10dp"
-        />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,7 +59,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/bottombar"
+            android:background="@color/colorwhite"
             android:orientation="horizontal"
             >
 
@@ -79,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:src="@mipmap/home" />
+                    android:src="@mipmap/home_select" />
 
             </FrameLayout>
 
