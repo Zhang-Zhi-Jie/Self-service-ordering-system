@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -30,19 +34,20 @@ public class LoginActivity extends AppCompatActivity {
                 String loginpwd=((EditText)findViewById(R.id.logineditText2)).getText().toString();
                 String againpwd=((EditText)findViewById(R.id.logineditText3)).getText().toString();
                 boolean login=false;
-                for(int i=0;i<Date.USER.length;i++) {
-                    if (loginpwd.equals(againpwd)) {
-                        if(Date.USER[i][0]==""&&Date.USER[i][1]=="") {
-                            Date.USER[i][0] = loginnum;
-                            Date.USER[i][1] = loginpwd;
-                            login = true;
-                            break;
-                        }
-                    }
+                if(loginpwd.equals(againpwd)){
+                    login = true;
                 }
                 if(login){
-                    Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
-                    LoginActivity.this.startActivity(intent);
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("user", loginnum);
+                    params.put("password", loginpwd);
+                    params.put("nickname",loginnickname);
+                    String strUrlPath = "http://www.loushubin.cn/register.php";
+                    String strResult = HttpUtils.submitPostData(strUrlPath, params, "utf-8");
+                    String result = Json.parseJSONWithJOSNObject(strResult);
+                    Toast.makeText(LoginActivity.this,"注册成功!",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                    startActivity(intent);
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"密码输入不匹配，请重新输入",Toast.LENGTH_SHORT).show();
