@@ -17,7 +17,7 @@
     <com.example.a13051_000.buffetmealsystem.Topbar
     android:id="@+id/topbar1"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
+    android:layout_height="50dp"
     android:background="@color/colorButton"
     custom:title1="主页"
     custom:titleTextcolor="@color/colorwhite"
@@ -75,13 +75,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:src="@mipmap/home_select" />
+                    android:src="@drawable/bottombarat_select" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:text="@string/skin_tabbar_icon_main"
-                    android:textColor="@color/colorButton"
+                    android:textColor="@color/bottombartext"
                     android:textSize="12sp" />
             </FrameLayout>
 
@@ -97,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:src="@mipmap/spoonknife" />
+                    android:src="@drawable/bottombarspoon_select" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:src="@mipmap/user2" />
+                    android:src="@drawable/bottombaruser_select" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top|center"
-                    android:src="@mipmap/cog2" />
+                    android:src="@drawable/bottombarsettings_select" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

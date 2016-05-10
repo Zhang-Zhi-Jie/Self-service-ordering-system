@@ -31,10 +31,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private ImageView imageView_setting;
 
     // 定义Fragment页面
-    private FragmentAt fragmentMain;
+    private FragmentAt fragmentAt;
     private FragmentSpoon fragmentSpoon;
-    private FragmentSettings fragmentSettings;
     private FragmentUser fragmentUser;
+    private FragmentSettings fragmentSettings;
+
     // 定义布局对象
     private FrameLayout atFl, authFl, spaceFl, moreFl;
 
@@ -75,8 +76,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         // 实例化图片组件对象
         atIv = (ImageView) findViewById(R.id.image_main);
         authIv = (ImageView) findViewById(R.id.image_spoon);
-        spaceIv = (ImageView) findViewById(R.id.image_setting);
-        moreIv = (ImageView) findViewById(R.id.image_user);
+        spaceIv = (ImageView) findViewById(R.id.image_user);
+        moreIv = (ImageView) findViewById(R.id.image_setting);
 
     }
 
@@ -116,17 +117,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
-    /**
-     * 点击了“动态”按钮
-     */
+
     private void clickAtBtn() {
         // 实例化Fragment页面
-        fragmentMain = new FragmentAt();
+        fragmentAt = new FragmentAt();
         // 得到Fragment事务管理器
         FragmentTransaction fragmentTransaction = this
                 .getSupportFragmentManager().beginTransaction();
         // 替换当前的页面
-        fragmentTransaction.replace(R.id.frame_content, fragmentMain);
+        fragmentTransaction.replace(R.id.frame_content, fragmentAt);
         // 事务管理提交
         fragmentTransaction.commit();
         // 改变选中状态
@@ -143,9 +142,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         moreIv.setSelected(false);
     }
 
-    /**
-     * 点击了“与我相关”按钮
-     */
+
     private void clickAuthBtn() {
         // 实例化Fragment页面
         fragmentSpoon = new FragmentSpoon();
@@ -170,17 +167,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         moreIv.setSelected(false);
     }
 
-    /**
-     * 点击了“我的空间”按钮
-     */
+
     private void clickSpaceBtn() {
         // 实例化Fragment页面
-        fragmentSettings = new FragmentSettings();
+        fragmentUser = new FragmentUser();
         // 得到Fragment事务管理器
         FragmentTransaction fragmentTransaction = this
                 .getSupportFragmentManager().beginTransaction();
         // 替换当前的页面
-        fragmentTransaction.replace(R.id.frame_content, fragmentSettings);
+        fragmentTransaction.replace(R.id.frame_content, fragmentUser);
         // 事务管理提交
         fragmentTransaction.commit();
 
@@ -197,17 +192,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         moreIv.setSelected(false);
     }
 
-    /**
-     * 点击了“更多”按钮
-     */
+
     private void clickMoreBtn() {
         // 实例化Fragment页面
-        fragmentUser = new FragmentUser();
+        fragmentSettings = new FragmentSettings();
         // 得到Fragment事务管理器
         FragmentTransaction fragmentTransaction = this
                 .getSupportFragmentManager().beginTransaction();
         // 替换当前的页面
-        fragmentTransaction.replace(R.id.frame_content, fragmentUser);
+        fragmentTransaction.replace(R.id.frame_content, fragmentSettings);
         // 事务管理提交
         fragmentTransaction.commit();
 
