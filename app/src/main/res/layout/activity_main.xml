@@ -74,7 +74,8 @@
                     android:id="@+id/image_main"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top|center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="6dp"
                     android:src="@drawable/bottombarat_select" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -96,7 +97,8 @@
                     android:id="@+id/image_spoon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top|center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="6dp"
                     android:src="@drawable/bottombarspoon_select" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -118,8 +120,10 @@
                     android:id="@+id/image_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top|center"
-                    android:src="@drawable/bottombaruser_select" />
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="6dp"
+                    android:src="@drawable/bottombaruser_select"
+                    />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -139,7 +143,8 @@
                     android:id="@+id/image_setting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top|center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="6dp"
                     android:src="@drawable/bottombarsettings_select" />
                 <TextView
                     android:layout_width="wrap_content"

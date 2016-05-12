@@ -7,12 +7,19 @@
     <com.example.a13051_000.buffetmealsystem.Topbar
         android:id="@+id/topbar1"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:background="@color/colorButton"
         custom:title1="设置"
         custom:titleTextcolor="@color/colorwhite"
         custom:titleTextsize="20px"
         ></com.example.a13051_000.buffetmealsystem.Topbar>
 
+   <ListView
+       android:id="@+id/list_view"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_below="@+id/topbar1"
+       >
 
+   </ListView>
 </RelativeLayout>

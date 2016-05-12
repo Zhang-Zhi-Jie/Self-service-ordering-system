@@ -7,7 +7,7 @@
     <com.example.a13051_000.buffetmealsystem.Topbar
         android:id="@+id/topbar1"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:background="@color/colorButton"
         custom:title1="用户"
         custom:titleTextcolor="@color/colorwhite"
