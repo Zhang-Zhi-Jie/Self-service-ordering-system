@@ -8,7 +8,7 @@
         android:background="@color/colorButton"
         android:id="@+id/topbar1"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         custom:title1="登录"
         custom:titleTextcolor="@color/colorwhite"
         custom:titleTextsize="20px"

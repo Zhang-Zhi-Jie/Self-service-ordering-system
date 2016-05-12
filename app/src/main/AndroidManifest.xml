@@ -33,17 +33,6 @@
         >
     </activity>
 
-        <activity android:name=".SpoonActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            ></activity>
-
-        <activity android:name=".UserActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            ></activity>
-
-        <activity android:name=".SettingsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            ></activity>
     </application>
 
 </manifest>
