@@ -22,9 +22,23 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button button;
     private Button rightbutton;
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Topbar topbar= (Topbar) findViewById(R.id.topbar1);
+        topbar.setOnTobarClickListener(new Topbar.topbarClickListener() {
+            @Override
+            public void leftClick() {
+
+            }
+
+            @Override
+            public void rightClick() {
+               Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+                LoginActivity.this.startActivity(intent);
+            }
+        });
         button= (Button) findViewById(R.id.loginbutton1);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

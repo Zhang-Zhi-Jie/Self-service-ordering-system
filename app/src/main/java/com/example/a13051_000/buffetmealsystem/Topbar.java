@@ -34,6 +34,18 @@ public class Topbar extends RelativeLayout{
     private String title;
 
     private LayoutParams leftParams,rightParams,titleParams;
+
+
+    private topbarClickListener listener;
+    public interface topbarClickListener{
+        public void leftClick();
+        public void rightClick();
+    }
+    public void setOnTobarClickListener(topbarClickListener listener){
+        this.listener=listener;
+    }//自定义点击
+
+
     public Topbar(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray ta=context.obtainStyledAttributes(attrs,R.styleable.Topbar);
@@ -87,9 +99,14 @@ public class Topbar extends RelativeLayout{
         leftButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText((Context) getApplicationWindowToken(),"1",Toast.LENGTH_SHORT).show();
+                listener.leftClick();
             }
         });
-        
+        rightButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.rightClick();
+            }
+        });
     }
 }
