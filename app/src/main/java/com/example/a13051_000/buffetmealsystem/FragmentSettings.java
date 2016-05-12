@@ -15,7 +15,6 @@ import android.widget.ListView;
  */
 public class FragmentSettings  extends Fragment {
 
-    public String[] data = {"意见反馈", "服务条款", "检查更新", "关于我们"};
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
