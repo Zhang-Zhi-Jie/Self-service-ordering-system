@@ -59,6 +59,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         topbar.setOnTobarClickListener(new Topbar.topbarClickListener() {
             @Override
             public void leftClick() {
+            Intent intent=new Intent(MainActivity.this,ScanActivity.class);
+                MainActivity.this.startActivity(intent);
 
             }
 
