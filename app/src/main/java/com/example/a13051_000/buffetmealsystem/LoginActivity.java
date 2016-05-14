@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Created by 13051_000 on 2016/4/26.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private Button button;
     private Button rightbutton;
