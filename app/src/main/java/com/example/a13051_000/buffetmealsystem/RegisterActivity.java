@@ -35,7 +35,6 @@ public class RegisterActivity extends BaseActivity {
         public void handleMessage(Message message){
             switch (message.what){
                 case SHOW_RESPONSE:
-                    Log.d("data1","正在执行处理操作");
                     String response = (String) message.obj;
                     sResult = response;
                     if (!sResult.isEmpty()) {
@@ -77,7 +76,6 @@ public class RegisterActivity extends BaseActivity {
                 //启动等待活动
                 switch (view.getId()) {
                     case R.id.button1:
-                        Log.d("data1","正在进行Progress操作");
                         progressDialog = new ProgressDialog(RegisterActivity.this);
                         progressDialog.setTitle("正在加载...");
                         progressDialog.setMessage("Loading...");
@@ -102,8 +100,6 @@ public class RegisterActivity extends BaseActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Log.d("data1","正在发送数据");
-                        Log.d("data1",params.toString());
                         String strResult =HttpUtils.submitPostData(strUrlPath,params,"utf-8");
                         Message message = new Message();
                         message.what = SHOW_RESPONSE;
