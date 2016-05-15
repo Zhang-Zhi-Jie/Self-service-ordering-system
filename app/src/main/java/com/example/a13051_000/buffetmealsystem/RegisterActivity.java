@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,19 +27,39 @@ public class RegisterActivity extends BaseActivity {
     private Button button1;
     private TextView textView1;
     private static String sResult = "";
+    private ProgressDialog progressDialog;
+    private String number;
+    private String pwd;
+    //异步消息处理；；；
     private android.os.Handler handler = new android.os.Handler(){
         public void handleMessage(Message message){
             switch (message.what){
                 case SHOW_RESPONSE:
+                    Log.d("data1","正在执行处理操作");
                     String response = (String) message.obj;
                     sResult = response;
+                    if (!sResult.isEmpty()) {
+                        String result = "";
+                        try {
+                            result = Json.parseJSONWithJOSNObject(sResult);
+                        } catch (Exception e) {
+                            Log.d("data1", e.toString());
+                        }
+                        progressDialog.dismiss();
+                        if (!result.equals("null") && !result.isEmpty()) {
+                            Toast.makeText(getApplicationContext(), "您的用户名为:" + Json.parseJSONWithJOSNObject(sResult), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                            RegisterActivity.this.startActivity(intent);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "信息输入错误,请重新输入", Toast.LENGTH_SHORT).show();
+                        }
+                    }
             }
         }
     };
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);}
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         button1= (Button) findViewById(R.id.button1);
@@ -54,48 +75,35 @@ public class RegisterActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 //启动等待活动
-                switch (view.getId()){
+                switch (view.getId()) {
                     case R.id.button1:
-                        ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
+                        Log.d("data1","正在进行Progress操作");
+                        progressDialog = new ProgressDialog(RegisterActivity.this);
                         progressDialog.setTitle("正在加载...");
                         progressDialog.setMessage("Loading...");
                         progressDialog.setCancelable(true);
                         progressDialog.show();
-                        if(!sResult.isEmpty()){
-                            progressDialog.dismiss();
-                        }
-
-                }
-                //将数据加入请求当中
-                String number=((EditText)findViewById(R.id.editText1)).getText().toString();
-                String pwd=((EditText)findViewById(R.id.editText2)).getText().toString();
-                boolean flag=false;
-                String nickname = "";
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("user", number);
-                params.put("password", pwd);
-                String strUrlPath = "http://www.loushubin.cn/login_user.php";
-                //调用Thread，创建新线程进行网络请求
-                sendRequest(strUrlPath,params);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                String result = Json.parseJSONWithJOSNObject(sResult);
-                if (!result.equals("null")) {
-                    Toast.makeText(getApplicationContext(),"您的用户名为:"+Json.parseJSONWithJOSNObject(sResult) , Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                    RegisterActivity.this.startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "信息输入错误,请重新输入", Toast.LENGTH_SHORT).show();
+                        Log.d("data1","Result:"+sResult);
+                        //将数据加入请求当中
+                        number = ((EditText) findViewById(R.id.editText1)).getText().toString();
+                        pwd = ((EditText) findViewById(R.id.editText2)).getText().toString();
+                        boolean flag = false;
+                        String nickname = "";
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("user", number);
+                        params.put("password", pwd);
+                        String strUrlPath = "http://www.loushubin.cn/login_user.php";
+                        //调用Thread，创建新线程进行网络请求
+                        sendRequest(strUrlPath, params);
                 }
             }
+            //启动新的线程
             private void sendRequest(final String strUrlPath, final Map<String,String> params){
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        Log.d("data1","正在发送数据");
+                        Log.d("data1",params.toString());
                         String strResult =HttpUtils.submitPostData(strUrlPath,params,"utf-8");
                         Message message = new Message();
                         message.what = SHOW_RESPONSE;
@@ -105,5 +113,5 @@ public class RegisterActivity extends BaseActivity {
                 }).start();
             }
         });
-    }
+}
 }
