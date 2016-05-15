@@ -54,6 +54,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActivityCollector.addActivity(this);
 
         Topbar topbar= (Topbar) findViewById(R.id.topbar1);
         topbar.setOnTobarClickListener(new Topbar.topbarClickListener() {
@@ -232,6 +233,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         moreFl.setSelected(true);
         moreIv.setSelected(true);
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        ActivityCollector.removeActivity(this);
+    }
+    @Override
+    public void onBackPressed(){
+        ActivityCollector.finishAll();
     }
 
 }
