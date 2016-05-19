@@ -1,7 +1,9 @@
 package com.example.a13051_000.buffetmealsystem;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.StrictMode;
@@ -13,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +34,15 @@ public class RegisterActivity extends BaseActivity {
     private ProgressDialog progressDialog;
     private String number;
     private String pwd;
+    //网络连接检查函数:::
+    private boolean AccessNetworkState(){
+        ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connManager.getActiveNetworkInfo() != null){
+            return connManager.getActiveNetworkInfo().isAvailable();
+        }
+        else
+            return false;
+    }
     //异步消息处理；；；
     private android.os.Handler handler = new android.os.Handler(){
         public void handleMessage(Message message){
@@ -37,16 +50,20 @@ public class RegisterActivity extends BaseActivity {
                 case SHOW_RESPONSE:
                     String response = (String) message.obj;
                     sResult = response;
-                    if (!sResult.isEmpty()) {
+                    if (!sResult.equals(-1)) {
+                        Gson gson = new Gson();
                         String result = "";
+                        ResultFromServer loginResult = null;
                         try {
-                            result = Json.parseJSONWithJOSNObject(sResult);
+                            loginResult = gson.fromJson(sResult,ResultFromServer.class);
                         } catch (Exception e) {
                             Log.d("data1", e.toString());
                         }
                         progressDialog.dismiss();
-                        if (!result.equals("null") && !result.isEmpty()) {
-                            Toast.makeText(getApplicationContext(), "您的用户名为:" + Json.parseJSONWithJOSNObject(sResult), Toast.LENGTH_SHORT).show();
+                        Log.d("data1",sResult);
+                        String nick_name = "";
+                        if (loginResult.getNick_name() != null) {
+                            Toast.makeText(getApplicationContext(), "您的用户名为:" + loginResult.getNick_name(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                             RegisterActivity.this.startActivity(intent);
                         } else {
@@ -76,23 +93,27 @@ public class RegisterActivity extends BaseActivity {
                 //启动等待活动
                 switch (view.getId()) {
                     case R.id.button1:
-                        progressDialog = new ProgressDialog(RegisterActivity.this);
-                        progressDialog.setTitle("正在加载...");
-                        progressDialog.setMessage("Loading...");
-                        progressDialog.setCancelable(true);
-                        progressDialog.show();
-                        Log.d("data1","Result:"+sResult);
-                        //将数据加入请求当中
-                        number = ((EditText) findViewById(R.id.editText1)).getText().toString();
-                        pwd = ((EditText) findViewById(R.id.editText2)).getText().toString();
-                        boolean flag = false;
-                        String nickname = "";
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("user", number);
-                        params.put("password", pwd);
-                        String strUrlPath = "http://www.loushubin.cn/login_user.php";
-                        //调用Thread，创建新线程进行网络请求
-                        sendRequest(strUrlPath, params);
+                        if(AccessNetworkState()) {
+                            progressDialog = new ProgressDialog(RegisterActivity.this);
+                            progressDialog.setTitle("正在加载...");
+                            progressDialog.setMessage("Loading...");
+                            progressDialog.setCancelable(true);
+                            progressDialog.show();
+                            Log.d("data1", "Result:" + sResult);
+                            //将数据加入请求当中
+                            number = ((EditText) findViewById(R.id.editText1)).getText().toString();
+                            pwd = ((EditText) findViewById(R.id.editText2)).getText().toString();
+                            boolean flag = false;
+                            String nickname = "";
+                            Map<String, String> params = new HashMap<String, String>();
+                            params.put("user", number);
+                            params.put("password", pwd);
+                            String strUrlPath = "http://www.loushubin.cn/login_user.php";
+                            //调用Thread，创建新线程进行网络请求
+                            sendRequest(strUrlPath, params);
+                        }
+                        else
+                            Toast.makeText(RegisterActivity.this,"未连接到网络,请检查网络连接设置",Toast.LENGTH_SHORT).show();
                 }
             }
             //启动新的线程

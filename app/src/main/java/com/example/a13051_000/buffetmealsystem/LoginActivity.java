@@ -1,7 +1,9 @@
 package com.example.a13051_000.buffetmealsystem;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -12,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,24 +30,41 @@ import java.util.logging.LogRecord;
 public class LoginActivity extends BaseActivity {
     private ProgressDialog progressDialog;
     private Button button;
-<<<<<<< HEAD
     private String strResult;
     public static final int SHOW_RESPONSE = 0;
+    private boolean AccessNetworkState(){
+        ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        Log.d("data1","AccessNetworkState");
+        if(connManager.getActiveNetworkInfo() != null){
+            return connManager.getActiveNetworkInfo().isAvailable();
+        }
+        else
+            return false;
+    }
     private android.os.Handler handler = new android.os.Handler() {
         public void handleMessage(Message message) {
             switch (message.what) {
                 case SHOW_RESPONSE:
-                    String result = Json.parseJSONWithJOSNObject(strResult);
+                    Gson gson = new Gson();
+                    ResultFromServer resultFromServer = gson.fromJson(strResult,ResultFromServer.class);
+                    String result = resultFromServer.getNickname();
                     progressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this, "注册成功!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                    startActivity(intent);
+                    Log.d("data1",result);
+                    Log.d("data1",strResult);
+                    if(resultFromServer.getStatus().equals("success")) {
+                        Toast.makeText(LoginActivity.this, "注册成功!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                        startActivity(intent);
+                    }
+                    else if(resultFromServer.getStatus().equals("2")){
+                        Toast.makeText(LoginActivity.this,"用户名已存在",Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                        Toast.makeText(LoginActivity.this,"注册失败,请检查注册信息",Toast.LENGTH_SHORT).show();
             }
         }
     };
-=======
     private Button rightbutton;
->>>>>>> zzj/master
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,12 +100,19 @@ public class LoginActivity extends BaseActivity {
                     params.put("password", loginpwd);
                     params.put("nickname", loginnickname);
                     String strUrlPath = "http://www.loushubin.cn/register.php";
-                    sendRequest(strUrlPath,params);
-                    progressDialog = new ProgressDialog(LoginActivity.this);
-                    progressDialog.setTitle("正在加载...");
-                    progressDialog.setMessage("Loading...");
-                    progressDialog.setCancelable(true);
-                    progressDialog.show();
+                    Log.d("data1",String.valueOf(AccessNetworkState()));
+                    if(!AccessNetworkState()){
+                        Toast.makeText(LoginActivity.this,"网络未连接，请先连接网络",Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        sendRequest(strUrlPath, params);
+                        progressDialog = new ProgressDialog(LoginActivity.this);
+                        progressDialog.setTitle("正在加载...");
+                        progressDialog.setMessage("Loading...");
+                        progressDialog.setCancelable(true);
+                        progressDialog.show();
+                    }
+
                 }
                     else{
                         Toast.makeText(getApplicationContext(),"密码输入不匹配，请重新输入",Toast.LENGTH_SHORT).show();
