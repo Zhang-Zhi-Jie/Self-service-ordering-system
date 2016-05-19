@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.a13051_000.buffetmealsystem.Topbar
+        android:background="@color/colorButton"
+        android:id="@+id/topbar1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        custom:title1="搜索"
+        custom:titleTextcolor="@color/colorwhite"
+        custom:titleTextsize="20px"
+        ></com.example.a13051_000.buffetmealsystem.Topbar>
+
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topbar1"
+        android:layout_marginTop="20dp"
+        android:hint="输入你想输入的餐品、店家等"
+        />
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/editText1"
+        android:layout_alignParentEnd="true"
+        android:text="搜索"
+        android:textColor="@color/colorwhite"
+        android:textSize="35px"
+        android:background="@color/colorButton"
+        />
+
+</RelativeLayout>

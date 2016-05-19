@@ -26,6 +26,7 @@ import java.util.logging.LogRecord;
 public class LoginActivity extends BaseActivity {
     private ProgressDialog progressDialog;
     private Button button;
+<<<<<<< HEAD
     private String strResult;
     public static final int SHOW_RESPONSE = 0;
     private android.os.Handler handler = new android.os.Handler() {
@@ -40,10 +41,26 @@ public class LoginActivity extends BaseActivity {
             }
         }
     };
+=======
+    private Button rightbutton;
+>>>>>>> zzj/master
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Topbar topbar= (Topbar) findViewById(R.id.topbar1);
+        topbar.setOnTobarClickListener(new Topbar.topbarClickListener() {
+            @Override
+            public void leftClick() {
+
+            }
+
+            @Override
+            public void rightClick() {
+               Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+                LoginActivity.this.startActivity(intent);
+            }
+        });
         button= (Button) findViewById(R.id.loginbutton1);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -14,7 +14,6 @@
         custom:titleTextsize="20px"
         ></com.example.menu.Topbar>
 
-
     <TextView
         android:id="@+id/textview2"
         android:layout_width="wrap_content"
@@ -81,6 +80,7 @@
         android:hint="输入上传密码"
         android:layout_below="@+id/logintextView3"
         />
+
      <Button
          android:id="@+id/loginbutton1"
          android:layout_width="match_parent"

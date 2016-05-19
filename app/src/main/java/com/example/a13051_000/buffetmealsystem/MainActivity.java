@@ -56,6 +56,23 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setContentView(R.layout.activity_main);
         ActivityCollector.addActivity(this);
 
+        Topbar topbar= (Topbar) findViewById(R.id.topbar1);
+        topbar.setOnTobarClickListener(new Topbar.topbarClickListener() {
+            @Override
+            public void leftClick() {
+            Intent intent=new Intent(MainActivity.this,ScanActivity.class);
+                MainActivity.this.startActivity(intent);
+
+            }
+
+            @Override
+            public void rightClick() {
+                Intent intent=new Intent(MainActivity.this,SearchActivity.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+
         initView();
 
         initData();
