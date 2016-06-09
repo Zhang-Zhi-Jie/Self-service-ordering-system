@@ -11,7 +11,7 @@
         android:layout_height="50dp"
         custom:title1="搜索"
         custom:titleTextcolor="@color/colorwhite"
-        custom:titleTextsize="20px"
+        custom:titleTextsize="9dp"
         ></com.example.a13051_000.buffetmealsystem.Topbar>
 
 

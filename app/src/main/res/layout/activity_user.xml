@@ -11,7 +11,7 @@
         android:background="@color/colorButton"
         custom:title1="用户"
         custom:titleTextcolor="@color/colorwhite"
-        custom:titleTextsize="20px"
+        custom:titleTextsize="9dp"
         ></com.example.a13051_000.buffetmealsystem.Topbar>
 
 
