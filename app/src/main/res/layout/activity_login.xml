@@ -2,101 +2,58 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/login_background"
+    >
 
-    <com.example.a13051_000.buffetmealsystem.Topbar
-        android:id="@+id/topbar1"
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText1"
+            android:hint="账号"
+            android:textSize="15dp"
+            android:layout_marginTop="140dp"
+            android:background="@color/colorwhite"
+            android:height="52dp"
+        />
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:hint="密码"
+        android:textSize="15dp"
+        android:layout_below="@+id/editText1"
+        android:background="@color/colorwhite"
+        android:height="52dp"
+        android:layout_marginTop="1dp"
+        />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="登录"
+        android:textSize="13dp"
+        android:textColor="@color/colorwhite"
+        android:id="@+id/button1"
         android:background="@color/colorButton"
-        custom:title1="注册"
-        custom:titleTextcolor="@color/colorwhite"
-        custom:titleTextsize="20px"
-        ></com.example.a13051_000.buffetmealsystem.Topbar>
+        android:layout_marginTop="20dp"
+        android:width="340dp"
+        android:height="40dp"
+        android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true"
+         />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_marginStart="355dp"
-        android:layout_marginTop="9dp"
-        android:src="@drawable/redo2"
-        />
     <TextView
-        android:id="@+id/textview2"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="昵称"
-        android:textSize="40px"
-        android:layout_marginTop="80dp"
-        android:textColor="@color/colorblack"
+        android:text="新用户"
+        android:textSize="12dp"
+        android:textColor="@color/colorButton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="3dp"
         />
-    <EditText
-        android:id="@+id/logineditText4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textview2"
-        android:hint="输入你的昵称"
-        />
-    <TextView
-        android:id="@+id/logintextView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="账号"
-        android:textSize="40px"
-        android:textColor="@color/colorblack"
-        android:layout_below="@+id/logineditText4"
-        />
-    <EditText
-        android:id="@+id/logineditText1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="输入登录账号"
-        android:layout_below="@+id/logintextView1"
-        />
-    <TextView
-        android:id="@+id/logintextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="密码"
-        android:textSize="40px"
-        android:layout_below="@+id/logineditText1"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/colorblack"
-        />
-    <EditText
-        android:id="@+id/logineditText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="输入登录密码"
-        android:layout_below="@+id/logintextView2"
-        />
-    <TextView
-        android:id="@+id/logintextView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="确认密码"
-        android:textSize="40px"
-        android:layout_below="@+id/logineditText2"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/colorblack"
-        />
-    <EditText
-        android:id="@+id/logineditText3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="重新输入登录密码"
-        android:layout_below="@+id/logintextView3"
-        />
-     <Button
-         android:id="@+id/loginbutton1"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_below="@id/logineditText3"
-         android:layout_marginTop="10dp"
-         android:text="注册"
-         android:textColor="@color/colorwhite"
-         android:textSize="50px"
-         android:background="@color/colorButton"></Button>
+
 
 </RelativeLayout>

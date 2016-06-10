@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Buffet meal system</string>
+    <string name="app_name">点吧</string>
     <string name="lixing">扫一扫</string>
     <string name="comment">评价一下吧！亲！</string>
     <string name="skin_tabbar_icon_main">主页</string>

@@ -11,7 +11,7 @@
         android:background="@color/colorButton"
         custom:title1="扫描"
         custom:titleTextcolor="@color/colorwhite"
-        custom:titleTextsize="20px"
+        custom:titleTextsize="9dp"
         ></com.example.a13051_000.buffetmealsystem.Topbar>
 
 
@@ -21,7 +21,9 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/qrcode"
         android:layout_below="@+id/topbar1"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
 
     <TextView
         android:id="@+id/result"

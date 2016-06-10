@@ -6,14 +6,10 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Message;
-import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -26,18 +22,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
+
 
 /**
- * Created by 13051_000 on 2016/4/20.
+ * Created by 13051_000 on 2016/4/26.
+ * 用多线程重写加载函数2016/02/15
  */
 public class RegisterActivity extends BaseActivity {
-    public static final int SHOW_RESPONSE = 0;
-    private Button button1;
-    private TextView textView1;
-    private static String sResult = "";
     private ProgressDialog progressDialog;
+<<<<<<< HEAD
     private String number;
     private String pwd;
     //网络连接检查函数:::
@@ -76,26 +69,47 @@ public class RegisterActivity extends BaseActivity {
                             Toast.makeText(getApplicationContext(), "信息输入错误,请重新输入", Toast.LENGTH_SHORT).show();
                         }
                     }
+=======
+    private Button button;
+
+    private String strResult;
+    public static final int SHOW_RESPONSE = 0;
+    private android.os.Handler handler = new android.os.Handler() {
+        public void handleMessage(Message message) {
+            switch (message.what) {
+                case SHOW_RESPONSE:
+                    String result = Json.parseJSONWithJOSNObject(strResult);
+                    progressDialog.dismiss();
+                    Toast.makeText(RegisterActivity.this, "注册成功!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+>>>>>>> zzj/master
             }
         }
     };
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
 
+    private Button rightbutton;
+
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        button1= (Button) findViewById(R.id.button1);
-        textView1= (TextView) findViewById(R.id.textView1);
-        textView1.setOnClickListener(new View.OnClickListener() {
+        Topbar topbar= (Topbar) findViewById(R.id.topbar1);
+        topbar.setOnTobarClickListener(new Topbar.topbarClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent1=new Intent(RegisterActivity.this,LoginActivity.class);
-                RegisterActivity.this.startActivity(intent1);
+            public void leftClick() {
+
+            }
+            @Override
+            public void rightClick() {
+               Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
+                RegisterActivity.this.startActivity(intent);
             }
         });
-        button1.setOnClickListener(new View.OnClickListener() {
+        button= (Button) findViewById(R.id.loginbutton1);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
                 //启动等待活动
                 switch (view.getId()) {
                     case R.id.button1:
@@ -137,9 +151,51 @@ public class RegisterActivity extends BaseActivity {
                         message.what = SHOW_RESPONSE;
                         message.obj = strResult;
                         handler.sendMessage(message);
+=======
+                String loginnickname=((EditText)findViewById(R.id.logineditText4)).getText().toString();
+                String loginnum=((EditText)findViewById(R.id.logineditText1)).getText().toString();
+                String loginpwd=((EditText)findViewById(R.id.logineditText2)).getText().toString();
+                String againpwd=((EditText)findViewById(R.id.logineditText3)).getText().toString();
+                boolean login=false;
+                int num1 = loginnum.length();
+                int num2 = loginpwd.length();
+                if(num1<8||num2<8){
+                    Toast.makeText(getApplicationContext(),"输入长度不小于8位",Toast.LENGTH_SHORT).show();
+                }
+                else if(loginpwd.equals(againpwd)){
+                    login = true;
+                }
+                if(login) {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("user", loginnum);
+                    params.put("password", loginpwd);
+                    params.put("nickname", loginnickname);
+                    String strUrlPath = "http://www.loushubin.cn/register.php";
+                    sendRequest(strUrlPath,params);
+                    progressDialog = new ProgressDialog(RegisterActivity.this);
+                    progressDialog.setTitle("正在加载...");
+                    progressDialog.setMessage("Loading...");
+                    progressDialog.setCancelable(true);
+                    progressDialog.show();
+                }
+                    else{
+                        Toast.makeText(getApplicationContext(),"密码输入不匹配，请重新输入",Toast.LENGTH_SHORT).show();
+>>>>>>> zzj/master
                     }
-                }).start();
+
             }
         });
-}
+    }
+    private void sendRequest(final String strUrlPath,final Map<String,String> params){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                strResult = HttpUtils.submitPostData(strUrlPath, params, "utf-8");
+                Message message = new Message();
+                message.what = SHOW_RESPONSE;
+                handler.sendMessage(message);
+            }
+        }).start();
+    }
+
 }

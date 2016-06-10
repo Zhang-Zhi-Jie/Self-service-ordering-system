@@ -11,13 +11,14 @@
         android:background="@color/colorButton"
         custom:title1="评论"
         custom:titleTextcolor="@color/colorwhite"
-        custom:titleTextsize="20px"
+        custom:titleTextsize="9dp"
         ></com.example.a13051_000.buffetmealsystem.Topbar>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/comment"
-        android:textSize="50px"
+        android:textSize="15dp"
         android:layout_marginTop="80dp"
         android:id="@+id/textView3"
         android:textColor="@color/colorblack"
@@ -33,13 +34,16 @@
         android:isIndicator="true"
         />
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ratingbar"
-        android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
         android:text="提交"
+        android:textSize="13dp"
         android:textColor="#fffffb"
         android:background="@color/colorButton"
+        android:width="340dp"
+        android:height="40dp"
+        android:layout_centerHorizontal="true"
         />
 </RelativeLayout>

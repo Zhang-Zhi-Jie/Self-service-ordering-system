@@ -89,7 +89,7 @@
          android:layout_marginTop="10dp"
          android:text="上传"
          android:textColor="@color/colorwhite"
-         android:textSize="50px"
+         android:textSize="40px"
          android:background="@color/colorButton"></Button>
 
 </RelativeLayout>
