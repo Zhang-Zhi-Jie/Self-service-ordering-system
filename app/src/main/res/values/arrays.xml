@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string-array name="ctype">
+       <item>账号管理</item>
+       <item>通知</item>
+       <item>通用设置</item>
+       <item>意见反馈</item>
+       <item>关于</item>
+   </string-array>
+
+
+</resources>
