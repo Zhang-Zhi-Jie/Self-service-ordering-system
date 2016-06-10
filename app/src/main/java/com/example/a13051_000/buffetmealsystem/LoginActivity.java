@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Message;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,7 +18,13 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
@@ -95,10 +102,10 @@ public class LoginActivity extends BaseActivity {
                     login = true;
                 }
                 if(login) {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("user", loginnum);
-                    params.put("password", loginpwd);
-                    params.put("nickname", loginnickname);
+                    List<NameValuePair> params = new ArrayList<NameValuePair>();
+                    params.add(new BasicNameValuePair("user", loginnum));
+                    params.add(new BasicNameValuePair("password", loginpwd));
+                    params.add(new BasicNameValuePair("nickname", loginnickname));
                     String strUrlPath = "http://www.loushubin.cn/register.php";
                     Log.d("data1",String.valueOf(AccessNetworkState()));
                     if(!AccessNetworkState()){
@@ -121,11 +128,15 @@ public class LoginActivity extends BaseActivity {
             }
         });
     }
-    private void sendRequest(final String strUrlPath,final Map<String,String> params){
+    private void sendRequest(final String strUrlPath,final List<NameValuePair> params){
         new Thread(new Runnable() {
             @Override
             public void run() {
-                strResult = HttpUtils.submitPostData(strUrlPath, params, "utf-8");
+                try {
+                    strResult = HttpUtils.submitPostData(strUrlPath, params, "utf-8");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 Message message = new Message();
                 message.what = SHOW_RESPONSE;
                 handler.sendMessage(message);

@@ -18,7 +18,13 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
@@ -105,9 +111,9 @@ public class RegisterActivity extends BaseActivity {
                             pwd = ((EditText) findViewById(R.id.editText2)).getText().toString();
                             boolean flag = false;
                             String nickname = "";
-                            Map<String, String> params = new HashMap<String, String>();
-                            params.put("user", number);
-                            params.put("password", pwd);
+                            List<NameValuePair> params = new ArrayList<NameValuePair>();
+                            params.add(new BasicNameValuePair("user", number));
+                            params.add(new BasicNameValuePair("password", pwd));
                             String strUrlPath = "http://www.loushubin.cn/login_user.php";
                             //调用Thread，创建新线程进行网络请求
                             sendRequest(strUrlPath, params);
@@ -117,11 +123,16 @@ public class RegisterActivity extends BaseActivity {
                 }
             }
             //启动新的线程
-            private void sendRequest(final String strUrlPath, final Map<String,String> params){
+            private void sendRequest(final String strUrlPath, final List<NameValuePair> params){
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String strResult =HttpUtils.submitPostData(strUrlPath,params,"utf-8");
+                        String strResult = null;
+                        try {
+                            strResult = HttpUtils.submitPostData(strUrlPath,params,"utf-8");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         Message message = new Message();
                         message.what = SHOW_RESPONSE;
                         message.obj = strResult;
