@@ -1,4 +1,4 @@
-package com.example.a13051_000.buffetmealsystem;
+﻿package com.example.a13051_000.buffetmealsystem;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -30,7 +30,6 @@ import java.util.Map;
  */
 public class RegisterActivity extends BaseActivity {
     private ProgressDialog progressDialog;
-<<<<<<< HEAD
     private String number;
     private String pwd;
     //网络连接检查函数:::
@@ -69,7 +68,6 @@ public class RegisterActivity extends BaseActivity {
                             Toast.makeText(getApplicationContext(), "信息输入错误,请重新输入", Toast.LENGTH_SHORT).show();
                         }
                     }
-=======
     private Button button;
 
     private String strResult;
@@ -83,7 +81,6 @@ public class RegisterActivity extends BaseActivity {
                     Toast.makeText(RegisterActivity.this, "注册成功!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
->>>>>>> zzj/master
             }
         }
     };
@@ -109,7 +106,6 @@ public class RegisterActivity extends BaseActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-<<<<<<< HEAD
                 //启动等待活动
                 switch (view.getId()) {
                     case R.id.button1:
@@ -151,7 +147,6 @@ public class RegisterActivity extends BaseActivity {
                         message.what = SHOW_RESPONSE;
                         message.obj = strResult;
                         handler.sendMessage(message);
-=======
                 String loginnickname=((EditText)findViewById(R.id.logineditText4)).getText().toString();
                 String loginnum=((EditText)findViewById(R.id.logineditText1)).getText().toString();
                 String loginpwd=((EditText)findViewById(R.id.logineditText2)).getText().toString();
@@ -180,7 +175,6 @@ public class RegisterActivity extends BaseActivity {
                 }
                     else{
                         Toast.makeText(getApplicationContext(),"密码输入不匹配，请重新输入",Toast.LENGTH_SHORT).show();
->>>>>>> zzj/master
                     }
 
             }
