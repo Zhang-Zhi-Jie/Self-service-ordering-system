@@ -4,6 +4,16 @@ import android.test.mock.MockApplication;
 import android.util.Log;
 import android.util.StringBuilderPrinter;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -16,70 +26,71 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by shubin on 2016/4/29.
  */
+class HttpClientCollector {
+    public static List<HttpClient> httpClients = new ArrayList<>();
+
+    public static HttpClient getHttpClient() {
+        if (!httpClients.isEmpty()) {
+            return httpClients.get(0);
+        } else
+            return null;
+    }
+    public static boolean isSetHttpClient() {
+        if (!httpClients.isEmpty()) {
+            return true;
+        }
+        else
+            return false;
+    }
+    public static boolean setHttpClient(HttpClient httpClient) {
+        if (httpClients.isEmpty()) {
+            httpClients.add(httpClient);
+            return true;
+        } else
+            return false;
+    }
+    }
 public class HttpUtils {
     //function:发送Post请求到服务器
-    //
-    private static StringBuffer getRequestData(Map<String,String> params,String encode){
-        //请求数据的处理；
-        StringBuffer stringBuffer = new StringBuffer();
-        try{
-            for (Map.Entry<String,String> entry: params.entrySet()
-                 ) {
-                stringBuffer.append(entry.getKey())
-                        .append("=")
-                        .append(URLEncoder.encode(entry.getValue()))
-                        .append("&");
-            }
-            stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+    public static HttpClient httpClient;
+
+    public static String submitPostData(String strUrlPath, List<NameValuePair> params, String encode) throws IOException {
+        HttpPost post = new HttpPost(strUrlPath);
+        post.setEntity(new UrlEncodedFormEntity( params, HTTP.UTF_8));
+        if (HttpClientCollector.isSetHttpClient()) {
+            httpClient = HttpClientCollector.getHttpClient();
+        } else {
+            httpClient = new DefaultHttpClient();
+            HttpClientCollector.setHttpClient(httpClient);
         }
-catch (Exception e){
-    e.printStackTrace();
-}
-        return stringBuffer;
+        HttpResponse httpResponse = httpClient.execute(post);
+        if (httpResponse.getStatusLine().getStatusCode() == 200) {
+            String msg = EntityUtils.toString(httpResponse.getEntity());
+            return msg;
+        } else
+            return "-1";
     }
-    public static String dealResponseResult(InputStream inputStream){
-        BufferedReader reader = null;
-        reader = new BufferedReader(new InputStreamReader(inputStream));
-        StringBuilder response = new StringBuilder();
-        String line ;
-        try {
-            while((line = reader.readLine()) != null){
-                response.append(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+
+    public static String submitGetData(String strUrlPath, String encode) throws IOException {
+        HttpGet get = new HttpGet(strUrlPath);
+        if (HttpClientCollector.isSetHttpClient()) {
+            httpClient = HttpClientCollector.getHttpClient();
+        } else {
+            httpClient = new DefaultHttpClient();
+            HttpClientCollector.setHttpClient(httpClient);
         }
-        return response.toString();
-    }
-    public static String submitPostData(String strUrlPath, Map<String,String> params,String encode){
-        byte[] data = getRequestData(params,encode).toString().getBytes();
-        try{
-            URL url = new URL(strUrlPath);
-            HttpURLConnection httpUrlConnection = (HttpURLConnection) url.openConnection();
-            httpUrlConnection.setConnectTimeout(3000);
-            httpUrlConnection.setDoInput(true);//打开输入流
-            httpUrlConnection.setDoOutput(true);//打开输出流
-            httpUrlConnection.setRequestMethod("POST");
-            httpUrlConnection.setUseCaches(false);
-            httpUrlConnection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
-            httpUrlConnection.setRequestProperty("Content-Length",String.valueOf(data.length));
-            httpUrlConnection.disconnect();
-            OutputStream outputStream = httpUrlConnection.getOutputStream();
-            outputStream.write(data);
-            int response= httpUrlConnection.getResponseCode();
-            if(response == 200) {
-                InputStream inputStream = httpUrlConnection.getInputStream();
-                return dealResponseResult(inputStream);
-            }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "-1";
+        HttpResponse httpResponse = httpClient.execute(get);
+        if (httpResponse.getStatusLine().getStatusCode() == 200) {
+            String msg = EntityUtils.toString(httpResponse.getEntity());
+            return msg;
+        } else
+            return "-1";
     }
 }

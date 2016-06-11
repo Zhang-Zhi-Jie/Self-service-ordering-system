@@ -1,18 +1,33 @@
 package com.example.a13051_000.buffetmealsystem;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Message;
+import android.os.StrictMode;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 /**
  * Created by 13051_000 on 2016/4/20.
@@ -25,6 +40,15 @@ public class LoginActivity extends BaseActivity {
     private ProgressDialog progressDialog;
     private String number;
     private String pwd;
+    //网络连接检查函数:::
+    private boolean AccessNetworkState(){
+        ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connManager.getActiveNetworkInfo() != null){
+            return connManager.getActiveNetworkInfo().isAvailable();
+        }
+        else
+            return false;
+    }
     //异步消息处理；；；
     private android.os.Handler handler = new android.os.Handler(){
         public void handleMessage(Message message){
@@ -32,16 +56,20 @@ public class LoginActivity extends BaseActivity {
                 case SHOW_RESPONSE:
                     String response = (String) message.obj;
                     sResult = response;
-                    if (!(sResult == "")) {
+                    if (!sResult.equals(-1)) {
+                        Gson gson = new Gson();
                         String result = "";
+                        ResultFromServer loginResult = null;
                         try {
-                            result = Json.parseJSONWithJOSNObject(sResult);
+                            loginResult = gson.fromJson(sResult,ResultFromServer.class);
                         } catch (Exception e) {
                             Log.d("data1", e.toString());
                         }
                         progressDialog.dismiss();
-                        if (!result.equals("null") && !(result == "")) {
-                            Toast.makeText(getApplicationContext(), "您的用户名为:" + Json.parseJSONWithJOSNObject(sResult), Toast.LENGTH_SHORT).show();
+                        Log.d("data1",sResult);
+                        String nick_name = "";
+                        if (loginResult.getNick_name() != null) {
+                            Toast.makeText(getApplicationContext(), "您的用户名为:" + loginResult.getNick_name(), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             LoginActivity.this.startActivity(intent);
                         } else {
@@ -71,31 +99,40 @@ public class LoginActivity extends BaseActivity {
                 //启动等待活动
                 switch (view.getId()) {
                     case R.id.button1:
-                        progressDialog = new ProgressDialog(LoginActivity.this);
-                        progressDialog.setTitle("正在加载...");
-                        progressDialog.setMessage("Loading...");
-                        progressDialog.setCancelable(true);
-                        progressDialog.show();
-                        Log.d("data1","Result:"+sResult);
-                        //将数据加入请求当中
-                        number = ((EditText) findViewById(R.id.editText1)).getText().toString();
-                        pwd = ((EditText) findViewById(R.id.editText2)).getText().toString();
-                        boolean flag = false;
-                        String nickname = "";
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("user", number);
-                        params.put("password", pwd);
-                        String strUrlPath = "http://www.loushubin.cn/login_user.php";
-                        //调用Thread，创建新线程进行网络请求
-                        sendRequest(strUrlPath, params);
+                        if(AccessNetworkState()) {
+                            progressDialog = new ProgressDialog(LoginActivity.this);
+                            progressDialog.setTitle("正在加载...");
+                            progressDialog.setMessage("Loading...");
+                            progressDialog.setCancelable(true);
+                            progressDialog.show();
+                            Log.d("data1", "Result:" + sResult);
+                            //将数据加入请求当中
+                            number = ((EditText) findViewById(R.id.editText1)).getText().toString();
+                            pwd = ((EditText) findViewById(R.id.editText2)).getText().toString();
+                            boolean flag = false;
+                            String nickname = "";
+                            List<NameValuePair> params = new ArrayList<NameValuePair>();
+                            params.add(new BasicNameValuePair("user", number));
+                            params.add(new BasicNameValuePair("password", pwd));
+                            String strUrlPath = "http://www.loushubin.cn/login_user.php";
+                            //调用Thread，创建新线程进行网络请求
+                            sendRequest(strUrlPath, params);
+                        }
+                        else
+                            Toast.makeText(LoginActivity.this,"未连接到网络,请检查网络连接设置",Toast.LENGTH_SHORT).show();
                 }
             }
             //启动新的线程
-            private void sendRequest(final String strUrlPath, final Map<String,String> params){
+            private void sendRequest(final String strUrlPath, final List<NameValuePair> params){
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        String strResult =HttpUtils.submitPostData(strUrlPath,params,"utf-8");
+                        String strResult = null;
+                        try {
+                            strResult = HttpUtils.submitPostData(strUrlPath,params,"utf-8");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         Message message = new Message();
                         message.what = SHOW_RESPONSE;
                         message.obj = strResult;
