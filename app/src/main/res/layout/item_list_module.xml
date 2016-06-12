@@ -1,61 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     >
-    <TableRow android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:paddingLeft="10dip"
-    	android:paddingRight="10dip"
-    	>
-    	
-	    <TextView android:id="@+id/order_db_id"
+	    <TextView
+			android:id="@+id/order_db_id"
 	    	android:layout_width="40dip"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
 	    	/>
-	   <TextView android:id="@+id/order_db_name"
+
+	   <TextView
+		    android:id="@+id/order_db_name"
 	    	android:layout_width="120dip"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
+		    android:layout_toRightOf="@+id/order_db_id"
 	    	/>
-	   <TextView android:id="@+id/order_db_price"
+
+	   <TextView
+		    android:id="@+id/order_db_price"
 	    	android:layout_width="35dip"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
+		    android:layout_toRightOf="@+id/order_db_name"
 	    	/>
-	   <TextView android:id="@+id/order_db_create_at"
-	    	android:layout_width="wrap_content"
+
+	   <TextView
+		    android:id="@+id/order_db_create_at"
+	    	android:layout_width="35dip"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
+		    android:layout_toRightOf="@+id/order_db_price"
 	    	/>
-	   <TextView android:id="@+id/order_db_type"
-	    	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:layout_marginLeft="15dip"
-	    	/>	  
-    </TableRow>
-    <TableRow android:layout_width="fill_parent"
-    	android:layout_height="wrap_content"
-    	android:paddingLeft="10dip"
-    	android:paddingRight="10dip"
-    	>
-     <TextView android:id="@+id/note_id"
-	    	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:layout_marginLeft="15dip"
-	    	/>
-	   <TextView android:id="@+id/note_title"
-	    	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:layout_marginLeft="15dip"
-	    	/>
-	   <TextView android:id="@+id/note_ref_date"
-	    	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:layout_marginLeft="15dip"
-	    	/>
-    </TableRow>
-    
-</LinearLayout>
+
+
+</RelativeLayout>

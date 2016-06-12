@@ -2,6 +2,7 @@ package com.example.a13051_000.buffetmealsystem;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -79,6 +81,13 @@ public class FragmentSpoon extends Fragment {
                             Log.d("data1", sResult);
                             String nick_name = "";
                        }
+                        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                Intent intent = new Intent(getActivity(),OrderDetailActivity.class);
+                                getActivity().startActivity(intent);
+                            }
+                        });
                     }
             }
         }
