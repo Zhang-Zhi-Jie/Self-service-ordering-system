@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Message;
-import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -56,7 +54,7 @@ public class LoginActivity extends BaseActivity {
                 case SHOW_RESPONSE:
                     String response = (String) message.obj;
                     sResult = response;
-                    if (!sResult.equals(-1)) {
+                    if (sResult!=null && !sResult.equals(-1)) {
                         Gson gson = new Gson();
                         String result = "";
                         ResultFromServer loginResult = null;
