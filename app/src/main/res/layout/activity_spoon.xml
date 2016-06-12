@@ -14,5 +14,19 @@
         custom:titleTextsize="9dp"
         ></com.example.a13051_000.buffetmealsystem.Topbar>
 
-
+    <TextView
+        android:id="@+id/collect_order_image"
+        android:text="           ID                菜品              价格                  单位"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
+        android:layout_marginBottom="15dip"
+        android:visibility="invisible"
+        />
+    <ListView
+        android:id="@+id/collect_order_menu_list"
+        android:layout_below="@+id/topbar1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
 </RelativeLayout>
