@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.SimpleCursorAdapter;
+
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -37,6 +37,7 @@ public class FragmentSpoon extends Fragment {
     String Name;
     String PRICE;
     String unit, sResult;
+    Status list;
     ProgressDialog progressDialog;
     private final int SHOW_RESPONSE = 0;
     private Handler handler = new android.os.Handler() {
@@ -49,7 +50,9 @@ public class FragmentSpoon extends Fragment {
                         Gson gson = new Gson();
                         String result = "";
                         try {
-                            //List<String> list = gson.fromJson(sResult，new TypeToken<List<>>())
+                             list = gson.fromJson(sResult,Status.class);
+                            Log.d("data1","123");
+                            Log.d("data1",list.toString());
                         } catch (Exception e) {
                             Log.d("data1", e.toString());
                         }
