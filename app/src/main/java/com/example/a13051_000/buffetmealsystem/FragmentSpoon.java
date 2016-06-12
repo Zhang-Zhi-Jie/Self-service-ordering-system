@@ -24,9 +24,11 @@ import org.apache.http.NameValuePair;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.StringTokenizer;
 
 /**
  * Created by 13051_000 on 2016/5/10.
@@ -48,21 +50,35 @@ public class FragmentSpoon extends Fragment {
                     sResult = response;
                     if (sResult != null && !sResult.equals(-1)) {
                         Gson gson = new Gson();
-                        String result = "";
                         try {
-                             list = gson.fromJson(sResult,Status.class);
-                            Log.d("data1","123");
-                            Log.d("data1",list.toString());
+                            list = gson.fromJson(sResult,Status.class);
+                            Log.d("status",list.getStatus());
                         } catch (Exception e) {
                             Log.d("data1", e.toString());
                         }
-                        List<Map<String, Objects>> listItems = new ArrayList<Map<String, Objects>>();
-                        ListAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.item_list_module, new String[]{ID, Name, PRICE, unit},
-                                new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price, R.id.order_db_create_at});
-                        menuList.setAdapter(orderAdapter);
-                        progressDialog.dismiss();
-                        Log.d("data1", sResult);
-                        String nick_name = "";
+                        //状态正确
+                       if(list.getStatus().equals("0")) {
+                           List<Result_Spoon_detail> result_spoon_details= list.getResult();
+                           //菜品信息存储在result_soon_details这个list里面
+                           Log.d("list",String.valueOf(result_spoon_details.size()));
+
+                            List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+                           for(int i= 0;i<result_spoon_details.size();i++){
+                               Map<String,Object> listitem = new HashMap<String,Object>();
+                               listitem.put("ID",result_spoon_details.get(i).getUnit());
+                               listitem.put("Name",result_spoon_details.get(i).getDish_name());
+                               listitem.put("PRICE",result_spoon_details.get(i).getPrice());
+                               listitem.put("unit",result_spoon_details.get(i).getUnit());
+                               listItems.add(listitem);
+                           }
+                           //暂时不能显示
+                            ListAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.item_list_module, new String[]{ID, Name, PRICE, unit},
+                                    new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price, R.id.order_db_create_at});
+                            menuList.setAdapter(orderAdapter);
+                            progressDialog.dismiss();
+                            Log.d("data1", sResult);
+                            String nick_name = "";
+                       }
                     }
             }
         }
@@ -85,6 +101,7 @@ public class FragmentSpoon extends Fragment {
         if (AccessNetworkState()) {
             String url = "http://www.loushubin.cn/get_order_form.php?restaurant_id=zhangsan";
             sendRequest(url);
+            Log.d("data1","123");
             progressDialog = new ProgressDialog(getActivity());
             progressDialog.setTitle("正在加载...");
             progressDialog.setMessage("Loading...");

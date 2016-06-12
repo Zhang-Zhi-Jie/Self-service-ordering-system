@@ -8,6 +8,7 @@ public class Result_Spoon_detail {
     private String price;
     private String unit;
     private String user_name;
+    private String id;
     public String getDish_name(){
         return this.dish_name;
     }
@@ -29,6 +30,15 @@ public class Result_Spoon_detail {
     public String getUser_name(){
         return this.user_name;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
     public String toString(){
         return "Name:"+this.dish_name+"Price:"+this.price;
     }
