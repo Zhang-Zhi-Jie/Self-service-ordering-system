@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.gson.Gson;
@@ -38,7 +39,7 @@ public class RegisterActivity extends BaseActivity {
     private Button rightbutton;
     public static final int SHOW_RESPONSE = 0;
     private Button button1;
-    private TextView textView1;
+    private ImageView imageView;
     private static String sResult = "";
     private ProgressDialog progressDialog;
     private String number;
@@ -69,16 +70,17 @@ public class RegisterActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
         button1 = (Button) findViewById(R.id.button1);
-        textView1 = (TextView) findViewById(R.id.textView1);
-        textView1.setOnClickListener(new View.OnClickListener() {
+        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
                 RegisterActivity.this.startActivity(intent1);
             }
         });
+        button1 = (Button) findViewById(R.id.loginbutton1) ;
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
