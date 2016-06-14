@@ -25,28 +25,7 @@
         android:src="@drawable/redo2"
         />
 
-    <EditText
-        android:id="@+id/logineditText4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="昵称"
-        android:textSize="15dp"
-        android:layout_marginTop="90dp"
-        android:height="45dp"
-        android:background="@color/colorwhite"
-        />
-    <EditText
-        android:id="@+id/logineditText1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="账号"
-        android:layout_below="@+id/logineditText4"
-        android:textSize="15dp"
-        android:background="@color/colorwhite"
-        android:height="45dp"
-        android:layout_marginTop="1dp"
-        />
-    <EditText
+    <com.example.a13051_000.buffetmealsystem.xml.ClearEditText
         android:id="@+id/logineditText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,9 +34,36 @@
         android:background="@color/colorwhite"
         android:textSize="15dp"
         android:height="45dp"
-        android:layout_marginTop="1dp"
-        />
-    <EditText
+        android:layout_marginTop="1dp">
+        <requestFocus />
+    </com.example.a13051_000.buffetmealsystem.xml.ClearEditText>
+
+    <com.example.a13051_000.buffetmealsystem.xml.ClearEditText
+        android:id="@+id/logineditText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="账号"
+        android:layout_below="@+id/logineditText4"
+        android:textSize="15dp"
+        android:background="@color/colorwhite"
+        android:height="45dp"
+        android:layout_marginTop="1dp">
+        <requestFocus />
+    </com.example.a13051_000.buffetmealsystem.xml.ClearEditText>
+
+    <com.example.a13051_000.buffetmealsystem.xml.ClearEditText
+        android:id="@+id/logineditText4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="昵称"
+        android:textSize="15dp"
+        android:layout_marginTop="90dp"
+        android:height="45dp"
+        android:background="@color/colorwhite">
+        <requestFocus />
+    </com.example.a13051_000.buffetmealsystem.xml.ClearEditText>
+
+    <com.example.a13051_000.buffetmealsystem.xml.ClearEditText
         android:id="@+id/logineditText3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,8 +72,12 @@
         android:textSize="15dp"
         android:height="45dp"
         android:background="@color/colorwhite"
-        android:layout_marginTop="1dp"
-        />
+        android:layout_marginTop="1dp">
+        <requestFocus />
+    </com.example.a13051_000.buffetmealsystem.xml.ClearEditText>
+
+
+
      <Button
          android:id="@+id/loginbutton1"
          android:layout_width="wrap_content"

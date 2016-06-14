@@ -6,7 +6,8 @@
     android:orientation="vertical"
     >
 
-    <TextView android:id="@+id/collect_order_image"
+    <TextView
+        android:id="@+id/collect_order_image"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dip"
