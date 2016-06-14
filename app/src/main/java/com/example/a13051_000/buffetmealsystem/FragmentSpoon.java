@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -65,20 +66,24 @@ public class FragmentSpoon extends Fragment {
                            Log.d("list",String.valueOf(result_spoon_details.size()));
 
                             List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+                           String[] arg1 = new String[result_spoon_details.size()];
                            for(int i= 0;i<result_spoon_details.size();i++){
                                Map<String,Object> listitem = new HashMap<String,Object>();
-                               listitem.put("ID",result_spoon_details.get(i).getUnit());
+                               listitem.put("ID",result_spoon_details.get(i).getId());
                                listitem.put("Name",result_spoon_details.get(i).getDish_name());
                                listitem.put("PRICE",result_spoon_details.get(i).getPrice());
                                listitem.put("unit",result_spoon_details.get(i).getUnit());
                                listItems.add(listitem);
+                               arg1[i] = listitem.toString();
                            }
                            //暂时不能显示
-                            ListAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.item_list_module, new String[]{ID, Name, PRICE, unit},
+                            SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.item_list_module, new String[]{"ID", "Name", "PRICE", "unit"},
                                     new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price, R.id.order_db_create_at});
                             menuList.setAdapter(orderAdapter);
+                     //      ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,arg1);
+                      //     menuList.setAdapter(adapter);
                             progressDialog.dismiss();
-                            Log.d("data1", sResult);
+                            Log.d("data1",listItems.toString());
                             String nick_name = "";
                        }
                         menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
