@@ -34,13 +34,13 @@ public class SlideImageLayout {
 
     public View getSlideImageLayout(int index){
         // ����TextView��LinearLayout
-        LinearLayout imageLinerLayout = new LinearLayout();
+        LinearLayout imageLinerLayout = new LinearLayout(activity.getActivity());
         LinearLayout.LayoutParams imageLinerLayoutParames = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 1);
 
-        ImageView iv = new ImageView(activity);
+        ImageView iv = new ImageView(activity.getActivity());
         iv.setBackgroundResource(index);
         iv.setOnClickListener(new ImageOnClickListener());
         imageLinerLayout.addView(iv,imageLinerLayoutParames);
@@ -50,7 +50,7 @@ public class SlideImageLayout {
     }
 
     public View getLinearLayout(View view,int width,int height){
-        LinearLayout linerLayout = new LinearLayout(activity);
+        LinearLayout linerLayout = new LinearLayout(activity.getActivity());
         LinearLayout.LayoutParams linerLayoutParames = new LinearLayout.LayoutParams(width, height, 1);
 
         linerLayout.setPadding(10, 0, 10, 0);
@@ -64,7 +64,7 @@ public class SlideImageLayout {
     }
 
     public ImageView getCircleImageLayout(int index){
-        imageView = new ImageView(activity);
+        imageView = new ImageView(activity.getActivity());
         imageView.setLayoutParams(new ViewGroup.LayoutParams(10,10));
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
@@ -89,7 +89,7 @@ public class SlideImageLayout {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
-            Toast.makeText(activity, parser.getSlideTitles()[pageIndex], Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity.getActivity(), parser.getSlideTitles()[pageIndex], Toast.LENGTH_SHORT).show();
 
         }
     }

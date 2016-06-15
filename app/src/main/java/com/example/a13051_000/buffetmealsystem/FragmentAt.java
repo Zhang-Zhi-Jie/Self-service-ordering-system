@@ -34,22 +34,20 @@ public class FragmentAt  extends Fragment {
     private TextView tvSlideTitle = null;
 
     private SlideImageLayout slideLayout = null;
-    // ���ݽ�����
     private NewsXmlParser parser = null;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //Toolbar toolbar = (Toolbar) getView().findViewById(R.id.toolbar);
+        //((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        initViews();
         return inflater.inflate(R.layout.activity_at, container, false);
 
-        Toolbar toolbar = (Toolbar)getView().findViewById(R.id.toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
     }
-    private void initeViews(){
-        // ����ͼƬ����
+    private void initViews(){
         imagePageViews = new ArrayList<View>();
         viewPager = (ViewPager) main.findViewById(R.id.image_slide_page);
 
-        // Բ��ͼƬ����
         parser = new NewsXmlParser();
         int length = parser.getSlideImages().length;
         imageCircleViews = new ImageView[length];
@@ -62,16 +60,13 @@ public class FragmentAt  extends Fragment {
             imageCircleView.addView(slideLayout.getLinearLayout(imageCircleViews[i], 10, 10));
         }
 
-        // ����Ĭ�ϵĻ�������
         tvSlideTitle = (TextView) main.findViewById(R.id.tvSlideTitle);
         tvSlideTitle.setText(parser.getSlideTitles()[0]);
 
-        // ����ViewPager
         viewPager.setAdapter(new SlideImageAdapter());
         viewPager.setOnPageChangeListener(new ImagePageChangeListener());
     }
 
-    // ����ͼƬ����������
     private class SlideImageAdapter extends PagerAdapter {
         @Override
         public int getCount() {
@@ -127,8 +122,6 @@ public class FragmentAt  extends Fragment {
 
         }
     }
-
-    // ����ҳ������¼�������
     private class ImagePageChangeListener implements ViewPager.OnPageChangeListener {
         @Override
         public void onPageScrollStateChanged(int arg0) {
