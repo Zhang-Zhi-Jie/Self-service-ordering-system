@@ -25,8 +25,18 @@ public class ScanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scan);
         mTextView = (TextView) findViewById(R.id.result);
         mImageView = (ImageView) findViewById(R.id.qrcode_bitmap);
+        Topbar topbar = (Topbar) findViewById(R.id.topbar1);
+        topbar.setOnTobarClickListener(new Topbar.topbarClickListener() {
+            @Override
+            public void leftClick() {
+                Intent intent = new Intent(ScanActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+            @Override
+            public void rightClick() {
 
-
+            }
+        });
         ImageButton mButton = (ImageButton)findViewById(R.id.imagebutton1);
         mButton.setOnClickListener(new View.OnClickListener() {
 

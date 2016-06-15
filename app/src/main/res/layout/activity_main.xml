@@ -8,15 +8,6 @@
     tools:context="com.example.a13051_000.buffetmealsystem.MainActivity">
 
 
-    <com.example.a13051_000.buffetmealsystem.Topbar
-        android:id="@+id/topbar1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorButton"
-        custom:title1="主页"
-        custom:titleTextcolor="@color/colorwhite"
-        custom:titleTextsize="9dp"
-        ></com.example.a13051_000.buffetmealsystem.Topbar>
 
     <ImageView
         android:layout_width="wrap_content"

@@ -38,6 +38,7 @@ public class LoginActivity extends BaseActivity {
     private ProgressDialog progressDialog;
     private String number;
     private String pwd;
+    public static String nickname;
     //网络连接检查函数:::
     private boolean AccessNetworkState(){
         ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -68,6 +69,7 @@ public class LoginActivity extends BaseActivity {
                         String nick_name = "";
                         if (loginResult.getNick_name() != null) {
                             Toast.makeText(getApplicationContext(), "您的用户名为:" + loginResult.getNick_name(), Toast.LENGTH_SHORT).show();
+                            nickname = loginResult.getNick_name();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             LoginActivity.this.startActivity(intent);
                         } else {

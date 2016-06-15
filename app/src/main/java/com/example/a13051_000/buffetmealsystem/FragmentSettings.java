@@ -19,7 +19,8 @@ public class FragmentSettings  extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_settings, container, false);
+       View rootView = inflater.inflate(R.layout.activity_settings, container, false);
+        return rootView;
     }
 
 }

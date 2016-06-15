@@ -5,13 +5,7 @@
     android:layout_height="match_parent">
 
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:background="?attr/colorPrimary" >
 
-    </android.support.v7.widget.Toolbar>
     <com.example.a13051_000.buffetmealsystem.Topbar
         android:id="@+id/topbar1"
         android:layout_width="match_parent"
