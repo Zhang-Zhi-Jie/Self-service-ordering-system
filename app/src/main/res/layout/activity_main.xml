@@ -7,23 +7,16 @@
     android:layout_height="match_parent"
     tools:context="com.example.a13051_000.buffetmealsystem.MainActivity">
 
-    <android.support.v4.view.ViewPager
-    android:id="@+id/image_slide_page"
-    android:layout_width="fill_parent"
-    android:layout_height="190dip"
-    android:focusable="true" />
-
 
     <com.example.a13051_000.buffetmealsystem.Topbar
-    android:id="@+id/topbar1"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@color/colorButton"
-    custom:title1="主页"
-    custom:titleTextcolor="@color/colorwhite"
-    custom:titleTextsize="9dp"
-    ></com.example.a13051_000.buffetmealsystem.Topbar>
-
+        android:id="@+id/topbar1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorButton"
+        custom:title1="主页"
+        custom:titleTextcolor="@color/colorwhite"
+        custom:titleTextsize="9dp"
+        ></com.example.a13051_000.buffetmealsystem.Topbar>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -41,6 +34,7 @@
         android:layout_marginTop="9dp"
         android:src="@drawable/search"
         />
+
     <FrameLayout
         android:id="@+id/frame_content"
         android:layout_width="match_parent"

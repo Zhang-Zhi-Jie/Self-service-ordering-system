@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.example.a13051_000.buffetmealsystem.MainActivity">
 
-</LinearLayout>
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:background="?attr/colorPrimary" >
+
+    </android.support.v7.widget.Toolbar>
+
+    <com.example.a13051_000.buffetmealsystem.xml.imagelayout.ScrollViewExtend
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        >
+    </com.example.a13051_000.buffetmealsystem.xml.imagelayout.ScrollViewExtend>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/image_slide_page"
+        android:layout_width="fill_parent"
+        android:layout_height="180dip"
+        android:focusable="true"
+        android:layout_marginTop="50dp"
+        />
+
+    <TextView
+        android:id="@+id/tvSlideTitle"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:text="@string/title1"
+        android:textColor="@android:color/white"
+        android:textSize="13dip"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/image_slide_page"
+        style="@style/Transparent"
+        android:background="@drawable/image_page_bg"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="9dp"
+        android:src="@drawable/qrcode"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView1"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="9dp"
+        android:src="@drawable/search"
+        />
+
+    <FrameLayout
+        android:id="@+id/frame_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/frameMenu"
+        android:layout_alignParentTop="true" >
+    </FrameLayout>
+
+</RelativeLayout>

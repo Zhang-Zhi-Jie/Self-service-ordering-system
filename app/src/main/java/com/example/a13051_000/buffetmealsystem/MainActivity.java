@@ -25,7 +25,7 @@ import android.widget.PopupWindow.OnDismissListener;
 
 import org.jetbrains.annotations.Nullable;
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageView imageView_spoon;
     private ImageView imageView_user;
     private ImageView imageView_setting;

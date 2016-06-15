@@ -9,4 +9,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="title1">春笋炒腊肉</string>
+    <string name="title2">菠萝古老肉</string>
+    <string name="title3">团子</string>
+    <string name="title4">香菇面筋</string>
+    <string name="title5">宫保鸡丁</string>
+
 </resources>
