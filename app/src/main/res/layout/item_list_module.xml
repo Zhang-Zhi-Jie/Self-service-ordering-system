@@ -1,40 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="40dp"
+    android:layout_height="60dp"
     >
-	    <TextView
+	<TextView
+		android:id="@+id/order_db_idshow"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="ID:"
+		android:textSize="17dip"
+		android:layout_marginLeft="5dip"
+		/>
+
+	<TextView
 			android:id="@+id/order_db_id"
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
-			android:textSize="20dip"
+			android:textSize="17dip"
 	    	android:layout_marginLeft="5dip"
+		    android:layout_toRightOf="@+id/order_db_idshow"
 	    	/>
 
+	<TextView
+		android:id="@+id/order_db_nameshow"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="菜名："
+		android:textSize="17dip"
+		android:layout_marginLeft="5dip"
+		android:layout_below="@+id/order_db_idshow"
+		/>
 	   <TextView
 		    android:id="@+id/order_db_name"
-	    	android:layout_width="120dip"
-		   	android:textSize="25dp"
+	    	android:layout_width="100dip"
+		   	android:textSize="17dp"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
-		    android:layout_toRightOf="@+id/order_db_id"
+		   android:layout_toRightOf="@+id/order_db_nameshow"
+		    android:layout_below="@+id/order_db_id"
 	    	/>
+
+	<TextView
+		android:id="@+id/order_db_priceshow"
+		android:layout_width="55dip"
+		android:textSize="17dp"
+		android:text="价格："
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="5dip"
+		android:layout_toRightOf="@+id/order_db_name"
+		android:layout_below="@+id/order_db_id"
+		/>
 
 	   <TextView
 		    android:id="@+id/order_db_price"
 	    	android:layout_width="35dip"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
-		    android:layout_toRightOf="@+id/order_db_name"
+		    android:layout_below="@+id/order_db_id"
+		    android:layout_toRightOf="@+id/order_db_priceshow"
 	    	/>
+
+	<TextView
+		android:id="@+id/order_db_creatshow"
+		android:layout_width="55dip"
+		android:textSize="17dp"
+		android:text="单位："
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="5dip"
+		android:layout_toRightOf="@+id/order_db_price"
+		android:layout_below="@+id/order_db_id"
+		/>
 
 	   <TextView
 		    android:id="@+id/order_db_create_at"
 	    	android:layout_width="35dip"
-		   android:textSize="30dp"
+		   android:textSize="17dp"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
-		    android:layout_toRightOf="@+id/order_db_price"
+		   android:layout_below="@+id/order_db_id"
+		    android:layout_toRightOf="@+id/order_db_creatshow"
 	    	/>
 
 
