@@ -35,7 +35,6 @@ public class FragmentAt  extends Fragment {
     private TextView tvSlideTitle = null;
 
     private SlideImageLayout slideLayout = null;
-    // ���ݽ�����
     private NewsXmlParser parser = null;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,7 +64,6 @@ public class FragmentAt  extends Fragment {
        return rootView;
     }
     private void initeViews(View view){
-
         imagePageViews = new ArrayList<View>();
         viewPager = (ViewPager)view.findViewById(R.id.image_slide_page);
 
@@ -88,8 +86,6 @@ public class FragmentAt  extends Fragment {
         viewPager.setAdapter(new SlideImageAdapter());
         viewPager.setOnPageChangeListener(new ImagePageChangeListener());
     }
-
-
     private class SlideImageAdapter extends PagerAdapter {
         @Override
         public int getCount() {
@@ -145,7 +141,6 @@ public class FragmentAt  extends Fragment {
 
         }
     }
-
     private class ImagePageChangeListener implements ViewPager.OnPageChangeListener {
         @Override
         public void onPageScrollStateChanged(int arg0) {
