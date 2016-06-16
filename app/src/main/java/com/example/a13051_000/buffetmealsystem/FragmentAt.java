@@ -1,5 +1,6 @@
 package com.example.a13051_000.buffetmealsystem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -38,18 +39,37 @@ public class FragmentAt  extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //Toolbar toolbar = (Toolbar) getView().findViewById(R.id.toolbar);
-        //((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        initViews();
-        return inflater.inflate(R.layout.activity_at, container, false);
 
+       View rootView =  inflater.inflate(R.layout.activity_at, container, false);
+        initeViews(rootView);
+
+        //Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        //((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+
+        Topbar topbar= (Topbar)rootView.findViewById(R.id.topbar1);
+        topbar.setOnTobarClickListener(new Topbar.topbarClickListener() {
+            @Override
+            public void leftClick() {
+                Intent intent=new Intent(getActivity(),ScanActivity.class);
+                getActivity().startActivity(intent);
+
+            }
+
+            @Override
+            public void rightClick() {
+                Intent intent=new Intent(getActivity(),SearchActivity.class);
+                getActivity().startActivity(intent);
+            }
+        });
+       return rootView;
     }
-    private void initViews(){
+    private void initeViews(View view){
         imagePageViews = new ArrayList<View>();
-        viewPager = (ViewPager) main.findViewById(R.id.image_slide_page);
+        viewPager = (ViewPager)view.findViewById(R.id.image_slide_page);
 
         parser = new NewsXmlParser();
         int length = parser.getSlideImages().length;
+        imageCircleView = (ViewGroup)view.findViewById(R.id.layout_circle_images);
         imageCircleViews = new ImageView[length];
         slideLayout = new SlideImageLayout(FragmentAt.this);
         slideLayout.setCircleImageLayout(length);
@@ -60,13 +80,12 @@ public class FragmentAt  extends Fragment {
             imageCircleView.addView(slideLayout.getLinearLayout(imageCircleViews[i], 10, 10));
         }
 
-        tvSlideTitle = (TextView) main.findViewById(R.id.tvSlideTitle);
+        tvSlideTitle = (TextView) view.findViewById(R.id.tvSlideTitle);
         tvSlideTitle.setText(parser.getSlideTitles()[0]);
 
         viewPager.setAdapter(new SlideImageAdapter());
         viewPager.setOnPageChangeListener(new ImagePageChangeListener());
     }
-
     private class SlideImageAdapter extends PagerAdapter {
         @Override
         public int getCount() {

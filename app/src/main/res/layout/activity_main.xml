@@ -8,15 +8,6 @@
     tools:context="com.example.a13051_000.buffetmealsystem.MainActivity">
 
 
-    <com.example.a13051_000.buffetmealsystem.Topbar
-        android:id="@+id/topbar1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorButton"
-        custom:title1="主页"
-        custom:titleTextcolor="@color/colorwhite"
-        custom:titleTextsize="9dp"
-        ></com.example.a13051_000.buffetmealsystem.Topbar>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -66,8 +57,8 @@
 
                 <ImageView
                     android:id="@+id/image_main"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="6dp"
                     android:src="@drawable/bottombarat_select" />
@@ -89,8 +80,8 @@
 
                 <ImageView
                     android:id="@+id/image_spoon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="6dp"
                     android:src="@drawable/bottombarspoon_select" />
@@ -112,8 +103,8 @@
 
                 <ImageView
                     android:id="@+id/image_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="6dp"
                     android:src="@drawable/bottombaruser_select"
@@ -135,8 +126,8 @@
                 android:layout_weight="1" >
                 <ImageView
                     android:id="@+id/image_setting"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:layout_marginBottom="6dp"
                     android:src="@drawable/bottombarsettings_select" />
