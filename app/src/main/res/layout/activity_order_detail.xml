@@ -4,84 +4,111 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/order_db_idshow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID:"
+        android:textSize="15dp"
+        android:layout_marginLeft="5dip"
+        />
+    <TextView
         android:id="@+id/order_db_id"
-        android:layout_width="40dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/order_db_idshow"
+        android:textSize="15dp"
         />
 
+    <TextView
+        android:id="@+id/order_db_nameshow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="菜名："
+        android:textSize="15dp"
+        android:layout_marginLeft="5dip"
+        android:layout_below="@+id/order_db_idshow"
+        android:layout_marginTop="10dp"
+        />
     <TextView
         android:id="@+id/order_db_name"
-        android:layout_width="120dp"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/order_db_id"
+        android:layout_toRightOf="@+id/order_db_nameshow"
+        android:layout_below="@+id/order_db_idshow"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
         />
 
+    <TextView
+        android:id="@+id/order_db_priceshow"
+        android:layout_width="wrap_content"
+        android:textSize="15dp"
+        android:text="价格："
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/order_db_name"
+        android:layout_below="@+id/order_db_id"
+        android:layout_marginTop="10dp"
+        />
     <TextView
         android:id="@+id/order_db_price"
-        android:layout_width="35dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/order_db_name"
+        android:layout_below="@+id/order_db_idshow"
+        android:layout_toRightOf="@+id/order_db_priceshow"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
         />
 
+    <TextView
+        android:id="@+id/order_db_creatshow"
+        android:layout_width="wrap_content"
+        android:textSize="15dp"
+        android:text="单位："
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_toRightOf="@+id/order_db_price"
+        android:layout_below="@+id/order_db_id"
+        android:layout_marginTop="10dp"
+        />
     <TextView
         android:id="@+id/order_db_create_at"
-        android:layout_width="35dp"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/order_db_price"
-        />
-
-    <ImageButton
-        android:id="@+id/item_btn_plus"
-        android:layout_width="wrap_content"
-        android:background="#0000"
-        android:src="@drawable/plus"
-        android:layout_below="@+id/order_db_create_at"
-        android:paddingLeft="40dp"
-        android:layout_height="wrap_content"
+        android:layout_below="@+id/order_db_idshow"
+        android:layout_toRightOf="@+id/order_db_creatshow"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
         />
 
     <TextView
-        android:id="@+id/item_product_num"
-        android:text="0"
+        android:id="@+id/textshu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="#000"
-        android:layout_margin="5dp"
-        android:layout_below="@+id/order_db_create_at"
-        android:layout_toRightOf="@id/item_btn_plus"
+        android:text="输入数量"
+        android:textSize="20dp"
+        android:layout_below="@+id/order_db_nameshow"
+        android:layout_marginTop="20dp"
         />
-    <ImageButton
-        android:id="@+id/item_btn_minus"
-        android:layout_width="wrap_content"
-        android:background="#0000"
-        android:src="@drawable/minus"
-        android:layout_below="@+id/order_db_create_at"
-        android:layout_marginLeft="10dp"
+    <EditText
+        android:id="@+id/editTextshu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/item_product_num"
+        android:layout_below="@+id/textshu"
         />
-
     <Button
-        android:id="@+id/order_btn"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_product_num"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        android:text=" 确定 "
+        android:layout_width="wrap_content"
+        android:text="提交"
+        android:textSize="13dp"
+        android:textColor="@color/colorwhite"
+        android:id="@+id/button_tijiao"
+        android:background="@color/colorButton"
+        android:layout_marginTop="20dp"
+        android:width="340dp"
+        android:height="40dp"
+        android:layout_below="@+id/editTextshu"
+        android:layout_centerHorizontal="true"
         />
-
-    <Button android:id="@+id/go_back_order_list_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:text=" 返 回 "
-        android:layout_alignTop="@+id/order_btn"
-        android:layout_toStartOf="@+id/order_db_create_at" />
-
 </RelativeLayout>

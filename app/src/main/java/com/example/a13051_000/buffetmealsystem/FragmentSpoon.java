@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -43,6 +44,10 @@ public class FragmentSpoon extends Fragment {
     String PRICE;
     String unit, sResult;
     Status list;
+    String id;
+    String name;
+    String price;
+    String perunit;
     ProgressDialog progressDialog;
     private final int SHOW_RESPONSE = 0;
     private Handler handler = new android.os.Handler() {
@@ -65,7 +70,7 @@ public class FragmentSpoon extends Fragment {
                            //菜品信息存储在result_soon_details这个list里面
                            Log.d("list",String.valueOf(result_spoon_details.size()));
 
-                            List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+                            final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
                            String[] arg1 = new String[result_spoon_details.size()];
                            for(int i= 0;i<result_spoon_details.size();i++){
                                Map<String,Object> listitem = new HashMap<String,Object>();
@@ -76,23 +81,33 @@ public class FragmentSpoon extends Fragment {
                                listItems.add(listitem);
                                arg1[i] = listitem.toString();
                            }
-                           //暂时不能显示
                             SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.item_list_module, new String[]{"ID", "Name", "PRICE", "unit"},
                                     new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price, R.id.order_db_create_at});
+
                             menuList.setAdapter(orderAdapter);
                      //      ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,arg1);
                       //     menuList.setAdapter(adapter);
                             progressDialog.dismiss();
                             Log.d("data1",listItems.toString());
                             String nick_name = "";
+                           menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                               @Override
+                               public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                   id= (String)listItems.get(i).get("ID");
+                                   name= (String)listItems.get(i).get("Name");
+                                   price= (String)listItems.get(i).get("PRICE");
+                                   perunit= (String)listItems.get(i).get("unit");
+                                   Intent intent = new Intent(getActivity(),OrderDetailActivity.class);
+                                   intent.putExtra("id",id);
+                                   intent.putExtra("name",name);
+                                   intent.putExtra("price",price);
+                                   intent.putExtra("perunit",perunit);
+                                   startActivity(intent);
+                               }
+                           });
+
                        }
-                        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                Intent intent = new Intent(getActivity(),OrderDetailActivity.class);
-                                getActivity().startActivity(intent);
-                            }
-                        });
+
                     }
             }
         }

@@ -16,13 +16,36 @@
         custom:titleTextcolor="@color/colorwhite"
         custom:titleTextsize="9dp"
         ></com.example.a13051_000.buffetmealsystem.Topbar>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="9dp"
+        android:src="@drawable/qrcode"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView1"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="9dp"
+        android:src="@drawable/search"
+        />
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/topbar1"
+    >
+ <RelativeLayout
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
 
-
+     >
     <com.example.a13051_000.buffetmealsystem.xml.imagelayout.ScrollViewExtend
         android:id="@+id/slide"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/topbar1"
         >
 
         <LinearLayout
@@ -125,29 +148,13 @@
         </LinearLayout>
     </com.example.a13051_000.buffetmealsystem.xml.imagelayout.ScrollViewExtend>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="9dp"
-        android:src="@drawable/qrcode"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView1"
-        android:layout_marginStart="320dp"
-        android:layout_marginTop="9dp"
-        android:src="@drawable/search"
-        />
     <LinearLayout
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_below="@+id/slide"
         android:background="@color/colorwhite"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         >
             <FrameLayout
                 android:id="@+id/layout_at"
@@ -156,19 +163,20 @@
                 android:layout_weight="1"
                 >
                 <ImageButton
-                    android:id="@+id/donut"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:id="@+id/toast"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/donut"
+                    android:background="@drawable/toaster"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="特色"
+                    android:text="早餐"
                     android:textSize="10dp"
                     android:layout_gravity="bottom|center"
                     />
+
             </FrameLayout>
 
             <FrameLayout
@@ -179,8 +187,8 @@
                 >
                 <ImageButton
                     android:id="@+id/meet"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:background="@drawable/meet"
                     />
@@ -200,8 +208,8 @@
                 >
                 <ImageButton
                     android:id="@+id/pizza"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:background="@drawable/pizza"
                     />
@@ -222,8 +230,8 @@
                 >
                 <ImageButton
                     android:id="@+id/drink"
-                    android:layout_width="45dp"
-                    android:layout_height="48dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:background="@drawable/drop"
                     />
@@ -243,8 +251,8 @@
             >
             <ImageButton
                 android:id="@+id/quickfood"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:background="@drawable/muffin"
                 />
@@ -265,7 +273,7 @@
         android:layout_height="80dp"
         android:layout_below="@+id/layout1"
         android:background="@color/colorwhite"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         >
         <FrameLayout
             android:id="@+id/layout_at11"
@@ -275,8 +283,8 @@
             >
             <ImageButton
                 android:id="@+id/map"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:background="@drawable/map"
                 />
@@ -297,8 +305,8 @@
             >
             <ImageButton
                 android:id="@+id/count"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:background="@drawable/baifenhao"
                 />
@@ -317,19 +325,20 @@
             android:layout_weight="1"
             >
             <ImageButton
-                android:id="@+id/toast"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:id="@+id/donut"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:background="@drawable/toaster"
+                android:background="@drawable/donut"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="早餐"
+                android:text="特色"
                 android:textSize="10dp"
                 android:layout_gravity="bottom|center"
                 />
+
         </FrameLayout>
         <FrameLayout
             android:id="@+id/layout_at14"
@@ -339,8 +348,8 @@
             >
             <ImageButton
                 android:id="@+id/wind"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:background="@drawable/windsock"
                 />
@@ -360,8 +369,8 @@
             >
             <ImageButton
                 android:id="@+id/support"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:background="@drawable/support"
                 />
@@ -380,7 +389,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout2"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2dp"
         android:background="@color/colorwhite"
         >
         <RelativeLayout
@@ -442,9 +451,10 @@
  <RelativeLayout
      android:id="@+id/relatelayout2"
      android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
+     android:layout_height="150dp"
      android:layout_below="@id/relatelayout1"
-     android:layout_marginTop="3dp"
+     android:layout_marginTop="2dp"
+     android:background="@color/colorwhite"
      >
      <RelativeLayout
          android:layout_width="wrap_content"
@@ -454,21 +464,21 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="欧洲杯活动"
+             android:gravity="center"
              android:textSize="10dp"
-             />
+             android:layout_marginTop="30dp"
+             android:layout_alignParentTop="true" />
          <ImageView
              android:id="@+id/image_euro"
              android:layout_width="300dp"
-             android:layout_height="100dp"
+             android:layout_height="60dp"
+             android:layout_alignParentRight="true"
              android:background="@drawable/euro"
-             android:layout_marginLeft="40dp"
-             android:layout_marginTop="24dp"
-             android:layout_below="@+id/textview_euro"
              />
 
      </RelativeLayout>
 
+   </RelativeLayout>
  </RelativeLayout>
-
-
+</ScrollView>
 </RelativeLayout>

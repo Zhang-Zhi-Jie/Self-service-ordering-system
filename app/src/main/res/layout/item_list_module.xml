@@ -16,7 +16,7 @@
 			android:id="@+id/order_db_id"
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
-			android:textSize="17dip"
+			android:textSize="15dip"
 	    	android:layout_marginLeft="5dip"
 		    android:layout_toRightOf="@+id/order_db_idshow"
 	    	/>
@@ -26,14 +26,14 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="菜名："
-		android:textSize="17dip"
+		android:textSize="15dip"
 		android:layout_marginLeft="5dip"
 		android:layout_below="@+id/order_db_idshow"
 		/>
 	   <TextView
 		    android:id="@+id/order_db_name"
 	    	android:layout_width="100dip"
-		   	android:textSize="17dp"
+		   	android:textSize="15dp"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
 		   android:layout_toRightOf="@+id/order_db_nameshow"
@@ -43,7 +43,7 @@
 	<TextView
 		android:id="@+id/order_db_priceshow"
 		android:layout_width="55dip"
-		android:textSize="17dp"
+		android:textSize="15dp"
 		android:text="价格："
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="5dip"
@@ -56,6 +56,7 @@
 	    	android:layout_width="35dip"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
+		   android:textSize="15dp"
 		    android:layout_below="@+id/order_db_id"
 		    android:layout_toRightOf="@+id/order_db_priceshow"
 	    	/>
@@ -63,7 +64,7 @@
 	<TextView
 		android:id="@+id/order_db_creatshow"
 		android:layout_width="55dip"
-		android:textSize="17dp"
+		android:textSize="15dp"
 		android:text="单位："
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="5dip"
@@ -74,7 +75,7 @@
 	   <TextView
 		    android:id="@+id/order_db_create_at"
 	    	android:layout_width="35dip"
-		   android:textSize="17dp"
+		   android:textSize="15dp"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
 		   android:layout_below="@+id/order_db_id"

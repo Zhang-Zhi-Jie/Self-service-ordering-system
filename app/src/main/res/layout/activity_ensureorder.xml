@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/sumpriceshow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:gravity="center"
+        />
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="确认订单"
+        android:textSize="13dp"
+        android:textColor="@color/colorwhite"
+        android:id="@+id/button_ensure"
+        android:background="@color/colorButton"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="30dp"
+        android:width="90dp"
+        android:height="40dp"
+        android:layout_below="@+id/sumpriceshow"
+        />
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="返回"
+        android:textSize="13dp"
+        android:textColor="@color/colorwhite"
+        android:id="@+id/button_back"
+        android:background="@color/colorButton"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="80dp"
+        android:width="90dp"
+        android:height="40dp"
+        android:layout_below="@+id/sumpriceshow"
+        android:layout_toRightOf="@+id/button_ensure"
+        />
+</RelativeLayout>
