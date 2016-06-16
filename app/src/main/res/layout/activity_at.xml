@@ -47,7 +47,7 @@
                     <android.support.v4.view.ViewPager
                         android:id="@+id/image_slide_page"
                         android:layout_width="fill_parent"
-                        android:layout_height="200dip"
+                        android:layout_height="220dip"
                         android:focusable="true" />
 
                     <RelativeLayout
@@ -142,20 +142,23 @@
         android:src="@drawable/search"
         />
     <LinearLayout
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_below="@+id/slide"
+        android:background="@color/colorwhite"
+        android:layout_marginTop="3dp"
         >
             <FrameLayout
                 android:id="@+id/layout_at"
                 android:layout_width="90dp"
-                android:layout_height="80dp"
+                android:layout_height="75dp"
                 android:layout_weight="1"
                 >
                 <ImageButton
                     android:id="@+id/donut"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_gravity="center"
                     android:background="@drawable/donut"
                     />
@@ -163,6 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="特色"
+                    android:textSize="10dp"
                     android:layout_gravity="bottom|center"
                     />
             </FrameLayout>
@@ -170,13 +174,13 @@
             <FrameLayout
                 android:id="@+id/layout_at2"
                 android:layout_width="90dp"
-                android:layout_height="80dp"
+                android:layout_height="75dp"
                 android:layout_weight="1"
                 >
                 <ImageButton
                     android:id="@+id/meet"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_gravity="center"
                     android:background="@drawable/meet"
                     />
@@ -184,39 +188,42 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="荤类"
+                    android:textSize="10dp"
                     android:layout_gravity="bottom|center"
                     />
             </FrameLayout>
             <FrameLayout
                 android:id="@+id/layout_at3"
                 android:layout_width="90dp"
-                android:layout_height="80dp"
+                android:layout_height="75dp"
                 android:layout_weight="1"
                 >
                 <ImageButton
-                    android:id="@+id/count"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
+                    android:id="@+id/pizza"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/baifenhao"
+                    android:background="@drawable/pizza"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="促销购"
+                    android:text="披萨"
+                    android:textSize="10dp"
                     android:layout_gravity="bottom|center"
                     />
+
             </FrameLayout>
             <FrameLayout
                 android:id="@+id/layout_at4"
                 android:layout_width="90dp"
-                android:layout_height="80dp"
+                android:layout_height="75dp"
                 android:layout_weight="1"
                 >
                 <ImageButton
                     android:id="@+id/drink"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
+                    android:layout_width="45dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="center"
                     android:background="@drawable/drop"
                     />
@@ -224,19 +231,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="饮品"
+                    android:textSize="10dp"
                     android:layout_gravity="bottom|center"
                     />
             </FrameLayout>
         <FrameLayout
             android:id="@+id/layout_at5"
             android:layout_width="90dp"
-            android:layout_height="80dp"
+            android:layout_height="75dp"
             android:layout_weight="1"
             >
             <ImageButton
                 android:id="@+id/quickfood"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:background="@drawable/muffin"
                 />
@@ -244,9 +252,223 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="快餐"
+                android:textSize="10dp"
+                android:layout_gravity="bottom|center"
+                />
+        </FrameLayout>
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/layout1"
+        android:background="@color/colorwhite"
+        android:layout_marginTop="3dp"
+        >
+        <FrameLayout
+            android:id="@+id/layout_at11"
+            android:layout_width="90dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:id="@+id/map"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/map"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="附近"
+                android:textSize="10dp"
                 android:layout_gravity="bottom|center"
                 />
         </FrameLayout>
 
-        </LinearLayout>
+        <FrameLayout
+            android:id="@+id/layout_at12"
+            android:layout_width="90dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:id="@+id/count"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/baifenhao"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="促销购"
+                android:textSize="10dp"
+                android:layout_gravity="bottom|center"
+                />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/layout_at13"
+            android:layout_width="90dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:id="@+id/toast"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/toaster"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="早餐"
+                android:textSize="10dp"
+                android:layout_gravity="bottom|center"
+                />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/layout_at14"
+            android:layout_width="90dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:id="@+id/wind"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/windsock"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="推荐"
+                android:textSize="10dp"
+                android:layout_gravity="bottom|center"
+                />
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/layout_at15"
+            android:layout_width="90dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            >
+            <ImageButton
+                android:id="@+id/support"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/support"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="客服在线"
+                android:textSize="10dp"
+                android:layout_gravity="bottom|center"
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relatelayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout2"
+        android:layout_marginTop="3dp"
+        android:background="@color/colorwhite"
+        >
+        <RelativeLayout
+            android:layout_width="180dp"
+            android:layout_height="100dp">
+            <ImageView
+                android:id="@+id/imageview_present"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/present"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                />
+            <TextView
+                android:id="@+id/textview_present"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新人礼包"
+                android:textSize="10dp"
+                android:layout_toRightOf="@+id/imageview_present"
+                android:layout_marginTop="50dp"
+                />
+        </RelativeLayout>
+
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout2"
+        android:layout_marginTop="3dp"
+        android:background="@color/colorwhite"
+        android:layout_toRightOf="@+id/relatelayout1"
+        android:layout_marginLeft="3dp"
+        >
+        <RelativeLayout
+            android:layout_width="180dp"
+            android:layout_height="100dp">
+            <ImageView
+                android:id="@+id/imageview_qiang"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:background="@drawable/qiang"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="24dp"
+                />
+            <TextView
+                android:id="@+id/textview_qiang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="今日必抢"
+                android:textSize="10dp"
+                android:layout_toRightOf="@+id/imageview_qiang"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="5dp"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+ <RelativeLayout
+     android:id="@+id/relatelayout2"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_below="@id/relatelayout1"
+     android:layout_marginTop="3dp"
+     >
+     <RelativeLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content">
+         <TextView
+             android:id="@+id/textview_euro"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="欧洲杯活动"
+             android:textSize="10dp"
+             />
+         <ImageView
+             android:id="@+id/image_euro"
+             android:layout_width="300dp"
+             android:layout_height="100dp"
+             android:background="@drawable/euro"
+             android:layout_marginLeft="40dp"
+             android:layout_marginTop="24dp"
+             android:layout_below="@+id/textview_euro"
+             />
+
+     </RelativeLayout>
+
+ </RelativeLayout>
+
+
+</RelativeLayout>
