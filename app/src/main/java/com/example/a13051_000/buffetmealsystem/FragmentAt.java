@@ -43,8 +43,7 @@ public class FragmentAt  extends Fragment {
        View rootView =  inflater.inflate(R.layout.activity_at, container, false);
         initeViews(rootView);
 
-        //Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-        //((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+
 
         Topbar topbar= (Topbar)rootView.findViewById(R.id.topbar1);
         topbar.setOnTobarClickListener(new Topbar.topbarClickListener() {
