@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity
             public CharSequence getPageTitle(int position){return titles[position];}
         });
         tabLayout.setupWithViewPager(viewPager);
-
-        TextView nickname = (TextView)findViewById(R.id.shownickname);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View header =  navigationView.getHeaderView(0);
+        TextView nickname = (TextView) header.findViewById(R.id.shownickname);
         Intent intent = getIntent();
         String username = intent.getStringExtra("nickname");
         nickname.setText(""+username+"");
@@ -78,7 +79,6 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
