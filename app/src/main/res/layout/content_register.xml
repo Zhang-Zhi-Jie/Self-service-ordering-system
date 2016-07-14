@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.a13051_000.buffetmealsystem.RegisterActivity"
+    tools:showIn="@layout/app_bar_register"
+    android:background="@color/background"
+    >
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        >
+        <AutoCompleteTextView
+            android:id="@+id/logineditText4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="昵称"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:height="52dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
+        <!--android:id="@+id/logineditText4"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="昵称"-->
+        <!--android:textSize="15dp"-->
+        <!--android:layout_marginTop="120dp"-->
+        <!--android:height="45dp"-->
+        <!--android:background="@color/colorwhite">-->
+        <!--<requestFocus />-->
+    <!--</com.example.a13051_000.myapplication.xml.ClearEditText>-->
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <AutoCompleteTextView
+            android:id="@+id/logineditText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="账号"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:height="52dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <AutoCompleteTextView
+            android:id="@+id/logineditText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="密码"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:height="52dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+    <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
+        <!--android:id="@+id/logineditText2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="密码"-->
+        <!--android:layout_below="@+id/logineditText1"-->
+        <!--android:background="@color/colorwhite"-->
+        <!--android:textSize="15dp"-->
+        <!--android:height="45dp"-->
+        <!--android:layout_marginTop="1dp">-->
+        <!--<requestFocus />-->
+    <!--</com.example.a13051_000.myapplication.xml.ClearEditText>-->
+
+
+    <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
+        <!--android:id="@+id/logineditText1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="账号"-->
+        <!--android:layout_below="@+id/logineditText4"-->
+        <!--android:textSize="15dp"-->
+        <!--android:background="@color/colorwhite"-->
+        <!--android:height="45dp"-->
+        <!--android:layout_marginTop="1dp">-->
+        <!--<requestFocus />-->
+    <!--</com.example.a13051_000.myapplication.xml.ClearEditText>-->
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <AutoCompleteTextView
+            android:id="@+id/logineditText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="重新密码"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:height="52dp"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
+        <!--android:id="@+id/logineditText3"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="重新密码"-->
+        <!--android:layout_below="@+id/logineditText2"-->
+        <!--android:textSize="15dp"-->
+        <!--android:height="45dp"-->
+        <!--android:background="@color/colorwhite"-->
+        <!--android:layout_marginTop="1dp">-->
+        <!--<requestFocus />-->
+    <!--</com.example.a13051_000.myapplication.xml.ClearEditText>-->
+
+
+    <Button
+        android:id="@+id/loginbutton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logineditText3"
+        android:layout_marginTop="20dp"
+        android:text="注册"
+        android:textColor="@color/colorwhite"
+        android:textSize="15dp"
+        android:background="@color/colorButton"
+        android:width="340dp"
+        android:layout_centerHorizontal="true"
+
+        ></Button>
+
+</LinearLayout>

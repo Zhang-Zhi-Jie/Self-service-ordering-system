@@ -38,7 +38,7 @@ public class LoginActivity extends BaseActivity {
     private ProgressDialog progressDialog;
     private String number;
     private String pwd;
-    public static String nickname;
+    public  String nickname;
     //网络连接检查函数:::
     private boolean AccessNetworkState(){
         ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -71,6 +71,7 @@ public class LoginActivity extends BaseActivity {
                             Toast.makeText(getApplicationContext(), "您的用户名为:" + loginResult.getNick_name(), Toast.LENGTH_SHORT).show();
                             nickname = loginResult.getNick_name();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("nickname",nickname);
                             LoginActivity.this.startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "信息输入错误,请重新输入", Toast.LENGTH_SHORT).show();

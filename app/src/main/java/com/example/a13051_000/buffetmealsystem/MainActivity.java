@@ -1,238 +1,139 @@
 package com.example.a13051_000.buffetmealsystem;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.Toast;
-import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.app.FragmentTransaction;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.PopupWindow.OnDismissListener;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
 
-import org.jetbrains.annotations.Nullable;
+import com.example.a13051_000.buffetmealsystem.Fragment.FragmentMain;
+import com.example.a13051_000.buffetmealsystem.Fragment.FragmentOrder;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private ImageView imageView_spoon;
-    private ImageView imageView_user;
-    private ImageView imageView_setting;
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-    // 定义Fragment页面
-    private FragmentAt fragmentAt;
-    private FragmentSpoon fragmentSpoon;
-    private FragmentUser fragmentUser;
-    private FragmentSettings fragmentSettings;
-
-    // 定义布局对象
-    private FrameLayout atFl, authFl, spaceFl, moreFl;
-
-    // 定义图片组件对象
-    private ImageView atIv, authIv, spaceIv, moreIv;
-
-    // 定义按钮图片组件
-    private ImageView toggleImageView, plusImageView;
-
-    // 定义PopupWindow
-    private PopupWindow popWindow;
-    // 获取手机屏幕分辨率的类
-    private DisplayMetrics dm;
+    private ViewPager viewPager = null;
+    private TabLayout tabLayout;
+    private String titles[] = {"主页","点餐"};
+    private FragmentMain mainFragment = new FragmentMain();
+    private FragmentOrder orderFragment = new FragmentOrder();
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // Toolbar toolbar = (Toolbar) MainActivity.findViewById(R.id.toolbar);
-       // setSupportActionBar(toolbar);
 
-        ActivityCollector.addActivity(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        viewPager = (ViewPager)findViewById(R.id.viewpager);
+        tabLayout = (TabLayout) findViewById(R.id.tablyout);
+        viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                if(position == 0){
+                    return mainFragment;
+                }
+                return orderFragment;
+            }
 
-        initView();
+            @Override
+            public int getCount() {
+                return titles.length;
+            }
+            public CharSequence getPageTitle(int position){return titles[position];}
+        });
+        tabLayout.setupWithViewPager(viewPager);
 
-        initData();
+        TextView nickname = (TextView)findViewById(R.id.shownickname);
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("nickname");
+        nickname.setText(""+username+"");
 
-        // 初始化默认为选中点击了“动态”按钮
-        clickAtBtn();
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
-    /**
-     * 初始化组件
-     */
-    private void initView() {
-        // 实例化布局对象
-        atFl = (FrameLayout) findViewById(R.id.layout_at);
-        authFl = (FrameLayout) findViewById(R.id.layout_auth);
-        spaceFl = (FrameLayout) findViewById(R.id.layout_space);
-        moreFl = (FrameLayout) findViewById(R.id.layout_more);
-
-        // 实例化图片组件对象
-        atIv = (ImageView) findViewById(R.id.image_main);
-        authIv = (ImageView) findViewById(R.id.image_spoon);
-        spaceIv = (ImageView) findViewById(R.id.image_user);
-        moreIv = (ImageView) findViewById(R.id.image_setting);
-
-    }
-
-    /**
-     * 初始化数据
-     */
-    private void initData() {
-        // 给布局对象设置监听
-        atFl.setOnClickListener(this);
-        authFl.setOnClickListener(this);
-        spaceFl.setOnClickListener(this);
-        moreFl.setOnClickListener(this);
-    }
-
-    /**
-     * 点击事件
-     */
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            // 点击动态按钮
-            case R.id.layout_at:
-                clickAtBtn();
-                break;
-            // 点击与我相关按钮
-            case R.id.layout_auth:
-                clickAuthBtn();
-                break;
-            // 点击我的空间按钮
-            case R.id.layout_space:
-                clickSpaceBtn();
-                break;
-            // 点击更多按钮
-            case R.id.layout_more:
-                clickMoreBtn();
-                break;
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
-
-    private void clickAtBtn() {
-        // 实例化Fragment页面
-        fragmentAt = new FragmentAt();
-        // 得到Fragment事务管理器
-        FragmentTransaction fragmentTransaction = this
-                .getSupportFragmentManager().beginTransaction();
-        // 替换当前的页面
-        fragmentTransaction.replace(R.id.frame_content, fragmentAt);
-        // 事务管理提交
-        fragmentTransaction.commit();
-        // 改变选中状态
-        atFl.setSelected(true);
-        atIv.setSelected(true);
-
-        authFl.setSelected(false);
-        authIv.setSelected(false);
-
-        spaceFl.setSelected(false);
-        spaceIv.setSelected(false);
-
-        moreFl.setSelected(false);
-        moreIv.setSelected(false);
-    }
-
-
-    private void clickAuthBtn() {
-        // 实例化Fragment页面
-        fragmentSpoon = new FragmentSpoon();
-        // 得到Fragment事务管理器
-        FragmentTransaction fragmentTransaction = this
-                .getSupportFragmentManager().beginTransaction();
-        // 替换当前的页面
-        fragmentTransaction.replace(R.id.frame_content, fragmentSpoon);
-        // 事务管理提交
-        fragmentTransaction.commit();
-
-        atFl.setSelected(false);
-        atIv.setSelected(false);
-
-        authFl.setSelected(true);
-        authIv.setSelected(true);
-
-        spaceFl.setSelected(false);
-        spaceIv.setSelected(false);
-
-        moreFl.setSelected(false);
-        moreIv.setSelected(false);
-    }
-
-
-    private void clickSpaceBtn() {
-        // 实例化Fragment页面
-        fragmentUser = new FragmentUser();
-        // 得到Fragment事务管理器
-        FragmentTransaction fragmentTransaction = this
-                .getSupportFragmentManager().beginTransaction();
-        // 替换当前的页面
-        fragmentTransaction.replace(R.id.frame_content, fragmentUser);
-        // 事务管理提交
-        fragmentTransaction.commit();
-
-        atFl.setSelected(false);
-        atIv.setSelected(false);
-
-        authFl.setSelected(false);
-        authIv.setSelected(false);
-
-        spaceFl.setSelected(true);
-        spaceIv.setSelected(true);
-
-        moreFl.setSelected(false);
-        moreIv.setSelected(false);
-    }
-
-
-    private void clickMoreBtn() {
-        // 实例化Fragment页面
-        fragmentSettings = new FragmentSettings();
-        // 得到Fragment事务管理器
-        FragmentTransaction fragmentTransaction = this
-                .getSupportFragmentManager().beginTransaction();
-        // 替换当前的页面
-        fragmentTransaction.replace(R.id.frame_content, fragmentSettings);
-        // 事务管理提交
-        fragmentTransaction.commit();
-
-        atFl.setSelected(false);
-        atIv.setSelected(false);
-
-        authFl.setSelected(false);
-        authIv.setSelected(false);
-
-        spaceFl.setSelected(false);
-        spaceIv.setSelected(false);
-
-        moreFl.setSelected(true);
-        moreIv.setSelected(true);
-    }
     @Override
-    protected void onDestroy(){
-        super.onDestroy();
-        ActivityCollector.removeActivity(this);
-    }
-    @Override
-    public void onBackPressed(){
-        ActivityCollector.finishAll();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+            this.startActivity(intent);
+        }
+        if(id == R.id.action_sao){
+            Intent intent = new Intent(MainActivity.this,ScanActivity.class);
+            this.startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }
-
-
-
