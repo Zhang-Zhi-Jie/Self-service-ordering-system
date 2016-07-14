@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.Fragment.FragmentMain;
 import com.example.a13051_000.buffetmealsystem.FragmentAt;
 import com.example.a13051_000.buffetmealsystem.R;
 
@@ -18,13 +19,13 @@ import java.util.ArrayList;
 public class SlideImageLayout {
 
     private ArrayList<ImageView> imageList = null;
-    private FragmentAt activity = null;
+    private FragmentMain activity = null;
     private ImageView[] imageViews = null;
     private ImageView imageView = null;
     private NewsXmlParser parser = null;
     private int pageIndex = 0;
 
-    public SlideImageLayout(FragmentAt activity) {
+    public SlideImageLayout(FragmentMain activity) {
         // TODO Auto-generated constructor stub
         this.activity=activity;
         imageList = new ArrayList<ImageView>();

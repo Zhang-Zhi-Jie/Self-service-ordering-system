@@ -1,37 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/login_background"
+    android:background="@color/background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     >
 
-    <com.example.a13051_000.buffetmealsystem.xml.ClearEditText
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText1"
-        android:hint="账号"
-        android:textSize="15dp"
-        android:layout_marginTop="140dp"
-        android:background="@color/colorwhite"
-        android:height="52dp"
-        />
+        android:layout_marginTop="100dp"
+        >
 
-    <com.example.a13051_000.buffetmealsystem.xml.ClearEditText
+        <AutoCompleteTextView
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="账号"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:height="52dp"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText2"
-        android:hint="密码"
-        android:textSize="15dp"
-        android:layout_below="@+id/editText1"
-        android:background="@color/colorwhite"
-        android:height="52dp"
-        android:layout_marginTop="1dp"
-        />
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="密码"
+            android:imeActionId="@+id/login"
+            android:imeActionLabel="sign in"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </android.support.design.widget.TextInputLayout>
+    <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/editText1"-->
+    <!--android:hint="账号"-->
+    <!--android:textSize="15dp"-->
+    <!--android:layout_marginTop="120dp"-->
+    <!--android:background="@color/colorwhite"-->
+    <!--android:height="52dp"-->
+    <!--/>-->
+
+    <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/editText2"-->
+    <!--android:hint="密码"-->
+    <!--android:textSize="15dp"-->
+    <!--android:layout_below="@+id/editText1"-->
+    <!--android:background="@color/colorwhite"-->
+    <!--android:height="52dp"-->
+    <!--android:layout_marginTop="1dp"-->
+    <!--/>-->
 
     <Button
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        style="?android:textAppearanceSmall"
         android:text="登录"
         android:textSize="13dp"
         android:textColor="@color/colorwhite"
@@ -40,21 +81,24 @@
         android:layout_marginTop="20dp"
         android:width="340dp"
         android:height="40dp"
-        android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true"
-         />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="新用户"
-        android:textSize="12dp"
-        android:textColor="@color/colorButton"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="3dp"
+        android:textStyle="bold"
         />
-
-
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        >
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新用户"
+            android:textSize="11dp"
+            android:textColor="@color/colorButton"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="5dp"
+            />
+    </LinearLayout>
+</LinearLayout>

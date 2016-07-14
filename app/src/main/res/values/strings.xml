@@ -2,6 +2,12 @@
     <string name="app_name">点吧</string>
     <string name="lixing">扫一扫</string>
     <string name="comment">评价一下吧！亲！</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="register">注册</string>
+    <string name="action_settings">Settings</string>
+    <string name="setting">设置</string>
+    <string name="login">登录</string>
     <string name="skin_tabbar_icon_main">主页</string>
     <string name="skin_tabbar_icon_check">点餐</string>
     <string name="skin_tabbar_icon_user">用户</string>
@@ -14,5 +20,5 @@
     <string name="title3">团子</string>
     <string name="title4">香菇面筋</string>
     <string name="title5">宫保鸡丁</string>
-
+    <string name="action_sao">扫一扫</string>
 </resources>

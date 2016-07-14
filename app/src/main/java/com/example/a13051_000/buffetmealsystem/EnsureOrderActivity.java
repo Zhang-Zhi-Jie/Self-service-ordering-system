@@ -105,7 +105,7 @@ public class EnsureOrderActivity extends AppCompatActivity {
                 }
             }
 
-            });
+        });
     }
     private void sendRequest(final String strUrlPath, final List<NameValuePair> params) {
         new Thread(new Runnable() {

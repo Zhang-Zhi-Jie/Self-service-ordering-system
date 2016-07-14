@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -71,15 +73,23 @@ public class RegisterActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        button1 = (Button) findViewById(R.id.button1);
-        imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
-                RegisterActivity.this.startActivity(intent1);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("注册");
+        toolbar.inflateMenu(R.menu.activity_register_menu);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
+
+            public boolean onMenuItemClick(MenuItem item){
+                int menuItemId = item.getItemId();
+                if(menuItemId == R.id.back){
+                    Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                    RegisterActivity.this.startActivity(intent);
+                }
+                return true;
             }
         });
+
+        button1 = (Button) findViewById(R.id.button1);
         button1 = (Button) findViewById(R.id.loginbutton1) ;
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

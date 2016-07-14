@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="colorPrimary">#ff3F51B5</color>
-    <color name="colorPrimaryDark">#ff303F9F</color>
-    <color name="colorAccent">#ffFF4081</color>
+    <color name="colorPrimary">#FF8C00</color>
+    <color name="colorPrimaryDark">#FF7F00</color>
+    <color name="colorAccent">#E9967A</color>
     <color name="colorBackground">#FFEC8B</color>
     <color name="colorlogintext">#98FB98</color>
     <color name="colorloginbackground">#009ad6</color>
     <color name="colorButton">#FF8C00</color>
-    <color name="colorblack">#000000</color>
+    <color name="colorblack">#FF7F00</color>
     <color name="skin_tabbar_bg">#FCF8FC</color>
     <color name="colorwhite">#FFFFFF</color>
     <color name="bottombar">#FFE384</color>
@@ -17,4 +16,5 @@
     <color name="viewfinder_mask">#60000000</color>
     <color name="possible_result_points">#c0ffff00</color>
     <color name="login_background">#EDEDED</color>
+    <color name="background">#E0EEEE</color>
 </resources>

@@ -67,7 +67,3 @@ public class OrderDetailActivity extends AppCompatActivity {
         });
     }
 }
-
-
-
-
