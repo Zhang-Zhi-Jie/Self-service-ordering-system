@@ -58,10 +58,7 @@ public class MainActivity extends AppCompatActivity
         });
         tabLayout.setupWithViewPager(viewPager);
 
-        TextView nickname = (TextView)findViewById(R.id.shownickname);
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("nickname");
-        nickname.setText(""+username+"");
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +77,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        TextView nickname = (TextView)header.findViewById(R.id.shownickname);
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("nickname");
+        nickname.setText(""+username+"");
     }
 
     @Override

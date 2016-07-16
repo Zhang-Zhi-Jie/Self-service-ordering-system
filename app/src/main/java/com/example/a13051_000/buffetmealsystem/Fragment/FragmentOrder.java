@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,7 @@ import org.apache.http.NameValuePair;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,7 +46,7 @@ import com.example.a13051_000.buffetmealsystem.R;
 /**
  * Created by 13051_000 on 2016/7/11.
  */
-public class FragmentOrder extends Fragment {
+public class FragmentOrder extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     ListView menuList;
     String ID;
     String Name;
@@ -56,10 +58,18 @@ public class FragmentOrder extends Fragment {
     String price;
     String perunit;
     ProgressDialog progressDialog;
+    private SwipeRefreshLayout mSwipeLayout;
+    private static final int REFRESH_COMPLETE = 0X110;
     private final int SHOW_RESPONSE = 0;
+
     private Handler handler = new android.os.Handler() {
         public void handleMessage(Message message) {
             switch (message.what) {
+
+                case REFRESH_COMPLETE:
+                    mSwipeLayout.setRefreshing(false);
+                    break;
+
                 case SHOW_RESPONSE:
                     String response = (String) message.obj;
                     sResult = response;
@@ -132,7 +142,14 @@ public class FragmentOrder extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_order, container, false);
+
         menuList = (ListView) rootView.findViewById(R.id.collect_order_menu_list);
+        mSwipeLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.id_swipe_ly);
+
+        mSwipeLayout.setOnRefreshListener(this);
+        mSwipeLayout.setColorSchemeColors(android.R.color.holo_blue_bright,
+                android.R.color.holo_blue_bright,android.R.color.holo_blue_bright,android.R.color.holo_blue_bright);
+
         if (AccessNetworkState()) {
             String url = "http://www.loushubin.cn/get_order_form.php?restaurant_id=zhangsan";
             sendRequest(url);
@@ -163,5 +180,9 @@ public class FragmentOrder extends Fragment {
                 handler.sendMessage(message);
             }
         }).start();
+    }
+    public void onRefresh()
+    {
+        handler.sendEmptyMessageDelayed(REFRESH_COMPLETE, 2000);
     }
 }

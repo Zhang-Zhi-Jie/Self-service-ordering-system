@@ -57,7 +57,7 @@
                             <android.support.v4.view.ViewPager
                                 android:id="@+id/image_slide_page"
                                 android:layout_width="fill_parent"
-                                android:layout_height="220dip"
+                                android:layout_height="200dip"
                                 android:focusable="true" />
 
                             <RelativeLayout

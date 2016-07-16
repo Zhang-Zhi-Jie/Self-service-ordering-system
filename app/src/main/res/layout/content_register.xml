@@ -12,14 +12,23 @@
     android:background="@color/background"
     >
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:text="@string/register"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        android:textSize="30dp"
+        android:textColor="@color/colorPrimaryDark"
+        />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         >
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/logineditText4"
-            android:layout_width="match_parent"
+            android:layout_width="345dp"
             android:layout_height="wrap_content"
             android:hint="昵称"
             android:inputType="textEmailAddress"
@@ -42,12 +51,12 @@
     <!--</com.example.a13051_000.myapplication.xml.ClearEditText>-->
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/logineditText1"
-            android:layout_width="match_parent"
+            android:layout_width="345dp"
             android:layout_height="wrap_content"
             android:hint="账号"
             android:inputType="textEmailAddress"
@@ -58,12 +67,12 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/logineditText2"
-            android:layout_width="match_parent"
+            android:layout_width="345dp"
             android:layout_height="wrap_content"
             android:hint="密码"
             android:inputType="textEmailAddress"
@@ -101,12 +110,12 @@
 
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/logineditText3"
-            android:layout_width="match_parent"
+            android:layout_width="345dp"
             android:layout_height="wrap_content"
             android:hint="重新密码"
             android:inputType="textEmailAddress"

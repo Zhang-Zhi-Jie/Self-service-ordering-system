@@ -19,6 +19,7 @@
         android:id="@+id/action_sao"
         android:orderInCategory="100"
         android:title="@string/action_sao"
+        android:icon="@drawable/ic_center_focus_weak_black_24dp"
         app:showAsAction="never"
         ></item>
 </menu>
