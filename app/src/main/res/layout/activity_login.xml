@@ -10,15 +10,24 @@
     android:orientation="vertical"
     >
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        >
+        android:text="@string/welcome"
+        android:layout_gravity="center"
+        android:layout_marginTop="90dp"
+        android:textSize="35dp"
+        android:textColor="@color/colorPrimaryDark"
+        />
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        >
         <AutoCompleteTextView
             android:id="@+id/editText1"
-            android:layout_width="match_parent"
+            android:layout_width="345dp"
             android:layout_height="wrap_content"
             android:hint="账号"
             android:inputType="textEmailAddress"
@@ -26,16 +35,17 @@
             android:singleLine="true"
             android:height="52dp"
             />
-
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
 
         <EditText
             android:id="@+id/editText2"
-            android:layout_width="match_parent"
+            android:layout_width="345dp"
             android:layout_height="wrap_content"
             android:hint="密码"
             android:imeActionId="@+id/login"
@@ -43,8 +53,8 @@
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:singleLine="true" />
-
+            android:singleLine="true"
+            />
     </android.support.design.widget.TextInputLayout>
     <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
     <!--android:layout_width="match_parent"-->
@@ -84,21 +94,32 @@
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         />
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="left"
         >
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="新用户"
-            android:textSize="11dp"
+            android:textSize="12dp"
+            android:textColor="@color/colorButton"
+            android:layout_marginLeft="6dp"
+            android:layout_marginBottom="8dp"
+            android:layout_alignTop="@+id/forget"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="忘记密码"
+            android:textSize="12dp"
             android:textColor="@color/colorButton"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="5dp"
-            />
-    </LinearLayout>
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="8dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 </LinearLayout>

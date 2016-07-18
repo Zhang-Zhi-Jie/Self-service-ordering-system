@@ -35,12 +35,12 @@
         android:id="@+id/tablyout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="@color/colorButton"
         android:layout_marginTop="56dp"
         app:tabGravity="fill"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/colorAccent"
-        app:tabTextColor="@color/colorblack"
+        app:tabSelectedTextColor="#FFFFFF"
+        app:tabTextColor="#D3D3D3"
         ></android.support.design.widget.TabLayout>
 
     <include layout="@layout/content_main" />
