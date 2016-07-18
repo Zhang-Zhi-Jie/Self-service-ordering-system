@@ -75,7 +75,6 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.activity_register);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("注册");
         toolbar.inflateMenu(R.menu.activity_register_menu);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
 

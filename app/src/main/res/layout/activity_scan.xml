@@ -4,15 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.a13051_000.buffetmealsystem.Topbar
-        android:id="@+id/topbar1"
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorButton"
-        custom:title1="扫描"
-        custom:titleTextcolor="@color/colorwhite"
-        custom:titleTextsize="9dp"
-        ></com.example.a13051_000.buffetmealsystem.Topbar>
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:elevation="10dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:minHeight="?attr/actionBarSize" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -30,7 +31,7 @@
         android:src="@mipmap/qrcode"
         android:layout_below="@+id/topbar1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         />
 
     <TextView

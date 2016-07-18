@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FF8C00</color>
     <color name="colorPrimaryDark">#FF7F00</color>
-    <color name="colorAccent">#E9967A</color>
+    <color name="colorAccent">#00CDCD</color>
     <color name="colorBackground">#FFEC8B</color>
     <color name="colorlogintext">#98FB98</color>
     <color name="colorloginbackground">#009ad6</color>
@@ -15,6 +15,5 @@
     <color name="result_view">#b0000000</color>
     <color name="viewfinder_mask">#60000000</color>
     <color name="possible_result_points">#c0ffff00</color>
-    <color name="login_background">#EDEDED</color>
-    <color name="background">#E0EEEE</color>
+    <color name="background">#EDEDED</color>
 </resources>
