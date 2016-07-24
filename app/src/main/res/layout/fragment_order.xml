@@ -13,9 +13,8 @@
     <ListView
         android:id="@+id/collect_order_menu_list"
         android:layout_below="@+id/topbar1"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         />
     </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>

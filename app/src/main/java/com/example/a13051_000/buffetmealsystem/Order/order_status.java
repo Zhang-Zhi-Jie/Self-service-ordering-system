@@ -1,4 +1,4 @@
-package com.example.a13051_000.buffetmealsystem;
+package com.example.a13051_000.buffetmealsystem.Order;
 
 /**
  * Created by shubin on 2016/6/16.

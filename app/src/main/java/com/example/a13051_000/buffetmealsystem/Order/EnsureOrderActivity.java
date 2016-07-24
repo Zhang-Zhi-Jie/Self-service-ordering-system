@@ -1,4 +1,4 @@
-package com.example.a13051_000.buffetmealsystem;
+package com.example.a13051_000.buffetmealsystem.Order;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,10 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.HttpUtils;
+import com.example.a13051_000.buffetmealsystem.R;
 import com.google.gson.Gson;
 
 import org.apache.http.NameValuePair;
