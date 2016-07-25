@@ -21,15 +21,19 @@ import android.widget.TextView;
 
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentMain;
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentOrder;
+import com.example.a13051_000.buffetmealsystem.Fragment.FragmentOrderForm;
+import com.example.a13051_000.buffetmealsystem.Order.OrderCar;
+import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ViewPager viewPager = null;
     private TabLayout tabLayout;
-    private String titles[] = {"主页","点餐"};
+    private String titles[] = {"主页","点餐","订单"};
     private FragmentMain mainFragment = new FragmentMain();
     private FragmentOrder orderFragment = new FragmentOrder();
+    private FragmentOrderForm orderFormFragment = new FragmentOrderForm();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +48,12 @@ public class MainActivity extends AppCompatActivity
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                if(position == 0){
+                if (position == 0) {
                     return mainFragment;
+                } else if(position == 1){
+                    return orderFragment;
                 }
-                return orderFragment;
+                return orderFormFragment;
             }
 
             @Override
@@ -64,8 +70,10 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+               Intent intent = new Intent(MainActivity.this, OrderCar.class);
+                MainActivity.this.startActivity(intent);
+                MainActivity.this.finish();
+                overridePendingTransition(R.anim.fab_fade_in,R.anim.fab_fade_out);
             }
         });
 
@@ -110,8 +118,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
-            this.startActivity(intent);
+            Intent intent1 = new Intent(MainActivity.this,SettingsActivity.class);
+            this.startActivity(intent1);
         }
         if(id == R.id.action_sao){
             Intent intent = new Intent(MainActivity.this,ScanActivity.class);
@@ -129,8 +137,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 

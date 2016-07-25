@@ -6,7 +6,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="welcome">欢迎来到点吧</string>
     <string name="register">注册新用户</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">设置</string>
     <string name="setting">设置</string>
     <string name="login">登录</string>
     <string name="skin_tabbar_icon_main">主页</string>
@@ -14,7 +14,7 @@
     <string name="skin_tabbar_icon_user">用户</string>
     <string name="skin_tabbar_icon_settings">设置</string>
     <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
+    <string name="menu_settings">设置</string>
     <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
     <string name="title1">春笋炒腊肉</string>
     <string name="title2">菠萝古老肉</string>
@@ -22,4 +22,8 @@
     <string name="title4">香菇面筋</string>
     <string name="title5">宫保鸡丁</string>
     <string name="action_sao">扫一扫</string>
+    <string name="suggestions">您的反馈就是对我们最大的帮助</string>
+    <string name="aboutus1">队名：Craze_KB</string>
+    <string name="aboutus2">组员：张治杰、娄树斌</string>
+    <string name="aboutus3">负责人电话：17854117685</string>
 </resources>

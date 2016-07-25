@@ -4,16 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.a13051_000.buffetmealsystem.Topbar
-        android:id="@+id/topbar1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorButton"
-        custom:title1="评论"
-        custom:titleTextcolor="@color/colorwhite"
-        custom:titleTextsize="9dp"
-        ></com.example.a13051_000.buffetmealsystem.Topbar>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

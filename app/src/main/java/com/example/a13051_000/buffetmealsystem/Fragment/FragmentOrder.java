@@ -14,31 +14,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.HttpUtils;
-import com.example.a13051_000.buffetmealsystem.OrderDetailActivity;
-import com.example.a13051_000.buffetmealsystem.Result_Spoon_detail;
+import com.example.a13051_000.buffetmealsystem.Order.OrderDetailActivity;
+import com.example.a13051_000.buffetmealsystem.Order.Result_Spoon_detail;
 import com.example.a13051_000.buffetmealsystem.Status;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.apache.http.NameValuePair;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.StringTokenizer;
 
 import com.example.a13051_000.buffetmealsystem.R;
 
