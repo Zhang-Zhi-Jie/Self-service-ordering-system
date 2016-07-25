@@ -4,52 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/tool_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="10dp"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:minHeight="?attr/actionBarSize" />
+   <include
+       layout="@layout/app_bar_scan"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       ></include>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/undo2"
-        />
-
-    <ImageButton
-        android:id="@+id/imagebutton1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/qrcode"
-        android:layout_below="@+id/topbar1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        />
-
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imagebutton1"
-        android:lines="2"
-        android:gravity="center_horizontal"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        />
-
-    <ImageView
-        android:id="@+id/qrcode_bitmap"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/result"
-        />
 </RelativeLayout>

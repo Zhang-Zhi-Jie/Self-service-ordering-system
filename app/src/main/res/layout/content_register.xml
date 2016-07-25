@@ -12,12 +12,18 @@
     android:background="@color/background"
     >
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_chevron_right_black_24dp"
+        android:layout_gravity="right" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register"
         android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:textSize="30dp"
         android:textColor="@color/colorPrimaryDark"
         />
@@ -38,17 +44,6 @@
             />
     </android.support.design.widget.TextInputLayout>
 
-    <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
-        <!--android:id="@+id/logineditText4"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:hint="昵称"-->
-        <!--android:textSize="15dp"-->
-        <!--android:layout_marginTop="120dp"-->
-        <!--android:height="45dp"-->
-        <!--android:background="@color/colorwhite">-->
-        <!--<requestFocus />-->
-    <!--</com.example.a13051_000.myapplication.xml.ClearEditText>-->
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
@@ -81,32 +76,6 @@
             android:height="52dp"
             />
     </android.support.design.widget.TextInputLayout>
-    <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
-        <!--android:id="@+id/logineditText2"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:hint="密码"-->
-        <!--android:layout_below="@+id/logineditText1"-->
-        <!--android:background="@color/colorwhite"-->
-        <!--android:textSize="15dp"-->
-        <!--android:height="45dp"-->
-        <!--android:layout_marginTop="1dp">-->
-        <!--<requestFocus />-->
-    <!--</com.example.a13051_000.myapplication.xml.ClearEditText>-->
-
-
-    <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
-        <!--android:id="@+id/logineditText1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:hint="账号"-->
-        <!--android:layout_below="@+id/logineditText4"-->
-        <!--android:textSize="15dp"-->
-        <!--android:background="@color/colorwhite"-->
-        <!--android:height="45dp"-->
-        <!--android:layout_marginTop="1dp">-->
-        <!--<requestFocus />-->
-    <!--</com.example.a13051_000.myapplication.xml.ClearEditText>-->
 
 
     <android.support.design.widget.TextInputLayout
@@ -125,18 +94,7 @@
             />
     </android.support.design.widget.TextInputLayout>
 
-    <!--<com.example.a13051_000.myapplication.xml.ClearEditText-->
-        <!--android:id="@+id/logineditText3"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:hint="重新密码"-->
-        <!--android:layout_below="@+id/logineditText2"-->
-        <!--android:textSize="15dp"-->
-        <!--android:height="45dp"-->
-        <!--android:background="@color/colorwhite"-->
-        <!--android:layout_marginTop="1dp">-->
-        <!--<requestFocus />-->
-    <!--</com.example.a13051_000.myapplication.xml.ClearEditText>-->
+
 
 
     <Button

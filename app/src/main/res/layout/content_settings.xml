@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/list_view"
+        android:entries="@array/ctype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@color/colorwhite"
+        >
+    </ListView>
+
+    <Button
+        android:id="@+id/button_quit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="退出当前账号"
+        android:textSize="13dp"
+        android:textColor="@color/colorButton"
+        android:background="@color/colorwhite"
+        android:layout_marginTop="20dp"
+        />
+</LinearLayout>

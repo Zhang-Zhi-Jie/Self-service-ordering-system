@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:enabled="true"
+        android:hint="@string/suggestions"
+        android:textSize="14dp"
+        android:minLines="9"
+        android:maxLines="11"
+        android:background="@color/colorwhite"
+        android:gravity="top"
+        android:id="@+id/editText_suggestions"
+        android:layout_weight="1"
+        android:layout_marginTop="70dp"
+        />
+
+    <Button
+        android:id="@+id/suggestions_ensure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:textSize="13dp"
+        android:textColor="@color/colorwhite"
+        android:background="@color/colorButton"
+        android:layout_below="@+id/editText_suggestions"
+        android:layout_marginTop="30dp"
+        android:width="330dp"
+        android:layout_centerHorizontal="true"
+        />
+</RelativeLayout>

@@ -38,7 +38,7 @@
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/text"
-                    android:text="Top View"
+                    android:text="餐厅名称"
                     android:textSize="18sp"
                     android:textColor="@color/colorwhite"
                     android:layout_gravity="center_horizontal"
