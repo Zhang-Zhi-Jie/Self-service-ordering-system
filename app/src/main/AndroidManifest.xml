@@ -40,6 +40,46 @@
         </activity>
 
         <activity
+            android:name=".User.UserActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".User.User_information_change"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".User.User_password_change"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".restaurant.Classfication.Chinese_Restaurant"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".restaurant.Classfication.Foreign_Restaurant"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".restaurant.Classfication.Pizza_Restaurant"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".restaurant.Classfication.Bar"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".restaurant.Classfication.Fast_Food_Restaurant"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
             android:name=".restaurant.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

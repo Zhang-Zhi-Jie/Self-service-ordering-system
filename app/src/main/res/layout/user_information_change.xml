@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <include
-        layout="@layout/app_bar_user"
+        layout="@layout/user_app_bar_infochange"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></include>
 

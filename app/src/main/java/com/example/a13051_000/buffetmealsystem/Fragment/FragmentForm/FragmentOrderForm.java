@@ -1,19 +1,24 @@
-package com.example.cook;
+package com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm;
+
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.HttpUtils;
+import com.example.a13051_000.buffetmealsystem.R;
 import com.google.gson.Gson;
 
 import org.apache.http.NameValuePair;
@@ -24,16 +29,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
-    //网络连接检查函数:::
-    private boolean AccessNetworkState(){
-        ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connManager.getActiveNetworkInfo() != null){
-            return connManager.getActiveNetworkInfo().isAvailable();
-        }
-        else
-            return false;
-    }
+/**
+ * Created by 13051_000 on 2016/7/24.
+ */
+public class FragmentOrderForm extends Fragment {
+//    private boolean AccessNetworkState(){
+//        ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+//        if(connManager.getActiveNetworkInfo() != null){
+//            return connManager.getActiveNetworkInfo().isAvailable();
+//        }
+//        else
+//            return false;
+//    }
     private ListView menulist;
     ProgressDialog progressDialog;
     final int SHOW_RESPONSE = 0;
@@ -70,13 +77,13 @@ public class MainActivity extends AppCompatActivity {
                                 listItems.add(listitem);
                                 arg1[i] = listitem.toString();
                             }
-                            SimpleAdapter orderAdapter = new SimpleAdapter(MainActivity.this, listItems,R.layout.item_list_module, new String[]{"order_num", "order_belong", "order_price"},
+                            SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.fragment_form_item_list_module, new String[]{"order_num", "order_belong", "order_price"},
                                     new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price});
                             menulist.setAdapter(orderAdapter);
                             menulist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                    Intent intent = new Intent(MainActivity.this,Detail.class);
+                                    Intent intent = new Intent(getActivity(),Detail.class);
                                     Bundle bundle = new Bundle();
                                     bundle.putSerializable("listItems",result1.get(position));
                                     intent.putExtras(bundle);
@@ -90,23 +97,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        menulist = (ListView) findViewById(R.id.listView);
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_orderform, container, false);
+        menulist = (ListView)rootView.findViewById(R.id.listView);
         //添加界面布局:
-        if(AccessNetworkState()) {
-            progressDialog = new ProgressDialog(MainActivity.this);
-            progressDialog.setTitle("正在加载...");
-            progressDialog.setMessage("Loading...");
-            progressDialog.setCancelable(true);
-            progressDialog.show();
-            sendRequest("http://www.loushubin.cn/buyform.php?type=get");
-        }
-        else
-            Toast.makeText(this,"请检查网络连接...",Toast.LENGTH_LONG);
+
+//        if(AccessNetworkState()) {
+//            progressDialog = new ProgressDialog(getActivity());
+//            progressDialog.setTitle("正在加载...");
+//            progressDialog.setMessage("Loading...");
+//            progressDialog.setCancelable(true);
+//            progressDialog.show();
+//            sendRequest("http://www.loushubin.cn/buyform.php?type=get");
+//        }
+//        else
+//            Toast.makeText(getActivity(),"请检查网络连接...",Toast.LENGTH_LONG).show();
+        return rootView;
     }
     private void sendRequest(final String strUrlPath){
         new Thread(new Runnable() {

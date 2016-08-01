@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:text="合计："
                     android:textColor="@color/colorblack"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     />
 
                 <TextView
@@ -123,8 +123,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="元"
+                    android:textSize="15dp"
                     android:textColor="@color/colorblack"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="15dp"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -136,6 +137,7 @@
             android:background="@color/colorButton"
             android:gravity="center"
             android:text="结算"
+            android:textSize="17dp"
             android:textColor="@color/colorwhite" />
     </LinearLayout>
 

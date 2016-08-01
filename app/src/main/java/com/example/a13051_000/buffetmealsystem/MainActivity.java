@@ -3,11 +3,12 @@ package com.example.a13051_000.buffetmealsystem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,24 +18,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentMain;
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentOrder;
-import com.example.a13051_000.buffetmealsystem.Fragment.FragmentOrderForm;
+import com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm.FragmentOrderForm;
 import com.example.a13051_000.buffetmealsystem.Order.OrderCar;
 import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
+import com.example.a13051_000.buffetmealsystem.User.UserActivity;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ViewPager viewPager = null;
+    private ViewPager viewPager;
     private TabLayout tabLayout;
+
     private String titles[] = {"主页","点餐","订单"};
     private FragmentMain mainFragment = new FragmentMain();
     private FragmentOrder orderFragment = new FragmentOrder();
     private FragmentOrderForm orderFormFragment = new FragmentOrderForm();
 
+    private ImageView imageView;
+    private SearchView searchView;
+    private ListView listView;
+
+    private Calendar cal;
+    private int year;
+    private int month;
+    private int day;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,8 +80,6 @@ public class MainActivity extends AppCompatActivity
         });
         tabLayout.setupWithViewPager(viewPager);
 
-
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,10 +100,27 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
-        TextView nickname = (TextView)header.findViewById(R.id.shownickname);
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("nickname");
+        TextView showtime = (TextView) header.findViewById(R.id.showtime);
+        final TextView nickname = (TextView)header.findViewById(R.id.shownickname);
+        imageView = (ImageView) header.findViewById(R.id.imageView);
+        final Intent intent = getIntent();
+        final String username = intent.getStringExtra("nickname");
         nickname.setText(""+username+"");
+        nickname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(MainActivity.this,UserActivity.class);
+                intent1.putExtra("nickname",username);
+                MainActivity.this.startActivity(intent1);
+                overridePendingTransition(R.anim.fab_fade_in,R.anim.fab_fade_out);
+            }
+        });
+
+        cal = Calendar.getInstance();
+        year = cal.get(Calendar.YEAR);
+        month = cal.get(Calendar.MONTH);
+        day = cal.get(Calendar.DAY_OF_MONTH);
+        showtime.setText(year+"年"+(month+1)+"月"+day+"日");
     }
 
     @Override
@@ -106,7 +137,22 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        MenuItem menuItem = menu.findItem(R.id.ab_search);
+        searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        MenuItemCompat.setOnActionExpandListener(menuItem, new MenuItemCompat.OnActionExpandListener() {//设置打开关闭动作监听
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                Toast.makeText(MainActivity.this, "onExpand", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                Toast.makeText(MainActivity.this, "Collapse", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

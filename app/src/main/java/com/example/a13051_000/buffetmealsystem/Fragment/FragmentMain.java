@@ -1,5 +1,6 @@
 package com.example.a13051_000.buffetmealsystem.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -8,10 +9,17 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Bar;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Chinese_Restaurant;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Fast_Food_Restaurant;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Foreign_Restaurant;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Pizza_Restaurant;
 import com.example.a13051_000.buffetmealsystem.xml.imagelayout.NewsXmlParser;
 import com.example.a13051_000.buffetmealsystem.xml.imagelayout.SlideImageLayout;
 
@@ -35,11 +43,65 @@ public class FragmentMain extends Fragment {
     private SlideImageLayout slideLayout = null;
     private NewsXmlParser parser = null;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    private ImageButton imageButton_chinese;
+    private ImageButton imageButton_foreign;
+    private ImageButton imageButton_fastfood;
+    private ImageButton imageButton_pizza;
+    private ImageButton imageButton_bar;
+
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         initeViews(rootView);
+        imageButton_chinese = (ImageButton) rootView.findViewById(R.id.chinese);
+        imageButton_foreign = (ImageButton) rootView.findViewById(R.id.foreign);
+        imageButton_pizza = (ImageButton) rootView.findViewById(R.id.pizza);
+        imageButton_bar = (ImageButton) rootView.findViewById(R.id.bar);
+        imageButton_fastfood = (ImageButton) rootView.findViewById(R.id.fastfood);
+
+        imageButton_chinese.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getActivity(), Chinese_Restaurant.class);
+                startActivity(intent1);
+                getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
+            }
+        });
+        imageButton_fastfood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(getActivity(), Fast_Food_Restaurant.class);
+                startActivity(intent2);
+                getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
+            }
+        });
+        imageButton_foreign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(getActivity(), Foreign_Restaurant.class);
+                startActivity(intent3);
+                getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
+            }
+        });
+        imageButton_bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent4 = new Intent(getActivity(), Bar.class);
+                startActivity(intent4);
+                getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
+            }
+        });
+        imageButton_pizza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent5 = new Intent(getActivity(),Pizza_Restaurant.class);
+                startActivity(intent5);
+                getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
+            }
+        });
         return rootView;
+
+
     }
     private void initeViews(View view){
         imagePageViews = new ArrayList<View>();
