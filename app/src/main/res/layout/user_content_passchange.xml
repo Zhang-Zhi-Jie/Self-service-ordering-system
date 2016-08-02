@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        >
+
+        <EditText
+            android:id="@+id/password_old"
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:hint="原密码"
+            android:imeActionId="@+id/login"
+            android:imeActionLabel="sign in"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+        <EditText
+            android:id="@+id/password_new"
+            android:layout_width="345dp"
+            android:layout_height="wrap_content"
+            android:hint="新密码"
+            android:imeActionId="@+id/login"
+            android:imeActionLabel="sign in"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        style="?android:textAppearanceSmall"
+        android:text="提交"
+        android:textSize="13dp"
+        android:textColor="@color/colorwhite"
+        android:id="@+id/button"
+        android:background="@color/colorButton"
+        android:layout_marginTop="20dp"
+        android:width="340dp"
+        android:height="40dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>
