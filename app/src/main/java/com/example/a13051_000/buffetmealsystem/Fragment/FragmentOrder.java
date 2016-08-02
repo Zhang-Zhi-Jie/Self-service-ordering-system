@@ -89,7 +89,7 @@ public class FragmentOrder extends Fragment implements SwipeRefreshLayout.OnRefr
                                 listItems.add(listitem);
                                 arg1[i] = listitem.toString();
                             }
-                            SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.item_list_module, new String[]{"ID", "Name", "PRICE", "unit"},
+                            SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.fragment_order_item_list_module, new String[]{"ID", "Name", "PRICE", "unit"},
                                     new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price, R.id.order_db_create_at});
 
                             menuList.setAdapter(orderAdapter);
