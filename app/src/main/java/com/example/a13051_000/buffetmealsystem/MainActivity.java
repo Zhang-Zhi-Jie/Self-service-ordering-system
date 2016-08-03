@@ -69,7 +69,9 @@ public class MainActivity extends AppCompatActivity
                 } else if(position == 1){
                     return orderFragment;
                 }
-                return orderFormFragment;
+                else {
+                    return orderFormFragment;
+                }
             }
 
             @Override

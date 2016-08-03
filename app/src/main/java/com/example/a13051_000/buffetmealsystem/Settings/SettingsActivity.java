@@ -75,7 +75,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
          if(i == 0){
-             Intent intent = new Intent(SettingsActivity.this, Setting_Suggestions.class);
+             Intent intent = new Intent(SettingsActivity.this, Setting_suggestions.class);
              this.startActivity(intent);
          }else if(i == 1){
              Intent intent1 = new Intent(SettingsActivity.this,Setting_AboutUs.class);

@@ -96,7 +96,7 @@ public class FragmentOrder extends Fragment implements SwipeRefreshLayout.OnRefr
                             //      ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,arg1);
                             //     menuList.setAdapter(adapter);
                             progressDialog.dismiss();
-                            Log.d("data1",listItems.toString());
+                            Log.d("data_orderlist",listItems.toString());
                             String nick_name = "";
                             menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override

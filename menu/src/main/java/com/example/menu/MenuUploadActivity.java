@@ -76,7 +76,7 @@ public class MenuUploadActivity extends AppCompatActivity {
         name = (EditText) findViewById(R.id.logineditText4);
         price = (EditText) findViewById(R.id.logineditText1);
         unit = (EditText) findViewById(R.id.logineditText2);
-        passw = (EditText) findViewById(R.id.logineditText4);
+        passw = (EditText) findViewById(R.id.logineditText3);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +94,8 @@ public class MenuUploadActivity extends AppCompatActivity {
                 params.add(new BasicNameValuePair("price",str_price));
                 params.add(new BasicNameValuePair("unit",str_unit));
                 params.add(new BasicNameValuePair("username",str_passw));
+                Log.d("data1",str_passw);
+                Log.d("data1","123");
                 String strUrlPath = "http://www.loushubin.cn/order_form.php";
                 //调用Thread，创建新线程进行网络请求
                 sendRequest(strUrlPath, params);

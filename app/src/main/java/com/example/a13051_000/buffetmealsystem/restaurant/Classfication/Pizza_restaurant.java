@@ -12,7 +12,7 @@ import com.example.a13051_000.buffetmealsystem.R;
 /**
  * Created by 13051_000 on 2016/7/29.
  */
-public class Pizza_Restaurant extends AppCompatActivity {
+public class Pizza_restaurant extends AppCompatActivity {
 
     private Toolbar toolbar;
 
@@ -28,7 +28,7 @@ public class Pizza_Restaurant extends AppCompatActivity {
     public  boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if(id == android.R.id.home){
-            Intent intent = new Intent(Pizza_Restaurant.this, MainActivity.class);
+            Intent intent = new Intent(Pizza_restaurant.this, MainActivity.class);
             this.startActivity(intent);
             this.finish();
             overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
