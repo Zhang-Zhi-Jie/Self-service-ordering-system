@@ -13,13 +13,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Bar;
 import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Chinese_Restaurant;
 import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Fast_Food_Restaurant;
 import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Foreign_Restaurant;
-import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Pizza_Restaurant;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Pizza_restaurant;
 import com.example.a13051_000.buffetmealsystem.xml.imagelayout.NewsXmlParser;
 import com.example.a13051_000.buffetmealsystem.xml.imagelayout.SlideImageLayout;
 
@@ -94,7 +93,7 @@ public class FragmentMain extends Fragment {
         imageButton_pizza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent5 = new Intent(getActivity(),Pizza_Restaurant.class);
+                Intent intent5 = new Intent(getActivity(),Pizza_restaurant.class);
                 startActivity(intent5);
                 getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
             }

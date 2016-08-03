@@ -45,6 +45,15 @@ public class FragmentOrderForm extends Fragment {
     ProgressDialog progressDialog;
     final int SHOW_RESPONSE = 0;
     private String sResult;
+
+    private boolean AccessNetworkState(){
+        ConnectivityManager connManager = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(connManager.getActiveNetworkInfo() != null){
+            return connManager.getActiveNetworkInfo().isAvailable();
+        }
+        else
+            return false;
+    }
     private android.os.Handler handler = new android.os.Handler() {
         public void handleMessage(Message message) {
             switch (message.what) {
@@ -61,10 +70,10 @@ public class FragmentOrderForm extends Fragment {
                         } catch (Exception e) {
                             Log.d("data1", e.toString());
                         }
-                        if (resultFromServer.getStatus().equals("0")) {
+                        if (resultFromServer != null && resultFromServer.getStatus().equals("0")) {
                             final List<Result> result1 = resultFromServer.getResult();
                             //菜品信息存储在result_soon_details这个list里面
-                            Log.d("list", String.valueOf(result1.size()));
+                            Log.d("list_form", String.valueOf(result1.size()));
 
                             final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
                             String[] arg1 = new String[result1.size()];
@@ -76,6 +85,7 @@ public class FragmentOrderForm extends Fragment {
                                 //                          listitem.put("unit", result_spoon_details.get(i).getUnit());
                                 listItems.add(listitem);
                                 arg1[i] = listitem.toString();
+                                Log.d("list_form_each",listitem.toString());
                             }
                             SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.fragment_form_item_list_module, new String[]{"order_num", "order_belong", "order_price"},
                                     new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price});
@@ -103,16 +113,16 @@ public class FragmentOrderForm extends Fragment {
         menulist = (ListView)rootView.findViewById(R.id.listView);
         //添加界面布局:
 
-//        if(AccessNetworkState()) {
-//            progressDialog = new ProgressDialog(getActivity());
-//            progressDialog.setTitle("正在加载...");
-//            progressDialog.setMessage("Loading...");
-//            progressDialog.setCancelable(true);
-//            progressDialog.show();
-//            sendRequest("http://www.loushubin.cn/buyform.php?type=get");
-//        }
-//        else
-//            Toast.makeText(getActivity(),"请检查网络连接...",Toast.LENGTH_LONG).show();
+       if(AccessNetworkState()) {
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setTitle("正在加载...");
+            progressDialog.setMessage("Loading...");
+            progressDialog.setCancelable(true);
+            progressDialog.show();
+            sendRequest("http://www.loushubin.cn/buyform.php?type=get_user");
+        }
+        else
+            Toast.makeText(getActivity(),"请检查网络连接...",Toast.LENGTH_LONG).show();
         return rootView;
     }
     private void sendRequest(final String strUrlPath){

@@ -11,7 +11,7 @@ import com.example.a13051_000.buffetmealsystem.R;
 /**
  * Created by 13051_000 on 2016/7/23.
  */
-public class Setting_Suggestions extends AppCompatActivity {
+public class Setting_suggestions extends AppCompatActivity {
     private Toolbar toolbar;
     private EditText editText;
     protected void onCreate(Bundle savedInstanceState) {

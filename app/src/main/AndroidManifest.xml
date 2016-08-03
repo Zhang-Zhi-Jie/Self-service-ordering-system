@@ -65,7 +65,7 @@
         </activity>
 
         <activity
-            android:name=".restaurant.Classfication.Pizza_Restaurant"
+            android:name=".restaurant.Classfication.Pizza_restaurant"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
@@ -117,7 +117,7 @@
         </activity>
 
         <activity
-            android:name=".Settings.Setting_Suggestions"
+            android:name=".Settings.Setting_suggestions"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
