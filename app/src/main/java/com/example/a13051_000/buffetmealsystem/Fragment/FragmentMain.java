@@ -85,7 +85,7 @@ public class FragmentMain extends Fragment {
         imageButton_bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent4 = new Intent(getActivity(), Bar.class);
+                Intent intent4 = new Intent(getActivity(),Bar.class);
                 startActivity(intent4);
                 getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
             }

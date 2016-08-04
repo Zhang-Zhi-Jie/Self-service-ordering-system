@@ -5,7 +5,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="welcome">点吧,一个新的点餐模式</string>
-    <string name="register">注册新用户</string>
+    <string name="register">新用户，欢迎您</string>
     <string name="action_settings">设置</string>
     <string name="setting">设置</string>
     <string name="login">登录</string>

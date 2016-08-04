@@ -89,6 +89,11 @@
         </activity>
 
         <activity
+            android:name=".Fragment.FragmentForm.Detail"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
             android:name=".Order.OrderDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
