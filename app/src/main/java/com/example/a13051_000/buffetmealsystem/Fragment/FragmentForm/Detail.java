@@ -3,6 +3,8 @@ package com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -18,10 +20,17 @@ import java.util.Map;
  * Created by shubin on 2016/6/16.
  */
 public class Detail extends AppCompatActivity {
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
         setContentView(R.layout.order_form_detali);
+
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setTitle("订单具体");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ListView listView = (ListView) findViewById(R.id.listView);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -44,5 +53,14 @@ public class Detail extends AppCompatActivity {
                 new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price});
         listView.setAdapter(orderAdapter);
 
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        if(id == android.R.id.home){
+            finish();
+            return true;
+        }
+        return onOptionsItemSelected(item);
     }
 }

@@ -3,11 +3,13 @@ package com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +25,7 @@ import com.google.gson.Gson;
 
 import org.apache.http.NameValuePair;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,15 +35,8 @@ import java.util.Map;
 /**
  * Created by 13051_000 on 2016/7/24.
  */
-public class FragmentOrderForm extends Fragment {
-//    private boolean AccessNetworkState(){
-//        ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-//        if(connManager.getActiveNetworkInfo() != null){
-//            return connManager.getActiveNetworkInfo().isAvailable();
-//        }
-//        else
-//            return false;
-//    }
+public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLongClickListener{
+
     private ListView menulist;
     ProgressDialog progressDialog;
     final int SHOW_RESPONSE = 0;
@@ -90,6 +86,8 @@ public class FragmentOrderForm extends Fragment {
                             SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.fragment_form_item_list_module, new String[]{"order_num", "order_belong", "order_price"},
                                     new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price});
                             menulist.setAdapter(orderAdapter);
+
+
                             menulist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -112,6 +110,7 @@ public class FragmentOrderForm extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_orderform, container, false);
         menulist = (ListView)rootView.findViewById(R.id.listView);
         //添加界面布局:
+        menulist.setOnItemLongClickListener(this);
 
        if(AccessNetworkState()) {
             progressDialog = new ProgressDialog(getActivity());
@@ -141,5 +140,21 @@ public class FragmentOrderForm extends Fragment {
                 handler.sendMessage(message);
             }
         }).start();
+    }
+
+    @Override
+    public boolean onItemLongClick(final AdapterView<?> adapterView, final View view, final int position, long l) {
+        new AlertDialog.Builder(getActivity()).setMessage("确定要删除这个订单吗？").setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        }).show();
+            return true;
     }
 }

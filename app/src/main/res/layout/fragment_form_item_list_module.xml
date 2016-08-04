@@ -7,8 +7,8 @@
 		android:id="@+id/order_db_idshow"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="ID:"
-		android:textSize="17dip"
+		android:text="时间:"
+		android:textSize="14dp"
 		android:layout_marginLeft="5dip"
 		/>
 
@@ -16,20 +16,11 @@
 			android:id="@+id/order_db_id"
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content"
-			android:textSize="17dip"
-	    	android:layout_marginLeft="5dip"
+			android:textSize="14dp"
+	    	android:layout_marginLeft="5dp"
 		    android:layout_toRightOf="@+id/order_db_idshow"
 	    	/>
 
-	<TextView
-		android:id="@+id/order_db_nameshow"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="顾客名："
-		android:textSize="17dip"
-		android:layout_marginLeft="5dip"
-		android:layout_below="@+id/order_db_idshow"
-		/>
 	   <TextView
 		    android:id="@+id/order_db_name"
 	    	android:layout_width="100dip"
@@ -44,7 +35,7 @@
 		android:id="@+id/order_db_priceshow"
 		android:layout_width="55dip"
 		android:textSize="17dp"
-		android:text="价格："
+		android:text="总价："
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="5dip"
 		android:layout_toRightOf="@+id/order_db_name"
@@ -56,9 +47,9 @@
 	    	android:layout_width="50dip"
 	    	android:layout_height="wrap_content"
 	    	android:layout_marginLeft="5dip"
-		    android:layout_below="@+id/order_db_id"
+		   android:textSize="16dp"
 		    android:layout_toRightOf="@+id/order_db_priceshow"
-	    	/>
+		   android:layout_alignTop="@+id/order_db_priceshow" />
 
 
 
