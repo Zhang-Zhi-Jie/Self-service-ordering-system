@@ -16,35 +16,35 @@
 
 package com.example.a13051_000.buffetmealsystem.restaurant;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.webkit.WebViewFragment;
-import android.widget.ImageView;
-import android.widget.Toast;
+
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.example.a13051_000.buffetmealsystem.R;
+import com.example.a13051_000.buffetmealsystem.restaurant.FragmentFood.FragmentDessert;
+import com.example.a13051_000.buffetmealsystem.restaurant.FragmentFood.FragmentDrinks;
+import com.example.a13051_000.buffetmealsystem.restaurant.FragmentFood.FragmentMeat;
+import com.example.a13051_000.buffetmealsystem.restaurant.FragmentFood.FragmentSoup;
+import com.example.a13051_000.buffetmealsystem.restaurant.FragmentFood.FragmentStableFood;
+import com.example.a13051_000.buffetmealsystem.restaurant.FragmentFood.FragmentVegetable;
 import com.google.common.collect.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 import de.greenrobot.event.EventBus;
 import github.chenupt.multiplemodel.viewpager.ModelPagerAdapter;
 import github.chenupt.multiplemodel.viewpager.PagerModelManager;
 
 public class MainActivity extends AppCompatActivity {
+
 
     public static final String TAG = "MainActivity";
 
@@ -54,12 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private PagerSlidingTabStrip pagerSlidingTabStrip;
 
-    private Fragment FragmentMeat = new Fragment();
-    private Fragment FragmentVegetable = new Fragment();
-    private Fragment FragmentSoup = new Fragment();
-    private Fragment FragmentStableFood = new Fragment();
-    private Fragment FragmentDessert = new Fragment();
-    private Fragment FragmentDrinks = new Fragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,25 +62,18 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        dragLayout = (DragTopLayout) findViewById(R.id.drag_layout);
         pagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
 
         toolbar.setTitle("餐厅菜单");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // init pager
         PagerModelManager factory = new PagerModelManager();
         factory.addCommonFragment(getFragments(), getTitles());
         adapter = new ModelPagerAdapter(getSupportFragmentManager(), factory);
         viewPager.setAdapter(adapter);
         pagerSlidingTabStrip.setViewPager(viewPager);
-
-        factory = new PagerModelManager();
-        factory.addCommonFragment(getFragments(), getTitles());
-        adapter = new ModelPagerAdapter(getSupportFragmentManager(), factory);
-        viewPager.setAdapter(adapter);
-        pagerSlidingTabStrip.setViewPager(viewPager);
+        // init pager
     }
 
     private List<String> getTitles(){
@@ -94,6 +82,14 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Fragment> getFragments(){
         List<Fragment> list = new ArrayList<>();
+
+        Fragment FragmentMeat = new FragmentMeat();
+        Fragment FragmentVegetable = new FragmentVegetable();
+        Fragment FragmentSoup = new FragmentSoup();
+        Fragment FragmentStableFood = new FragmentStableFood();
+        Fragment FragmentDessert = new FragmentDessert();
+        Fragment FragmentDrinks = new FragmentDrinks();
+
         list.add(FragmentMeat);
         list.add(FragmentVegetable);
         list.add(FragmentSoup);
@@ -103,11 +99,9 @@ public class MainActivity extends AppCompatActivity {
         return list;
     }
 
-    // Handle scroll event from fragments
     public void onEvent(Boolean b){
         dragLayout.setTouchMode(b);
     }
-
     @Override
     protected void onResume() {
         super.onResume();

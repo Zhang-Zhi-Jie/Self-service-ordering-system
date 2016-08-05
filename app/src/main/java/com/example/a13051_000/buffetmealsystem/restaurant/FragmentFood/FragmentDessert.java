@@ -13,8 +13,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.R;
-import com.example.a13051_000.buffetmealsystem.restaurant.AttachUtil;
-import com.example.a13051_000.buffetmealsystem.restaurant.DataService;
 
 import de.greenrobot.event.EventBus;
 import github.chenupt.multiplemodel.ModelListAdapter;
@@ -33,35 +31,5 @@ public class FragmentDessert extends Fragment {
         return rootView;
 
     }
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initView();
-    }
 
-    private void initView() {
-        listView = (ListView) getView().findViewById(R.id.list_view);
-        adapter = new ModelListAdapter(getActivity(), DataService.getInstance().getModelManager());
-        listView.setAdapter(adapter);
-        adapter.setList(DataService.getInstance().getList());
-        adapter.notifyDataSetChanged();
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "Clicked " + position, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // attach top
-        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
-                                 int totalItemCount) {
-                EventBus.getDefault().post(AttachUtil.isAdapterViewAttach(view));
-            }
-        });
-    }
 }
