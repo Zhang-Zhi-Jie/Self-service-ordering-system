@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.HttpUtils;
 import com.example.a13051_000.buffetmealsystem.R;
+import com.example.a13051_000.buffetmealsystem.Sqlite.OrderForm;
+import com.example.a13051_000.buffetmealsystem.Sqlite.OrderFormDataSource;
 import com.google.gson.Gson;
 
 import org.apache.http.NameValuePair;
@@ -34,9 +36,7 @@ public class EnsureOrderActivity extends AppCompatActivity {
     private Button buttonsure;
     private Button buttonback;
 
-    String sumprice,name;
-    DbHelper dbhelper;
-    SQLiteDatabase db;
+    String sumprice, name,quantity,id;
     Bundle bundle;
 
 
@@ -44,10 +44,12 @@ public class EnsureOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ensureorder);
         textshow = (TextView) findViewById(R.id.sumpriceshow);
-        Intent intent1  = getIntent();
+        Intent intent1 = getIntent();
         sumprice = intent1.getStringExtra("sumprice");
         name = intent1.getStringExtra("name");
-        textshow.setText("总价为"+sumprice +"请确认");
+        id = intent1.getStringExtra("id");
+        quantity = intent1.getStringExtra("quantity");
+        textshow.setText("总价为" + sumprice + "请确认");
         buttonback = (Button) findViewById(R.id.button_back);
         buttonsure = (Button) findViewById(R.id.button_ensure);
 
@@ -56,7 +58,7 @@ public class EnsureOrderActivity extends AppCompatActivity {
         buttonback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentback = new Intent(EnsureOrderActivity.this,OrderDetailActivity.class);
+                Intent intentback = new Intent(EnsureOrderActivity.this, OrderDetailActivity.class);
                 startActivity(intentback);
             }
         });
@@ -66,19 +68,19 @@ public class EnsureOrderActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 ContentValues value = new ContentValues();
-                value.put("name",name);
-                value.put("price",sumprice);
+                value.put("name", name);
+                value.put("price", sumprice);
+                OrderForm orderForm = new OrderForm();
+                orderForm.setDetail(name);
+                orderForm.setPrice(sumprice);
+                orderForm.setNum(Long.valueOf(quantity));
+                orderForm.setId_server(id);
+                OrderFormDataSource orderFormDataSource = new OrderFormDataSource(EnsureOrderActivity.this);
+                orderFormDataSource.open();
+                orderFormDataSource.create(orderForm);
 
-                DbHelper dbHelper = new DbHelper(EnsureOrderActivity.this,"Db_form",null,1);
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-                long status;
-                if(bundle!=null)
-                status = db.update("tb_form",value,"_id=?",new String[]{bundle.getLong("id")+""});
-                else {
-                    status = db.insert("tb_form", null, value);
-                  }
-                }
+            }
         });
     }
 }
+
