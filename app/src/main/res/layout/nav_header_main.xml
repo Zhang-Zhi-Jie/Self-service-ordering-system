@@ -11,26 +11,33 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-<LinearLayout
-    android:layout_width="wrap_content"
+
+<RelativeLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     >
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="当前时间 : "
-        android:textColor="@color/colorAccent"
-        />
+
     <TextView
         android:id="@+id/showtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
         android:textColor="@color/colorAccent"
+        android:layout_marginTop="10dp"
         />
-</LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/edit"
+        android:text="编辑"
+        android:textSize="13dp"
+        android:textColor="@color/colorAccent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        />
+
+</RelativeLayout>
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"

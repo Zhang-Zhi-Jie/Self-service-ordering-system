@@ -1,8 +1,10 @@
 package com.example.a13051_000.buffetmealsystem.Order;
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Message;
@@ -31,48 +33,26 @@ public class EnsureOrderActivity extends AppCompatActivity {
     private TextView textshow;
     private Button buttonsure;
     private Button buttonback;
-    private Intent intent1;
-    String strResult;
-    final int SHOW_RESPONSE = 0;
-    ProgressDialog progressDialog;
-    //网络连接检查函数:::
-    private boolean AccessNetworkState(){
-        ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(connManager.getActiveNetworkInfo() != null){
-            return connManager.getActiveNetworkInfo().isAvailable();
-        }
-        else
-            return false;
-    }
-    //异步消息处理；；；
-    private android.os.Handler handler = new android.os.Handler() {
-        public void handleMessage(Message message) {
-            switch (message.what) {
-                case SHOW_RESPONSE:
-                    Gson gson = new Gson();
-                    order_status order_status = gson.fromJson(strResult, order_status.class);
-                    progressDialog.dismiss();
-                    Log.d("data1", strResult);
-                    Log.d("data1",order_status.getStatus());
-                    if (order_status.getStatus().equals("0")) {
-                        Toast.makeText(EnsureOrderActivity.this, "上传成功", Toast.LENGTH_SHORT).show();
-                    } else
-                        Toast.makeText(EnsureOrderActivity.this, "上传失败", Toast.LENGTH_SHORT).show();
-            }
-        }
 
-        ;
-    };
+    String sumprice,name;
+    DbHelper dbhelper;
+    SQLiteDatabase db;
+    Bundle bundle;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ensureorder);
         textshow = (TextView) findViewById(R.id.sumpriceshow);
-        intent1  = getIntent();
-        String sumprice = intent1.getStringExtra("sumprice");
+        Intent intent1  = getIntent();
+        sumprice = intent1.getStringExtra("sumprice");
+        name = intent1.getStringExtra("name");
         textshow.setText("总价为"+sumprice +"请确认");
         buttonback = (Button) findViewById(R.id.button_back);
         buttonsure = (Button) findViewById(R.id.button_ensure);
+
+        bundle = this.getIntent().getExtras();//获取Intent数据
+
         buttonback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,43 +64,21 @@ public class EnsureOrderActivity extends AppCompatActivity {
         buttonsure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String id = intent1.getStringExtra("id");
-                String quantity = intent1.getStringExtra("quantity");
-                while (id.charAt(0) == '0'){
-                    id = id.substring(1,id.length());
-                }
-                String strUrlPath = "http://www.loushubin.cn/buyform.php?type=submit";
-                String data = id +"/" +quantity;
-                List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("order_detail", data));
-                if (!AccessNetworkState()) {
-                    Toast.makeText(EnsureOrderActivity.this, "网络未连接，请先连接网络", Toast.LENGTH_SHORT).show();
-                } else {
-                    sendRequest(strUrlPath, params);
-                    //启动等待活动
-                    progressDialog = new ProgressDialog(EnsureOrderActivity.this);
-                    progressDialog.setTitle("正在加载...");
-                    progressDialog.setMessage("Loading...");
-                    progressDialog.setCancelable(true);
-                    progressDialog.show();
-                }
-            }
 
-        });
-    }
-    private void sendRequest(final String strUrlPath, final List<NameValuePair> params) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    strResult = HttpUtils.submitPostData(strUrlPath, params, "utf-8");
-                } catch (IOException e) {
-                    e.printStackTrace();
+                ContentValues value = new ContentValues();
+                value.put("name",name);
+                value.put("price",sumprice);
+
+                DbHelper dbHelper = new DbHelper(EnsureOrderActivity.this,"Db_form",null,1);
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+                long status;
+                if(bundle!=null)
+                status = db.update("tb_form",value,"_id=?",new String[]{bundle.getLong("id")+""});
+                else {
+                    status = db.insert("tb_form", null, value);
+                  }
                 }
-                Message message = new Message();
-                message.what = SHOW_RESPONSE;
-                handler.sendMessage(message);
-            }
-        }).start();
+        });
     }
 }

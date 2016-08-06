@@ -30,6 +30,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     double sumprice;
     String price;
     String id;
+    String name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         showunit = (TextView) findViewById(R.id.order_db_create_at);
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
-        String name = intent.getStringExtra("name");
+        name = intent.getStringExtra("name");
         price = intent.getStringExtra("price");
         String perunit = intent.getStringExtra("perunit");
         showid.setText(id + "");
@@ -71,6 +72,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                     intent.putExtra("sumprice", sumprice_str);
                     intent.putExtra("id", id);
                     intent.putExtra("quantity",quantity1);
+                    intent.putExtra("name",name);
                     startActivity(intent);
                 }
             }

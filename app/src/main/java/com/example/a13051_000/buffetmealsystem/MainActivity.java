@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     private ImageView imageView;
     private SearchView searchView;
     private ListView listView;
+    private TextView edit;
 
     private Calendar cal;
     private int year;
@@ -114,6 +115,16 @@ public class MainActivity extends AppCompatActivity
                 Intent intent1 = new Intent(MainActivity.this,UserActivity.class);
                 intent1.putExtra("nickname",username);
                 MainActivity.this.startActivity(intent1);
+                overridePendingTransition(R.anim.fab_fade_in,R.anim.fab_fade_out);
+            }
+        });
+        edit = (TextView) header.findViewById(R.id.edit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(MainActivity.this,UserActivity.class);
+                intent2.putExtra("nickname",username);
+                MainActivity.this.startActivity(intent2);
                 overridePendingTransition(R.anim.fab_fade_in,R.anim.fab_fade_out);
             }
         });
