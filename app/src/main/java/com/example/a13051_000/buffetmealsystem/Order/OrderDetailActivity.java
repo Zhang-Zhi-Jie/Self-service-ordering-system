@@ -1,5 +1,6 @@
 package com.example.a13051_000.buffetmealsystem.Order;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,11 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
+import com.example.a13051_000.buffetmealsystem.Sqlite.OrderForm;
+import com.example.a13051_000.buffetmealsystem.Sqlite.OrderformDataSource;
 
 import static com.example.a13051_000.buffetmealsystem.R.id.tool_bar;
 
@@ -23,10 +26,8 @@ public class OrderDetailActivity extends AppCompatActivity {
     private TextView showname;
     private TextView showprice;
     private TextView showunit;
-    private EditText editText_shu;
     private Button button_tj;
     private Toolbar toolbar;
-    String quantity1;
     double sumprice;
     String price;
     String id;
@@ -58,23 +59,36 @@ public class OrderDetailActivity extends AppCompatActivity {
         button_tj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editText_shu = (EditText) findViewById(R.id.editTextshu);
-                button_tj = (Button) findViewById(R.id.button_tijiao);
-                quantity1 = editText_shu.getText().toString();
-                double quantity = Double.valueOf(quantity1);
-                if (quantity < 0) {
-                    Toast.makeText(getApplicationContext(), "输入数量小于0，请重新输入", Toast.LENGTH_SHORT);
-                } else {
-                    double price1 = Double.valueOf(price);
-                    sumprice = quantity * price1;
-                    Intent intent = new Intent(OrderDetailActivity.this, EnsureOrderActivity.class);
-                    String sumprice_str = String.valueOf(sumprice);
-                    intent.putExtra("sumprice", sumprice_str);
-                    intent.putExtra("id", id);
-                    intent.putExtra("quantity",quantity1);
-                    intent.putExtra("name",name);
-                    startActivity(intent);
-                }
+                ContentValues value = new ContentValues();
+                value.put("name", name);
+                value.put("price", sumprice);
+                OrderForm orderForm = new OrderForm();
+                orderForm.setDetail(name);
+                orderForm.setPrice(price);
+                orderForm.setId_server(id);
+                OrderformDataSource orderFormDataSource = new OrderformDataSource(OrderDetailActivity.this);
+                orderFormDataSource.open();
+                orderFormDataSource.create(orderForm);
+                Toast.makeText(getApplicationContext(),"已加入到购物车", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(OrderDetailActivity.this, MainActivity.class);
+                OrderDetailActivity.this.startActivity(intent);
+
+////                editText_shu = (EditText) findViewById(R.id.editTextshu);
+////                quantity1 = editText_shu.getText().toString();
+////                double quantity = Double.valueOf(quantity1);
+////                if (quantity < 0) {
+////                    Toast.makeText(getApplicationContext(), "输入数量小于0，请重新输入", Toast.LENGTH_SHORT);
+////                } else {
+//                    double price1 = Double.valueOf(price);
+////                    sumprice = quantity * price1;
+//                    Intent intent = new Intent(OrderDetailActivity.this, EnsureOrderActivity.class);
+//                    String sumprice_str = String.valueOf(sumprice);
+////                    intent.putExtra("sumprice", sumprice_str);
+//                    intent.putExtra("id", id);
+////                    intent.putExtra("quantity",quantity1);
+//                    intent.putExtra("name",name);
+//                    startActivity(intent);
+////                }
             }
         });
     }

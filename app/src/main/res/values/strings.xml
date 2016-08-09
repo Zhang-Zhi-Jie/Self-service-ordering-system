@@ -9,6 +9,7 @@
     <string name="action_settings">设置</string>
     <string name="setting">设置</string>
     <string name="login">登录</string>
+    <string name="scan_1">第一步：click(点击后对准餐桌上的二维码进行扫描)</string>
     <string name="skin_tabbar_icon_main">主页</string>
     <string name="skin_tabbar_icon_check">点餐</string>
     <string name="skin_tabbar_icon_user">用户</string>

@@ -16,6 +16,7 @@
 
 package com.example.a13051_000.buffetmealsystem.restaurant;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 import com.astuetz.PagerSlidingTabStrip;
@@ -43,17 +45,19 @@ import de.greenrobot.event.EventBus;
 import github.chenupt.multiplemodel.viewpager.ModelPagerAdapter;
 import github.chenupt.multiplemodel.viewpager.PagerModelManager;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity_r extends AppCompatActivity {
 
 
-    public static final String TAG = "MainActivity";
+    public static final String TAG = "MainActivity_r";
 
     private Toolbar toolbar;
     private DragTopLayout dragLayout;
     private ModelPagerAdapter adapter;
     private ViewPager viewPager;
     private PagerSlidingTabStrip pagerSlidingTabStrip;
+    private TextView textView_seat_num;
 
+    String seat_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +77,11 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ModelPagerAdapter(getSupportFragmentManager(), factory);
         viewPager.setAdapter(adapter);
         pagerSlidingTabStrip.setViewPager(viewPager);
-        // init pager
+
+        Intent intent = getIntent();
+        seat_num = intent.getStringExtra("seat_num");
+        textView_seat_num = (TextView) findViewById(R.id.show_seat_num);
+        textView_seat_num.setText("00"+seat_num);
     }
 
     private List<String> getTitles(){
