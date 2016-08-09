@@ -11,6 +11,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.example.a13051_000.buffetmealsystem.Seat.SeatNumber;
+import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
+
 /**
  * Created by 13051_000 on 2016/5/12.
  */
@@ -19,16 +24,16 @@ public class ScanActivity extends AppCompatActivity {
 
     private TextView mTextView ;
     private Toolbar toolbar;
-    private ImageView mImageView;
 
     protected  void onCreate(Bundle savedIntanceState){
         super.onCreate(savedIntanceState);
         setContentView(R.layout.activity_scan);
         mTextView = (TextView) findViewById(R.id.result);
-        mImageView = (ImageView) findViewById(R.id.qrcode_bitmap);
+
+
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("二维码");
+        toolbar.setTitle("点餐");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -63,10 +68,21 @@ public class ScanActivity extends AppCompatActivity {
             case SCANNIN_GREQUEST_CODE:
                 if(resultCode == RESULT_OK){
                     Bundle bundle = data.getExtras();
-
+                    int k;
+                    String seat_num;
                     mTextView.setText(bundle.getString("result"));
+                    SeatNumber seatNumber = new SeatNumber();
+                    for(int i = 0;i< seatNumber.seat.length;i++){
+                        if(bundle.getString("result").equals(seatNumber.seat[i])){
+                            k = i+1;
+                            seat_num = String.valueOf(k);
+                            Toast.makeText(getApplicationContext(),"选座成功",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ScanActivity.this, MainActivity_r.class);
+                            intent.putExtra("seat_num",seat_num);
+                            ScanActivity.this.startActivity(intent);
+                        }
+                    }
 
-                    mImageView.setImageBitmap((Bitmap) data.getParcelableExtra("bitmap"));
                 }
                 break;
         }

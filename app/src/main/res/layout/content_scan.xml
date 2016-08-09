@@ -5,15 +5,45 @@
     android:orientation="vertical">
 
 
-    <ImageButton
-        android:id="@+id/imagebutton1"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_1"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="80dp"
+        android:textSize="18dp"
+        />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/qrcode"
-        android:layout_below="@+id/topbar1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        />
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        >
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/hand_down"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            />
+
+        <ImageButton
+            android:id="@+id/imagebutton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/qrcode"
+            android:layout_below="@+id/topbar1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorwhite"
+            />
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/result"
@@ -23,15 +53,8 @@
         android:lines="2"
         android:gravity="center_horizontal"
         android:textColor="@android:color/black"
+        android:layout_marginTop="20dp"
         android:textSize="16sp"
-        />
-
-    <ImageView
-        android:id="@+id/qrcode_bitmap"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/result"
         />
 
 </LinearLayout>

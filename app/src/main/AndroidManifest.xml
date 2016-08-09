@@ -82,7 +82,7 @@
         </activity>
 
         <activity
-            android:name=".restaurant.MainActivity"
+            android:name=".restaurant.MainActivity_r"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 

@@ -12,13 +12,13 @@ import java.util.List;
 /**
  * Created by shubin on 2016/8/6.
  */
-public class OrderFormDataSource {
+public class OrderformDataSource {
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private String[] allColumns = {
             MySQLiteHelper.COLUMN_ID,MySQLiteHelper.COLUMN_NUM,MySQLiteHelper.COLUMN_DETAIL,MySQLiteHelper.COLUMN_ID_SERVRE,MySQLiteHelper.COLUMN_PRICE
     };
-    public OrderFormDataSource(Context context){
+    public OrderformDataSource(Context context){
         dbHelper = new MySQLiteHelper(context);
     }
     public void open() throws SQLException{

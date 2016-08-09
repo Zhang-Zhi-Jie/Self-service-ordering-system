@@ -7,12 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
+import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,7 +68,7 @@ public class Chinese_Restaurant extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent = new Intent(Chinese_Restaurant.this, com.example.a13051_000.buffetmealsystem.restaurant.MainActivity.class);
+        Intent intent = new Intent(Chinese_Restaurant.this, MainActivity_r.class);
         this.startActivity(intent);
     }
 }

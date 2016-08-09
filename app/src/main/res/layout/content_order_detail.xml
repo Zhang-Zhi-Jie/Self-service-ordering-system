@@ -3,114 +3,136 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="265dp"
+        android:src="@drawable/res"
+        android:layout_marginTop="40dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorwhite"
+        android:layout_marginTop="310dp"
+        >
+    <LinearLayout
+        android:id="@+id/id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorwhite"
+        >
     <TextView
         android:id="@+id/order_db_idshow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ID:"
         android:textSize="15dp"
-        android:layout_marginLeft="5dip"
-        android:layout_marginTop="70dp"
+        android:layout_marginLeft="10dp"
+
         />
     <TextView
         android:id="@+id/order_db_id"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@id/order_db_idshow"
         android:textSize="15dp"
+        android:layout_toRightOf="@+id/order_db_idshow"
         />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/order_db_nameshow"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="菜名："
-        android:textSize="15dp"
-        android:layout_marginLeft="5dip"
-        android:layout_below="@+id/order_db_idshow"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_below="@+id/id"
+        android:background="@color/colorwhite"
+        >
     <TextView
         android:id="@+id/order_db_name"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/order_db_nameshow"
         android:layout_below="@+id/order_db_idshow"
         android:layout_marginTop="10dp"
-        android:textSize="15dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="20dp"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:background="@color/colorwhite"
+        android:layout_marginTop="10dp"
+        >
+    <TextView
+        android:id="@+id/RMB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¥"
+        android:textSize="25dp"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/order_db_name"
+        android:layout_marginLeft="10dp"
+
         />
 
-    <TextView
-        android:id="@+id/order_db_priceshow"
-        android:layout_width="wrap_content"
-        android:textSize="15dp"
-        android:text="价格："
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/order_db_name"
-        android:layout_below="@+id/order_db_id"
-        android:layout_marginTop="80dp"
-        />
     <TextView
         android:id="@+id/order_db_price"
-        android:layout_width="40dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/order_db_idshow"
-        android:layout_toRightOf="@+id/order_db_priceshow"
-        android:layout_marginTop="10dp"
-        android:textSize="15dp"
-        />
+        android:textSize="25dp"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/order_db_name"
+        android:layout_toEndOf="@+id/RMB" />
 
     <TextView
-        android:id="@+id/order_db_creatshow"
+        android:id="@+id/dan"
         android:layout_width="wrap_content"
-        android:textSize="15dp"
-        android:text="单位："
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dip"
+        android:text="×"
+        android:textSize="20dp"
+        android:textColor="@color/colorblack"
         android:layout_toRightOf="@+id/order_db_price"
-        android:layout_below="@+id/order_db_id"
-        android:layout_marginTop="80dp"
+        android:layout_below="@+id/order_db_name"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
         />
+
+
     <TextView
         android:id="@+id/order_db_create_at"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/order_db_idshow"
-        android:layout_toRightOf="@+id/order_db_creatshow"
-        android:layout_marginTop="10dp"
         android:textSize="15dp"
-        />
+        android:textColor="@color/colorblack"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@+id/dan"
+        android:layout_below="@+id/order_db_name" />
+    </LinearLayout>
+    </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@color/colorwhite"
+    >
 
-    <TextView
-        android:id="@+id/textshu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="输入数量"
-        android:textSize="20dp"
-        android:layout_below="@+id/order_db_nameshow"
-        android:layout_marginTop="20dp"
-        />
-    <EditText
-        android:id="@+id/editTextshu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textshu"
-        android:width="90dp"
-        />
     <Button
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="提交"
-        android:textSize="13dp"
+        android:text="加入购物车"
+        android:textSize="16dp"
         android:textColor="@color/colorwhite"
         android:id="@+id/button_tijiao"
         android:background="@color/colorButton"
-        android:layout_marginTop="20dp"
-        android:width="340dp"
-        android:height="40dp"
-        android:layout_below="@+id/editTextshu"
-        android:layout_centerHorizontal="true"
+        android:width="170dp"
+        android:height="60dp"
         />
+</LinearLayout>
 </RelativeLayout>
