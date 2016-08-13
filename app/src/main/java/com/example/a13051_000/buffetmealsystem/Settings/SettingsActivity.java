@@ -25,6 +25,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
     private ListView listView;
     private ArrayAdapter<String> adapter;
     private Button button_quit;
+    public static boolean quit;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -51,6 +52,7 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
                 setMessage("确定要退出账户吗？").setPositiveButton("确定", new DialogInterface.OnClickListener(){
 
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        quit = true;
                         Intent intent = new Intent(SettingsActivity.this,LoginActivity.class);
                         SettingsActivity.this.startActivity(intent);
                     }

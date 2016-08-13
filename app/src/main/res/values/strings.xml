@@ -9,7 +9,7 @@
     <string name="action_settings">设置</string>
     <string name="setting">设置</string>
     <string name="login">登录</string>
-    <string name="scan_1">第一步：click(点击后对准餐桌上的二维码进行扫描)</string>
+    <string name="scan_1">click(点击后对准餐桌上的二维码进行扫描)</string>
     <string name="skin_tabbar_icon_main">主页</string>
     <string name="skin_tabbar_icon_check">点餐</string>
     <string name="skin_tabbar_icon_user">用户</string>
@@ -27,4 +27,6 @@
     <string name="aboutus1">队名：Craze_KB</string>
     <string name="aboutus2">组员：张治杰、娄树斌</string>
     <string name="aboutus3">负责人电话：17854117685</string>
+    <string name="des_res">xx餐厅面积约1000余平米，同时可容纳600人就餐。餐厅宽敞明亮、舒适整洁，为您提供自选式快餐、风味小吃、
+        特色面点等，菜品丰富，色、香、味俱全，是您繁忙工作之余，休闲小憩、品偿美味的最佳选择！</string>
 </resources>

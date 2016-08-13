@@ -3,22 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="9dp"
-        android:src="@drawable/qrcode"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView1"
-        android:layout_marginStart="320dp"
-        android:layout_marginTop="9dp"
-        android:src="@drawable/search"
-        />
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +42,7 @@
                             <android.support.v4.view.ViewPager
                                 android:id="@+id/image_slide_page"
                                 android:layout_width="fill_parent"
-                                android:layout_height="200dip"
+                                android:layout_height="200dp"
                                 android:focusable="true" />
 
                             <RelativeLayout
@@ -135,13 +120,106 @@
                 </LinearLayout>
             </com.example.a13051_000.buffetmealsystem.xml.imagelayout.ScrollViewExtend>
 
+
+
             <LinearLayout
                 android:id="@+id/layout1"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="55dp"
                 android:layout_below="@+id/slide"
+                android:layout_marginTop="5dp"
                 android:background="@color/colorwhite"
-                android:layout_marginTop="2dp"
+                >
+            <FrameLayout
+                android:id="@+id/layout_button1"
+                android:layout_width="90dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                >
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape1"
+                    android:text="餐厅概述"
+                    android:textSize="13.5dp"
+                    android:textColor="@color/colorwhite"
+                    android:layout_marginTop="3dp"
+                    />
+            </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/layout_button2"
+                    android:layout_width="90dp"
+                    android:layout_height="62dp"
+                    android:layout_weight="1"
+                    >
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape2"
+                        android:text="餐厅全景"
+                        android:textSize="13.5dp"
+                        android:textColor="@color/colorwhite"
+                        android:layout_marginTop="3dp"
+                        />
+                </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/layout_button3"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    >
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape3"
+                        android:text="活动"
+                        android:textSize="13.5dp"
+                        android:textColor="@color/colorwhite"
+                        android:layout_marginTop="3dp"
+                        />
+                </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/layout_button4"
+                    android:layout_width="90dp"
+                    android:layout_height="55dp"
+                    android:layout_weight="1"
+                    >
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/shape4"
+                        android:text="企业文化"
+                        android:textSize="13.5dp"
+                        android:textColor="@color/colorwhite"
+                        android:layout_marginTop="3dp"
+                        />
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_below="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="菜品预览"
+                android:layout_marginLeft="3dp"
+                android:textSize="14dp"
+                android:textColor="#464547"
+                android:background="@color/colorwhite"
+                android:layout_marginTop="5dp"
+
+                />
+
+            <LinearLayout
+                android:id="@+id/layout2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@+id/text"
+                android:background="@color/colorwhite"
                 >
                 <FrameLayout
                     android:id="@+id/layout_at"
@@ -154,12 +232,12 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/chinesefood"
+                        android:background="@drawable/veg"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="中式餐厅"
+                        android:text="菜类"
                         android:textSize="10dp"
                         android:layout_gravity="bottom|center"
                         />
@@ -177,12 +255,12 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/foreign"
+                        android:background="@drawable/meet"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="西式餐厅"
+                        android:text="肉类"
                         android:textSize="10dp"
                         android:layout_gravity="bottom|center"
                         />
@@ -198,12 +276,12 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/pizza"
+                        android:background="@drawable/soup"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="披萨店"
+                        android:text="汤类"
                         android:textSize="10dp"
                         android:layout_gravity="bottom|center"
                         />
@@ -220,12 +298,12 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/bar"
+                        android:background="@drawable/drink"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="酒吧"
+                        android:text="饮品"
                         android:textSize="10dp"
                         android:layout_gravity="bottom|center"
                         />
@@ -241,17 +319,39 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/fastfood"
+                        android:background="@drawable/dessert"
                         />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="快餐点"
+                        android:text="甜点"
+                        android:textSize="10dp"
+                        android:layout_gravity="bottom|center"
+                        />
+                </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/layout_at6"
+                    android:layout_width="90dp"
+                    android:layout_height="75dp"
+                    android:layout_weight="1"
+                    >
+                    <ImageButton
+                        android:id="@+id/rice"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/zhushi"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="主食"
                         android:textSize="10dp"
                         android:layout_gravity="bottom|center"
                         />
                 </FrameLayout>
             </LinearLayout>
+
         </RelativeLayout>
     </ScrollView>
 

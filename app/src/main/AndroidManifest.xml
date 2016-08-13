@@ -42,6 +42,11 @@
         </activity>
 
         <activity
+            android:name=".Res_Sales_Promotion"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
             android:name=".User.UserActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -57,29 +62,35 @@
         </activity>
 
         <activity
-            android:name=".restaurant.Classfication.Chinese_Restaurant"
+            android:name=".restaurant.Classfication.Ves_Restaurant"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".restaurant.Classfication.Foreign_Restaurant"
+            android:name=".restaurant.Classfication.Meat_Restaurant"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".restaurant.Classfication.Pizza_restaurant"
+            android:name=".restaurant.Classfication.Soup_Restaurant"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".restaurant.Classfication.Bar"
+            android:name=".restaurant.Classfication.Drink_Restaurant"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name=".restaurant.Classfication.Fast_Food_Restaurant"
+            android:name=".restaurant.Classfication.Dessert_Restaurant"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+        <activity
+            android:name=".restaurant.Classfication.Rice_Restaurant"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
 
         <activity
             android:name=".restaurant.MainActivity_r"

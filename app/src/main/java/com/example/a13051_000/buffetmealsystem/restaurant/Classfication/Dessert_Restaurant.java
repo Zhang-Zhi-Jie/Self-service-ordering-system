@@ -12,14 +12,15 @@ import com.example.a13051_000.buffetmealsystem.R;
 /**
  * Created by 13051_000 on 2016/7/29.
  */
-public class Bar extends AppCompatActivity {
+public class Dessert_Restaurant extends AppCompatActivity {
 
     private Toolbar toolbar;
 
     protected void onCreate(Bundle savedInstanceState){
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.restaurant_bar);toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("酒吧");
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.restaurant_dessert);
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setTitle("甜品");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -27,7 +28,7 @@ public class Bar extends AppCompatActivity {
     public  boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if(id == android.R.id.home){
-            Intent intent = new Intent(Bar.this, MainActivity.class);
+            Intent intent = new Intent(Dessert_Restaurant.this, MainActivity.class);
             this.startActivity(intent);
             this.finish();
             overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
@@ -35,4 +36,3 @@ public class Bar extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-

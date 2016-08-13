@@ -8,7 +8,7 @@
 
 
     <include
-        layout="@layout/restaurant_app_bar_fastfood"
+        layout="@layout/restaurant_app_bar_dessert"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></include>
 

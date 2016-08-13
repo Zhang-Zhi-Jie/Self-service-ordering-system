@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Bar"
+    tools:context=".restaurant.Classfication.Rice_Restaurant"
     >
 
     <android.support.v7.widget.Toolbar
@@ -25,7 +25,7 @@
     <include
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        layout="@layout/restaurant_content_bar">
+        layout="@layout/restaurant_content_rice">
     </include>
 
 </android.support.design.widget.CoordinatorLayout>

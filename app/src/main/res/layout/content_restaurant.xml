@@ -5,7 +5,7 @@
 
     <com.example.a13051_000.buffetmealsystem.restaurant.DragTopLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         android:id="@+id/drag_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -58,7 +58,7 @@
                 android:textColor="@color/colorwhite"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary" />
+                android:background="?attr/colorAccent" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/view_pager"

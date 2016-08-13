@@ -8,7 +8,7 @@
 
 
     <include
-        layout="@layout/restaurant_app_bar_soup"
+        layout="@layout/restaurant_app_bar_ves"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></include>
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".restaurant.Classfication.Drink_Restaurant"
+    tools:context=".restaurant.Classfication.Meat_Restaurant"
     >
 
     <android.support.v7.widget.Toolbar
@@ -25,7 +25,7 @@
     <include
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        layout="@layout/order_form_detali_content">
+        layout="@layout/restaurant_content_meat">
     </include>
 
 </android.support.design.widget.CoordinatorLayout>
