@@ -10,25 +10,25 @@ import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 
 /**
- * Created by 13051_000 on 2016/7/29.
+ * Created by 13051_000 on 2016/8/12.
  */
-public class Foreign_Restaurant extends AppCompatActivity{
+public class Rice_Restaurant extends AppCompatActivity {
 
     private Toolbar toolbar;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.restaurant_foreign);
+        setContentView(R.layout.restaurant_rice);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("西式餐厅");
+        toolbar.setTitle("主食");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
     }
+
     public  boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if(id == android.R.id.home){
-            Intent intent = new Intent(Foreign_Restaurant.this, MainActivity.class);
+            Intent intent = new Intent(Rice_Restaurant.this, MainActivity.class);
             this.startActivity(intent);
             this.finish();
             overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
@@ -36,3 +36,5 @@ public class Foreign_Restaurant extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 }
+
+

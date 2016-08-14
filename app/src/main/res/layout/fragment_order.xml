@@ -8,11 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="140dp"
         >
 
     <ImageView
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/p5"
         android:layout_gravity="center_horizontal" />
@@ -29,13 +29,22 @@
         >
 
         <TextView
+            android:id="@+id/continue_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="继续点餐请点击"
+            android:textSize="20dp"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
+            android:id="@+id/begin_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="开始点餐吧！"
             android:layout_gravity="center_horizontal"
             android:textSize="20dp"
             />
-
         <ImageView
             android:id="@+id/click"
             android:layout_width="wrap_content"
@@ -52,6 +61,7 @@
             android:layout_gravity="center_horizontal"
             android:textSize="15dp"
             />
+
     </LinearLayout>
 
 

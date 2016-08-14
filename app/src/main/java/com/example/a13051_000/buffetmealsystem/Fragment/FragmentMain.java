@@ -6,19 +6,25 @@ import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.example.a13051_000.buffetmealsystem.R;
-import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Bar;
-import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Chinese_Restaurant;
-import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Fast_Food_Restaurant;
-import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Foreign_Restaurant;
-import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Pizza_restaurant;
+import com.example.a13051_000.buffetmealsystem.Res_Sales_Promotion;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Drink_Restaurant;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Rice_Restaurant;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Ves_Restaurant;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Dessert_Restaurant;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Meat_Restaurant;
+import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Soup_Restaurant;
 import com.example.a13051_000.buffetmealsystem.xml.imagelayout.NewsXmlParser;
 import com.example.a13051_000.buffetmealsystem.xml.imagelayout.SlideImageLayout;
 
@@ -42,66 +48,143 @@ public class FragmentMain extends Fragment {
     private SlideImageLayout slideLayout = null;
     private NewsXmlParser parser = null;
 
-    private ImageButton imageButton_chinese;
-    private ImageButton imageButton_foreign;
-    private ImageButton imageButton_fastfood;
-    private ImageButton imageButton_pizza;
-    private ImageButton imageButton_bar;
+    private Button button1;
+    private Button button2;
+    private Button button3;
+    private Button button4;
+
+    private ImageButton imageButton_ves;
+    private ImageButton imageButton_meat;
+    private ImageButton imageButton_dessert;
+    private ImageButton imageButton_soup;
+    private ImageButton imageButton_drink;
+    private ImageButton imageButton_rice;
 
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         initeViews(rootView);
-        imageButton_chinese = (ImageButton) rootView.findViewById(R.id.chinese);
-        imageButton_foreign = (ImageButton) rootView.findViewById(R.id.foreign);
-        imageButton_pizza = (ImageButton) rootView.findViewById(R.id.pizza);
-        imageButton_bar = (ImageButton) rootView.findViewById(R.id.bar);
-        imageButton_fastfood = (ImageButton) rootView.findViewById(R.id.fastfood);
 
-        imageButton_chinese.setOnClickListener(new View.OnClickListener() {
+        button1 = (Button) rootView.findViewById(R.id.button1);
+        button2 = (Button) rootView.findViewById(R.id.button2);
+        button3 = (Button) rootView.findViewById(R.id.button3);
+        button4 = (Button) rootView.findViewById(R.id.button4);
+
+
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(getActivity(), Chinese_Restaurant.class);
+                AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                alertDialog.show();
+                Window window = alertDialog.getWindow();
+                window.setContentView(R.layout.describe_restaurant);
+                TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
+                tv_title.setText("餐厅概述");
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                alertDialog.show();
+                Window window = alertDialog.getWindow();
+                window.setContentView(R.layout.des_pic_restaurant);
+                TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
+                tv_title.setText("餐厅图片展示");
+                ViewFlipper viewFlipper = (ViewFlipper) window.findViewById(R.id.viewflipper);
+                int []res = {R.drawable.res1,R.drawable.res3,R.drawable.res4};
+                for(int i = 0; i<res.length;i++){
+                    viewFlipper.addView(getImageView(res[i]));
+                }
+                viewFlipper.setInAnimation(getActivity(),R.anim.right_in);
+                viewFlipper.setOutAnimation(getActivity(),R.anim.right_out);
+                viewFlipper.setFlipInterval(3000);
+                viewFlipper.startFlipping();
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 Intent intent = new Intent(getActivity(), Res_Sales_Promotion.class);
+                 getActivity().startActivity(intent);
+                 getActivity().overridePendingTransition(R.anim.fab_fade_in,R.anim.fab_fade_out);
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        imageButton_ves = (ImageButton) rootView.findViewById(R.id.chinese);
+        imageButton_meat = (ImageButton) rootView.findViewById(R.id.foreign);
+        imageButton_soup = (ImageButton) rootView.findViewById(R.id.pizza);
+        imageButton_drink = (ImageButton) rootView.findViewById(R.id.bar);
+        imageButton_dessert = (ImageButton) rootView.findViewById(R.id.fastfood);
+        imageButton_rice = (ImageButton) rootView.findViewById(R.id.rice);
+
+        imageButton_ves.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getActivity(), Ves_Restaurant.class);
                 startActivity(intent1);
                 getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
             }
         });
-        imageButton_fastfood.setOnClickListener(new View.OnClickListener() {
+        imageButton_dessert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent2 = new Intent(getActivity(), Fast_Food_Restaurant.class);
+                Intent intent2 = new Intent(getActivity(), Dessert_Restaurant.class);
                 startActivity(intent2);
                 getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
             }
         });
-        imageButton_foreign.setOnClickListener(new View.OnClickListener() {
+        imageButton_meat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent3 = new Intent(getActivity(), Foreign_Restaurant.class);
+                Intent intent3 = new Intent(getActivity(), Meat_Restaurant.class);
                 startActivity(intent3);
                 getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
             }
         });
-        imageButton_bar.setOnClickListener(new View.OnClickListener() {
+        imageButton_drink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent4 = new Intent(getActivity(),Bar.class);
+                Intent intent4 = new Intent(getActivity(),Drink_Restaurant.class);
                 startActivity(intent4);
                 getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
             }
         });
-        imageButton_pizza.setOnClickListener(new View.OnClickListener() {
+        imageButton_soup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent5 = new Intent(getActivity(),Pizza_restaurant.class);
+                Intent intent5 = new Intent(getActivity(),Soup_Restaurant.class);
                 startActivity(intent5);
                 getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
             }
         });
+        imageButton_rice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent5 = new Intent(getActivity(),Rice_Restaurant.class);
+                startActivity(intent5);
+                getActivity().overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
+            }
+        });//菜单预览
+
         return rootView;
 
-
     }
+
+    private ImageView getImageView(int res){
+        ImageView image = new ImageView(getActivity());
+        image.setImageResource(res);
+        return image;
+    }
+
+
     private void initeViews(View view){
         imagePageViews = new ArrayList<View>();
         viewPager = (ViewPager)view.findViewById(R.id.image_slide_page);

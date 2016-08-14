@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="60dp"
     >
 	<TextView
@@ -23,34 +23,61 @@
 
 	   <TextView
 		    android:id="@+id/order_db_name"
-	    	android:layout_width="100dip"
+	    	android:layout_width="80dp"
 		   	android:textSize="17dp"
 	    	android:layout_height="wrap_content"
+		    android:layout_marginTop="5dp"
 	    	android:layout_marginLeft="5dip"
-		   android:layout_toRightOf="@+id/order_db_nameshow"
+		   android:textColor="@color/colorblack"
+		    android:layout_toRightOf="@+id/order_db_nameshow"
 		    android:layout_below="@+id/order_db_id"
 	    	/>
 
-	<TextView
-		android:id="@+id/order_db_priceshow"
-		android:layout_width="55dip"
-		android:textSize="17dp"
-		android:text="总价："
-		android:layout_height="wrap_content"
-		android:layout_marginLeft="5dip"
-		android:layout_toRightOf="@+id/order_db_name"
-		android:layout_below="@+id/order_db_id"
+	  <TextView
+		  android:id="@+id/order_db_priceshow"
+		  android:layout_width="55dip"
+		  android:textSize="17dp"
+		  android:text="总价："
+		  android:layout_height="wrap_content"
+	  	  android:layout_marginLeft="5dip"
+		  android:layout_marginTop="5dp"
+		  android:layout_toRightOf="@+id/order_db_name"
+		  android:layout_below="@+id/order_db_id"
 		/>
 
+	  <TextView
+		  android:id="@+id/order_db_RMB"
+		  android:layout_width="wrap_content"
+		  android:layout_height="wrap_content"
+		  android:layout_marginLeft="5dp"
+		  android:textSize="16dp"
+		  android:text="¥"
+		  android:textColor="@color/colorAccent"
+		  android:layout_toRightOf="@+id/order_db_priceshow"
+		  android:layout_alignTop="@+id/order_db_priceshow" />
+
 	   <TextView
-		    android:id="@+id/order_db_price"
-	    	android:layout_width="50dip"
-	    	android:layout_height="wrap_content"
-	    	android:layout_marginLeft="5dip"
+		   android:id="@+id/order_db_price"
+		   android:layout_width="50dip"
+		   android:layout_height="wrap_content"
 		   android:textSize="16dp"
-		    android:layout_toRightOf="@+id/order_db_priceshow"
+		   android:textColor="@color/colorAccent"
+		   android:layout_toRightOf="@+id/order_db_RMB"
 		   android:layout_alignTop="@+id/order_db_priceshow" />
 
+	   <TextView
+		   android:id="@+id/order_db_finish"
+		   android:layout_width="wrap_content"
+		   android:layout_height="wrap_content"
+		   android:layout_marginLeft="40dp"
+		   android:textSize="12dp"
+		   android:text="已付款"
+		   android:textColor="@color/colorwhite"
+		   android:drawableLeft="@drawable/ic_assignment_turned_in_black_24dp"
+		   android:background="#78a355"
+		   android:gravity="center"
+		   android:layout_toRightOf="@+id/order_db_price"
+		   android:layout_alignTop="@+id/order_db_priceshow" />
 
 
 </RelativeLayout>

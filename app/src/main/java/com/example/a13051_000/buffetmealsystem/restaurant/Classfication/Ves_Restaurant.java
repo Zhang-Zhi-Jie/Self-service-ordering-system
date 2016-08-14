@@ -22,23 +22,23 @@ import java.util.Map;
 /**
  * Created by 13051_000 on 2016/7/29.
  */
-public class Chinese_Restaurant extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class Ves_Restaurant extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private Toolbar toolbar;
     private ListView listView;
     private List<Map<String,Object>>dataList;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.restaurant_chinese);
+        setContentView(R.layout.restaurant_ves);
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("中式餐厅");
+        toolbar.setTitle("菜类");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listView = (ListView) findViewById(R.id.chinese_list);
         dataList = new ArrayList<Map<String,Object>>();
-        SimpleAdapter orderAdapter = new SimpleAdapter(Chinese_Restaurant.this,
+        SimpleAdapter orderAdapter = new SimpleAdapter(Ves_Restaurant.this,
                 getData(),R.layout.restaurant_item_list,new String[]{"image","name"},new int[]{R.id.restaurant_image,R.id.restaurant_name});
         listView.setAdapter(orderAdapter);
         listView.setOnItemClickListener(this);
@@ -48,7 +48,7 @@ public class Chinese_Restaurant extends AppCompatActivity implements AdapterView
     public  boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if(id == android.R.id.home){
-            Intent intent = new Intent(Chinese_Restaurant.this, MainActivity.class);
+            Intent intent = new Intent(Ves_Restaurant.this, MainActivity.class);
             this.startActivity(intent);
             this.finish();
             overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
@@ -68,7 +68,7 @@ public class Chinese_Restaurant extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent = new Intent(Chinese_Restaurant.this, MainActivity_r.class);
+        Intent intent = new Intent(Ves_Restaurant.this, MainActivity_r.class);
         this.startActivity(intent);
     }
 }

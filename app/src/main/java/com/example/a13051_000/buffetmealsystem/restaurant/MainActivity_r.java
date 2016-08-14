@@ -81,7 +81,7 @@ public class MainActivity_r extends AppCompatActivity {
         Intent intent = getIntent();
         seat_num = intent.getStringExtra("seat_num");
         textView_seat_num = (TextView) findViewById(R.id.show_seat_num);
-        textView_seat_num.setText("00"+seat_num);
+        textView_seat_num.setText("000"+seat_num);
     }
 
     private List<String> getTitles(){

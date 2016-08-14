@@ -12,7 +12,7 @@ import com.example.a13051_000.buffetmealsystem.R;
 /**
  * Created by 13051_000 on 2016/7/29.
  */
-public class Pizza_restaurant extends AppCompatActivity {
+public class Soup_Restaurant extends AppCompatActivity {
 
     private Toolbar toolbar;
 
@@ -20,7 +20,7 @@ public class Pizza_restaurant extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.restaurant_pizza);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("披萨店");
+        toolbar.setTitle("汤品");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -28,7 +28,7 @@ public class Pizza_restaurant extends AppCompatActivity {
     public  boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if(id == android.R.id.home){
-            Intent intent = new Intent(Pizza_restaurant.this, MainActivity.class);
+            Intent intent = new Intent(Soup_Restaurant.this, MainActivity.class);
             this.startActivity(intent);
             this.finish();
             overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
@@ -36,4 +36,3 @@ public class Pizza_restaurant extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-

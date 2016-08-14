@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.ExplosionField.ExplosionField;
@@ -25,7 +26,9 @@ import com.example.a13051_000.buffetmealsystem.HttpUtils;
 import com.example.a13051_000.buffetmealsystem.Order.OrderDetailActivity;
 import com.example.a13051_000.buffetmealsystem.Order.Result_Spoon_detail;
 import com.example.a13051_000.buffetmealsystem.ScanActivity;
+import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
 import com.example.a13051_000.buffetmealsystem.Status;
+import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -44,6 +47,8 @@ public class FragmentOrder extends Fragment  {
 
     private ExplosionField mExplosionField;
     ImageView imageView;
+    TextView textView_begin;
+    TextView textView_continue;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -51,13 +56,30 @@ public class FragmentOrder extends Fragment  {
         mExplosionField = ExplosionField.attach2Window(getActivity());
         addListener(rootView.findViewById(R.id.root));
         imageView = (ImageView) rootView.findViewById(R.id.click);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ScanActivity.class);
-                getActivity().startActivity(intent);
-            }
-        });
+        textView_begin = (TextView) rootView.findViewById(R.id.begin_order);
+        textView_continue = (TextView) rootView.findViewById(R.id.continue_order);
+        textView_continue.setVisibility(View.INVISIBLE);
+        if(ScanActivity.visible == true&& SettingsActivity.quit == false){
+            textView_begin.setVisibility(View.INVISIBLE);
+            textView_continue.setVisibility(View.VISIBLE);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent1 = new Intent(getActivity(), MainActivity_r.class);
+                    intent1.putExtra("seat_num",ScanActivity.seat_num);
+                    getActivity().startActivity(intent1);
+                }
+            });
+        }else {
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), ScanActivity.class);
+                    getActivity().startActivity(intent);
+                }
+            });
+        }
         return rootView;
     }
 

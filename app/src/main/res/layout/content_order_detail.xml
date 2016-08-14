@@ -121,6 +121,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:background="@color/colorwhite"
+    android:orientation="vertical"
     >
 
     <Button
@@ -131,8 +132,9 @@
         android:textColor="@color/colorwhite"
         android:id="@+id/button_tijiao"
         android:background="@color/colorButton"
-        android:width="170dp"
-        android:height="60dp"
+        android:width="150dp"
+        android:height="50dp"
+        android:layout_gravity="right"
         />
 </LinearLayout>
 </RelativeLayout>

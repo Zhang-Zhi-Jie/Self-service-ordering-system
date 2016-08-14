@@ -12,23 +12,23 @@ import com.example.a13051_000.buffetmealsystem.R;
 /**
  * Created by 13051_000 on 2016/7/29.
  */
-public class Fast_Food_Restaurant extends AppCompatActivity {
+public class Meat_Restaurant extends AppCompatActivity{
 
     private Toolbar toolbar;
 
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.restaurant_fastfood);
+        setContentView(R.layout.restaurant_meat);
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("快餐店");
+        toolbar.setTitle("肉类");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
 
+    }
     public  boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if(id == android.R.id.home){
-            Intent intent = new Intent(Fast_Food_Restaurant.this, MainActivity.class);
+            Intent intent = new Intent(Meat_Restaurant.this, MainActivity.class);
             this.startActivity(intent);
             this.finish();
             overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);

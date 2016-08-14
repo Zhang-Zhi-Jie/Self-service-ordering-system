@@ -18,19 +18,18 @@ public class NewsXmlParser {
 	
 
 	private int[] slideImages = {
-			R.drawable.c2,
+			R.drawable.c5,
 			R.drawable.c1,
 			R.drawable.c3,
 			R.drawable.c4,
-			R.drawable.c5};
-	
-	// ��������ļ���
+			R.drawable.c2};
+
 	private int[] slideTitles = {
-			R.string.title1,
+			R.string.title5,
 			R.string.title2,
 			R.string.title3,
 			R.string.title4,
-			R.string.title5,
+			R.string.title1,
 	};
 	
 
