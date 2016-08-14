@@ -16,7 +16,7 @@ public class OrderformDataSource {
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private String[] allColumns = {
-            MySQLiteHelper.COLUMN_ID,MySQLiteHelper.COLUMN_NUM,MySQLiteHelper.COLUMN_DETAIL,MySQLiteHelper.COLUMN_ID_SERVRE,MySQLiteHelper.COLUMN_PRICE
+            MySQLiteHelper.COLUMN_ID_menu,MySQLiteHelper.COLUMN_NUM,MySQLiteHelper.COLUMN_DETAIL,MySQLiteHelper.COLUMN_ID_SERVRE,MySQLiteHelper.COLUMN_PRICE
     };
     public OrderformDataSource(Context context){
         dbHelper = new MySQLiteHelper(context);

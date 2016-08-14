@@ -24,6 +24,7 @@ import com.example.a13051_000.buffetmealsystem.HttpUtils;
 import com.example.a13051_000.buffetmealsystem.Order.OrderDetailActivity;
 import com.example.a13051_000.buffetmealsystem.Order.Result_Spoon_detail;
 import com.example.a13051_000.buffetmealsystem.R;
+import com.example.a13051_000.buffetmealsystem.Sqlite.OrderFormDataSource_menu;
 import com.example.a13051_000.buffetmealsystem.Status;
 import com.google.gson.Gson;
 
@@ -51,6 +52,7 @@ public class FragmentMeat extends Fragment implements SwipeRefreshLayout.OnRefre
     String name;
     String price;
     String perunit;
+    String classify;
     ProgressDialog progressDialog;
     private static final int REFRESH_COMPLETE = 0X110;
     private final int SHOW_RESPONSE = 0;
@@ -72,24 +74,28 @@ public class FragmentMeat extends Fragment implements SwipeRefreshLayout.OnRefre
                         //状态正确
                         if(list.getStatus().equals("0")) {
                             List<Result_Spoon_detail> result_spoon_details= list.getResult();
-                            //菜品信息存储在result_soon_details这个list里面
-                            Log.d("list",String.valueOf(result_spoon_details.size()));
-
+                            //菜品信息存储在result_soon_details这个list里
                             final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
                             String[] arg1 = new String[result_spoon_details.size()];
+                            OrderFormDataSource_menu orderFormDataSource_menu = new OrderFormDataSource_menu(getContext());
+                            orderFormDataSource_menu.open();
+                            orderFormDataSource_menu.deleteAll();
+                            for(int i=0;i<result_spoon_details.size();i++){
+                                orderFormDataSource_menu.create(result_spoon_details.get(i));
+                            }
                             for(int i= 0;i<result_spoon_details.size();i++){
-                                Map<String,Object> listitem = new HashMap<String,Object>();
-                                listitem.put("ID",result_spoon_details.get(i).getId());
-                                listitem.put("Name",result_spoon_details.get(i).getDish_name());
-                                listitem.put("PRICE",result_spoon_details.get(i).getPrice());
-                                listitem.put("unit",result_spoon_details.get(i).getUnit());
-                                listItems.add(listitem);
-                                arg1[i] = listitem.toString();
+                                if (result_spoon_details.get(i).getClassify().equals("1")) {
+                                    Map<String, Object> listitem = new HashMap<String, Object>();
+                                    listitem.put("ID", result_spoon_details.get(i).getId());
+                                    listitem.put("Name", result_spoon_details.get(i).getDish_name());
+                                    listitem.put("PRICE", result_spoon_details.get(i).getPrice());
+                                    listitem.put("unit", result_spoon_details.get(i).getUnit());
+                                    listItems.add(listitem);
+                                    arg1[i] = listitem.toString();
+                                }
                             }
                             SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.fragment_order_item_list_module, new String[]{"ID", "Name", "PRICE", "unit"},
                                     new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price, R.id.order_db_create_at});
-
-
                             menuList.setAdapter(orderAdapter);
                             //      ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,arg1);
                             //     menuList.setAdapter(adapter);

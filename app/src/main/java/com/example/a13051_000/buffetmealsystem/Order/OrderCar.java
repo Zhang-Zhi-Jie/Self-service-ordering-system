@@ -95,9 +95,9 @@ public class OrderCar extends AppCompatActivity {
     private void initView() {
         context = this;
         data = new ArrayList<Test>();
-        OrderformDataSource orderFormDataSource = new OrderformDataSource(OrderCar.this);
-        orderFormDataSource.open();
-        List<OrderForm> orderForms = orderFormDataSource.getAllForm();
+        OrderformDataSource orderformDataSource = new OrderformDataSource(OrderCar.this);
+        orderformDataSource.open();
+        List<OrderForm> orderForms = orderformDataSource.getAllForm();
         for(int i= 0;i<orderForms.size();i++){
 //            data.add(new Test(orderForms.get(i).getNum(),orderForms.get(i).getDetail(),orderForms.get(i).getPrice()));
         }
