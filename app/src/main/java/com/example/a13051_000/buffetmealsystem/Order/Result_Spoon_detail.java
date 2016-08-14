@@ -9,6 +9,7 @@ public class Result_Spoon_detail {
     private String unit;
     private String user_name;
     private String id;
+    private String classify;
     public String getDish_name(){
         return this.dish_name;
     }
@@ -37,6 +38,14 @@ public class Result_Spoon_detail {
 
     public String getId() {
         return this.id;
+    }
+
+    public String getClassify() {
+        return classify;
+    }
+
+    public void setClassify(String classify) {
+        this.classify = classify;
     }
 
     public String toString(){

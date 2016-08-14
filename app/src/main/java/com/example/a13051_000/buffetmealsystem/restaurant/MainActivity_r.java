@@ -55,7 +55,7 @@ public class MainActivity_r extends AppCompatActivity {
     private ModelPagerAdapter adapter;
     private ViewPager viewPager;
     private PagerSlidingTabStrip pagerSlidingTabStrip;
-    private TextView textView_seat_num;
+    private  TextView textView_seat_num;
 
     String seat_num;
 
