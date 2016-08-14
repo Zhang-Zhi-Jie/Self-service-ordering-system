@@ -32,6 +32,10 @@ public class Result_Spoon_detail {
         return this.user_name;
     }
 
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
