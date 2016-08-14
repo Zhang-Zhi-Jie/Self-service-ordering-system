@@ -59,10 +59,11 @@ public class OrderFormDataSource_menu {
         if(cursor.moveToFirst()) {
             do {
                 Result_Spoon_detail result_spoon_detail = new Result_Spoon_detail();
-                result_spoon_detail.setId(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ID_menu)));
-                result_spoon_detail.setPrice(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_PRICE)));
+                result_spoon_detail.setId(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_NUM_menu)));
+                result_spoon_detail.setPrice(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_PRICE_menu)));
                 result_spoon_detail.setClassify(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_CLASSIFY_menu)));
                 result_spoon_detail.setDish_name(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_NAME_menu)));
+                result_spoon_detail.setUnit(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_UNIT_menu)));
                 result_spoon_detail.setUser_name(null);
                 results.add(result_spoon_detail);
             }while (cursor.moveToNext());
