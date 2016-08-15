@@ -2,9 +2,12 @@ package com.example.a13051_000.buffetmealsystem.Order;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DrawableUtils;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +18,14 @@ import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderForm;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderformDataSource;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.request.ImageRequest;
 
+import lib.lhh.fiv.library.FrescoImageView;
+
+import static com.example.a13051_000.buffetmealsystem.R.id.imageView;
 import static com.example.a13051_000.buffetmealsystem.R.id.tool_bar;
 
 /**
@@ -36,12 +46,11 @@ public class OrderDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
-
+        SimpleDraweeView simpleDraweeView = (SimpleDraweeView) findViewById(R.id.fiv);
         toolbar = (Toolbar) findViewById(tool_bar);
         toolbar.setTitle("点餐信息");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         showid = (TextView) findViewById(R.id.order_db_id);
         showname = (TextView) findViewById(R.id.order_db_name);
         showprice = (TextView) findViewById(R.id.order_db_price);
@@ -91,6 +100,15 @@ public class OrderDetailActivity extends AppCompatActivity {
 ////                }
             }
         });
+        while (id.startsWith("0")){
+            id = id.substring(1);
+        }
+        String url_photo = "http://www.loushubin.cn/getPhoto.php?name="+id;
+        Log.d("PhotoUrl",url_photo);
+        Uri uri = Uri.parse(url_photo);
+        ImageRequest request = ImageRequest.fromUri(uri);
+        DraweeController controller = Fresco.newDraweeControllerBuilder().setImageRequest(request).setOldController(simpleDraweeView.getController()).build();
+        simpleDraweeView.setController(controller);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
