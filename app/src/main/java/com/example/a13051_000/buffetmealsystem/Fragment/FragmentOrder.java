@@ -47,8 +47,7 @@ public class FragmentOrder extends Fragment  {
 
     private ExplosionField mExplosionField;
     ImageView imageView;
-    TextView textView_begin;
-    TextView textView_continue;
+    TextView textView_order;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,12 +55,10 @@ public class FragmentOrder extends Fragment  {
         mExplosionField = ExplosionField.attach2Window(getActivity());
         addListener(rootView.findViewById(R.id.root));
         imageView = (ImageView) rootView.findViewById(R.id.click);
-        textView_begin = (TextView) rootView.findViewById(R.id.begin_order);
-        textView_continue = (TextView) rootView.findViewById(R.id.continue_order);
-        textView_continue.setVisibility(View.INVISIBLE);
+        textView_order = (TextView) rootView.findViewById(R.id.text_order);
+        textView_order.setText("您还未选座，点击选座并点餐");
         if(ScanActivity.visible == true&& SettingsActivity.quit == false){
-            textView_begin.setVisibility(View.INVISIBLE);
-            textView_continue.setVisibility(View.VISIBLE);
+            textView_order.setText("继续点餐请点击");
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
