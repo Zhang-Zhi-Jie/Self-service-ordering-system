@@ -23,9 +23,6 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
 
-import lib.lhh.fiv.library.FrescoImageView;
-
-import static com.example.a13051_000.buffetmealsystem.R.id.imageView;
 import static com.example.a13051_000.buffetmealsystem.R.id.tool_bar;
 
 /**
@@ -106,9 +103,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         String url_photo = "http://www.loushubin.cn/getPhoto.php?name="+id;
         Log.d("PhotoUrl",url_photo);
         Uri uri = Uri.parse(url_photo);
-        ImageRequest request = ImageRequest.fromUri(uri);
-        DraweeController controller = Fresco.newDraweeControllerBuilder().setImageRequest(request).setOldController(simpleDraweeView.getController()).build();
-        simpleDraweeView.setController(controller);
+        simpleDraweeView.setImageURI(uri);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
