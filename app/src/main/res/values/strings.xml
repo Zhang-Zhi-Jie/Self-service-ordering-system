@@ -17,10 +17,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">设置</string>
     <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
-    <string name="title1">春笋炒腊肉</string>
-    <string name="title2">菠萝古老肉</string>
-    <string name="title3">团子</string>
-    <string name="title4">香菇面筋</string>
+    <string name="title1">小青菜</string>
+    <string name="title2">蛋挞</string>
+    <string name="title3">鸡蛋玉米羹</string>
+    <string name="title4">干锅包菜</string>
     <string name="title5">宫保鸡丁</string>
     <string name="action_sao">扫一扫</string>
     <string name="suggestions">您的反馈就是对我们最大的帮助</string>

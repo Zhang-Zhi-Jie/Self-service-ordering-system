@@ -15,12 +15,11 @@ import java.util.List;
 public class NewsXmlParser {
 
 	private List<HashMap<String, News>> newsList = null;
-	
 
 	private int[] slideImages = {
-			R.drawable.c5,
-			R.drawable.c1,
-			R.drawable.c3,
+			R.drawable.r1,
+			R.drawable.t2,
+			R.drawable.s2,
 			R.drawable.c4,
 			R.drawable.c2};
 

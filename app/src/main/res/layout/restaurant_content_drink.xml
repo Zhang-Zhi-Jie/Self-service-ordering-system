@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
 
-    <ListView
-        android:id="@+id/bar_list"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        ></ListView>
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <com.example.a13051_000.buffetmealsystem.xml.MyGridView
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="0.0dip"
+            android:listSelector="@null"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="0.0dip"
+            android:layout_marginTop="60dp"
+            >
+        </com.example.a13051_000.buffetmealsystem.xml.MyGridView>
+
+    </ScrollView>
 
 </LinearLayout>
