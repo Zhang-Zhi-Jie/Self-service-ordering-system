@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
@@ -16,6 +17,9 @@ import android.widget.TextView;
 
 import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
+import com.example.a13051_000.buffetmealsystem.ScanActivity;
+import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
+import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,5 +85,30 @@ public class Meat_Restaurant extends AppCompatActivity implements AdapterView.On
         tv_title.setText(img_text[i]);
         ImageView imageview  = (ImageView) window.findViewById(R.id.show_food);
         imageview.setImageResource(imgs[i]);
+        TextView textView_order = (TextView) window.findViewById(R.id.text_order);
+        Button button_order = (Button) window.findViewById(R.id.button_order);
+        textView_order.setText("您还未选座,请点击选座并点餐");
+        button_order.setText("选座");
+        if(ScanActivity.visible == true&& SettingsActivity.quit == false){
+            textView_order.setText("继续点餐请点击");
+            button_order.setText("继续点餐");
+            button_order.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent1 = new Intent(Meat_Restaurant.this, MainActivity_r.class);
+                    intent1.putExtra("seat_num",ScanActivity.seat_num);
+                    Meat_Restaurant.this.startActivity(intent1);
+                }
+            });
+        }else {
+
+            button_order.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Meat_Restaurant.this, ScanActivity.class);
+                    Meat_Restaurant.this.startActivity(intent);
+                }
+            });
+        }
     }
 }

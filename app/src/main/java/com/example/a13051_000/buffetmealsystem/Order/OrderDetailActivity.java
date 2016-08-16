@@ -18,6 +18,7 @@ import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderForm;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderformDataSource;
+import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -76,7 +77,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                 orderFormDataSource.open();
                 orderFormDataSource.create(orderForm);
                 Toast.makeText(getApplicationContext(),"已加入到购物车", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(OrderDetailActivity.this, MainActivity.class);
+                Intent intent = new Intent(OrderDetailActivity.this, MainActivity_r.class);
                 OrderDetailActivity.this.startActivity(intent);
 
 

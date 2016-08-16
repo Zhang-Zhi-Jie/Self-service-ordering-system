@@ -2,6 +2,7 @@ package com.example.a13051_000.buffetmealsystem.restaurant.FragmentFood;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -48,7 +49,17 @@ public class FragmentDessert extends Fragment {
         for(int i= 0;i<result_spoon_details.size();i++){
             Log.d("classify",String.valueOf(i));
             if (result_spoon_details.get(i).getClassify().equals("5")) {
+
+                String id = result_spoon_details.get(i).getId();
+                while (id.startsWith("0")){
+                    id = id.substring(1);
+                }
+                String url_photo = "http://www.loushubin.cn/getPhoto.php?name="+id;
+                Log.d("PhotoUrl",url_photo);
+                Uri uri = Uri.parse(url_photo);
+
                 Map<String, Object> listitem = new HashMap<String, Object>();
+                listitem.put("image",uri);
                 listitem.put("ID", result_spoon_details.get(i).getId());
                 listitem.put("Name", result_spoon_details.get(i).getDish_name());
                 listitem.put("PRICE", result_spoon_details.get(i).getPrice());
@@ -57,8 +68,8 @@ public class FragmentDessert extends Fragment {
                 arg1[i] = listitem.toString();
             }
         }
-        SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.fragment_order_item_list_module, new String[]{"ID", "Name", "PRICE", "unit"},
-                new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price, R.id.order_db_create_at});
+        SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.fragment_order_item_list_module, new String[]{"image","ID", "Name", "PRICE", "unit"},
+                new int[]{R.id.pic_show,R.id.order_db_id, R.id.order_db_name, R.id.order_db_price, R.id.order_db_create_at});
         menuList.setAdapter(orderAdapter);
         //      ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,arg1);
         //     menuList.setAdapter(adapter);
