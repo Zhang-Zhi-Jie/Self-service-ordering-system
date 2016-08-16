@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.R;
-
+import com.example.a13051_000.buffetmealsystem.Order.Test;
 
 
 import java.util.ArrayList;
@@ -92,14 +92,13 @@ public class OrderCarAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.item_list_ordercar,null);
             holder.ck_select = (CheckBox) view.findViewById(R.id.ck_select);
             holder.textview_clear = (TextView) view.findViewById(R.id.clear);
-            holder.integer_sum = (TextView) view.findViewById(R.id.integral_sum);
+            holder.integer_sum = (TextView) view.findViewById(R.id.integer_sum);
             holder.minus = (Button) view.findViewById(R.id.minus);
             holder.plus = (Button) view.findViewById(R.id.plus);
             holder.number = (TextView) view.findViewById(R.id.number);
             holder.id = (TextView) view.findViewById(R.id.showId);
             holder.name = (TextView) view.findViewById(R.id.showname);
             holder.price = (TextView) view.findViewById(R.id.showprice);
-
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
@@ -119,7 +118,7 @@ public class OrderCarAdapter extends BaseAdapter {
 
 
         Test test = list.get(i);
-        holder.id.setText((CharSequence)test.getId());
+        holder.id.setText(String.valueOf((int)test.getId()));
         holder.name.setText((CharSequence)test.getName());
         holder.price.setText((CharSequence)test.getPrice());
 
@@ -133,8 +132,6 @@ public class OrderCarAdapter extends BaseAdapter {
                       isSelected.put(i,true);
                       getIsSelected().put(i,b);
                       holder.ck_select.setChecked(getIsSelected().get(b));
-
-
 
                       Iterator iterator = isSelected.entrySet().iterator();
                       List<Boolean>array = new ArrayList<Boolean>();

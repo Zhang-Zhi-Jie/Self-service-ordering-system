@@ -1,10 +1,12 @@
 package com.example.a13051_000.buffetmealsystem.Order;
 
+import java.util.List;
+
 /**
  * Created by 13051_000 on 2016/8/7.
  */
 public class Test {
-    private String id;
+    private long id;
     private String name;
     private String price;
     private int num;//商品数量
@@ -15,10 +17,10 @@ public class Test {
                 + ", price=" + price + "]";
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -30,20 +32,19 @@ public class Test {
     }
 
     public String getPrice() {
-        return id;
+        return price;
     }
     public void setPrice(String price) {
         this.price = price;
     }
 
-    public Test(String id,String name,String price){
-        super();
+    public Test(long id, String name, String price){
         this.id = id;
         this.name = name;
         this.price = price;
     }
     public Test(){
-        super();
+
     }
     public int getNum() {
         return num;
@@ -59,5 +60,25 @@ public class Test {
 
     public void setSumIntegral(int sumIntegral) {
         this.sumIntegral = sumIntegral;
+    }
+
+
+    public static boolean isAllFalse(List<Boolean> array) {
+
+        return false;
+    }
+
+    public static boolean isAllTrue(List<Boolean> array) {
+
+        return true;
+    }
+
+    public static boolean isHaveOneFasle(List<Boolean> array) {
+
+        return false;
+    }
+
+    public static boolean isHaveOneTrue(List<Boolean> array) {
+        return true;
     }
 }

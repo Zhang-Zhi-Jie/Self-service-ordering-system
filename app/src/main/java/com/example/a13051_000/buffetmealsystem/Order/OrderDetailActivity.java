@@ -79,6 +79,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                 Intent intent = new Intent(OrderDetailActivity.this, MainActivity.class);
                 OrderDetailActivity.this.startActivity(intent);
 
+
 ////                editText_shu = (EditText) findViewById(R.id.editTextshu);
 ////                quantity1 = editText_shu.getText().toString();
 ////                double quantity = Double.valueOf(quantity1);
