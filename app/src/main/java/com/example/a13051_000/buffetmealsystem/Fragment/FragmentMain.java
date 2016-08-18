@@ -77,7 +77,7 @@ public class FragmentMain extends Fragment {
                 AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
                 alertDialog.show();
                 Window window = alertDialog.getWindow();
-                window.setContentView(R.layout.describe_restaurant);
+                window.setContentView(R.layout.alertdialog_describe_restaurant);
                 TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
                 tv_title.setText("餐厅概述");
             }

@@ -80,7 +80,7 @@ public class Drink_Restaurant extends AppCompatActivity implements AdapterView.O
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.show();
         Window window = alertDialog.getWindow();
-        window.setContentView(R.layout.food_preview);
+        window.setContentView(R.layout.alertdialog_food_preview);
         TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
         tv_title.setText(img_text[i]);
         ImageView imageview  = (ImageView) window.findViewById(R.id.show_food);

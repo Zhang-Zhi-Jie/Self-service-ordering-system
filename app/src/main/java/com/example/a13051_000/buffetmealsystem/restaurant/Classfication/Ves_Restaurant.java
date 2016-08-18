@@ -20,7 +20,6 @@ import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.ScanActivity;
 import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
 import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
-import com.example.a13051_000.buffetmealsystem.xml.MyGridView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,7 +84,7 @@ public class Ves_Restaurant extends AppCompatActivity implements AdapterView.OnI
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.show();
         Window window = alertDialog.getWindow();
-        window.setContentView(R.layout.food_preview);
+        window.setContentView(R.layout.alertdialog_food_preview);
         TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
         tv_title.setText(img_text[i]);
         ImageView imageview  = (ImageView) window.findViewById(R.id.show_food);

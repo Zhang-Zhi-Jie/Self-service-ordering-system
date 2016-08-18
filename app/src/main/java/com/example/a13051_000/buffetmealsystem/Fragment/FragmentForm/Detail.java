@@ -2,12 +2,19 @@ package com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.example.a13051_000.buffetmealsystem.CommentActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 
 import java.util.ArrayList;
@@ -19,7 +26,7 @@ import java.util.Map;
 /**
  * Created by shubin on 2016/6/16.
  */
-public class Detail extends AppCompatActivity {
+public class Detail extends AppCompatActivity implements AdapterView.OnItemLongClickListener{
     private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstance){
@@ -52,7 +59,7 @@ public class Detail extends AppCompatActivity {
         SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.order_form_item_list_module, new String[]{"order_num", "order_belong", "order_price"},
                 new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price});
         listView.setAdapter(orderAdapter);
-
+        listView.setOnItemLongClickListener(this);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -62,5 +69,22 @@ public class Detail extends AppCompatActivity {
             return true;
         }
         return onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
+        AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+        alertDialog.show();
+        Window window = alertDialog.getWindow();
+        window.setContentView(R.layout.alertdialog_form_detail);
+        Button button_comment = (Button) window.findViewById(R.id.button_comment);
+        button_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Detail.this,CommentActivity.class);
+                Detail.this.startActivity(intent);
+            }
+        });
+        return true;
     }
 }

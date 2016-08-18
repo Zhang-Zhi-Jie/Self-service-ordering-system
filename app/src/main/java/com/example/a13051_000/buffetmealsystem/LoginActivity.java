@@ -102,7 +102,7 @@ public class LoginActivity extends BaseActivity {
                     case R.id.button1:
                         if(AccessNetworkState()) {
                             progressDialog = new ProgressDialog(LoginActivity.this);
-                            progressDialog.setTitle("正在加载...");
+                            progressDialog.setTitle("登录中...");
                             progressDialog.setMessage("Loading...");
                             progressDialog.setCancelable(true);
                             progressDialog.show();

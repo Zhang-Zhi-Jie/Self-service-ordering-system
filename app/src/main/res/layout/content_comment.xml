@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/comment1"
+        android:textSize="15dp"
+        android:layout_marginTop="80dp"
+        android:id="@+id/textView3"
+        android:textColor="@color/colorblack"
+        />
+    <android.support.v7.widget.AppCompatRatingBar
+        android:id="@+id/ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="15dp"
+        android:numStars="5" />
+    <EditText
+        android:id="@+id/editText_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:enabled="true"
+        android:hint="@string/comment2"
+        android:textSize="14dp"
+        android:minLines="9"
+        android:maxLines="11"
+        android:background="@color/colorwhite"
+        android:gravity="top"
+        android:layout_weight="1"
+        android:layout_below="@+id/ratingbar"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:textSize="13dp"
+        android:textColor="#fffffb"
+        android:background="@color/colorButton"
+        android:width="340dp"
+        android:height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/editText_comment"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

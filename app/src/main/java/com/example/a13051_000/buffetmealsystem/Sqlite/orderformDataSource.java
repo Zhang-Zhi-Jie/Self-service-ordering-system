@@ -42,6 +42,9 @@ public class OrderformDataSource {
     public void deleteOrderform(String num){
         database.delete(MySQLiteHelper.TABLE_NAME,MySQLiteHelper.COLUMN_NUM + "=" +num ,null);
     }
+    public void deleteAllOrderform(){
+        database.delete(MySQLiteHelper.TABLE_NAME,null,null);
+    }
     public List<OrderForm> getAllForm(){
         List<OrderForm> orderForms = new ArrayList<OrderForm>();
         Cursor cursor = database.query(MySQLiteHelper.TABLE_NAME,allColumns,null,null,null,null,null);

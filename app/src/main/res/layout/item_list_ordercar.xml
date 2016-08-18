@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:text="ID:"
         android:textSize="14dp"
+            android:drawableLeft="@drawable/ic_keyboard_arrow_left_black_24dp"
         />
     <TextView
         android:id="@+id/showId"
@@ -44,20 +45,21 @@
             android:layout_height="wrap_content"
             android:text="name:"
             android:textSize="14dp"
+            android:drawableLeft="@drawable/ic_assignment_black_24dp"
             />
         <TextView
             android:id="@+id/showname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14dp"
-            android:textColor="@color/colorButton"
+            android:textColor="@color/colorblack"
             />
     </LinearLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="30dp"
             android:orientation="horizontal"
             android:layout_marginTop="2dp"
             >
@@ -69,6 +71,7 @@
                 android:text="price:"
                 android:layout_marginLeft="37dp"
                 android:textSize="14dp"
+                android:drawableLeft="@drawable/ic_star_black_24dp"
                 />
 
             <TextView
@@ -81,7 +84,7 @@
 
             <TextView
                 android:id="@+id/showprice"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
                 android:textColor="#DC143C"
@@ -90,17 +93,18 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
+                android:layout_marginLeft="110dp"
                 >
 
             <Button
                 android:id="@+id/minus"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@color/colorwhite"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="#65c294"
                 android:focusable="false"
                 android:text="-"
-                android:textColor="@color/colorblack" >
+                android:layout_gravity="center"
+                android:textColor="@color/colorwhite" >
             </Button>
 
             <TextView
@@ -110,18 +114,20 @@
                 android:gravity="center"
                 android:inputType="number"
                 android:text="1"
+                android:textSize="15dp"
                 android:textColor="@color/colorblack" >
             </TextView>
 
             <Button
                 android:id="@+id/plus"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@color/colorwhite"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="#65c294"
                 android:gravity="center"
                 android:focusable="false"
                 android:text="+"
-                android:textColor="@color/colorblack" >
+                android:layout_gravity="center"
+                android:textColor="@color/colorwhite" >
             </Button>
 
             </LinearLayout>

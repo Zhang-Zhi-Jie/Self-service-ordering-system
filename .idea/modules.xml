@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Buffetmealsystem.iml" filepath="$PROJECT_DIR$/Buffetmealsystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BuffetMeal_system.iml" filepath="$PROJECT_DIR$/BuffetMeal_system.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cook/cook.iml" filepath="$PROJECT_DIR$/cook/cook.iml" />
       <module fileurl="file://$PROJECT_DIR$/menu/menu.iml" filepath="$PROJECT_DIR$/menu/menu.iml" />
