@@ -60,42 +60,13 @@ public class OrderCar extends AppCompatActivity {
         toolbar.setTitle("餐车");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
-//
-//        listView = (ListView) findViewById(R.id.listview_car);
-//        OrderformDataSource orderFormDataSource = new OrderformDataSource(OrderCar.this);
-//        orderFormDataSource.open();
-//        List<OrderForm> orderForms = orderFormDataSource.getAllForm();
-//        final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
-//        String[] arg1 = new String[orderForms.size()];
-//        for(int i= 0;i<orderForms.size();i++){
-//            Map<String,Object> listitem = new HashMap<String,Object>();
-//            listitem.put("num",orderForms.get(i).getNum());
-//            listitem.put("name",orderForms.get(i).getDetail());
-//            listitem.put("price",orderForms.get(i).getPrice());
-//            Log.d("id_server",orderForms.get(i
-//            ).getId_server());
-//            listItems.add(listitem);
-//            arg1[i] = listitem.toString();
-//        }
-//
-//        SimpleAdapter orderAdapter = new SimpleAdapter(OrderCar.this,
-//                listItems,
-//                R.layout.item_list_ordercar,
-//                new String[]{"num","name","price"},
-//                new int[]{R.id.showId,R.id.showname,R.id.showprice});
-//
-//        listView.setAdapter(orderAdapter);
-//
-//        textView = (TextView) findViewById(R.id.integral_sum);
-//
 
     }
 
     private void initView() {
         context = this;
         data = new ArrayList<Test>();
-        OrderformDataSource orderformDataSource = new OrderformDataSource(OrderCar.this);
+        final OrderformDataSource orderformDataSource = new OrderformDataSource(OrderCar.this);
         orderformDataSource.open();
         List<OrderForm> orderForms = orderformDataSource.getAllForm();
         for (int i = 0; i < orderForms.size(); i++) {
@@ -115,6 +86,9 @@ public class OrderCar extends AppCompatActivity {
                 integral_sum.setText(0 + "");
                 checkBox_select_all.setChecked(false);
                 checkBox_add.setClickable(false);
+                OrderformDataSource orderformDataSource1 = new OrderformDataSource(OrderCar.this);
+                orderformDataSource1.open();
+                orderformDataSource1.deleteAllOrderform();
             }
         });
         checkBox_select_all = (CheckBox) findViewById(R.id.checkbox_select);

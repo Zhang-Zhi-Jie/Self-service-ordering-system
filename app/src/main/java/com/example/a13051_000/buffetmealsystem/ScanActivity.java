@@ -81,7 +81,7 @@ public class ScanActivity extends AppCompatActivity {
                             visible = true;
                             k = i+1;
                             seat_num = String.valueOf(k);
-                            new AlertDialog.Builder(ScanActivity.this).setIcon(R.drawable.ic_assignment_turned_in_black_24dp).setMessage("选座成功，座位号为 000"+seat_num+" ,开始点餐吗？").
+                            new AlertDialog.Builder(ScanActivity.this).setIcon(R.drawable.ic_assignment_turned_in_black_24dp).setMessage("选座成功，座位号为 000"+seat_num+" , 开始点餐吗？").
                                     setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {

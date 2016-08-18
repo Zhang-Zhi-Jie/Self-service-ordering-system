@@ -104,12 +104,14 @@
         android:layout_below="@id/logineditText3"
         android:layout_marginTop="20dp"
         android:text="注册"
+        style="?android:textAppearanceSmall"
         android:textColor="@color/colorwhite"
         android:textSize="15dp"
         android:background="@color/colorButton"
         android:width="340dp"
+        android:height="40dp"
         android:layout_centerHorizontal="true"
-
+        android:textStyle="bold"
         ></Button>
 
 </LinearLayout>

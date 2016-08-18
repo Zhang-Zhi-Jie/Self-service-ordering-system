@@ -131,7 +131,9 @@ public class OrderCarAdapter extends BaseAdapter {
                   public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                       isSelected.put(i,true);
                       getIsSelected().put(i,b);
-                      holder.ck_select.setChecked(getIsSelected().get(b));
+                      holder.ck_select.setChecked(getIsSelected().get(i));
+                      handler.sendMessage(handler.obtainMessage(10,
+                              getTotalPrice()));
 
                       Iterator iterator = isSelected.entrySet().iterator();
                       List<Boolean>array = new ArrayList<Boolean>();
@@ -192,12 +194,12 @@ public class OrderCarAdapter extends BaseAdapter {
         });
     }
     private float getTotalPrice() {
-        Test bean = null;
+        Test bean;
         float totalPrice = 0;
         for (int i = 0; i < list.size(); i++) {
             bean = list.get(i);
             if (OrderCarAdapter.getIsSelected().get(i)) {
-                totalPrice += bean.getNum()*Integer.valueOf(bean.getPrice());
+                totalPrice += bean.getNum()*Float.valueOf(bean.getPrice());
             }
         }
         return totalPrice;

@@ -1,13 +1,21 @@
 package com.example.a13051_000.buffetmealsystem.xml.imagelayout;
 
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentMain;
 import com.example.a13051_000.buffetmealsystem.R;
+import com.example.a13051_000.buffetmealsystem.ScanActivity;
+import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
+import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
 
 import java.util.ArrayList;
 
@@ -88,6 +96,41 @@ public class SlideImageLayout {
         @Override
         public void onClick(View v) {
             // TODO Auto-generated method stub
+
+
+            AlertDialog alertDialog = new AlertDialog.Builder(activity.getActivity()).create();
+            alertDialog.show();
+            Window window = alertDialog.getWindow();
+            window.setContentView(R.layout.alertdialog_food_preview);
+            TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
+            tv_title.setText(parser.getSlideTitles()[pageIndex]);
+            ImageView imageview  = (ImageView) window.findViewById(R.id.show_food);
+            imageview.setImageResource(parser.getSlideImages()[pageIndex]);
+            TextView textView_order = (TextView) window.findViewById(R.id.text_order);
+            Button button_order = (Button) window.findViewById(R.id.button_order);
+            textView_order.setText("您还未选座,请点击选座并点餐");
+            button_order.setText("选座");
+            if(ScanActivity.visible == true&& SettingsActivity.quit == false){
+                textView_order.setText("继续点餐请点击");
+                button_order.setText("继续点餐");
+                button_order.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent1 = new Intent(activity.getActivity(), MainActivity_r.class);
+                        intent1.putExtra("seat_num",ScanActivity.seat_num);
+                        activity.getActivity().startActivity(intent1);
+                    }
+                });
+            }else {
+
+                button_order.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(activity.getActivity(), ScanActivity.class);
+                        activity.getActivity().startActivity(intent);
+                    }
+                });
+            }
             Toast.makeText(activity.getActivity(), parser.getSlideTitles()[pageIndex], Toast.LENGTH_SHORT).show();
 
         }

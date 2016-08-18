@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">点吧</string>
     <string name="lixing">扫一扫</string>
-    <string name="comment">评价一下吧！亲！</string>
+    <string name="comment1">对这一道菜进行一下打分吧！</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="welcome">点吧,一个新的点餐模式</string>
@@ -24,6 +24,7 @@
     <string name="title5">宫保鸡丁</string>
     <string name="action_sao">扫一扫</string>
     <string name="suggestions">您的反馈就是对我们最大的帮助</string>
+    <string name="comment2">评价一下这道菜吧！</string>
     <string name="aboutus1">队名：Craze_KB</string>
     <string name="aboutus2">组员：张治杰、娄树斌</string>
     <string name="aboutus3">负责人电话：17854117685</string>
