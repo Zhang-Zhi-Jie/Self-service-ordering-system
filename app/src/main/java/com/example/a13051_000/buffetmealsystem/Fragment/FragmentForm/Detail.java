@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  * Created by shubin on 2016/6/16.
  */
-public class Detail extends AppCompatActivity implements AdapterView.OnItemLongClickListener{
+public class Detail extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstance){
@@ -59,7 +59,7 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemLongC
         SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.order_form_item_list_module, new String[]{"order_num", "order_belong", "order_price"},
                 new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price});
         listView.setAdapter(orderAdapter);
-        listView.setOnItemLongClickListener(this);
+        listView.setOnItemClickListener(this);
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
@@ -72,7 +72,7 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemLongC
     }
 
     @Override
-    public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.show();
         Window window = alertDialog.getWindow();
@@ -85,6 +85,5 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemLongC
                 Detail.this.startActivity(intent);
             }
         });
-        return true;
     }
 }

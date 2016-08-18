@@ -162,6 +162,33 @@
             />
     </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/feature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/des"
+            android:orientation="vertical"
+            android:background="@color/colorwhite"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="菜品特色:"
+                android:layout_marginLeft="5dp"
+                android:textSize="15dp"
+                android:drawableLeft="@drawable/ic_adjust_black_24dp"
+                />
+            <TextView
+                android:id="@+id/feature_food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                />
+        </LinearLayout>
+
     <LinearLayout
         android:id="@+id/effect"
         android:layout_width="match_parent"
@@ -174,7 +201,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="主要功效："
+            android:text="营养价值："
             android:layout_marginLeft="5dp"
             android:textSize="15dp"
             android:drawableLeft="@drawable/ic_accessibility_black_24dp"
