@@ -64,7 +64,7 @@ public class OrderCarAdapter extends BaseAdapter {
     private void initDate() {
         for (int i = 0; i < list.size(); i++) {
             getIsSelected().put(i, false);
-            getNumbers().put(i, 1);
+            getNumbers().put(i, 0);
         }
     }
 
