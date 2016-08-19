@@ -6,7 +6,7 @@ import java.util.List;
  * Created by 13051_000 on 2016/8/7.
  */
 public class Test {
-    private long id;
+    private String id;
     private String name;
     private String price;
     private int num;//商品数量
@@ -17,10 +17,10 @@ public class Test {
                 + ", price=" + price + "]";
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -38,7 +38,7 @@ public class Test {
         this.price = price;
     }
 
-    public Test(long id, String name, String price){
+    public Test(String id, String name, String price){
         this.id = id;
         this.name = name;
         this.price = price;
