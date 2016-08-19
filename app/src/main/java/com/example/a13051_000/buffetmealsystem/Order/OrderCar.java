@@ -38,7 +38,7 @@ public class OrderCar extends AppCompatActivity {
     private ListView listView;
     private TextView integral_sum;
     private TextView clear;
-
+    private TextView submit;
     private CheckBox checkBox_select_all;
     private CheckBox checkBox_add;
 
@@ -61,6 +61,14 @@ public class OrderCar extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        submit = (TextView) findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     private void initView() {
@@ -70,7 +78,7 @@ public class OrderCar extends AppCompatActivity {
         orderformDataSource.open();
         List<OrderForm> orderForms = orderformDataSource.getAllForm();
         for (int i = 0; i < orderForms.size(); i++) {
-            data.add(new Test(orderForms.get(i).getNum(), orderForms.get(i).getDetail(), orderForms.get(i).getPrice()));
+            data.add(new Test(orderForms.get(i).getId_server(), orderForms.get(i).getDetail(), orderForms.get(i).getPrice()));
         }
 
         orderCarAdapter = new OrderCarAdapter(context, handler, data);
