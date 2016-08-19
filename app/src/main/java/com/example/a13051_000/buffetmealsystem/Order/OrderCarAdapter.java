@@ -16,6 +16,9 @@ import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.Order.Test;
+import com.example.a13051_000.buffetmealsystem.Sqlite.MySQLiteHelper;
+import com.example.a13051_000.buffetmealsystem.Sqlite.OrderForm;
+import com.example.a13051_000.buffetmealsystem.Sqlite.OrderformDataSource;
 
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by 13051_000 on 2016/8/7.
@@ -34,6 +38,7 @@ public class OrderCarAdapter extends BaseAdapter {
     private static HashMap<Integer, Boolean> isSelected;
     private static HashMap<Integer, Integer> numbers;
     private Handler handler;
+    private OrderformDataSource orderformDataSource;
     int num;// 商品数量
 
 
@@ -57,6 +62,8 @@ public class OrderCarAdapter extends BaseAdapter {
         this.handler = handler;
         isSelected = new HashMap<Integer, Boolean>();
         numbers = new HashMap<Integer, Integer>();
+        orderformDataSource = new OrderformDataSource(context);
+        orderformDataSource.open();
         initDate();
 
     }
@@ -64,7 +71,8 @@ public class OrderCarAdapter extends BaseAdapter {
     private void initDate() {
         for (int i = 0; i < list.size(); i++) {
             getIsSelected().put(i, false);
-            getNumbers().put(i, 0);
+            String id = Objects.toString(list.get(i).getId());
+            getNumbers().put(i,(int)orderformDataSource.getForm(id).getNum());
         }
     }
 
@@ -118,7 +126,7 @@ public class OrderCarAdapter extends BaseAdapter {
 
 
         Test test = list.get(i);
-        holder.id.setText(String.valueOf((int)test.getId()));
+        holder.id.setText(test.getId());
         holder.name.setText((CharSequence)test.getName());
         holder.price.setText((CharSequence)test.getPrice());
 
@@ -132,9 +140,11 @@ public class OrderCarAdapter extends BaseAdapter {
                       isSelected.put(i,true);
                       getIsSelected().put(i,b);
                       holder.ck_select.setChecked(getIsSelected().get(i));
+
                       handler.sendMessage(handler.obtainMessage(10,
                               getTotalPrice()));
-
+                      num = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
+                      list.get(i).setNum(num);
                       Iterator iterator = isSelected.entrySet().iterator();
                       List<Boolean>array = new ArrayList<Boolean>();
                       while(iterator.hasNext()){
@@ -144,15 +154,18 @@ public class OrderCarAdapter extends BaseAdapter {
                           array.add(val);
                       }
                       handler.sendMessage(handler.obtainMessage(11, array));
+                      handler.sendMessage(handler.obtainMessage(10,
+                              getTotalPrice()));
                   }
               });
-        final String numString = holder.number.getText().toString();
+        final Integer numString = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
+        Log.d("numString",String.valueOf(numString));
+        num = numString;
         holder.plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(numString == null || numString.equals("")){
-                    num = 1;
-                    holder.number.setText("1");
+                    num = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
                 }else{
                     if(++num<1){
                         num--;
@@ -161,6 +174,7 @@ public class OrderCarAdapter extends BaseAdapter {
                         holder.number.setText(String.valueOf(num));
                         list.get(i).setNum(num);
                         numbers.put(i,num);
+                        orderformDataSource.addNum(String.valueOf(list.get(i).getId()));
                         handler.sendMessage(handler.obtainMessage(10,
                                 getTotalPrice()));
                         Log.i("test","+:"+num);
@@ -172,8 +186,7 @@ public class OrderCarAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 if(numString == null || numString.equals("")){
-                    num = 1;
-                    holder.number.setText("1");
+                    num = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
                 }else{
                     if(--num<1){
                         num++;
@@ -186,6 +199,7 @@ public class OrderCarAdapter extends BaseAdapter {
                         Log.i("test", "-:" + num);
                         list.get(i).setNum(num);
                         numbers.put(i,num);
+                        orderformDataSource.subNum(String.valueOf(list.get(i).getId()));
                         handler.sendMessage(handler.obtainMessage(10,
                                 getTotalPrice()));
                     }

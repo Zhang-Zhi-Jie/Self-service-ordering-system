@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,20 @@ public class OrderformDataSource {
         cursor.close();
         return null;
     }
+    public void addNum(String id_server){
+        ContentValues values = new ContentValues();
+        OrderForm orderForm = getForm(id_server);
+        values.put(MySQLiteHelper.COLUMN_NUM,orderForm.getNum()+1);
+        database.update(MySQLiteHelper.TABLE_NAME,values,MySQLiteHelper.COLUMN_ID_SERVRE+"=?",new String[]{id_server});
+        return;
+    }
+    public void subNum(String id_server){
+        ContentValues values = new ContentValues();
+        OrderForm orderForm = getForm(id_server);
+        values.put(MySQLiteHelper.COLUMN_NUM,orderForm.getNum()-1);
+        database.update(MySQLiteHelper.TABLE_NAME,values,MySQLiteHelper.COLUMN_ID_SERVRE+"=?",new String[]{id_server});
+        return;
+    }
     public void deleteOrderform(String num){
         database.delete(MySQLiteHelper.TABLE_NAME,MySQLiteHelper.COLUMN_NUM + "=" +num ,null);
     }
@@ -56,6 +71,15 @@ public class OrderformDataSource {
         }
         cursor.close();
         return orderForms;
+    }
+    public OrderForm getForm(String id_server){
+        OrderForm orderForm;
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_NAME,allColumns,MySQLiteHelper.COLUMN_ID_SERVRE+"=?",new String[]{id_server},null,null,null);
+        cursor.moveToFirst();
+        Log.d("id_",id_server);
+        orderForm = cusorToOrderForm(cursor);
+        cursor.close();
+        return orderForm;
     }
     private OrderForm cusorToOrderForm(Cursor cursor){
         OrderForm orderForm = new OrderForm();
