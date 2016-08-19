@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="70dp"
     >
 	<TextView
 		android:id="@+id/order_db_idshow"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="时间:"
+		android:text="订单号:"
 		android:textSize="14dp"
 		android:layout_marginLeft="5dip"
-		android:drawableLeft="@drawable/ic_schedule_black_24dp"
+		android:drawableLeft="@drawable/ic_mode_edit_black_24dp"
 		/>
 
 	<TextView
@@ -18,7 +18,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textSize="14dp"
-		android:textColor="@color/time"
+		android:textColor="@color/shape2"
 		android:layout_marginLeft="5dp"
 		android:layout_toRightOf="@+id/order_db_idshow"
 		/>
@@ -39,7 +39,7 @@
 	  <TextView
 		  android:id="@+id/order_db_priceshow"
 		  android:layout_width="wrap_content"
-		  android:textSize="17dp"
+		  android:textSize="16dp"
 		  android:text="总价："
 		  android:drawableLeft="@drawable/ic_star_black_24dp"
 		  android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
 		  android:layout_width="wrap_content"
 		  android:layout_height="wrap_content"
 		  android:layout_marginLeft="5dp"
-		  android:textSize="16dp"
+		  android:textSize="17dp"
 		  android:text="¥"
 		  android:textColor="@color/colorAccent"
 		  android:layout_toRightOf="@+id/order_db_priceshow"
@@ -64,7 +64,7 @@
 		   android:id="@+id/order_db_price"
 		   android:layout_width="50dip"
 		   android:layout_height="wrap_content"
-		   android:textSize="16dp"
+		   android:textSize="17dp"
 		   android:textColor="@color/colorAccent"
 		   android:layout_toRightOf="@+id/order_db_RMB"
 		   android:layout_alignTop="@+id/order_db_priceshow" />
@@ -84,4 +84,47 @@
 		   android:layout_alignTop="@+id/order_db_priceshow" />
 
 
+	<TextView
+		android:id="@+id/order_db_year"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/order_db_finish"
+		android:layout_alignStart="@+id/order_db_finish"
+		android:text="1"
+		android:layout_marginTop="5dp"
+		android:layout_marginLeft="5dp"
+		/>
+	<TextView
+		android:id="@+id/g1"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="-"
+		android:layout_alignTop="@+id/order_db_year"
+		android:layout_toEndOf="@id/order_db_year"
+		/>
+	<TextView
+		android:id="@+id/order_db_month"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignTop="@+id/order_db_year"
+		android:text="2"
+		android:layout_toEndOf="@id/g1" />
+
+	<TextView
+		android:id="@+id/g2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="-"
+		android:layout_alignTop="@+id/order_db_month"
+		android:layout_toEndOf="@id/order_db_month"
+		/>
+
+	<TextView
+		android:id="@+id/order_db_day"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="3"
+		android:layout_alignTop="@+id/order_db_year"
+		android:layout_below="@+id/order_db_finish"
+		android:layout_toEndOf="@+id/g2" />
 </RelativeLayout>
