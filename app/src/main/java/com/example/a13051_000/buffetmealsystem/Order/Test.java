@@ -44,7 +44,6 @@ public class Test {
         this.price = price;
     }
     public Test(){
-
     }
     public int getNum() {
         return num;

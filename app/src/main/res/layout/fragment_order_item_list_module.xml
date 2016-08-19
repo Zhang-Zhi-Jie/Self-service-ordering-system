@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="110dp"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
 	xmlns:fresco="http://schemas.android.com/apk/res-auto"
     >
 	<com.facebook.drawee.view.SimpleDraweeView
@@ -17,8 +17,8 @@
 		android:layout_height="wrap_content"
 		android:text="ID:"
 		android:drawableLeft="@drawable/ic_keyboard_arrow_left_black_24dp"
-		android:textSize="17dip"
-		android:layout_marginLeft="10dp"
+		android:textSize="15dip"
+		android:layout_marginLeft="15dp"
 		android:layout_toRightOf="@+id/pic_show"
 		/>
 
@@ -51,7 +51,7 @@
 		   android:textColor="@color/colorblack"
 		   android:layout_toRightOf="@+id/order_db_nameshow"
 		   android:layout_below="@+id/order_db_idshow"
-		   android:layout_marginTop="5dp"
+		   android:layout_marginTop="4dp"
 	    	/>
 
 	<TextView
@@ -63,7 +63,7 @@
 		android:drawableLeft="@drawable/ic_star_black_24dp"
 		android:layout_toRightOf="@+id/order_db_name"
 		android:layout_below="@+id/order_db_nameshow"
-		android:layout_marginTop="5dp"
+		android:layout_marginTop="4dp"
 		android:layout_alignStart="@+id/order_db_nameshow"
 		/>
 
@@ -76,7 +76,7 @@
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@+id/order_db_priceshow"
 		android:layout_below="@+id/order_db_nameshow"
-		android:layout_marginTop="5dp"
+		android:layout_marginTop="4dp"
 		/>
 
 	   <TextView
@@ -87,7 +87,7 @@
 		    android:textColor="@color/colorAccent"
 		    android:layout_below="@+id/order_db_nameshow"
 		    android:layout_toRightOf="@+id/order_db_RMB"
-		    android:layout_marginTop="5dp"
+		    android:layout_marginTop="4dp"
 	    	/>
 
 	<TextView
@@ -99,7 +99,7 @@
 		android:drawableLeft="@drawable/ic_bookmark_black_24dp"
 		android:layout_toRightOf="@+id/order_db_price"
 		android:layout_below="@+id/order_db_priceshow"
-		android:layout_marginTop="5dp"
+		android:layout_marginTop="4dp"
 		android:layout_alignStart="@+id/order_db_priceshow"
 		/>
 
@@ -113,7 +113,7 @@
 		android:layout_marginLeft="5dip"
 		android:layout_below="@+id/order_db_priceshow"
 		android:layout_toRightOf="@+id/order_db_creatshow"
-		android:layout_marginTop="5dp"
+		android:layout_marginTop="4dp"
 		/>
 
 	   <TextView
@@ -124,7 +124,7 @@
 		    android:textColor="#78a355"
 		    android:layout_below="@+id/order_db_priceshow"
 		    android:layout_toRightOf="@+id/order_db_create_x"
-		    android:layout_marginTop="5dp"
+		    android:layout_marginTop="4dp"
 	    	/>
 
 

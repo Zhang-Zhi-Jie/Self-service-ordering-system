@@ -85,7 +85,7 @@ public class MainActivity_r extends AppCompatActivity {
     }
 
     private List<String> getTitles(){
-        return Lists.newArrayList("   肉类   ", "   菜类   ", "   汤类   ", "   主食   ", "   甜点   ","  酒水  ");
+        return Lists.newArrayList("   肉类   ", "   菜类   ", "   汤类   ", "   主食   ", "   甜品   ","  酒水  ");
     }
 
     private List<Fragment> getFragments(){

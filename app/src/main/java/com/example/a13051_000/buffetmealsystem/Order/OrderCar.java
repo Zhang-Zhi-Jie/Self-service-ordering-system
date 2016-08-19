@@ -71,6 +71,10 @@ public class OrderCar extends AppCompatActivity {
 
     }
 
+    public void onBackPressed(){
+        Intent intent = new Intent(OrderCar.this, MainActivity.class);
+        OrderCar.this.startActivity(intent);
+    }
     private void initView() {
         context = this;
         data = new ArrayList<Test>();
@@ -93,7 +97,7 @@ public class OrderCar extends AppCompatActivity {
                 orderCarAdapter.notifyDataSetChanged();
                 integral_sum.setText(0 + "");
                 checkBox_select_all.setChecked(false);
-                checkBox_add.setClickable(false);
+                checkBox_add.setChecked(false);
                 OrderformDataSource orderformDataSource1 = new OrderformDataSource(OrderCar.this);
                 orderformDataSource1.open();
                 orderformDataSource1.deleteAllOrderform();
@@ -144,9 +148,7 @@ public class OrderCar extends AppCompatActivity {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             Intent intent = new Intent(OrderCar.this, MainActivity.class);
-            this.startActivity(intent);
-            this.finish();
-            overridePendingTransition(R.anim.fab_fade_in, R.anim.fab_fade_out);
+            OrderCar.this.startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

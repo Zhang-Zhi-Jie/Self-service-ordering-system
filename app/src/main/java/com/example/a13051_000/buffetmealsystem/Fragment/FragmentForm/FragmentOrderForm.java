@@ -79,18 +79,36 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                 //菜品信息存储在result_soon_details这个list里面
                 String[] arg1 = new String[result1.size()];
                 for (int i = 0; i < result1.size(); i++) {
+                    long time;
+                    int year,month,day;
+                    time = Long.valueOf(result1.get(i).getOrder_num());
+                    year = (int)(time/(1000000000000L));
+                    if(time/(100000000000L)%10==0){
+                        month = (int)(time/(10000000000L)%10);
+                    }else {
+                        month =(int) (10 + time / (10000000000L) % 10);
+                    }
+                    if(time/(1000000000L)%10==0){
+                        day = (int)(time/(100000000)%10);
+                    }else{
+                        day = (int)((time/(1000000000)%10)*10+(time/(100000000)%10));
+                    }
+                    Toast.makeText(getContext(),year+"-"+month+"-"+day+"",Toast.LENGTH_SHORT).show();
                     Map<String, Object> listitem = new HashMap<String, Object>();
                     listitem.put("order_num", result1.get(i).getOrder_num());
                     listitem.put("order_belong", result1.get(i).getOrder_belong());
                     listitem.put("order_price", result1.get(i).getOrder_price());
+                    listitem.put("order_year",year);
+                    listitem.put("order_month",month);
+                    listitem.put("order_day",day);
                     //                          listitem.put("unit", result_spoon_details.get(i).getUnit());
                     listItems.add(listitem);
                     arg1[i] = listitem.toString();
                     Log.d("list_form_each", listitem.toString());
                 }
                 if (getContext() != null) {
-                    SimpleAdapter orderAdapter = new SimpleAdapter(getContext(), listItems, R.layout.fragment_form_item_list_module, new String[]{"order_num", "order_belong", "order_price"},
-                            new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price});
+                    SimpleAdapter orderAdapter = new SimpleAdapter(getContext(), listItems, R.layout.fragment_form_item_list_module, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day"},
+                            new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price,R.id.order_db_year,R.id.order_db_month,R.id.order_db_day});
                     menulist.setAdapter(orderAdapter);
 
 
