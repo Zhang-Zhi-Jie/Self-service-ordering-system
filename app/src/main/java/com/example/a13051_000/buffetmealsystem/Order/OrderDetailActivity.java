@@ -76,8 +76,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                 orderFormDataSource.open();
                 orderFormDataSource.create(orderForm);
                 Toast.makeText(getApplicationContext(),"已加入到购物车", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(OrderDetailActivity.this, MainActivity_r.class);
-                OrderDetailActivity.this.startActivity(intent);
+                finish();
 
 
 ////                editText_shu = (EditText) findViewById(R.id.editTextshu);

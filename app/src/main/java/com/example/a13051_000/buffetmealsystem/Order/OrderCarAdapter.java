@@ -97,7 +97,7 @@ public class OrderCarAdapter extends BaseAdapter {
         ViewHolder holder = null;
         if(view == null){
             holder = new ViewHolder();
-            view = inflater.inflate(R.layout.item_list_ordercar,null);
+            view = inflater.inflate(R.layout.ordercar_item_list,null);
             holder.ck_select = (CheckBox) view.findViewById(R.id.ck_select);
             holder.textview_clear = (TextView) view.findViewById(R.id.clear);
             holder.integer_sum = (TextView) view.findViewById(R.id.integer_sum);

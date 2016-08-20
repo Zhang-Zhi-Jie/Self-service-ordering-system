@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class NewsXmlParser {
+public class FoodXmlParser {
 
-	private List<HashMap<String, News>> newsList = null;
+	private List<HashMap<String, Food>> newsList = null;
 
 	private int[] slideImages = {
 			R.drawable.r1,

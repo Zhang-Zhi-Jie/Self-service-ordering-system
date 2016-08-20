@@ -79,6 +79,7 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                 //菜品信息存储在result_soon_details这个list里面
                 String[] arg1 = new String[result1.size()];
                 for (int i = 0; i < result1.size(); i++) {
+
                     long time;
                     int year,month,day;
                     time = Long.valueOf(result1.get(i).getOrder_num());
@@ -92,15 +93,15 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                         day = (int)(time/(100000000)%10);
                     }else{
                         day = (int)((time/(1000000000)%10)*10+(time/(100000000)%10));
-                    }
-                    Toast.makeText(getContext(),year+"-"+month+"-"+day+"",Toast.LENGTH_SHORT).show();
+                    }//将订单号分割成日期
+
                     Map<String, Object> listitem = new HashMap<String, Object>();
                     listitem.put("order_num", result1.get(i).getOrder_num());
                     listitem.put("order_belong", result1.get(i).getOrder_belong());
                     listitem.put("order_price", result1.get(i).getOrder_price());
                     listitem.put("order_year",year);
                     listitem.put("order_month",month);
-                    listitem.put("order_day",day);
+                    listitem.put("order_day",day);//将数据填入
                     //                          listitem.put("unit", result_spoon_details.get(i).getUnit());
                     listItems.add(listitem);
                     arg1[i] = listitem.toString();

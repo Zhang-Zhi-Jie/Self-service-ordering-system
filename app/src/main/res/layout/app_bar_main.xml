@@ -35,7 +35,7 @@
         android:id="@+id/tablyout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorButton"
+        android:background="@color/colorPrimary"
         android:layout_marginTop="56dp"
         app:tabGravity="fill"
         app:tabMode="fixed"

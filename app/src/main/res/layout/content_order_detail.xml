@@ -43,7 +43,7 @@
         android:text="ID:"
         android:drawableLeft="@drawable/ic_keyboard_arrow_left_black_24dp"
         android:textSize="15dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="2dp"
 
         />
     <TextView
@@ -132,17 +132,31 @@
         android:layout_below="@+id/order_db_name" />
     </LinearLayout>
 
-
-
     </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/depict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/des"
+            android:orientation="vertical"
+            android:background="@color/colorwhite"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="商品简介"
+                android:layout_marginLeft="5dp"
+                android:textSize="18dp"
+                />
+        </LinearLayout>
 
     <LinearLayout
         android:id="@+id/food"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/des"
+        android:layout_below="@+id/decipt"
         android:orientation="vertical"
         android:background="@color/colorwhite"
         >
@@ -220,24 +234,27 @@
     </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="vertical"
+            android:layout_below="@+id/effect"
             >
             <TextView
+                android:id="@+id/text_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="评论"
-                android:textSize="15dp"
+                android:text="商品评论"
+                android:textSize="18dp"
                 android:layout_marginLeft="5dp"
                 android:drawableLeft="@drawable/ic_favorite_black_24dp"
                 />
-            <!--<ListView-->
-                <!--android:id="@+id/comment"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
-            <!--</ListView>-->
+            <ListView
+                android:id="@+id/list_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </ListView>
 
         </LinearLayout>
     </LinearLayout>

@@ -28,14 +28,14 @@ public class SlideImageLayout {
     private FragmentMain activity = null;
     private ImageView[] imageViews = null;
     private ImageView imageView = null;
-    private NewsXmlParser parser = null;
+    private FoodXmlParser parser = null;
     private int pageIndex = 0;
 
     public SlideImageLayout(FragmentMain activity) {
         // TODO Auto-generated constructor stub
         this.activity=activity;
         imageList = new ArrayList<ImageView>();
-        parser = new NewsXmlParser();
+        parser = new FoodXmlParser();
     }
 
 

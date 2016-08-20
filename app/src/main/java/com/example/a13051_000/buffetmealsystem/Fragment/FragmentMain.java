@@ -25,7 +25,7 @@ import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Ves_Rest
 import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Dessert_Restaurant;
 import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Meat_Restaurant;
 import com.example.a13051_000.buffetmealsystem.restaurant.Classfication.Soup_Restaurant;
-import com.example.a13051_000.buffetmealsystem.xml.imagelayout.NewsXmlParser;
+import com.example.a13051_000.buffetmealsystem.xml.imagelayout.FoodXmlParser;
 import com.example.a13051_000.buffetmealsystem.xml.imagelayout.SlideImageLayout;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class FragmentMain extends Fragment {
     private TextView tvSlideTitle = null;
 
     private SlideImageLayout slideLayout = null;
-    private NewsXmlParser parser = null;
+    private FoodXmlParser parser = null;
 
     private Button button1;
     private Button button2;
@@ -190,7 +190,7 @@ public class FragmentMain extends Fragment {
         imagePageViews = new ArrayList<View>();
         viewPager = (ViewPager)view.findViewById(R.id.image_slide_page);
 
-        parser = new NewsXmlParser();
+        parser = new FoodXmlParser();
         int length = parser.getSlideImages().length;
         imageCircleView = (ViewGroup)view.findViewById(R.id.layout_circle_images);
         imageCircleViews = new ImageView[length];

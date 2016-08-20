@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -14,7 +13,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.example.a13051_000.buffetmealsystem.CommentActivity;
+import com.example.a13051_000.buffetmealsystem.Comment.CommentActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 
 import java.util.ArrayList;
