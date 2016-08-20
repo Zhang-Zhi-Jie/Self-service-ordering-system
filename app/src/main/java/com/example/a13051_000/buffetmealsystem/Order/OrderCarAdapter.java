@@ -1,7 +1,7 @@
 package com.example.a13051_000.buffetmealsystem.Order;
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.LightingColorFilter;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,21 +13,13 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.a13051_000.buffetmealsystem.R;
-import com.example.a13051_000.buffetmealsystem.Order.Test;
-import com.example.a13051_000.buffetmealsystem.Sqlite.MySQLiteHelper;
-import com.example.a13051_000.buffetmealsystem.Sqlite.OrderForm;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderformDataSource;
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-
 /**
  * Created by 13051_000 on 2016/8/7.
  */
@@ -134,17 +126,22 @@ public class OrderCarAdapter extends BaseAdapter {
     }
 
     private void init(final ViewHolder holder, final int i) {
+              holder.ck_select.setOnClickListener(new View.OnClickListener(){
+                  @Override
+                  public void onClick(View v) {
+                      Log.d("information","onChanged");
+                      num = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
+                      list.get(i).setNum(num);
+                      handler.sendMessage(handler.obtainMessage(10,
+                              getTotalPrice()));
+                  }
+              });
               holder.ck_select.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                   @Override
                   public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                       isSelected.put(i,true);
                       getIsSelected().put(i,b);
                       holder.ck_select.setChecked(getIsSelected().get(i));
-
-                      handler.sendMessage(handler.obtainMessage(10,
-                              getTotalPrice()));
-                      num = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
-                      list.get(i).setNum(num);
                       Iterator iterator = isSelected.entrySet().iterator();
                       List<Boolean>array = new ArrayList<Boolean>();
                       while(iterator.hasNext()){
@@ -154,8 +151,6 @@ public class OrderCarAdapter extends BaseAdapter {
                           array.add(val);
                       }
                       handler.sendMessage(handler.obtainMessage(11, array));
-                      handler.sendMessage(handler.obtainMessage(10,
-                              getTotalPrice()));
                   }
               });
         final Integer numString = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
@@ -164,9 +159,8 @@ public class OrderCarAdapter extends BaseAdapter {
         holder.plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(numString == null || numString.equals("")){
-                    num = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
-                }else{
+                num = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
+                    Log.d("num_",Objects.toString(numString));
                     if(++num<1){
                         num--;
                         Toast.makeText(context,"请输入一个大于0的数字",Toast.LENGTH_SHORT).show();
@@ -179,15 +173,12 @@ public class OrderCarAdapter extends BaseAdapter {
                                 getTotalPrice()));
                         Log.i("test","+:"+num);
                     }
-                }
             }
         });
         holder.minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(numString == null || numString.equals("")){
-                    num = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
-                }else{
+                num = (int)orderformDataSource.getForm(list.get(i).getId()).getNum();
                     if(--num<1){
                         num++;
                         Log.i("test", "-:" + num);
@@ -197,13 +188,12 @@ public class OrderCarAdapter extends BaseAdapter {
                     }else {
                         holder.number.setText(String.valueOf(num));
                         Log.i("test", "-:" + num);
-                        list.get(i).setNum(num);
+                        list.get(i).setNum(numString);
                         numbers.put(i,num);
                         orderformDataSource.subNum(String.valueOf(list.get(i).getId()));
                         handler.sendMessage(handler.obtainMessage(10,
                                 getTotalPrice()));
                     }
-                }
             }
         });
     }
