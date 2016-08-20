@@ -1,8 +1,11 @@
 package com.example.a13051_000.buffetmealsystem.Order;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,21 +16,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm.ResultFromServer;
+import com.example.a13051_000.buffetmealsystem.HttpUtils;
 import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderForm;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderformDataSource;
+import com.google.gson.Gson;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
-import com.example.a13051_000.buffetmealsystem.Order.Test;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by 13051_000 on 2016/7/24.
@@ -43,9 +50,9 @@ public class OrderCar extends AppCompatActivity {
     private CheckBox checkBox_add;
 
     private SQLiteDatabase db;
-
+    public static final String url_submit = "http://www.loushubin.cn/buyform.php?type=submit";
     private OrderCarAdapter orderCarAdapter;
-
+    private OrderformDataSource orderformDataSource;
     private List<Test> data;
     private int sum = 0;
     private int[] sumInteger;
@@ -55,7 +62,8 @@ public class OrderCar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_car);
         initView();
-
+        orderformDataSource = new OrderformDataSource(OrderCar.this);
+        orderformDataSource.open();
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         toolbar.setTitle("餐车");
         setSupportActionBar(toolbar);
@@ -65,7 +73,26 @@ public class OrderCar extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                List<OrderForm> orderForms = orderformDataSource.getAllForm();
+                StringBuilder stringBuilder = new StringBuilder();
+               HashMap<Integer,Boolean> isSelected =  OrderCarAdapter.getIsSelected();
+                int i = 0;
+                for (OrderForm orderform: orderForms
+                     ) {
+                    if (isSelected.get(i)) {
+                        if (stringBuilder.length() == 0) {
+                            stringBuilder.append(orderform.getId_server());
+                            stringBuilder.append("/" + orderform.getNum());
+                        } else {
+                            stringBuilder.append("@" + orderform.getId_server());
+                            stringBuilder.append("/" + orderform.getNum());
+                        }
+                    }
+                    i++;
+                }
+                Log.d("submit_data",stringBuilder.toString());
+                submit_data submitData = new submit_data(OrderCar.this);
+                submitData.execute(stringBuilder.toString());
             }
         });
 
@@ -185,4 +212,50 @@ public class OrderCar extends AppCompatActivity {
             }
         }
     };
+}
+class submit_data extends AsyncTask<String,Void,ResultFromServer>{
+    private Activity activity;
+    private Context context;
+    private ProgressDialog progressDialog;
+    public submit_data(Context context){
+        this.context = context;
+        this.activity = (Activity)context;
+        progressDialog = new ProgressDialog(context);
+    }
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressDialog.setCancelable(true);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+    }
+
+    @Override
+    protected void onPostExecute(ResultFromServer resultFromServer) {
+        super.onPostExecute(resultFromServer);
+        if (resultFromServer != null){
+            if (resultFromServer.getStatus().equals("0")){
+                Toast.makeText(context,"结算成功..",Toast.LENGTH_SHORT).show();
+            }
+            else Toast.makeText(context,"结算失败..",Toast.LENGTH_SHORT).show();
+        }
+        progressDialog.dismiss();
+    }
+
+    @Override
+    protected ResultFromServer doInBackground(String... params) {
+        String result = "";
+        List<NameValuePair> valuePairs = new ArrayList<>();
+        valuePairs.add(new BasicNameValuePair("order_detail",params[0]));
+        try {
+            result = HttpUtils.submitPostData(OrderCar.url_submit,valuePairs,"utf-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.d("result",params[0]);
+        Log.d("result", Objects.toString(result.length()));
+        Gson gson = new Gson();
+        ResultFromServer resultFromServer = gson.fromJson(result, ResultFromServer.class);
+        return resultFromServer;
+    }
 }
