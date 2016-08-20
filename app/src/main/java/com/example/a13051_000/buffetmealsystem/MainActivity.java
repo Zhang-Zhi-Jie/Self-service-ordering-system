@@ -29,6 +29,7 @@ import com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm.FragmentOrd
 import com.example.a13051_000.buffetmealsystem.Order.OrderCar;
 import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
 import com.example.a13051_000.buffetmealsystem.User.UserActivity;
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity
     private int year;
     private int month;
     private int day;
+
+    private static String sResult = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,9 +107,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
         TextView showtime = (TextView) header.findViewById(R.id.showtime);
-        final TextView nickname = (TextView)header.findViewById(R.id.shownickname);
+        TextView nickname = (TextView)header.findViewById(R.id.shownickname);
         imageView = (ImageView) header.findViewById(R.id.imageView);
-        final Intent intent = getIntent();
+        Intent intent = getIntent();
         final String username = intent.getStringExtra("nickname");
         nickname.setText(""+username+"");
         nickname.setOnClickListener(new View.OnClickListener() {

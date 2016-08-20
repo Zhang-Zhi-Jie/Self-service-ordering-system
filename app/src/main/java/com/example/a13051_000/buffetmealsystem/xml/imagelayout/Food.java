@@ -1,20 +1,7 @@
 package com.example.a13051_000.buffetmealsystem.xml.imagelayout;
 
-/**
- * ����ʵ����
- * @Description: ����ʵ����
 
- * @File: News.java
-
- * @Package com.image.indicator.entity
-
- * @Author Hanyonglu
-
- * @Date 2012-6-18 ����02:25:02
-
- * @Version V1.0
- */
-public class News {
+public class Food {
 	// ID
 	private int id;
 	// ��Ҫ����

@@ -1,68 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="130dp">
 
-    <TextView
-        android:id="@+id/user_comment_nameshow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用户名:"
-        android:textSize="14dp"
-        android:layout_marginLeft="5dp"
-        android:drawableLeft="@drawable/ic_account_circle_black_24dp"
-        />
 
     <TextView
         android:id="@+id/user_comment_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
+        android:textSize="19dp"
         android:textColor="@color/colorblack"
         android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/user_comment_nameshow"
+        android:drawableLeft="@drawable/ic_account_circle_black_24dp"
         />
     <TextView
-        android:id="@+id/user_comment_cshow"
+        android:id="@+id/user_comment_contentshow"
         android:layout_width="80dp"
         android:textSize="14dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="评论："
-        android:layout_marginLeft="5dip"
+        android:layout_marginLeft="5dp"
         android:drawableLeft="@drawable/ic_speaker_notes_black_24dp"
         android:layout_below="@+id/user_comment_name"
         />
 
     <TextView
-        android:id="@+id/user_comment_c"
+        android:id="@+id/user_comment_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/user_comment_cshow"
-        android:layout_toEndOf="@+id/user_comment_cshow"
+        android:layout_alignTop="@+id/user_comment_contentshow"
+        android:layout_toEndOf="@+id/user_comment_contentshow"
         android:ellipsize="end"
-        android:maxLines="4"
+        android:maxLines="6"
         />
 
     <TextView
-        android:id="@+id/time_show"
+        android:id="@+id/grade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="时间："
-        android:textSize="14dp"
+        android:text="评分："
+        android:textSize="15dp"
         android:layout_marginLeft="5dp"
         android:layout_alignParentBottom="true"
-        android:drawableLeft="@drawable/ic_schedule_black_24dp"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorwhite"
+        android:drawableLeft="@drawable/ic_assignment_black_24dp1"
          />
 
     <TextView
-        android:id="@+id/comment_time"
+        android:id="@+id/user_commnet_grade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:textColor="@color/time"
-        android:layout_toEndOf="@+id/time_show"
-        android:layout_alignTop="@+id/time_show"
+        android:textColor="@color/colorAccent"
+        android:textSize="18dp"
+        android:layout_alignTop="@+id/grade"
+        android:layout_toEndOf="@+id/grade" />
+
+    <TextView
+        android:id="@+id/user_comment_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:textSize="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:drawableLeft="@drawable/ic_schedule_black_24dp"
         />
+
 
 </RelativeLayout>

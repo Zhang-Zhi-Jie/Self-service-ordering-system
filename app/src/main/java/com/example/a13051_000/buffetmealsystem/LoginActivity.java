@@ -68,7 +68,7 @@ public class LoginActivity extends BaseActivity {
                         Log.d("data1",sResult);
                         String nick_name = "";
                         if (loginResult.getNick_name() != null) {
-                            Toast.makeText(getApplicationContext(), "您的用户名为:" + loginResult.getNick_name(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "欢迎您，" + loginResult.getNick_name(), Toast.LENGTH_SHORT).show();
                             nickname = loginResult.getNick_name();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("nickname",nickname);

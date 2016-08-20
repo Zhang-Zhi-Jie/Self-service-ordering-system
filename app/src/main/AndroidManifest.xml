@@ -125,7 +125,7 @@
         </activity>
 
         <activity
-            android:name=".CommentActivity"
+            android:name=".Comment.CommentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

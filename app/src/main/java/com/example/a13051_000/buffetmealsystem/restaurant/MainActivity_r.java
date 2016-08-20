@@ -16,19 +16,26 @@
 
 package com.example.a13051_000.buffetmealsystem.restaurant;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.example.a13051_000.buffetmealsystem.MainActivity;
+import com.example.a13051_000.buffetmealsystem.Order.OrderCar;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.restaurant.FragmentFood.FragmentDessert;
 import com.example.a13051_000.buffetmealsystem.restaurant.FragmentFood.FragmentDrinks;
@@ -51,6 +58,8 @@ public class MainActivity_r extends AppCompatActivity {
     public static final String TAG = "MainActivity_r";
 
     private Toolbar toolbar;
+    private TextView textView_finish;
+
     private DragTopLayout dragLayout;
     private ModelPagerAdapter adapter;
     private ViewPager viewPager;
@@ -71,6 +80,25 @@ public class MainActivity_r extends AppCompatActivity {
         toolbar.setTitle("餐厅菜单");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        textView_finish = (TextView) findViewById(R.id.finish);
+        textView_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(MainActivity_r.this).setMessage("您确定已经点完餐了吗？").setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getApplicationContext(),"将转入到购物车",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity_r.this, OrderCar.class);
+                        MainActivity_r.this.startActivity(intent);
+                    }
+                }).show();
+            }
+        });
 
         PagerModelManager factory = new PagerModelManager();
         factory.addCommonFragment(getFragments(), getTitles());
@@ -81,7 +109,11 @@ public class MainActivity_r extends AppCompatActivity {
         Intent intent = getIntent();
         seat_num = intent.getStringExtra("seat_num");
         textView_seat_num = (TextView) findViewById(R.id.show_seat_num);
-        textView_seat_num.setText("000"+seat_num);
+        if(Integer.valueOf(seat_num) < 10) {
+            textView_seat_num.setText("0000" + seat_num + "号");
+        }else{
+            textView_seat_num.setText("000" + seat_num + "号");
+        }
     }
 
     private List<String> getTitles(){
