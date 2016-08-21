@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
-import com.example.a13051_000.buffetmealsystem.ScanActivity;
+import com.example.a13051_000.buffetmealsystem.Scan.ScanActivity;
 import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
 import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
 

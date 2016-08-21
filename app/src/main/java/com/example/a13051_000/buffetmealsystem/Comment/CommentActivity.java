@@ -1,5 +1,6 @@
 package com.example.a13051_000.buffetmealsystem.Comment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.example.a13051_000.buffetmealsystem.R;
 
@@ -25,9 +27,11 @@ public class CommentActivity extends AppCompatActivity {
     private RatingBar ratingBar;
     private EditText editText;
 
+    private TextView textView_name;
     private ListView listView_comment;
     private List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
     String comment;
+    String name;
     int star;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +41,11 @@ public class CommentActivity extends AppCompatActivity {
         toolbar.setTitle("评价");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        textView_name = (TextView) findViewById(R.id.textView_name);
+        Intent intent = getIntent();
+        name = intent.getStringExtra("dish_name");
+        textView_name.setText("对 ["+name+"] 这一道菜进行一下点评吧！");
 
         ratingBar = (RatingBar) findViewById(R.id.ratingbar);
         editText = (EditText) findViewById(R.id.editText_comment);

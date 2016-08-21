@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.a13051_000.buffetmealsystem.ScanActivity">
+    tools:context=".Scan.ScanActivity">
 
 
     <android.support.v7.widget.Toolbar

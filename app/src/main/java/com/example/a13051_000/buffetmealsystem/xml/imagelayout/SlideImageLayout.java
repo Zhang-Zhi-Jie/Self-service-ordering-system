@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentMain;
 import com.example.a13051_000.buffetmealsystem.R;
-import com.example.a13051_000.buffetmealsystem.ScanActivity;
+import com.example.a13051_000.buffetmealsystem.Scan.ScanActivity;
 import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
 import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
 
@@ -131,7 +131,6 @@ public class SlideImageLayout {
                     }
                 });
             }
-            Toast.makeText(activity.getActivity(), parser.getSlideTitles()[pageIndex], Toast.LENGTH_SHORT).show();
 
         }
     }

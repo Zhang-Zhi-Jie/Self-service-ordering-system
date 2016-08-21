@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -21,7 +20,6 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.example.a13051_000.buffetmealsystem.Fragment.FragmentOrder;
 import com.example.a13051_000.buffetmealsystem.HttpUtils;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.google.gson.Gson;
@@ -108,7 +106,7 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                     Log.d("list_form_each", listitem.toString());
                 }
                 if (getContext() != null) {
-                    SimpleAdapter orderAdapter = new SimpleAdapter(getContext(), listItems, R.layout.fragment_form_item_list_module, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day"},
+                    SimpleAdapter orderAdapter = new SimpleAdapter(getContext(), listItems, R.layout.fragment_form_item_list, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day"},
                             new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price,R.id.order_db_year,R.id.order_db_month,R.id.order_db_day});
                     menulist.setAdapter(orderAdapter);
 

@@ -95,6 +95,7 @@ public class MainActivity_r extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"将转入到购物车",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity_r.this, OrderCar.class);
                         MainActivity_r.this.startActivity(intent);
+                        MainActivity_r.this.finish();
                     }
                 }).show();
             }
