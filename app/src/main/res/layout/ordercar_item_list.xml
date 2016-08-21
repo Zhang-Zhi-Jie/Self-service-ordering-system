@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
+        android:textColor="@color/colorloginbackground"
         android:textSize="14dp"
         />
     </LinearLayout>
@@ -44,14 +45,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="name:"
-            android:textSize="14dp"
+            android:textSize="15dp"
             android:drawableLeft="@drawable/ic_assignment_black_24dp"
             />
         <TextView
             android:id="@+id/showname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14dp"
+            android:textSize="16dp"
             android:textColor="@color/colorblack"
             />
     </LinearLayout>
@@ -77,7 +78,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
+                android:textSize="17dp"
                 android:textColor="#DC143C"
                 android:text="￥"
                 />
@@ -86,7 +87,7 @@
                 android:id="@+id/showprice"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:textSize="16dp"
+                android:textSize="17dp"
                 android:textColor="#DC143C"
                 />
 
@@ -98,11 +99,9 @@
 
             <Button
                 android:id="@+id/minus"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="#65c294"
-                android:focusable="false"
-                android:text="-"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/minus"
                 android:layout_gravity="center"
                 android:textColor="@color/colorwhite" >
             </Button>
@@ -114,21 +113,21 @@
                 android:gravity="center"
                 android:inputType="number"
                 android:text="0"
-                android:textSize="15dp"
+                android:textSize="16dp"
                 android:textColor="@color/colorblack" >
             </TextView>
 
             <Button
                 android:id="@+id/plus"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="#65c294"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/plus"
                 android:gravity="center"
                 android:focusable="false"
-                android:text="+"
                 android:layout_gravity="center"
                 android:textColor="@color/colorwhite" >
             </Button>
+
 
             </LinearLayout>
         </LinearLayout>

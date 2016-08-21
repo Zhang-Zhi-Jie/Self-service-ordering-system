@@ -39,12 +39,7 @@
         />
 
 </RelativeLayout>
-    <ImageView
-        android:id="@+id/user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_account_circle_black_24dp"
-        />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -59,7 +54,6 @@
         android:textColor="#FF8C00"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
         android:layout_gravity="center_horizontal"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

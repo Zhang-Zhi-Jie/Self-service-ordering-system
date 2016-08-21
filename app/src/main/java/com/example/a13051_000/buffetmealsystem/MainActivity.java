@@ -2,6 +2,7 @@ package com.example.a13051_000.buffetmealsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -27,9 +28,9 @@ import com.example.a13051_000.buffetmealsystem.Fragment.FragmentMain;
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentOrder;
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm.FragmentOrderForm;
 import com.example.a13051_000.buffetmealsystem.Order.OrderCar;
+import com.example.a13051_000.buffetmealsystem.Scan.ScanActivity;
 import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
 import com.example.a13051_000.buffetmealsystem.User.UserActivity;
-import com.google.gson.Gson;
 
 import java.util.Calendar;
 
@@ -63,8 +64,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         viewPager = (ViewPager)findViewById(R.id.viewpager);
-        tabLayout = (TabLayout) findViewById(R.id.tablyout);
+        tabLayout = (TabLayout)findViewById(R.id.tablyout);
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -86,13 +88,13 @@ public class MainActivity extends AppCompatActivity
         });
         tabLayout.setupWithViewPager(viewPager);
 
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                Intent intent = new Intent(MainActivity.this, OrderCar.class);
                 MainActivity.this.startActivity(intent);
-                MainActivity.this.finish();
                 overridePendingTransition(R.anim.fab_fade_in,R.anim.fab_fade_out);
             }
         });
@@ -139,15 +141,23 @@ public class MainActivity extends AppCompatActivity
         showtime.setText(year+"年"+(month+1)+"月"+day+"日");
     }
 
+    private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
+    private long mBackPressed;
+
     @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
+    public void onBackPressed()
+    {
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis())
+        {
             super.onBackPressed();
+            return;
         }
+        else { Toast.makeText(getBaseContext(), "再按一次即可退出", Toast.LENGTH_SHORT).show(); }
+
+        mBackPressed = System.currentTimeMillis();
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -1,4 +1,4 @@
-package com.example.a13051_000.buffetmealsystem;
+package com.example.a13051_000.buffetmealsystem.Scan;
 
 import java.io.IOException;
 import java.util.Vector;
@@ -21,6 +21,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.mining.app.zxing.camera.CameraManager;

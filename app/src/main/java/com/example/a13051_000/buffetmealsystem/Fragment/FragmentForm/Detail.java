@@ -27,6 +27,8 @@ import java.util.Map;
  */
 public class Detail extends AppCompatActivity implements AdapterView.OnItemClickListener{
     private Toolbar toolbar;
+    private String[] dishname;
+
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
@@ -46,8 +48,10 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
         List<String> num = order_detail.getNum();
         final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         String[] arg1 = new String[dish_name.size()];
+        dishname= new String[dish_name.size()];
         for (int i = 0; i < dish_name.size(); i++) {
             Map<String, Object> listitem = new HashMap<String, Object>();
+            dishname[i]= dish_name.get(i);
             listitem.put("order_num", result.getOrder_num());
             listitem.put("order_belong", dish_name.get(i));
             listitem.put("order_price", num.get(i));
@@ -71,7 +75,7 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.show();
         Window window = alertDialog.getWindow();
@@ -81,6 +85,7 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Detail.this,CommentActivity.class);
+                intent.putExtra("dish_name",dishname[i]);
                 Detail.this.startActivity(intent);
             }
         });

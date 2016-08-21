@@ -14,9 +14,9 @@
         >
 
     <ImageView
+        android:id="@+id/hh"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/p5"
         android:layout_gravity="center_horizontal" />
 
 

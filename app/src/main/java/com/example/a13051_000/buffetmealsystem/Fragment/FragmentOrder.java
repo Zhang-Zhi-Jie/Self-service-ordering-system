@@ -1,41 +1,19 @@
 package com.example.a13051_000.buffetmealsystem.Fragment;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.ExplosionField.ExplosionField;
-import com.example.a13051_000.buffetmealsystem.HttpUtils;
-import com.example.a13051_000.buffetmealsystem.Order.OrderDetailActivity;
-import com.example.a13051_000.buffetmealsystem.Order.Result_Spoon_detail;
-import com.example.a13051_000.buffetmealsystem.ScanActivity;
+import com.example.a13051_000.buffetmealsystem.Scan.ScanActivity;
 import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
-import com.example.a13051_000.buffetmealsystem.Status;
 import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
-import com.google.gson.Gson;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import com.example.a13051_000.buffetmealsystem.R;
 
@@ -46,7 +24,8 @@ import com.example.a13051_000.buffetmealsystem.R;
 public class FragmentOrder extends Fragment  {
 
     private ExplosionField mExplosionField;
-    ImageView imageView;
+    ImageView imageView_h;
+    ImageView imageView_click;
     TextView textView_order;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,12 +33,15 @@ public class FragmentOrder extends Fragment  {
         View rootView = inflater.inflate(R.layout.fragment_order, container, false);
         mExplosionField = ExplosionField.attach2Window(getActivity());
         addListener(rootView.findViewById(R.id.root));
-        imageView = (ImageView) rootView.findViewById(R.id.click);
+        imageView_click = (ImageView) rootView.findViewById(R.id.click);
         textView_order = (TextView) rootView.findViewById(R.id.text_order);
         textView_order.setText("您还未选座，点击选座并点餐");
+        imageView_h = (ImageView) rootView.findViewById(R.id.hh);
+        imageView_h.setImageResource(R.drawable.p5);
         if(ScanActivity.visible == true&& SettingsActivity.quit == false){
             textView_order.setText("继续点餐请点击");
-            imageView.setOnClickListener(new View.OnClickListener() {
+            imageView_h.setImageResource(R.drawable.hh);
+            imageView_click.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent1 = new Intent(getActivity(), MainActivity_r.class);
@@ -68,8 +50,7 @@ public class FragmentOrder extends Fragment  {
                 }
             });
         }else {
-
-            imageView.setOnClickListener(new View.OnClickListener() {
+            imageView_click.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getActivity(), ScanActivity.class);

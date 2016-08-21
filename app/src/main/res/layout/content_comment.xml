@@ -7,17 +7,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/comment1"
-        android:textSize="15dp"
+        android:textSize="17dp"
         android:layout_marginTop="80dp"
-        android:id="@+id/textView3"
-        android:textColor="@color/colorblack"
+        android:id="@+id/textView_name"
         />
     <android.support.v7.widget.AppCompatRatingBar
         android:id="@+id/ratingbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/textView_name"
         android:layout_marginTop="15dp"
         android:numStars="5" />
     <EditText

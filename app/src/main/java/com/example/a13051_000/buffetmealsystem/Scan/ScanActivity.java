@@ -1,22 +1,19 @@
-package com.example.a13051_000.buffetmealsystem;
+package com.example.a13051_000.buffetmealsystem.Scan;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.MainActivity;
+import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.Seat.SeatNumber;
-import com.example.a13051_000.buffetmealsystem.Settings.SettingsActivity;
 import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
 import com.mining.app.zxing.decoding.Intents;
 
@@ -39,7 +36,7 @@ public class ScanActivity extends AppCompatActivity {
         mTextView = (TextView) findViewById(R.id.result);
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("点餐");
+        toolbar.setTitle("选座");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -59,8 +56,9 @@ public class ScanActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            Intent intent_back = new Intent(ScanActivity.this,MainActivity.class);
-            ScanActivity.this.startActivity(intent_back);
+            Intent intent = new Intent(ScanActivity.this,MainActivity.class);
+            ScanActivity.this.startActivity(intent);
+            ScanActivity.this.finish();
         }
 
         return super.onOptionsItemSelected(item);

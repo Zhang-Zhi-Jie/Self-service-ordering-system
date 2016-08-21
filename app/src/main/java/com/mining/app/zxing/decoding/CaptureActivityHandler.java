@@ -27,7 +27,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.example.a13051_000.buffetmealsystem.MipcaActivityCapture;
+import com.example.a13051_000.buffetmealsystem.Scan.MipcaActivityCapture;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;

@@ -73,6 +73,7 @@ public class LoginActivity extends BaseActivity {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("nickname",nickname);
                             LoginActivity.this.startActivity(intent);
+                            LoginActivity.this.finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "信息输入错误,请重新输入", Toast.LENGTH_SHORT).show();
                         }
