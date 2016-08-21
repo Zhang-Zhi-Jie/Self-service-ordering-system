@@ -77,7 +77,6 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                 //菜品信息存储在result_soon_details这个list里面
                 String[] arg1 = new String[result1.size()];
                 for (int i = 0; i < result1.size(); i++) {
-
                     long time;
                     int year,month,day;
                     time = Long.valueOf(result1.get(i).getOrder_num());
@@ -162,6 +161,7 @@ class getOrderFrom extends AsyncTask<String,Integer,String> {
         } catch (IOException e) {
             Log.d("getOrderFormError", e.toString());
         }
+        Log.d("orderFromResult",result);
         return result;
     }
 

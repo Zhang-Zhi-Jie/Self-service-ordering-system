@@ -29,6 +29,7 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
     private Toolbar toolbar;
     private String[] dishname;
 
+    private List<String> id;
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
@@ -46,6 +47,7 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
         Result.Order_detail order_detail = result.getOrder_detail();
         List<String> dish_name = order_detail.getDish_name();
         List<String> num = order_detail.getNum();
+        id = order_detail.getId();
         final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         String[] arg1 = new String[dish_name.size()];
         dishname= new String[dish_name.size()];
@@ -75,7 +77,9 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
+
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        final int position = i;
         AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.show();
         Window window = alertDialog.getWindow();
@@ -85,7 +89,8 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Detail.this,CommentActivity.class);
-                intent.putExtra("dish_name",dishname[i]);
+                intent.putExtra("dish_name",dishname[position]);
+                intent.putExtra("id",id.get(position));
                 Detail.this.startActivity(intent);
             }
         });

@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView_name"
         android:layout_marginTop="15dp"
-        android:numStars="5" />
+        />
     <EditText
         android:id="@+id/editText_comment"
         android:layout_width="match_parent"
@@ -36,6 +36,7 @@
         />
 
     <Button
+        android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="提交"
