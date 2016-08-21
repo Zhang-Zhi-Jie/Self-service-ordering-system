@@ -47,7 +47,7 @@ public class Result implements Serializable{
     public static class Order_detail implements Serializable{
         public List<String> dish_name;
         public List<String> num;
-
+        public List<String> id;
         public void setDish_name(List<String> dish_name) {
             this.dish_name = dish_name;
         }
@@ -63,5 +63,14 @@ public class Result implements Serializable{
         public List<String> getNum() {
             return num;
         }
+
+        public List<String> getId() {
+            return id;
+        }
+
+        public void setId(List<String> id) {
+            this.id = id;
+        }
+
     }
 }
