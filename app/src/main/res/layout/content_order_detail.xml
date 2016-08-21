@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#fffef9"
     xmlns:fresco="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,6 +23,7 @@
         fresco:viewAspectRatio="1.33"
         android:layout_height="265dp"
         />
+
     <LinearLayout
         android:id="@+id/des"
         android:layout_width="match_parent"
@@ -257,8 +258,8 @@
             </ListView>
 
         </LinearLayout>
-    </LinearLayout>
-    </ScrollView>
+        </LinearLayout>
+        </ScrollView>
 
 
     <LinearLayout

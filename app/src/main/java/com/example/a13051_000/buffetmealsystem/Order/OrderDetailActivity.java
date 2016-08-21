@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,11 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static com.example.a13051_000.buffetmealsystem.R.id.tool_bar;
 
@@ -39,6 +46,10 @@ public class OrderDetailActivity extends AppCompatActivity {
     String price;
     String id;
     String name;
+
+    private ListView listView_comment;
+    private List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,22 +90,15 @@ public class OrderDetailActivity extends AppCompatActivity {
                 finish();
 
 
-////                editText_shu = (EditText) findViewById(R.id.editTextshu);
-////                quantity1 = editText_shu.getText().toString();
-////                double quantity = Double.valueOf(quantity1);
-////                if (quantity < 0) {
-////                    Toast.makeText(getApplicationContext(), "输入数量小于0，请重新输入", Toast.LENGTH_SHORT);
-////                } else {
-//                    double price1 = Double.valueOf(price);
-////                    sumprice = quantity * price1;
-//                    Intent intent = new Intent(OrderDetailActivity.this, EnsureOrderActivity.class);
-//                    String sumprice_str = String.valueOf(sumprice);
-////                    intent.putExtra("sumprice", sumprice_str);
-//                    intent.putExtra("id", id);
-////                    intent.putExtra("quantity",quantity1);
-//                    intent.putExtra("name",name);
-//                    startActivity(intent);
-////                }
+                listView_comment = (ListView) findViewById(R.id.list_comment);
+                Map<String, Object> listitem = new HashMap<String, Object>();
+
+                listItems.add(listitem);
+                SimpleAdapter simpleAdapter = new SimpleAdapter(OrderDetailActivity.this,
+                        listItems,
+                        R.layout.user_comment_item,
+                        new String[]{"comment_name","comment_content","comment_grade","comment_time"},
+                        new int[]{R.id.user_comment_name,R.id.user_comment_content,R.id.user_commnet_grade,R.id.user_comment_time});
             }
         });
         while (id.startsWith("0")){
