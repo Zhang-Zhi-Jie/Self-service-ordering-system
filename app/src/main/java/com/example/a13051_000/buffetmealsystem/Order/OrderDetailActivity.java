@@ -1,8 +1,11 @@
 package com.example.a13051_000.buffetmealsystem.Order;
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +21,9 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.HttpUtils;
 import com.example.a13051_000.buffetmealsystem.R;
+import com.example.a13051_000.buffetmealsystem.ResultFromServer;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderForm;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderformDataSource;
 import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
@@ -26,7 +31,12 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
+import com.google.gson.Gson;
+import com.google.gson.internal.Primitives;
 
+import org.apache.http.NameValuePair;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,13 +47,18 @@ import static com.example.a13051_000.buffetmealsystem.R.id.tool_bar;
 /**
  * Created by 13051_000 on 2016/6/12.
  */
-public class OrderDetailActivity extends AppCompatActivity {
+
+interface AsyncResponse{
+    void processFinish(Parse_Json_comments parse_json_comments);
+}
+public class OrderDetailActivity extends AppCompatActivity implements AsyncResponse{
     private TextView showid;
     private TextView showname;
     private TextView showprice;
     private TextView showunit;
     private Button button_tj;
     private Toolbar toolbar;
+    public static String url_get_comment = "http://www.loushubin.cn/comment.php?type=get&goods_id=";
     double sumprice;
     String price;
     String id;
@@ -75,6 +90,12 @@ public class OrderDetailActivity extends AppCompatActivity {
         showprice.setText(price + "");
         showunit.setText(perunit + "");
 
+        while (id.startsWith("0")){
+            id = id.substring(1);
+        }
+        SubmitComment submitComment = new SubmitComment(OrderDetailActivity.this);
+        submitComment.delegate = this;
+        submitComment.execute(id);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,18 +118,7 @@ public class OrderDetailActivity extends AppCompatActivity {
 
                 ScrollView scrollView = (ScrollView) findViewById(R.id.scrollview);
                 listView_comment = (ListView) findViewById(R.id.list_comment);
-                Map<String, Object> listitem = new HashMap<String, Object>();
 
-                listItems.add(listitem);
-                SimpleAdapter simpleAdapter = new SimpleAdapter(OrderDetailActivity.this,
-                        listItems,
-                        R.layout.user_comment_item,
-                        new String[]{"comment_name","comment_content","comment_grade","comment_time"},
-                        new int[]{R.id.user_comment_name,R.id.user_comment_content,R.id.user_commnet_grade,R.id.user_comment_time});
-
-        while (id.startsWith("0")){
-            id = id.substring(1);
-        }
         String url_photo = "http://www.loushubin.cn/getPhoto.php?name="+id;
         Log.d("PhotoUrl",url_photo);
         Uri uri = Uri.parse(url_photo);
@@ -123,4 +133,77 @@ public class OrderDetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void processFinish(Parse_Json_comments parse_json_comments) {
+        Map<String, Object> listItem = new HashMap<String, Object>();
+        for (Data data:
+                parse_json_comments.getDatas()   ) {
+            listItem.put("comment_name",data.getUser_id());
+            listItem.put("comment_content",data.getComment_content());
+            listItem.put("comment_grade",data.getStar_level());
+            listItem.put("comment_time",data.getTime());
+            listItems.add(listItem);
+        }
+        SimpleAdapter simpleAdapter = new SimpleAdapter(OrderDetailActivity.this,
+                listItems,
+                R.layout.user_comment_item,
+                new String[]{"comment_name","comment_content","comment_grade","comment_time"},
+                new int[]{R.id.user_comment_name,R.id.user_comment_content,R.id.user_commnet_grade,R.id.user_comment_time});
+
+    }
+}
+
+
+class SubmitComment extends AsyncTask<String,Void,Parse_Json_comments> {
+    private Context context;
+    private ProgressDialog progressDialog;
+    AsyncResponse delegate = null;
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("请稍后..");
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
+    }
+
+    public SubmitComment(Context context) {
+        super();
+        this.context = context;
+    }
+
+    @Override
+    protected void onPostExecute(Parse_Json_comments parse_json_comments) {
+        super.onPostExecute(parse_json_comments);
+        progressDialog.dismiss();
+        if (parse_json_comments != null && parse_json_comments.getStatus().equals("0")){
+            Toast.makeText(context,"评论加载成功...",Toast.LENGTH_SHORT).show();
+            if (parse_json_comments.getDatas() != null) {
+                delegate.processFinish(parse_json_comments);
+            }
+        }
+        else{
+            Toast.makeText(context,"评论加载失败，请刷新重试.",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected Parse_Json_comments doInBackground(String... params) {
+        String strResult = null;
+        try {
+            strResult = HttpUtils.submitGetData(OrderDetailActivity.url_get_comment+params[0],"utf-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.d("result",strResult);
+        Gson gson = new Gson();
+        Parse_Json_comments parse_json_comments = new Parse_Json_comments();
+        try {
+            parse_json_comments = gson.fromJson(strResult,Parse_Json_comments.class);
+        } catch (Exception e) {
+            Log.d("errorMessage", e.toString());
+        }
+        return parse_json_comments;
+    }
 }
