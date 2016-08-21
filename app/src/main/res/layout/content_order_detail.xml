@@ -72,10 +72,9 @@
         android:layout_toRightOf="@+id/order_db_nameshow"
         android:layout_below="@+id/order_db_idshow"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="10dp"
         android:textSize="20dp"
         android:textColor="@color/colorblack"
-        android:drawableLeft="@drawable/ic_assignment_black_24dp"
         />
     </LinearLayout>
     <LinearLayout
@@ -147,9 +146,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="商品简介"
+                android:text="商品简介："
                 android:layout_marginLeft="5dp"
-                android:textSize="18dp"
+                android:drawableLeft="@drawable/ic_content_paste_black_24dp"
+                android:textSize="17.5dp"
+                android:textColor="#121212"
                 />
         </LinearLayout>
 
@@ -246,8 +247,9 @@
                 android:id="@+id/text_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="商品评论"
-                android:textSize="18dp"
+                android:text="商品评论："
+                android:textSize="17.5dp"
+                android:textColor="#121212"
                 android:layout_marginLeft="5dp"
                 android:drawableLeft="@drawable/ic_favorite_black_24dp"
                 />
@@ -260,28 +262,5 @@
         </LinearLayout>
         </LinearLayout>
         </ScrollView>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorwhite"
-        android:orientation="vertical"
-        >
-
-        <Button
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="加入购物车"
-            android:textSize="16dp"
-            android:textColor="@color/colorwhite"
-            android:id="@+id/button_tijiao"
-            android:background="@drawable/button"
-            android:width="150dp"
-            android:height="50dp"
-            android:layout_gravity="right"
-            />
-    </LinearLayout>
 
 </RelativeLayout>
