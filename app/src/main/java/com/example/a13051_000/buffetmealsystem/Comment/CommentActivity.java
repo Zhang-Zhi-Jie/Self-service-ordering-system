@@ -1,4 +1,4 @@
-﻿package com.example.a13051_000.buffetmealsystem.Comment;
+package com.example.a13051_000.buffetmealsystem.Comment;
 
 import android.support.v7.app.AppCompatActivity;
 
