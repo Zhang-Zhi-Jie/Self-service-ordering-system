@@ -1,5 +1,6 @@
 package com.example.a13051_000.buffetmealsystem.Order;
 
+import android.app.LauncherActivity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
@@ -138,18 +139,20 @@ public class OrderDetailActivity extends AppCompatActivity implements AsyncRespo
         Map<String, Object> listItem = new HashMap<String, Object>();
         for (Data data:
                 parse_json_comments.getDatas()   ) {
-            listItem.put("comment_name",data.getUser_id());
+            listItem.put("comment_name",data.getUser_name());
             listItem.put("comment_content",data.getComment_content());
             listItem.put("comment_grade",data.getStar_level());
             listItem.put("comment_time",data.getTime());
+            Log.d("comment",data.getTime());
             listItems.add(listItem);
         }
+        Log.d("listitem", String.valueOf(listItems.size()));
         SimpleAdapter simpleAdapter = new SimpleAdapter(OrderDetailActivity.this,
                 listItems,
                 R.layout.user_comment_item,
                 new String[]{"comment_name","comment_content","comment_grade","comment_time"},
                 new int[]{R.id.user_comment_name,R.id.user_comment_content,R.id.user_commnet_grade,R.id.user_comment_time});
-
+        listView_comment.setAdapter(simpleAdapter);
     }
 }
 
@@ -180,6 +183,7 @@ class SubmitComment extends AsyncTask<String,Void,Parse_Json_comments> {
         if (parse_json_comments != null && parse_json_comments.getStatus().equals("0")){
             Toast.makeText(context,"评论加载成功...",Toast.LENGTH_SHORT).show();
             if (parse_json_comments.getDatas() != null) {
+                Log.d("inform","parse");
                 delegate.processFinish(parse_json_comments);
             }
         }

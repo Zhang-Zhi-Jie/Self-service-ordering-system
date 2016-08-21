@@ -7,14 +7,14 @@ import java.util.List;
  */
 public class Parse_Json_comments{
     private String status;
-    private List<Data> datas;
+    private List<Data> data;
 
     public void setDatas(List<Data> datas) {
-        this.datas = datas;
+        this.data = datas;
     }
 
     public List<Data> getDatas() {
-        return datas;
+        return data;
     }
 
     public void setStatus(String status) {
