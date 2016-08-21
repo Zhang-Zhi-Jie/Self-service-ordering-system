@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DrawableUtils;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,8 +74,9 @@ public class OrderDetailActivity extends AppCompatActivity {
         showname.setText(name + "");
         showprice.setText(price + "");
         showunit.setText(perunit + "");
-        button_tj = (Button) findViewById(R.id.button_tijiao);
-        button_tj.setOnClickListener(new View.OnClickListener() {
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ContentValues value = new ContentValues();
@@ -88,8 +91,11 @@ public class OrderDetailActivity extends AppCompatActivity {
                 orderFormDataSource.create(orderForm);
                 Toast.makeText(getApplicationContext(),"已加入到购物车", Toast.LENGTH_SHORT).show();
                 finish();
+            }
+        });
 
 
+                ScrollView scrollView = (ScrollView) findViewById(R.id.scrollview);
                 listView_comment = (ListView) findViewById(R.id.list_comment);
                 Map<String, Object> listitem = new HashMap<String, Object>();
 
@@ -99,8 +105,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                         R.layout.user_comment_item,
                         new String[]{"comment_name","comment_content","comment_grade","comment_time"},
                         new int[]{R.id.user_comment_name,R.id.user_comment_content,R.id.user_commnet_grade,R.id.user_comment_time});
-            }
-        });
+
         while (id.startsWith("0")){
             id = id.substring(1);
         }
