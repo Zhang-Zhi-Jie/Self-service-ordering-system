@@ -80,6 +80,7 @@ public class MainActivity_r extends AppCompatActivity {
         toolbar.setTitle("餐厅菜单");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         textView_finish = (TextView) findViewById(R.id.finish);
         textView_finish.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +93,7 @@ public class MainActivity_r extends AppCompatActivity {
                 }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getApplicationContext(),"将转入到购物车",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "将转入到购物车", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity_r.this, OrderCar.class);
                         MainActivity_r.this.startActivity(intent);
                         MainActivity_r.this.finish();
@@ -110,18 +111,18 @@ public class MainActivity_r extends AppCompatActivity {
         Intent intent = getIntent();
         seat_num = intent.getStringExtra("seat_num");
         textView_seat_num = (TextView) findViewById(R.id.show_seat_num);
-        if(Integer.valueOf(seat_num) < 10) {
+        if (Integer.valueOf(seat_num) < 10) {
             textView_seat_num.setText("0000" + seat_num + "号");
-        }else{
+        } else {
             textView_seat_num.setText("000" + seat_num + "号");
         }
     }
 
-    private List<String> getTitles(){
-        return Lists.newArrayList("   菜类   ", "   肉类   ", "   汤类   ", "   主食   ", "   甜品   ","  酒水  ");
+    private List<String> getTitles() {
+        return Lists.newArrayList("   菜类   ", "   肉类   ", "   汤类   ", "   主食   ", "   甜品   ", "  酒水  ");
     }
 
-    private List<Fragment> getFragments(){
+    private List<Fragment> getFragments() {
         List<Fragment> list = new ArrayList<>();
 
         Fragment FragmentMeat = new FragmentMeat();
@@ -140,9 +141,10 @@ public class MainActivity_r extends AppCompatActivity {
         return list;
     }
 
-    public void onEvent(Boolean b){
+    public void onEvent(Boolean b) {
         dragLayout.setTouchMode(b);
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -154,9 +156,10 @@ public class MainActivity_r extends AppCompatActivity {
         super.onPause();
         EventBus.getDefault().unregister(this);
     }
-    public boolean onOptionsItemSelected(MenuItem item){
+
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == android.R.id.home){
+        if (id == android.R.id.home) {
             finish();
             return true;
         }

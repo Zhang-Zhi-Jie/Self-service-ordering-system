@@ -30,6 +30,7 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
     private String[] dishname;
 
     private List<String> id;
+    public static boolean FormDetailAllFinish = true;
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
@@ -45,24 +46,42 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
         Bundle bundle = intent.getExtras();
         Result result = (Result)bundle.getSerializable("listItems");
         Result.Order_detail order_detail = result.getOrder_detail();
+
         List<String> dish_name = order_detail.getDish_name();
         List<String> num = order_detail.getNum();
+        List<Boolean> finish = order_detail.getFinish();
+
         id = order_detail.getId();
         final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         String[] arg1 = new String[dish_name.size()];
         dishname= new String[dish_name.size()];
+
         for (int i = 0; i < dish_name.size(); i++) {
+            if(!finish.get(i)){
+                FormDetailAllFinish = false;
+                break;
+            }
+        }
+
+        for (int i = 0; i < dish_name.size(); i++) {
+
+            String is_finished = "未完成";
+            if(finish.get(i)){
+                is_finished = "已完成";
+            }
+
             Map<String, Object> listitem = new HashMap<String, Object>();
             dishname[i]= dish_name.get(i);
-            listitem.put("order_num", result.getOrder_num());
-            listitem.put("order_belong", dish_name.get(i));
-            listitem.put("order_price", num.get(i));
+            listitem.put("order_id", result.getOrder_num());
+            listitem.put("order_name", dish_name.get(i));
+            listitem.put("order_num", num.get(i));
+            listitem.put("order_finish",is_finished);
             //                          listitem.put("unit", result_spoon_details.get(i).getUnit());
             listItems.add(listitem);
             arg1[i] = listitem.toString();
         }
-        SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.order_form_item_list_module, new String[]{"order_num", "order_belong", "order_price"},
-                new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price});
+        SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.order_form_item_list_module, new String[]{"order_id", "order_name", "order_num","order_finish"},
+                new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_num,R.id.order_db_finish});
         listView.setAdapter(orderAdapter);
         listView.setOnItemClickListener(this);
     }

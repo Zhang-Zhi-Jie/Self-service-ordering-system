@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textColor="@color/colorloginbackground"
-        android:layout_marginTop="10dp"
         android:textSize="14dp"
         />
 
@@ -34,9 +33,8 @@
         android:text="编辑"
         android:textSize="15dp"
         android:textColor="@color/colorwhite"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
 
@@ -51,18 +49,10 @@
     <TextView
         android:id="@+id/shownickname"
         android:textSize="15dp"
-        android:textColor="#FF8C00"
+        android:textColor="#9370DB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="做一个真正的吃货"
-        android:textColor="#FF8C00"
-        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

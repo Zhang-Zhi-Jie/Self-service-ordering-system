@@ -24,6 +24,17 @@
 		/>
 
 	<TextView
+		android:id="@+id/order_db_finish"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="15dp"
+		android:text="12222"
+		android:layout_marginLeft="5dip"
+		android:textColor="@color/colorButton"
+		android:layout_alignParentTop="true"
+		android:layout_alignStart="@+id/order_db_priceshow" />
+
+	<TextView
 		android:id="@+id/order_db_nameshow"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -60,7 +71,7 @@
 		/>
 
 	   <TextView
-		   android:id="@+id/order_db_price"
+		   android:id="@+id/order_db_num"
 		   android:layout_width="wrap_content"
 		   android:layout_height="wrap_content"
 		   android:layout_marginLeft="5dp"
@@ -79,6 +90,6 @@
 		android:text="份"
 		android:textColor="@color/colorAccent"
 		android:layout_below="@+id/order_db_id"
-		android:layout_toRightOf="@+id/order_db_price"
+		android:layout_toRightOf="@+id/order_db_num"
 		/>
 </RelativeLayout>

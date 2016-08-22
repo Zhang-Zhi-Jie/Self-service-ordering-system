@@ -1,8 +1,12 @@
 package com.example.cook;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -15,7 +19,7 @@ import java.util.Map;
 /**
  * Created by shubin on 2016/6/16.
  */
-public class Detail extends AppCompatActivity {
+public class Detail extends AppCompatActivity implements AdapterView.OnItemClickListener{
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
@@ -41,6 +45,22 @@ public class Detail extends AppCompatActivity {
         SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.item_list_module_2, new String[]{"order_num", "order_belong", "order_price"},
                 new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price});
         listView.setAdapter(orderAdapter);
+        listView.setOnItemClickListener(this);
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        new AlertDialog.Builder(Detail.this).setMessage("确定已完成？").setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        }).show();
     }
 }

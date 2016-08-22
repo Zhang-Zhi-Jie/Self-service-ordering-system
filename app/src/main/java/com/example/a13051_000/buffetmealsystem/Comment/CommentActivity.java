@@ -22,7 +22,9 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm.Detail;
 import com.example.a13051_000.buffetmealsystem.HttpUtils;
+import com.example.a13051_000.buffetmealsystem.Order.OrderDetailActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.ResultFromServer;
 import com.google.gson.Gson;
