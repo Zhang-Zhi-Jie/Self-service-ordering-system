@@ -18,7 +18,7 @@ public class OrderFormDataSource_menu {
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
     private String[] allColumns = {
-            MySQLiteHelper.COLUMN_ID_menu, MySQLiteHelper.COLUMN_NUM_menu, MySQLiteHelper.COLUMN_NAME_menu, MySQLiteHelper.COLUMN_NUM_EXIST_menu, MySQLiteHelper.COLUMN_UNIT_menu, MySQLiteHelper.COLUMN_CLASSIFY_menu
+            MySQLiteHelper.COLUMN_ID_menu, MySQLiteHelper.COLUMN_NUM_menu, MySQLiteHelper.COLUMN_NAME_menu, MySQLiteHelper.COLUMN_NUM_EXIST_menu, MySQLiteHelper.COLUMN_UNIT_menu, MySQLiteHelper.COLUMN_CLASSIFY_menu,MySQLiteHelper.COLUMN_ARG1,MySQLiteHelper.COLUMN_ARG2,MySQLiteHelper.COLUMN_ARG3
     };
 
     public OrderFormDataSource_menu(Context context) {
@@ -41,6 +41,9 @@ public class OrderFormDataSource_menu {
         values.put(MySQLiteHelper.COLUMN_UNIT_menu, result_spoon_detail.getUnit());
         values.put(MySQLiteHelper.COLUMN_NUM_EXIST_menu, "");
         values.put(MySQLiteHelper.COLUMN_PRICE_menu,result_spoon_detail.getPrice());
+        values.put(MySQLiteHelper.COLUMN_ARG1,result_spoon_detail.getArg1());
+        values.put(MySQLiteHelper.COLUMN_ARG2,result_spoon_detail.getArg2());
+        values.put(MySQLiteHelper.COLUMN_ARG3,result_spoon_detail.getArg3());
         long insertID = database.insert(MySQLiteHelper.TABLE_NAME_menu, null, values);
         Cursor cursor = database.query(MySQLiteHelper.TABLE_NAME_menu, allColumns, MySQLiteHelper.COLUMN_ID_menu+ "= " + insertID, null, null, null, null);
         cursor.moveToFirst();
@@ -65,6 +68,9 @@ public class OrderFormDataSource_menu {
                 result_spoon_detail.setDish_name(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_NAME_menu)));
                 result_spoon_detail.setUnit(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_UNIT_menu)));
                 result_spoon_detail.setUser_name(null);
+                result_spoon_detail.setArg1(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ARG1)));
+                result_spoon_detail.setArg2(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ARG2)));
+                result_spoon_detail.setArg3(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ARG3)));
                 results.add(result_spoon_detail);
             }while (cursor.moveToNext());
         }

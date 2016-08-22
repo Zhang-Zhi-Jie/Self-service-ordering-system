@@ -62,7 +62,7 @@ public class FragmentMeat extends Fragment implements SwipeRefreshLayout.OnRefre
         public void handleMessage(Message message) {
             switch (message.what) {
                 case SHOW_RESPONSE:
-                    String response = (String) message.obj;
+                    final String response = (String) message.obj;
                     sResult = response;
                     if (sResult != null && !sResult.equals(-1)) {
                         Gson gson = new Gson();
@@ -74,7 +74,7 @@ public class FragmentMeat extends Fragment implements SwipeRefreshLayout.OnRefre
                         }
                         //状态正确
                         if(list.getStatus().equals("0")) {
-                            List<Result_Spoon_detail> result_spoon_details= list.getResult();
+                            final List<Result_Spoon_detail> result_spoon_details= list.getResult();
                             //菜品信息存储在result_soon_details这个list里
                             final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
                             String[] arg1 = new String[result_spoon_details.size()];
@@ -126,6 +126,9 @@ public class FragmentMeat extends Fragment implements SwipeRefreshLayout.OnRefre
                                     intent.putExtra("name",name);
                                     intent.putExtra("price",price);
                                     intent.putExtra("perunit",perunit);
+                                    intent.putExtra("arg1",result_spoon_details.get(i).getArg1());
+                                    intent.putExtra("arg2",result_spoon_details.get(i).getArg2());
+                                    intent.putExtra("arg3",result_spoon_details.get(i).getArg3());
                                     startActivity(intent);
                                 }
                             });

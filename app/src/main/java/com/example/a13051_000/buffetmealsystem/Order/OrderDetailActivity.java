@@ -57,6 +57,9 @@ public class OrderDetailActivity extends AppCompatActivity implements AsyncRespo
     private TextView showname;
     private TextView showprice;
     private TextView showunit;
+    private TextView material_food;
+    private TextView feature_food;
+    private TextView effect_food;
     private Button button_tj;
     private Toolbar toolbar;
     public static String url_get_comment = "http://www.loushubin.cn/comment.php?type=get&goods_id=";
@@ -64,7 +67,9 @@ public class OrderDetailActivity extends AppCompatActivity implements AsyncRespo
     String price;
     String id;
     String name;
-
+    String arg1;
+    String arg2;
+    String arg3;
     private ListView listView_comment;
     private List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
 
@@ -81,16 +86,24 @@ public class OrderDetailActivity extends AppCompatActivity implements AsyncRespo
         showname = (TextView) findViewById(R.id.order_db_name);
         showprice = (TextView) findViewById(R.id.order_db_price);
         showunit = (TextView) findViewById(R.id.order_db_create_at);
+        material_food =(TextView) findViewById(R.id.material_food);
+        effect_food = (TextView) findViewById(R.id.effect_food);
+        feature_food = (TextView) findViewById(R.id.feature_food);
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         name = intent.getStringExtra("name");
         price = intent.getStringExtra("price");
+        arg1 = intent.getStringExtra("arg1");
+        arg2 = intent.getStringExtra("arg2");
+        arg3 = intent.getStringExtra("arg3");
         String perunit = intent.getStringExtra("perunit");
         showid.setText(id + "");
         showname.setText(name + "");
         showprice.setText(price + "");
         showunit.setText(perunit + "");
-
+        material_food.setText(arg1+"");
+        feature_food.setText(arg2+"");
+        effect_food.setText(arg3+"");
         while (id.startsWith("0")){
             id = id.substring(1);
         }
