@@ -39,6 +39,7 @@ public class FragmentVegetable extends Fragment {
     private ListView listView;
     private ModelListAdapter adapter;
     private SimpleDraweeView simpleDraweeView;
+    private HashMap<Integer,Integer> map;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_vegetable, container, false);
@@ -47,12 +48,13 @@ public class FragmentVegetable extends Fragment {
         OrderFormDataSource_menu orderFormDataSource_menu = new OrderFormDataSource_menu(getContext());
         orderFormDataSource_menu.open();
         result_spoon_details = orderFormDataSource_menu.getAllMenu();
+        map = new HashMap<>();
         final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         String[] arg1 = new String[result_spoon_details.size()];
         for(int i= 0;i<result_spoon_details.size();i++){
             Log.d("classify",String.valueOf(i));
             if (result_spoon_details.get(i).getClassify().equals("2")) {
-
+                map.put(listItems.size(),i);
                 String id = result_spoon_details.get(i).getId();
                 while (id.startsWith("0")){
                     id = id.substring(1);
@@ -90,9 +92,9 @@ public class FragmentVegetable extends Fragment {
                 intent.putExtra("name",name);
                 intent.putExtra("price",price);
                 intent.putExtra("perunit",perunit);
-                intent.putExtra("arg1",result_spoon_details.get(i).getArg1());
-                intent.putExtra("arg2",result_spoon_details.get(i).getArg2());
-                intent.putExtra("arg3",result_spoon_details.get(i).getArg3());
+                intent.putExtra("arg1",result_spoon_details.get(map.get(i)).getArg1());
+                intent.putExtra("arg2",result_spoon_details.get(map.get(i)).getArg2());
+                intent.putExtra("arg3",result_spoon_details.get(map.get(i)).getArg3());
                 startActivity(intent);
             }
         });

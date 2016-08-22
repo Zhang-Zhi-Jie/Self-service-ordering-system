@@ -55,6 +55,7 @@ public class FragmentMeat extends Fragment implements SwipeRefreshLayout.OnRefre
     String perunit;
     String classify;
     ProgressDialog progressDialog;
+    private HashMap<Integer,Integer> map;
     private static final int REFRESH_COMPLETE = 0X110;
     private final int SHOW_RESPONSE = 0;
 
@@ -84,6 +85,7 @@ public class FragmentMeat extends Fragment implements SwipeRefreshLayout.OnRefre
                             for(int i=0;i<result_spoon_details.size();i++){
                                 orderFormDataSource_menu.create(result_spoon_details.get(i));
                             }
+                            map = new HashMap<>();
                             for(int i= 0;i<result_spoon_details.size();i++){
 
                                 if (result_spoon_details.get(i).getClassify().equals("1")) {
@@ -95,7 +97,7 @@ public class FragmentMeat extends Fragment implements SwipeRefreshLayout.OnRefre
                                     String url_photo = "http://www.loushubin.cn/getPhoto.php?name="+id;
                                     Log.d("PhotoUrl",url_photo);
                                     Uri uri = Uri.parse(url_photo);
-
+                                    map.put(listItems.size(),i);
                                     Map<String, Object> listitem = new HashMap<String, Object>();
                                     listitem.put("image",uri);
                                     listitem.put("ID", result_spoon_details.get(i).getId());
@@ -126,9 +128,10 @@ public class FragmentMeat extends Fragment implements SwipeRefreshLayout.OnRefre
                                     intent.putExtra("name",name);
                                     intent.putExtra("price",price);
                                     intent.putExtra("perunit",perunit);
-                                    intent.putExtra("arg1",result_spoon_details.get(i).getArg1());
-                                    intent.putExtra("arg2",result_spoon_details.get(i).getArg2());
-                                    intent.putExtra("arg3",result_spoon_details.get(i).getArg3());
+                                    intent.putExtra("arg1",result_spoon_details.get(map.get(i)).getArg1());
+                                    intent.putExtra("arg2",result_spoon_details.get(map.get(i)).getArg2());
+                                    intent.putExtra("arg3",result_spoon_details.get(map.get(i)).getArg3());
+                                    Log.d("arg1",result_spoon_details.get(i).getArg1());
                                     startActivity(intent);
                                 }
                             });

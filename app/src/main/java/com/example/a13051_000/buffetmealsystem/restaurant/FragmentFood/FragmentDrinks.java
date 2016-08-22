@@ -19,6 +19,7 @@ import com.example.a13051_000.buffetmealsystem.Order.OrderDetailActivity;
 import com.example.a13051_000.buffetmealsystem.Order.Result_Spoon_detail;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderFormDataSource_menu;
+import com.google.zxing.LuminanceSource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,6 +36,7 @@ public class FragmentDrinks extends Fragment {
     private ListView listView;
     private ModelListAdapter adapter;
     private List<Result_Spoon_detail> result_spoon_details;
+    private HashMap<Integer,Integer> map;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_drinks, container, false);
@@ -44,9 +46,11 @@ public class FragmentDrinks extends Fragment {
         result_spoon_details = orderFormDataSource_menu.getAllMenu();
         final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         String[] arg1 = new String[result_spoon_details.size()];
+        map = new HashMap<>();
         for(int i= 0;i<result_spoon_details.size();i++){
             Log.d("classify",String.valueOf(i));
             if (result_spoon_details.get(i).getClassify().equals("6")) {
+                map.put(listItems.size(),i);
                 String id = result_spoon_details.get(i).getId();
                 while (id.startsWith("0")){
                     id = id.substring(1);
@@ -84,9 +88,9 @@ public class FragmentDrinks extends Fragment {
                 intent.putExtra("name",name);
                 intent.putExtra("price",price);
                 intent.putExtra("perunit",perunit);
-                intent.putExtra("arg1",result_spoon_details.get(i).getArg1());
-                intent.putExtra("arg2",result_spoon_details.get(i).getArg2());
-                intent.putExtra("arg3",result_spoon_details.get(i).getArg3());
+                intent.putExtra("arg1",result_spoon_details.get(map.get(i)).getArg1());
+                intent.putExtra("arg2",result_spoon_details.get(map.get(i)).getArg2());
+                intent.putExtra("arg3",result_spoon_details.get(map.get(i)).getArg3());
                 startActivity(intent);
             }
         });
