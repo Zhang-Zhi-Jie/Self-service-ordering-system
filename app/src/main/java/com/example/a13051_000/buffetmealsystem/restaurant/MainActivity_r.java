@@ -118,7 +118,7 @@ public class MainActivity_r extends AppCompatActivity {
     }
 
     private List<String> getTitles(){
-        return Lists.newArrayList("   肉类   ", "   菜类   ", "   汤类   ", "   主食   ", "   甜品   ","  酒水  ");
+        return Lists.newArrayList("   菜类   ", "   肉类   ", "   汤类   ", "   主食   ", "   甜品   ","  酒水  ");
     }
 
     private List<Fragment> getFragments(){
@@ -131,8 +131,8 @@ public class MainActivity_r extends AppCompatActivity {
         Fragment FragmentDessert = new FragmentDessert();
         Fragment FragmentDrinks = new FragmentDrinks();
 
-        list.add(FragmentMeat);
         list.add(FragmentVegetable);
+        list.add(FragmentMeat);
         list.add(FragmentSoup);
         list.add(FragmentStableFood);
         list.add(FragmentDessert);
