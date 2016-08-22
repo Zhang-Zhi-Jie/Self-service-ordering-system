@@ -10,6 +10,8 @@ public class Result implements Serializable{
     private String order_num;
     private String order_belong;
     private String order_price;
+    private boolean order_finish;
+
     private Order_detail order_detail;
 
     public void setOrder_belong(String order_belong) {
@@ -44,10 +46,15 @@ public class Result implements Serializable{
         return order_price;
     }
 
+    public void setOrder_finish(boolean order_finish){this.order_finish = order_finish;}
+
+    public boolean getOrder_finish(){return order_finish;}
+
     public static class Order_detail implements Serializable{
         public List<String> dish_name;
         public List<String> num;
         public List<String> id;
+        public List<Boolean> finish;
         public void setDish_name(List<String> dish_name) {
             this.dish_name = dish_name;
         }
@@ -71,6 +78,10 @@ public class Result implements Serializable{
         public void setId(List<String> id) {
             this.id = id;
         }
+
+        public void setFinish(List<Boolean> finish){this.finish = finish;}
+
+        public List<Boolean> getFinish(){return finish;}
 
     }
 }

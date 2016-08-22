@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     android:background="#fffef9">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        >
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -14,7 +19,6 @@
             android:id="@+id/layout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:orientation="vertical">
 
             <com.facebook.drawee.view.SimpleDraweeView
@@ -191,6 +195,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="3dp"
+                            android:layout_marginRight="10dp"
                             android:ellipsize="end"
                             android:maxLines="3"
                             android:textSize="14dp" />
@@ -219,8 +224,9 @@
                             android:id="@+id/feature_food"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="3dp"
+                            android:layout_marginRight="10dp"
                             android:ellipsize="end"
                             android:maxLines="3"
                             android:textSize="14dp" />
@@ -249,9 +255,10 @@
                             android:id="@+id/effect_food"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="3dp"
                             android:layout_marginBottom="10dp"
+                            android:layout_marginRight="10dp"
                             android:ellipsize="end"
                             android:maxLines="3"
                             android:textSize="14dp" />
@@ -297,4 +304,5 @@
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
+    </LinearLayout>
 </RelativeLayout>

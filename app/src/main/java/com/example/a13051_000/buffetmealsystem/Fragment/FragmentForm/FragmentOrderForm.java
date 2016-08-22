@@ -18,10 +18,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.HttpUtils;
+import com.example.a13051_000.buffetmealsystem.Order.Test;
 import com.example.a13051_000.buffetmealsystem.R;
+import com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm.Detail;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -67,6 +70,7 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
         }
         else
             Toast.makeText(getActivity(),"请检查网络连接...",Toast.LENGTH_LONG).show();
+
         return rootView;
     }
     public void processFinish(ResultFromServer output){
@@ -76,7 +80,13 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
             if (result1 != null) {
                 //菜品信息存储在result_soon_details这个list里面
                 String[] arg1 = new String[result1.size()];
+
                 for (int i = 0; i < result1.size(); i++) {
+                    String finish = "未完成";
+                    if(Detail.FormDetailAllFinish == true){
+                        finish = "已完成";
+                    }//如果订单已完成，则finish赋“已完成”
+
                     long time;
                     int year,month,day;
                     time = Long.valueOf(result1.get(i).getOrder_num());
@@ -98,15 +108,17 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                     listitem.put("order_price", result1.get(i).getOrder_price());
                     listitem.put("order_year",year);
                     listitem.put("order_month",month);
-                    listitem.put("order_day",day);//将数据填入
+                    listitem.put("order_day",day);
+                    listitem.put("order_finish",finish);
+                    //将数据填入
                     //                          listitem.put("unit", result_spoon_details.get(i).getUnit());
                     listItems.add(listitem);
                     arg1[i] = listitem.toString();
                     Log.d("list_form_each", listitem.toString());
                 }
                 if (getContext() != null) {
-                    SimpleAdapter orderAdapter = new SimpleAdapter(getContext(), listItems, R.layout.fragment_form_item_list, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day"},
-                            new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price,R.id.order_db_year,R.id.order_db_month,R.id.order_db_day});
+                    SimpleAdapter orderAdapter = new SimpleAdapter(getContext(), listItems, R.layout.fragment_form_item_list, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day","order_finish"},
+                            new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price,R.id.order_db_year,R.id.order_db_month,R.id.order_db_day,R.id.order_db_finish});
                     menulist.setAdapter(orderAdapter);
 
 
@@ -124,6 +136,10 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                 }
             }
         }
+    }
+    public boolean formDetailAllFinish(){
+
+        return true;
     }
     @Override
     public boolean onItemLongClick(final AdapterView<?> adapterView, final View view, final int position, long l) {
