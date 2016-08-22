@@ -34,14 +34,14 @@ import github.chenupt.multiplemodel.ModelListAdapter;
 public class FragmentDrinks extends Fragment {
     private ListView listView;
     private ModelListAdapter adapter;
-
+    private List<Result_Spoon_detail> result_spoon_details;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_drinks, container, false);
         ListView menuList = (ListView) rootView.findViewById(R.id.list_view);
         OrderFormDataSource_menu orderFormDataSource_menu = new OrderFormDataSource_menu(getContext());
         orderFormDataSource_menu.open();
-        List<Result_Spoon_detail> result_spoon_details = orderFormDataSource_menu.getAllMenu();
+        result_spoon_details = orderFormDataSource_menu.getAllMenu();
         final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         String[] arg1 = new String[result_spoon_details.size()];
         for(int i= 0;i<result_spoon_details.size();i++){
@@ -84,6 +84,9 @@ public class FragmentDrinks extends Fragment {
                 intent.putExtra("name",name);
                 intent.putExtra("price",price);
                 intent.putExtra("perunit",perunit);
+                intent.putExtra("arg1",result_spoon_details.get(i).getArg1());
+                intent.putExtra("arg2",result_spoon_details.get(i).getArg2());
+                intent.putExtra("arg3",result_spoon_details.get(i).getArg3());
                 startActivity(intent);
             }
         });

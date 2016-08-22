@@ -10,6 +10,9 @@ public class Result_Spoon_detail {
     private String user_name;
     private String id;
     private String classify;
+    private String arg1;
+    private String arg2;
+    private String arg3;
     public String getDish_name(){
         return this.dish_name;
     }
@@ -50,6 +53,30 @@ public class Result_Spoon_detail {
 
     public void setClassify(String classify) {
         this.classify = classify;
+    }
+
+    public void setArg1(String arg1) {
+        this.arg1 = arg1;
+    }
+
+    public String getArg1() {
+        return arg1;
+    }
+
+    public void setArg2(String arg2) {
+        this.arg2 = arg2;
+    }
+
+    public String getArg2() {
+        return arg2;
+    }
+
+    public void setArg3(String arg3) {
+        this.arg3 = arg3;
+    }
+
+    public String getArg3() {
+        return arg3;
     }
 
     public String toString(){

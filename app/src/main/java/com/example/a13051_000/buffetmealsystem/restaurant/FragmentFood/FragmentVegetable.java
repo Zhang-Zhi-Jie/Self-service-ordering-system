@@ -35,7 +35,7 @@ import github.chenupt.multiplemodel.ModelListAdapter;
  * Created by 13051_000 on 2016/7/15.
  */
 public class FragmentVegetable extends Fragment {
-
+    private List<Result_Spoon_detail> result_spoon_details;
     private ListView listView;
     private ModelListAdapter adapter;
     private SimpleDraweeView simpleDraweeView;
@@ -46,7 +46,7 @@ public class FragmentVegetable extends Fragment {
         simpleDraweeView  = (SimpleDraweeView) rootView.findViewById(R.id.pic_show);
         OrderFormDataSource_menu orderFormDataSource_menu = new OrderFormDataSource_menu(getContext());
         orderFormDataSource_menu.open();
-        List<Result_Spoon_detail> result_spoon_details = orderFormDataSource_menu.getAllMenu();
+        result_spoon_details = orderFormDataSource_menu.getAllMenu();
         final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         String[] arg1 = new String[result_spoon_details.size()];
         for(int i= 0;i<result_spoon_details.size();i++){
@@ -90,6 +90,9 @@ public class FragmentVegetable extends Fragment {
                 intent.putExtra("name",name);
                 intent.putExtra("price",price);
                 intent.putExtra("perunit",perunit);
+                intent.putExtra("arg1",result_spoon_details.get(i).getArg1());
+                intent.putExtra("arg2",result_spoon_details.get(i).getArg2());
+                intent.putExtra("arg3",result_spoon_details.get(i).getArg3());
                 startActivity(intent);
             }
         });
