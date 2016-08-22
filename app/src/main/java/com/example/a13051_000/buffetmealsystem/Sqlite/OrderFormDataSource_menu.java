@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.a13051_000.buffetmealsystem.Order.Result_Spoon_detail;
 
@@ -67,10 +68,10 @@ public class OrderFormDataSource_menu {
                 result_spoon_detail.setClassify(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_CLASSIFY_menu)));
                 result_spoon_detail.setDish_name(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_NAME_menu)));
                 result_spoon_detail.setUnit(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_UNIT_menu)));
-                result_spoon_detail.setUser_name(null);
                 result_spoon_detail.setArg1(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ARG1)));
                 result_spoon_detail.setArg2(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ARG2)));
                 result_spoon_detail.setArg3(cursor.getString(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ARG3)));
+                result_spoon_detail.setUser_name(null);
                 results.add(result_spoon_detail);
             }while (cursor.moveToNext());
         }
