@@ -38,7 +38,9 @@ import com.google.gson.internal.Primitives;
 import org.apache.http.NameValuePair;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,10 +51,11 @@ import static com.example.a13051_000.buffetmealsystem.R.id.tool_bar;
  * Created by 13051_000 on 2016/6/12.
  */
 
-interface AsyncResponse{
+interface AsyncResponse {
     void processFinish(Parse_Json_comments parse_json_comments);
 }
-public class OrderDetailActivity extends AppCompatActivity implements AsyncResponse{
+
+public class OrderDetailActivity extends AppCompatActivity implements AsyncResponse {
     private TextView showid;
     private TextView showname;
     private TextView showprice;
@@ -86,7 +89,7 @@ public class OrderDetailActivity extends AppCompatActivity implements AsyncRespo
         showname = (TextView) findViewById(R.id.order_db_name);
         showprice = (TextView) findViewById(R.id.order_db_price);
         showunit = (TextView) findViewById(R.id.order_db_create_at);
-        material_food =(TextView) findViewById(R.id.material_food);
+        material_food = (TextView) findViewById(R.id.material_food);
         effect_food = (TextView) findViewById(R.id.effect_food);
         feature_food = (TextView) findViewById(R.id.feature_food);
         Intent intent = getIntent();
@@ -101,10 +104,10 @@ public class OrderDetailActivity extends AppCompatActivity implements AsyncRespo
         showname.setText(name + "");
         showprice.setText(price + "");
         showunit.setText(perunit + "");
-        material_food.setText(arg1+"");
-        feature_food.setText(arg2+"");
-        effect_food.setText(arg3+"");
-        while (id.startsWith("0")){
+        material_food.setText(arg1 + "");
+        feature_food.setText(arg2 + "");
+        effect_food.setText(arg3 + "");
+        while (id.startsWith("0")) {
             id = id.substring(1);
         }
         SubmitComment submitComment = new SubmitComment(OrderDetailActivity.this);
@@ -124,20 +127,22 @@ public class OrderDetailActivity extends AppCompatActivity implements AsyncRespo
                 OrderformDataSource orderFormDataSource = new OrderformDataSource(OrderDetailActivity.this);
                 orderFormDataSource.open();
                 orderFormDataSource.create(orderForm);
-                Toast.makeText(getApplicationContext(),"已加入到购物车", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "已加入到购物车", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
 
 
-                ScrollView scrollView = (ScrollView) findViewById(R.id.scrollview);
-                listView_comment = (ListView) findViewById(R.id.list_comment);
+        ScrollView scrollView = (ScrollView) findViewById(R.id.scrollview);
+//        scrollView.smoothScrollTo(0,0);
+        listView_comment = (ListView) findViewById(R.id.list_comment);
 
-        String url_photo = "http://www.loushubin.cn/getPhoto.php?name="+id;
-        Log.d("PhotoUrl",url_photo);
+        String url_photo = "http://www.loushubin.cn/getPhoto.php?name=" + id;
+        Log.d("PhotoUrl", url_photo);
         Uri uri = Uri.parse(url_photo);
         simpleDraweeView.setImageURI(uri);
     }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
@@ -147,33 +152,43 @@ public class OrderDetailActivity extends AppCompatActivity implements AsyncRespo
         return super.onOptionsItemSelected(item);
     }
 
+
+    public static String timestampToDate(String beginDate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(new Date(Long.valueOf(beginDate) * 1000L));
+        return date;
+    }//时间转换
+
     @Override
     public void processFinish(Parse_Json_comments parse_json_comments) {
-        Map<String, Object> listItem = new HashMap<String, Object>();
-        for (Data data:
-                parse_json_comments.getDatas()   ) {
-            listItem.put("comment_name",data.getUser_name());
-            listItem.put("comment_content",data.getComment_content());
-            listItem.put("comment_grade",data.getStar_level());
-            listItem.put("comment_time",data.getTime());
-            Log.d("comment",data.getTime());
+
+        for (Data data :
+                parse_json_comments.getDatas()) {
+            Map<String, Object> listItem = new HashMap<String, Object>();
+            listItem.put("comment_name", data.getUser_name());
+            listItem.put("comment_content", data.getComment_content());
+            listItem.put("comment_grade", data.getStar_level());
+            listItem.put("comment_time", timestampToDate(data.getTime()));
+            Log.d("comment", data.getTime());
             listItems.add(listItem);
         }
+
         Log.d("listitem", String.valueOf(listItems.size()));
         SimpleAdapter simpleAdapter = new SimpleAdapter(OrderDetailActivity.this,
                 listItems,
                 R.layout.user_comment_item,
-                new String[]{"comment_name","comment_content","comment_grade","comment_time"},
-                new int[]{R.id.user_comment_name,R.id.user_comment_content,R.id.user_commnet_grade,R.id.user_comment_time});
+                new String[]{"comment_name", "comment_content", "comment_grade", "comment_time"},
+                new int[]{R.id.user_comment_name, R.id.user_comment_content, R.id.user_commnet_grade, R.id.user_comment_time});
         listView_comment.setAdapter(simpleAdapter);
     }
 }
 
 
-class SubmitComment extends AsyncTask<String,Void,Parse_Json_comments> {
+class SubmitComment extends AsyncTask<String, Void, Parse_Json_comments> {
     private Context context;
     private ProgressDialog progressDialog;
     AsyncResponse delegate = null;
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -193,15 +208,14 @@ class SubmitComment extends AsyncTask<String,Void,Parse_Json_comments> {
     protected void onPostExecute(Parse_Json_comments parse_json_comments) {
         super.onPostExecute(parse_json_comments);
         progressDialog.dismiss();
-        if (parse_json_comments != null && parse_json_comments.getStatus().equals("0")){
-            Toast.makeText(context,"评论加载成功...",Toast.LENGTH_SHORT).show();
+        if (parse_json_comments != null && parse_json_comments.getStatus().equals("0")) {
+            Toast.makeText(context, "评论加载成功...", Toast.LENGTH_SHORT).show();
             if (parse_json_comments.getDatas() != null) {
-                Log.d("inform","parse");
+                Log.d("inform", "parse");
                 delegate.processFinish(parse_json_comments);
             }
-        }
-        else{
-            Toast.makeText(context,"评论加载失败，请刷新重试.",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "评论加载失败，请刷新重试.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -209,18 +223,20 @@ class SubmitComment extends AsyncTask<String,Void,Parse_Json_comments> {
     protected Parse_Json_comments doInBackground(String... params) {
         String strResult = null;
         try {
-            strResult = HttpUtils.submitGetData(OrderDetailActivity.url_get_comment+params[0],"utf-8");
+            strResult = HttpUtils.submitGetData(OrderDetailActivity.url_get_comment + params[0], "utf-8");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.d("result",strResult);
+        Log.d("result", strResult);
         Gson gson = new Gson();
         Parse_Json_comments parse_json_comments = new Parse_Json_comments();
         try {
-            parse_json_comments = gson.fromJson(strResult,Parse_Json_comments.class);
+            parse_json_comments = gson.fromJson(strResult, Parse_Json_comments.class);
         } catch (Exception e) {
             Log.d("errorMessage", e.toString());
         }
         return parse_json_comments;
     }
+
+
 }

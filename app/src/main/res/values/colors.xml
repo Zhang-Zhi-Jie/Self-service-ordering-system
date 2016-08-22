@@ -18,4 +18,5 @@
     <color name="background">#EDEDED</color>
     <color name="time">#ef4136</color>
     <color name="shape2">#fdb933</color>
+    <color name="textcolor">#4A4A4A</color>
 </resources>

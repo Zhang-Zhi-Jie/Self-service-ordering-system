@@ -68,7 +68,7 @@ public class CommentActivity extends AppCompatActivity {
         name = intent.getStringExtra("dish_name");
         textView_name.setText("对 ["+name+"] 这一道菜进行一下点评吧！");
 
-        submit = (Button) findViewById(R.id.submit);
+        submit = (Button)findViewById(R.id.submit);
         ratingBar = (RatingBar) findViewById(R.id.ratingbar);
         editText = (EditText) findViewById(R.id.editText_comment);
         id = intent.getStringExtra("id");
