@@ -209,7 +209,7 @@ class SubmitComment extends AsyncTask<String, Void, Parse_Json_comments> {
         super.onPostExecute(parse_json_comments);
         progressDialog.dismiss();
         if (parse_json_comments != null && parse_json_comments.getStatus().equals("0")) {
-            Toast.makeText(context, "评论加载成功...", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "评论加载成功...", Toast.LENGTH_SHORT).show();
             if (parse_json_comments.getDatas() != null) {
                 Log.d("inform", "parse");
                 delegate.processFinish(parse_json_comments);

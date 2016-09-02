@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import java.util.Map;
  * Created by shubin on 2016/6/16.
  */
 public class Detail extends AppCompatActivity implements AdapterView.OnItemClickListener{
+    String []finish;
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
@@ -33,19 +35,27 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
         List<String> num = order_detail.getNum();
         final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         String[] arg1 = new String[dish_name.size()];
+        finish = new String[dish_name.size()];
+        for(int i = 0 ; i<dish_name.size();i++){
+            finish[i] = "未完成";
+        }
         for (int i = 0; i < dish_name.size(); i++) {
             Map<String, Object> listitem = new HashMap<String, Object>();
             listitem.put("order_num", result.getOrder_num());
             listitem.put("order_belong", dish_name.get(i));
-            listitem.put("order_price", num.get(i));
+            listitem.put("order_num", num.get(i));
+            listitem.put("order_finish",finish[i]);
+
             //                          listitem.put("unit", result_spoon_details.get(i).getUnit());
             listItems.add(listitem);
             arg1[i] = listitem.toString();
         }
-        SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.item_list_module_2, new String[]{"order_num", "order_belong", "order_price"},
-                new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price});
+        SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.item_list_module_2, new String[]{"order_num", "order_belong", "order_num","order_finish"},
+                new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_num,R.id.order_db_finish});
         listView.setAdapter(orderAdapter);
         listView.setOnItemClickListener(this);
+
+
 
     }
 

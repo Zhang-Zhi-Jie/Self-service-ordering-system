@@ -96,7 +96,7 @@
 
         <activity
             android:name=".restaurant.MainActivity_r"
-            android:theme="@style/AppTheme1.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity

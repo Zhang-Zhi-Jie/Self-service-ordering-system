@@ -1,65 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="60dp"
-    >
-	<TextView
-		android:id="@+id/order_db_idshow"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="ID:"
-		android:textSize="17dip"
-		android:layout_marginLeft="5dip"
-		/>
+    android:layout_height="70dp">
 
-	<TextView
-			android:id="@+id/order_db_id"
-	    	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-			android:textSize="17dip"
-	    	android:layout_marginLeft="5dip"
-		    android:layout_toRightOf="@+id/order_db_idshow"
-	    	/>
+    <TextView
+        android:id="@+id/order_db_idshow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:drawableLeft="@drawable/ic_mode_edit_black_24dp"
+        android:text="订单号:"
+        android:textSize="14dp" />
 
-	<TextView
-		android:id="@+id/order_db_nameshow"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="顾客名："
-		android:textSize="17dip"
-		android:layout_marginLeft="5dip"
-		android:layout_below="@+id/order_db_idshow"
-		/>
-	   <TextView
-		    android:id="@+id/order_db_name"
-	    	android:layout_width="100dip"
-		   	android:textSize="17dp"
-	    	android:layout_height="wrap_content"
-	    	android:layout_marginLeft="5dip"
-		   android:layout_toRightOf="@+id/order_db_nameshow"
-		    android:layout_below="@+id/order_db_id"
-	    	/>
+    <TextView
+        android:id="@+id/order_db_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:textSize="17dip"
+        android:textColor="@color/shape2"
+        android:layout_alignBaseline="@+id/order_db_idshow"
+        android:layout_alignBottom="@+id/order_db_idshow"
+        android:layout_toEndOf="@+id/order_db_idshow" />
 
-	<TextView
-		android:id="@+id/order_db_priceshow"
-		android:layout_width="55dip"
-		android:textSize="17dp"
-		android:text="价格："
-		android:layout_height="wrap_content"
-		android:layout_marginLeft="5dip"
-		android:layout_toRightOf="@+id/order_db_name"
-		android:layout_below="@+id/order_db_id"
-		/>
+    <TextView
+        android:id="@+id/order_db_nameshow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/order_db_idshow"
+        android:layout_marginLeft="5dip"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_account_circle_black_24dp"
+        android:text="顾客名："
+        android:textSize="17dip" />
 
-	   <TextView
-		    android:id="@+id/order_db_price"
-	    	android:layout_width="50dip"
-	    	android:layout_height="wrap_content"
-	    	android:layout_marginLeft="5dip"
-		    android:layout_below="@+id/order_db_id"
-		    android:layout_toRightOf="@+id/order_db_priceshow"
-	    	/>
+    <TextView
+        android:id="@+id/order_db_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:layout_alignBottom="@+id/order_db_nameshow"
+        android:layout_toEndOf="@+id/order_db_nameshow" />
 
+    <TextView
+        android:id="@+id/order_db_priceshow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:drawableLeft="@drawable/ic_star_black_24dp"
+        android:text="总价："
+        android:textSize="16dp"
+        android:layout_alignBottom="@+id/order_db_nameshow"
+        android:layout_toEndOf="@+id/order_db_name" />
 
+    <TextView
+        android:id="@+id/order_db_RMB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¥"
+        android:textColor="@color/red"
+        android:textSize="20dp"
+        android:layout_alignBottom="@+id/order_db_priceshow"
+        android:layout_toEndOf="@+id/order_db_priceshow" />
+
+    <TextView
+        android:id="@+id/order_db_price"
+        android:layout_width="wrap_content"
+        android:textColor="@color/red"
+        android:textSize="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/order_db_RMB"
+        android:layout_toEndOf="@+id/order_db_RMB" />
+
+    <TextView
+        android:id="@+id/order_db_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:layout_below="@+id/order_db_price"
+        android:layout_toStartOf="@+id/g1" />
+
+    <TextView
+        android:id="@+id/g1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:layout_alignTop="@+id/order_db_year"
+        android:layout_toStartOf="@+id/order_db_month" />
+
+    <TextView
+        android:id="@+id/order_db_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        android:layout_alignTop="@+id/g1"
+        android:layout_toStartOf="@+id/g2" />
+
+    <TextView
+        android:id="@+id/g2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:layout_below="@+id/order_db_price"
+        android:layout_toStartOf="@+id/order_db_day" />
+
+    <TextView
+        android:id="@+id/order_db_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:layout_alignTop="@+id/order_db_year"
+        android:layout_toEndOf="@+id/order_db_price" />
 
 </RelativeLayout>

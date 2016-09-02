@@ -90,16 +90,16 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                     long time;
                     int year,month,day;
                     time = Long.valueOf(result1.get(i).getOrder_num());
-                    year = (int)(time/(1000000000000L));
-                    if(time/(100000000000L)%10==0){
-                        month = (int)(time/(10000000000L)%10);
+                    year = (int)(time/(100000000000L));
+                    if(time/(10000000000L)%10==0){
+                        month = (int)(time/(1000000000L)%10);
                     }else {
-                        month =(int) (10 + time / (10000000000L) % 10);
+                        month =(int) (10 + time / (1000000000L) % 10);
                     }
-                    if(time/(1000000000L)%10==0){
-                        day = (int)(time/(100000000)%10);
+                    if(time/(100000000L)%10==0){
+                        day = (int)(time/(10000000)%10);
                     }else{
-                        day = (int)((time/(1000000000)%10)*10+(time/(100000000)%10));
+                        day = (int)((time/(100000000)%10)*10+(time/(10000000)%10));
                     }//将订单号分割成日期
 
                     Map<String, Object> listitem = new HashMap<String, Object>();

@@ -8,301 +8,304 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        >
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:fitsSystemWindows="true">
 
-        <LinearLayout
-            android:id="@+id/layout1"
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/fiv"
-                android:layout_width="match_parent"
-                android:layout_height="265dp"
-                fresco:actualImageScaleType="fitCenter"
-                fresco:viewAspectRatio="1.33" />
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/des"
+                android:id="@+id/layout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorwhite"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/id"
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/fiv"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorwhite">
-
-                    <TextView
-                        android:id="@+id/order_db_idshow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:drawableLeft="@drawable/ic_keyboard_arrow_left_black_24dp"
-                        android:text="ID:"
-                        android:textSize="15dp"
-
-                        />
-
-                    <TextView
-                        android:id="@+id/order_db_id"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_toRightOf="@+id/order_db_idshow"
-                        android:textColor="@color/colorButton"
-                        android:textSize="15dp" />
-                </LinearLayout>
+                    android:layout_height="265dp"
+                    fresco:actualImageScaleType="fitCenter"
+                    fresco:viewAspectRatio="1.33" />
 
                 <LinearLayout
-                    android:id="@+id/name"
+                    android:id="@+id/des"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/id"
-                    android:background="@color/colorwhite">
-
-                    <TextView
-                        android:id="@+id/order_db_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/order_db_idshow"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_toRightOf="@+id/order_db_nameshow"
-                        android:textColor="@color/colorblack"
-                        android:textSize="20dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/name"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/colorwhite">
-
-                    <TextView
-                        android:id="@+id/RMB"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/order_db_name"
-                        android:layout_marginLeft="10dp"
-                        android:text="¥"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="25dp"
-
-                        />
-
-                    <TextView
-                        android:id="@+id/order_db_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/order_db_name"
-                        android:layout_toEndOf="@+id/RMB"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="25dp" />
-
-                    <TextView
-                        android:id="@+id/dan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/order_db_name"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_toRightOf="@+id/order_db_price"
-                        android:text="×"
-                        android:textColor="@color/colorblack"
-                        android:textSize="20dp" />
-
-
-                    <TextView
-                        android:id="@+id/order_db_create_at"
-                        android:layout_width="20dp"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/order_db_name"
-                        android:layout_marginLeft="1dp"
-                        android:layout_marginTop="1dp"
-                        android:layout_toRightOf="@+id/dan"
-                        android:textColor="@color/colorblack"
-                        android:textSize="15dp" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#D1EEEE"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:layout_marginTop="1dp"
                     android:background="@color/colorwhite"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/depict"
+                        android:id="@+id/id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/des"
-                        android:layout_marginTop="1dp"
-                        android:background="@color/colorwhite"
-                        android:orientation="vertical">
+                        android:background="@color/colorwhite">
 
                         <TextView
+                            android:id="@+id/order_db_idshow"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:drawableLeft="@drawable/ic_keyboard_arrow_left_black_24dp"
+                            android:text="ID:"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:id="@+id/order_db_id"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:drawableLeft="@drawable/ic_content_paste_black_24dp"
-                            android:text="商品简介："
-                            android:textColor="#121212"
-                            android:textSize="17.5dp" />
+                            android:layout_toRightOf="@+id/order_db_idshow"
+                            android:textColor="@color/colorButton"
+                            android:textSize="15dp" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/food"
+                        android:id="@+id/name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/decipt"
-                        android:layout_marginTop="1dp"
-                        android:background="@color/colorwhite"
-                        android:orientation="vertical">
+                        android:layout_below="@+id/id"
+                        android:background="@color/colorwhite">
 
                         <TextView
+                            android:id="@+id/order_db_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:drawableLeft="@drawable/ic_remove_red_eye_black_24dp"
-                            android:text="主要食材:"
-                            android:textColor="@color/textcolor"
-                            android:textSize="16dp" />
-
-                        <TextView
-                            android:id="@+id/material_food"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/order_db_idshow"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginTop="3dp"
-                            android:layout_marginRight="10dp"
-                            android:ellipsize="end"
-                            android:maxLines="3"
-                            android:textSize="14dp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/feature"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/des"
-                        android:layout_marginTop="2dp"
-                        android:background="@color/colorwhite"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                             android:layout_marginTop="5dp"
-                            android:drawableLeft="@drawable/ic_adjust_black_24dp"
-                            android:text="菜品特色:"
-                            android:textColor="@color/textcolor"
-                            android:textSize="16dp" />
-
-                        <TextView
-                            android:id="@+id/feature_food"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="3dp"
-                            android:layout_marginRight="10dp"
-                            android:ellipsize="end"
-                            android:maxLines="3"
-                            android:textSize="14dp" />
+                            android:layout_toRightOf="@+id/order_db_nameshow"
+                            android:textColor="@color/colorblack"
+                            android:textSize="20dp" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/effect"
+                        android:id="@+id/price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/food"
-                        android:layout_marginTop="2dp"
-                        android:background="@color/colorwhite"
-                        android:orientation="vertical">
+                        android:layout_below="@+id/name"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorwhite">
 
                         <TextView
+                            android:id="@+id/RMB"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:drawableLeft="@drawable/ic_accessibility_black_24dp"
-                            android:text="营养价值："
-                            android:textColor="@color/textcolor"
-                            android:textSize="16dp" />
+                            android:layout_below="@+id/order_db_name"
+                            android:layout_marginLeft="10dp"
+                            android:text="¥"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="25dp"
+
+                            />
 
                         <TextView
-                            android:id="@+id/effect_food"
-                            android:layout_width="match_parent"
+                            android:id="@+id/order_db_price"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/order_db_name"
+                            android:layout_toEndOf="@+id/RMB"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="25dp" />
+
+                        <TextView
+                            android:id="@+id/dan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/order_db_name"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="3dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginRight="10dp"
-                            android:ellipsize="end"
-                            android:maxLines="3"
-                            android:textSize="14dp" />
+                            android:layout_toRightOf="@+id/order_db_price"
+                            android:text="×"
+                            android:textColor="@color/colorblack"
+                            android:textSize="20dp" />
+
+
+                        <TextView
+                            android:id="@+id/order_db_create_at"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/order_db_name"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_toRightOf="@+id/dan"
+                            android:textColor="@color/colorblack"
+                            android:textSize="15dp" />
                     </LinearLayout>
+
                 </LinearLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/comment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/effect"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/text_comment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:drawableLeft="@drawable/ic_favorite_black_24dp"
-                    android:text="商品评论："
-                    android:textColor="#121212"
-                    android:textSize="17.5dp" />
-            </LinearLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/comment"
-                android:background="#D1EEEE"
-                android:paddingBottom="1dp"
-                android:paddingLeft="1dp"
-                android:paddingRight="1dp">
-
-                <com.example.a13051_000.buffetmealsystem.Order.ListViewForScrollView
-                    android:id="@+id/list_comment"
+                <LinearLayout
+                    android:id="@+id/layout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fffef9">
-                </com.example.a13051_000.buffetmealsystem.Order.ListViewForScrollView>
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
+                    android:background="#D1EEEE"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginTop="1dp"
+                        android:background="@color/colorwhite"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/depict"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_below="@+id/des"
+                            android:layout_marginTop="1dp"
+                            android:background="#fffef9"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="3dp"
+                                android:drawableLeft="@drawable/ic_content_paste_black_24dp"
+                                android:text="菜品简介："
+                                android:textColor="#121212"
+                                android:textSize="17.5dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/food"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/decipt"
+                            android:layout_marginTop="1dp"
+                            android:background="@color/colorwhite"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:drawableLeft="@drawable/ic_remove_red_eye_black_24dp"
+                                android:text="主要食材:"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/material_food"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="3dp"
+                                android:ellipsize="end"
+                                android:lineSpacingExtra="5dp"
+                                android:maxLines="3"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/feature"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/des"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/colorwhite"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:drawableLeft="@drawable/ic_adjust_black_24dp"
+                                android:text="菜品特色:"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:id="@+id/feature_food"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="3dp"
+                                android:ellipsize="end"
+                                android:lineSpacingExtra="5dp"
+                                android:maxLines="5"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/effect"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/food"
+                            android:layout_marginTop="2dp"
+                            android:background="@color/colorwhite"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:drawableLeft="@drawable/ic_accessibility_black_24dp"
+                                android:text="营养价值："
+                                android:textSize="16dp" />
+
+
+                            <TextView
+                                android:id="@+id/effect_food"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginTop="3dp"
+                                android:ellipsize="end"
+                                android:lineSpacingExtra="5dp"
+                                android:maxLines="5"
+                                android:textColor="@color/textcolor"
+                                android:textSize="14dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/effect"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:drawableLeft="@drawable/ic_favorite_black_24dp"
+                        android:text="菜品评论："
+                        android:textColor="#121212"
+                        android:textSize="17.5dp" />
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/comment"
+                    android:paddingBottom="1dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="2dp">
+
+                    <com.example.a13051_000.buffetmealsystem.Order.ListViewForScrollView
+                        android:id="@+id/list_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:background="@color/colorwhite"></com.example.a13051_000.buffetmealsystem.Order.ListViewForScrollView>
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 </RelativeLayout>

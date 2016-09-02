@@ -56,19 +56,20 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
         String[] arg1 = new String[dish_name.size()];
         dishname= new String[dish_name.size()];
 
-        for (int i = 0; i < dish_name.size(); i++) {
-            if(!finish.get(i)){
-                FormDetailAllFinish = false;
-                break;
-            }
-        }
+//        for (int i = 0; i < dish_name.size(); i++) {
+//            if(!finish.get(i)){
+//                FormDetailAllFinish = false;
+//                break;
+//            }
+//        }
 
         for (int i = 0; i < dish_name.size(); i++) {
 
             String is_finished = "未完成";
-            if(finish.get(i)){
-                is_finished = "已完成";
-            }
+//            if(finish.get(i)){
+//                is_finished = "已完成";
+//            }
+
 
             Map<String, Object> listitem = new HashMap<String, Object>();
             dishname[i]= dish_name.get(i);

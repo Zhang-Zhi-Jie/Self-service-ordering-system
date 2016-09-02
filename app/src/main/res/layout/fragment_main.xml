@@ -388,12 +388,11 @@
                 android:orientation="vertical"
                 android:layout_below="@+id/hot"
                 >
-                <ListView
+                <com.example.a13051_000.buffetmealsystem.Order.ListViewForScrollView
                     android:id="@+id/list_hot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
-                </ListView>
+                </com.example.a13051_000.buffetmealsystem.Order.ListViewForScrollView>
 
             </LinearLayout>
         </RelativeLayout>
