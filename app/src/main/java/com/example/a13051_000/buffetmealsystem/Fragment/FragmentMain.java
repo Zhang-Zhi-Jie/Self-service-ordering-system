@@ -14,6 +14,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -29,6 +30,8 @@ import com.example.a13051_000.buffetmealsystem.xml.imagelayout.FoodXmlParser;
 import com.example.a13051_000.buffetmealsystem.xml.imagelayout.SlideImageLayout;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -59,6 +62,10 @@ public class FragmentMain extends Fragment {
     private ImageButton imageButton_soup;
     private ImageButton imageButton_drink;
     private ImageButton imageButton_rice;
+
+    private ListView listView_hot;
+    private List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+
 
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -174,6 +181,8 @@ public class FragmentMain extends Fragment {
             }
         });//菜单预览
 
+
+        listView_hot = (ListView) rootView.findViewById(R.id.list_hot);
 
         return rootView;
 

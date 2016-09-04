@@ -10,7 +10,7 @@
 
     <com.example.a13051_000.buffetmealsystem.restaurant.DragTopLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@color/colorloginbackground"
+        android:background="#FF7F24"
         android:id="@+id/drag_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -62,11 +62,11 @@
             <com.astuetz.PagerSlidingTabStrip
                 android:id="@+id/tabs"
                 app:pstsShouldExpand="false"
-                app:pstsIndicatorColor="@color/shape2"
+                app:pstsIndicatorColor="@color/colorwhite"
                 android:textColor="@color/colorwhite"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorloginbackground" />
+                android:background="#FF7F24" />
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/view_pager"

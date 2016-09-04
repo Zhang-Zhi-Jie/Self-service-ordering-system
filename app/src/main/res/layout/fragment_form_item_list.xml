@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/order_db_id"
         android:layout_marginLeft="5dip"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         android:layout_toRightOf="@+id/order_db_nameshow"
         android:drawableLeft="@drawable/ic_account_circle_black_24dp"
         android:textColor="@color/colorblack"
@@ -95,40 +95,39 @@
         android:id="@+id/order_db_year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/order_db_cost"
-        android:layout_below="@+id/order_db_cost"
-        android:text="1" />
+        android:text="1"
+        android:layout_below="@+id/order_db_price"
+        android:layout_toStartOf="@+id/g1" />
 
     <TextView
         android:id="@+id/g1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="-"
         android:layout_alignTop="@+id/order_db_year"
-        android:layout_toEndOf="@id/order_db_year"
-        android:text="-" />
+        android:layout_toStartOf="@+id/order_db_month" />
 
     <TextView
         android:id="@+id/order_db_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/order_db_year"
-        android:layout_toEndOf="@id/g1"
-        android:text="2" />
+        android:text="2"
+        android:layout_alignTop="@+id/g1"
+        android:layout_toStartOf="@+id/g2" />
 
     <TextView
         android:id="@+id/g2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/order_db_month"
-        android:layout_toEndOf="@id/order_db_month"
-        android:text="-" />
+        android:text="-"
+        android:layout_below="@+id/order_db_price"
+        android:layout_toStartOf="@+id/order_db_day" />
 
     <TextView
         android:id="@+id/order_db_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/order_db_year"
-        android:layout_below="@+id/order_db_finish"
-        android:layout_toEndOf="@+id/g2"
-        android:text="3" />
+        android:text="3"
+        android:layout_below="@+id/order_db_price"
+        android:layout_alignEnd="@+id/order_db_finish" />
 </RelativeLayout>
