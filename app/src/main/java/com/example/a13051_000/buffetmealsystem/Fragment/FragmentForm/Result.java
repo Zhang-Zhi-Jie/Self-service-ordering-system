@@ -1,6 +1,7 @@
 package com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -54,7 +55,7 @@ public class Result implements Serializable{
         public List<String> dish_name;
         public List<String> num;
         public List<String> id;
-        public List<Boolean> finish;
+        public ArrayList<Boolean> finish = new ArrayList<>();
         public void setDish_name(List<String> dish_name) {
             this.dish_name = dish_name;
         }
@@ -79,8 +80,10 @@ public class Result implements Serializable{
             this.id = id;
         }
 
-        public void setFinish(List<Boolean> finish){this.finish = finish;}
-
+        public void setFinish(ArrayList<Boolean> finish){this.finish = finish;}
+        public void setFinish(int num,Boolean finish){
+            this.finish.add(num,finish);
+        }
         public List<Boolean> getFinish(){return finish;}
 
     }

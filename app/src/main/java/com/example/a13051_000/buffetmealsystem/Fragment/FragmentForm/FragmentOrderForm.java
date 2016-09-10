@@ -22,21 +22,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a13051_000.buffetmealsystem.HttpUtils;
-import com.example.a13051_000.buffetmealsystem.Order.Test;
 import com.example.a13051_000.buffetmealsystem.R;
-import com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm.Detail;
+import com.google.common.primitives.Booleans;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by 13051_000 on 2016/7/24.
  */
 interface AsyncResponse{
-    void processFinish(ResultFromServer output);
+    void processFinish(ResultFromServer output,Boolean clear);
+    void getFinishStatus(ResultFromServer output);
 }
 
 public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLongClickListener,AsyncResponse{
@@ -45,6 +46,9 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
     ProgressDialog progressDialog;
     final int SHOW_RESPONSE = 0;
     private String sResult;
+    private int num;
+    private ResultFromServer output;
+    private List<Result> result1 = null;
     static getOrderFrom getOrgerfor;
     private List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
     private String urlupdate = "http://www.loushubin.cn/buyform.php?type=update&id=";
@@ -73,20 +77,16 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
 
         return rootView;
     }
-    public void processFinish(ResultFromServer output){
+    public void processFinish(ResultFromServer output, Boolean first){
+        this.output = output;
+        String finish = "";
         listItems.clear();
         if (output != null && output.getStatus().equals("0")) {
-            final List<Result> result1 = output.getResult();
+            result1 = output.getResult();
             if (result1 != null) {
                 //菜品信息存储在result_soon_details这个list里面
                 String[] arg1 = new String[result1.size()];
-
                 for (int i = 0; i < result1.size(); i++) {
-                    String finish = "未完成";
-                    if(Detail.FormDetailAllFinish == true){
-                        finish = "已完成";
-                    }//如果订单已完成，则finish赋“已完成”
-
                     long time;
                     int year,month,day;
                     time = Long.valueOf(result1.get(i).getOrder_num());
@@ -101,7 +101,18 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                     }else{
                         day = (int)((time/(100000000)%10)*10+(time/(10000000)%10));
                     }//将订单号分割成日期
-
+                    if(first) {
+                            finish = "加载中...";
+                    }
+                    else {
+                        this.num = 0;
+                        Log.d("finish",finish);
+                        if (output.getResult().get(i).getOrder_finish()) {
+                            Log.d("finish",finish);
+                            finish = "已完成";
+                        } else
+                            finish = "未完成";
+                    }
                     Map<String, Object> listitem = new HashMap<String, Object>();
                     listitem.put("order_num", result1.get(i).getOrder_num());
                     listitem.put("order_belong", result1.get(i).getOrder_belong());
@@ -110,6 +121,12 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                     listitem.put("order_month",month);
                     listitem.put("order_day",day);
                     listitem.put("order_finish",finish);
+                    //test
+                    if (first) {
+                        getFinishStatus getFinishStatus_r = new getFinishStatus(getContext());
+                        getFinishStatus.delegate = this;
+                        getFinishStatus_r.execute(result1.get(i).getOrder_num());
+                    }
                     //将数据填入
                     //                          listitem.put("unit", result_spoon_details.get(i).getUnit());
                     listItems.add(listitem);
@@ -137,6 +154,29 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
             }
         }
     }
+
+    @Override
+    public void getFinishStatus(ResultFromServer output) {
+        Boolean finish = true;
+        listItems.get(this.num);
+        for (Finish_status each:output.getFinish_status()
+             ) {
+            if (!each.getFinish_status_detail().getFinished_num().equals(each.getFinish_status_detail().getTotal_num())){
+                finish = false;
+            }
+        }
+        if (finish){
+            this.output.getResult().get(this.num).setOrder_finish(true);
+        }
+        else
+            this.output.getResult().get(this.num).setOrder_finish(false);
+        this.num += 1;
+        Log.d("num", Objects.toString(this.num));
+        if (this.num == listItems.size()){
+            this.processFinish(this.output,false);
+        }
+    }
+
     public boolean formDetailAllFinish(){
 
         return true;
@@ -177,7 +217,6 @@ class getOrderFrom extends AsyncTask<String,Integer,String> {
         } catch (IOException e) {
             Log.d("getOrderFormError", e.toString());
         }
-        Log.d("orderFromResult",result);
         return result;
     }
 
@@ -199,7 +238,8 @@ class getOrderFrom extends AsyncTask<String,Integer,String> {
                 Log.d("data1", e.toString());
             }
             progressDialog.dismiss();
-            delegate.processFinish(resultFromServer);
+            Log.d("server_result",result);
+            delegate.processFinish(resultFromServer,true);
         }
     }
 }
@@ -249,3 +289,4 @@ class updatePermission extends AsyncTask<String,Integer, com.example.a13051_000.
     }
 
 }
+
