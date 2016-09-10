@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.FileData.UserData;
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentMain;
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentOrder;
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm.FragmentOrderForm;
@@ -111,8 +112,7 @@ public class MainActivity extends AppCompatActivity
         TextView showtime = (TextView) header.findViewById(R.id.showtime);
         TextView nickname = (TextView)header.findViewById(R.id.shownickname);
         imageView = (ImageView) header.findViewById(R.id.imageView);
-        Intent intent = getIntent();
-        final String username = intent.getStringExtra("nickname");
+        final String username = LoginActivity.userData.GetName();
         nickname.setText(""+username+"");
         nickname.setOnClickListener(new View.OnClickListener() {
             @Override

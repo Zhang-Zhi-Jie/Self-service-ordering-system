@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.a13051_000.buffetmealsystem.FileData.UserData;
 import com.google.gson.Gson;
 
 import org.apache.http.NameValuePair;
@@ -39,6 +40,8 @@ public class LoginActivity extends BaseActivity {
     private String number;
     private String pwd;
     public  String nickname;
+
+    static UserData userData = new UserData();
     //网络连接检查函数:::
     private boolean AccessNetworkState(){
         ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -70,8 +73,9 @@ public class LoginActivity extends BaseActivity {
                         if (loginResult.getNick_name() != null) {
                             Toast.makeText(getApplicationContext(), "欢迎您，" + loginResult.getNick_name(), Toast.LENGTH_SHORT).show();
                             nickname = loginResult.getNick_name();
+
+                            userData.SetName(nickname);
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra("nickname",nickname);
                             LoginActivity.this.startActivity(intent);
                             LoginActivity.this.finish();
                         } else {

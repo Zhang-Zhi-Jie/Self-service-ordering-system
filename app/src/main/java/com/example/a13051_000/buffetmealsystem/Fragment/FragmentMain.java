@@ -182,7 +182,7 @@ public class FragmentMain extends Fragment {
         });//菜单预览
 
 
-        listView_hot = (ListView) rootView.findViewById(R.id.list_hot);
+//        listView_hot = (ListView) rootView.findViewById(R.id.list_hot);
 
         return rootView;
 

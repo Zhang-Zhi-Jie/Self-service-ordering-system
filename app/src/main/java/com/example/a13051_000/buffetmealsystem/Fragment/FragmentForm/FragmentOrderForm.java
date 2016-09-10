@@ -117,8 +117,8 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                     Log.d("list_form_each", listitem.toString());
                 }
                 if (getContext() != null) {
-                    SimpleAdapter orderAdapter = new SimpleAdapter(getContext(), listItems, R.layout.fragment_form_item_list, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day","order_finish"},
-                            new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price,R.id.order_db_year,R.id.order_db_month,R.id.order_db_day,R.id.order_db_finish});
+                    SimpleAdapter orderAdapter = new SimpleAdapter(getContext(), listItems, R.layout.fragment_form_item_list, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day","order_finish","order_seatnum"},
+                            new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price,R.id.order_db_year,R.id.order_db_month,R.id.order_db_day,R.id.order_db_finish,R.id.order_db_seat_num});
                     menulist.setAdapter(orderAdapter);
 
 

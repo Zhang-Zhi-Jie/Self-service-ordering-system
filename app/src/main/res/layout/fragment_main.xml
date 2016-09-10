@@ -360,41 +360,41 @@
                 </FrameLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/hot"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/layout2"
-                android:background="@color/colorwhite"
-                android:layout_marginTop="1dp"
-                >
-            <TextView
-                android:id="@+id/text_hot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="热销菜品"
-                android:layout_marginLeft="3dp"
-                android:textSize="13dp"
-                android:textColor="@color/colorwhite"
-                android:background="@color/colorAccent"
-                android:drawableLeft="@drawable/ic_whatshot_black_24dp1"
-                />
-            </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:id="@+id/hot"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/layout2"-->
+                <!--android:background="@color/colorwhite"-->
+                <!--android:layout_marginTop="1dp"-->
+                <!--&gt;-->
+            <!--<TextView-->
+                <!--android:id="@+id/text_hot"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="热销菜品"-->
+                <!--android:layout_marginLeft="3dp"-->
+                <!--android:textSize="13dp"-->
+                <!--android:textColor="@color/colorwhite"-->
+                <!--android:background="@color/colorAccent"-->
+                <!--android:drawableLeft="@drawable/ic_whatshot_black_24dp1"-->
+                <!--/>-->
+            <!--</LinearLayout>-->
 
-            <LinearLayout
-                android:id="@+id/layout_hot"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/hot"
-                >
-                <com.example.a13051_000.buffetmealsystem.Order.ListViewForScrollView
-                    android:id="@+id/list_hot"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </com.example.a13051_000.buffetmealsystem.Order.ListViewForScrollView>
+            <!--<LinearLayout-->
+                <!--android:id="@+id/layout_hot"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_below="@+id/hot"-->
+                <!--&gt;-->
+                <!--<com.example.a13051_000.buffetmealsystem.Order.ListViewForScrollView-->
+                    <!--android:id="@+id/list_hot"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+                <!--</com.example.a13051_000.buffetmealsystem.Order.ListViewForScrollView>-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
         </RelativeLayout>
     </ScrollView>
 
