@@ -15,6 +15,7 @@ import com.example.a13051_000.buffetmealsystem.MainActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.Seat.SeatNumber;
 import com.example.a13051_000.buffetmealsystem.restaurant.MainActivity_r;
+import com.example.a13051_000.buffetmealsystem.seat_info;
 import com.mining.app.zxing.decoding.Intents;
 
 /**
@@ -84,6 +85,7 @@ public class ScanActivity extends AppCompatActivity {
                                         @Override
                                         public void onClick(DialogInterface dialogInterface, int i) {
                                             Intent intent = new Intent(ScanActivity.this, MainActivity_r.class);
+                                            seat_info.seat_num = seat_num;
                                             intent.putExtra("seat_num",seat_num);
                                             ScanActivity.this.startActivity(intent);
                                             overridePendingTransition(R.anim.fab_scale_up,R.anim.fab_scale_down);
