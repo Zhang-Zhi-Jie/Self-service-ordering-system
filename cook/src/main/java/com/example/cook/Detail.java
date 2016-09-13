@@ -34,32 +34,47 @@ interface AsyncResponse{
 }
 
 public class Detail extends AppCompatActivity implements AdapterView.OnItemClickListener,AsyncResponse{
-    String []finish;
-    private Result result;
+    protected String[] finish;
+    protected List<String> id;
+    protected Result result;
+    private int num;
+    protected ListView listView;
+    protected Bundle savedInstance;
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
+        this.savedInstance = savedInstance;
         setContentView(R.layout.activity_detail);
-        ListView listView = (ListView) findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         result = (Result)bundle.getSerializable("listItems");
+        getFinishStatus _getFinishStatus = new getFinishStatus(Detail.this);
+        _getFinishStatus.detail = this;
+        _getFinishStatus.execute(result.getOrder_num());
+        initView(result,listView,false);
+    }
+    //  flag为是否二次加载
+    public void initView(Result result,ListView listView,Boolean flag){
         Result.Order_detail order_detail = result.getOrder_detail();
         List<String> dish_name = order_detail.getDish_name();
         List<String> num = order_detail.getNum();
+
+        if(!flag) {
+            finish = new String[dish_name.size()];
+            for (int i = 0; i < dish_name.size(); i++) {
+                finish[i] = "加载中";
+            }
+        }
+        id = order_detail.getId();
         final List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
         String[] arg1 = new String[dish_name.size()];
-        finish = new String[dish_name.size()];
-        for(int i = 0 ; i<dish_name.size();i++){
-            finish[i] = "未完成";
-        }
         for (int i = 0; i < dish_name.size(); i++) {
             Map<String, Object> listitem = new HashMap<String, Object>();
             listitem.put("order_num", result.getOrder_num());
             listitem.put("order_belong", dish_name.get(i));
             listitem.put("order_num", num.get(i));
             listitem.put("order_finish",finish[i]);
-
             //                          listitem.put("unit", result_spoon_details.get(i).getUnit());
             listItems.add(listitem);
             arg1[i] = listitem.toString();
@@ -69,23 +84,21 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
         listView.setAdapter(orderAdapter);
         listView.setOnItemClickListener(this);
 
-
-
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemClick(AdapterView<?> adapterView, View view, int j, long l) {
+        final int num = j;
         new AlertDialog.Builder(Detail.this).setMessage("确定已完成？").setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-           //     _package pack = new _package(result.getOrder_num(),);
-                FinishGoods finishGoods = new FinishGoods(Detail.this);
-             //   finishGoods.execute()
             }
         }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                _package pack = new _package(result.getOrder_num(),id.get(num));
+                 FinishGoods finishGoods = new FinishGoods(Detail.this);
+                finishGoods.execute(pack);
             }
         }).show();
     }
@@ -126,7 +139,7 @@ class FinishGoods extends AsyncTask<_package,Integer,String> {
     private String order_num;
     private String good_id;
     private String url;
-    private String url_finish="http://www.loushubin.cn/buyform.php?type=finish?order_num=";
+    private String url_finish="http://www.loushubin.cn/buyform.php?type=finish&order_num=";
     public FinishGoods(Activity activity) {
         this.activity = activity;
         this.context = activity;
@@ -136,12 +149,13 @@ class FinishGoods extends AsyncTask<_package,Integer,String> {
         order_num = param[0].getOrder_num();
         good_id = param[0].getGood_id();
         String result = null;
-        url = url_finish +order_num +"?good_id" +good_id;
+        url = url_finish +order_num +"&id=" +good_id;
         try {
             result = HttpUtils.submitGetData(url, "utf-8");
         } catch (IOException e) {
             Log.d("getOrderFormError", e.toString());
         }
+        Log.d("url",url);
         return result;
     }
 
@@ -168,10 +182,66 @@ class FinishGoods extends AsyncTask<_package,Integer,String> {
             if(resultFromServer.getStatus().equals("0")) {
             Toast.makeText(context,"已完成一份",Toast.LENGTH_SHORT).show();
             }
-            else{
-                Toast.makeText(context,"加载失败..",Toast.LENGTH_SHORT);
+            else if(resultFromServer.getStatus().equals("8")){
+                Toast.makeText(context,"已全部完成",Toast.LENGTH_SHORT).show();
             }
-            delegate.processFinish(resultFromServer, true);
+            else{
+                Toast.makeText(context,"加载失败..",Toast.LENGTH_SHORT).show();
+            }
+//            delegate.processFinish(resultFromServer, true);
         }
     }
 }
+
+class getFinishStatus extends AsyncTask<String,Integer,ResultFromServer> {
+    private String finish_query_url = "http://www.loushubin.cn/buyform.php?type=get_finish_status&order_num=";
+    private Context context;
+    private String result;
+    public static AsyncResponse delegate = null;
+    public Detail detail;
+    @Override
+    protected ResultFromServer doInBackground(String... params) {
+        try {
+            result = HttpUtils.submitGetData(finish_query_url + params[0], "utf-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.d("result",result);
+        Gson gson = new Gson();
+        ResultFromServer resultFromServer = new ResultFromServer();
+        try {
+            resultFromServer = gson.fromJson(result,ResultFromServer.class);
+        } catch (Exception e) {
+            Log.w("errorMessage", e.toString());
+        }
+        return resultFromServer;
+    }
+
+    @Override
+    protected void onPostExecute(ResultFromServer resultFromServer) {
+        Integer i = 0;
+        super.onPostExecute(resultFromServer);
+        for (Finish_status finish_status: resultFromServer.getFinish_status()
+             ) {
+            if (finish_status.getFinish_status_detail().getFinished_num().equals(finish_status.getFinish_status_detail().getTotal_num())){
+                detail.finish[i] = "已完成";
+            }
+            else{
+                detail.finish[i] = "未完成";
+            }
+            i++;
+        }
+        detail.initView(detail.result,detail.listView,true);
+    }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
+
+    public getFinishStatus(Context context) {
+        super();
+        this.context = context;
+    }
+}
+
