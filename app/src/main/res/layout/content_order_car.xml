@@ -142,9 +142,20 @@
             android:layout_weight="1"
             android:background="@color/colorButton"
             android:gravity="center"
-            android:text="结算"
-            android:textSize="17dp"
+            android:text="现金支付"
+            android:textSize="15dp"
+            android:textColor="@color/colorwhite" />4
+        <TextView
+            android:id="@+id/submit_pay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="支付宝"
+            android:textSize="15dp"
             android:textColor="@color/colorwhite" />
+
     </LinearLayout>
 
 </RelativeLayout>

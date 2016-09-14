@@ -100,7 +100,7 @@ public class FragmentMain extends Fragment {
                 TextView tv_title = (TextView) window.findViewById(R.id.tv_dialog_title);
                 tv_title.setText("餐厅图片展示");
                 ViewFlipper viewFlipper = (ViewFlipper) window.findViewById(R.id.viewflipper);
-                int []res = {R.drawable.res1,R.drawable.t1,R.drawable.res4};
+                int []res = {R.drawable.res1,R.drawable.res2,R.drawable.res3,R.drawable.res4};
                 for(int i = 0; i<res.length;i++){
                     viewFlipper.addView(getImageView(res[i]));
                 }

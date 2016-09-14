@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.a13051_000.buffetmealsystem.Fragment.FragmentForm.ResultFromServer;
 import com.example.a13051_000.buffetmealsystem.HttpUtils;
 import com.example.a13051_000.buffetmealsystem.MainActivity;
+import com.example.a13051_000.buffetmealsystem.Pay.PayActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderForm;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderformDataSource;
@@ -49,6 +50,7 @@ public class OrderCar extends AppCompatActivity {
     private TextView integral_sum;
     private TextView clear;
     private TextView submit;
+    private TextView pay;
     private CheckBox checkBox_select_all;
     private CheckBox checkBox_add;
     private String seat_num;
@@ -109,6 +111,15 @@ public class OrderCar extends AppCompatActivity {
                     orderformDataSource1.open();
                     orderformDataSource1.deleteAllOrderform();
                 }
+            }
+        });
+
+        pay = (TextView) findViewById(R.id.submit_pay);
+        pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OrderCar.this, PayActivity.class);
+                OrderCar.this.startActivity(intent);
             }
         });
 

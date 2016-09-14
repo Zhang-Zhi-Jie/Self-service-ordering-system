@@ -203,7 +203,6 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
 class getOrderFrom extends AsyncTask<String,Integer,String> {
     Activity activity;
     Context context;
-    ProgressDialog progressDialog;
     public static AsyncResponse delegate = null;
 
     public getOrderFrom(Activity activity) {
@@ -221,13 +220,6 @@ class getOrderFrom extends AsyncTask<String,Integer,String> {
         return result;
     }
 
-    protected void onPreExecute() {
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setTitle("Loading..");
-        progressDialog.setMessage("加载中..");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-    }
 
     protected void onPostExecute(String result) {
         Gson gson = new Gson();
@@ -238,7 +230,6 @@ class getOrderFrom extends AsyncTask<String,Integer,String> {
             } catch (Exception e) {
                 Log.d("data1", e.toString());
             }
-            progressDialog.dismiss();
             Log.d("server_result",result);
             delegate.processFinish(resultFromServer,true);
         }

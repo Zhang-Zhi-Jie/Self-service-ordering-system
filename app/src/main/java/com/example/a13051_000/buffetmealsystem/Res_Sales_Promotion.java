@@ -8,7 +8,10 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
+
+
 
 /**
  * Created by 13051_000 on 2016/8/12.
@@ -16,7 +19,7 @@ import android.widget.ViewFlipper;
 public class Res_Sales_Promotion extends AppCompatActivity {
 
     private Toolbar toolbar;
-
+    private TextView textView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,9 @@ public class Res_Sales_Promotion extends AppCompatActivity {
         toolbar.setTitle("促销活动");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        textView = (TextView) findViewById(R.id.show);
+        textView.setText("使用此app点餐可减5元，谢谢。");
 
     }
     public boolean onOptionsItemSelected(MenuItem item) {
