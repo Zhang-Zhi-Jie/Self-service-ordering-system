@@ -12,7 +12,7 @@ public class Result implements Serializable{
     private String order_belong;
     private String order_price;
     private boolean order_finish;
-
+    private String seat_num;
     private Order_detail order_detail;
 
     public void setOrder_belong(String order_belong) {
@@ -50,6 +50,14 @@ public class Result implements Serializable{
     public void setOrder_finish(boolean order_finish){this.order_finish = order_finish;}
 
     public boolean getOrder_finish(){return order_finish;}
+
+    public void setSeat_num(String seat_num) {
+        this.seat_num = seat_num;
+    }
+
+    public String getSeat_num() {
+        return seat_num;
+    }
 
     public static class Order_detail implements Serializable{
         public List<String> dish_name;

@@ -26,7 +26,10 @@ import com.example.a13051_000.buffetmealsystem.Pay.PayActivity;
 import com.example.a13051_000.buffetmealsystem.R;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderForm;
 import com.example.a13051_000.buffetmealsystem.Sqlite.OrderformDataSource;
+import com.example.a13051_000.buffetmealsystem.seat_info;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -50,7 +53,7 @@ public class OrderCar extends AppCompatActivity {
     private TextView pay;
     private CheckBox checkBox_select_all;
     private CheckBox checkBox_add;
-
+    private String seat_num;
     private SQLiteDatabase db;
     public static final String url_submit = "http://www.loushubin.cn/buyform.php?type=submit";
     private OrderCarAdapter orderCarAdapter;
@@ -94,17 +97,20 @@ public class OrderCar extends AppCompatActivity {
                 }
                 Log.d("submit_data",stringBuilder.toString());
                 submit_data submitData = new submit_data(OrderCar.this);
-                submitData.execute(stringBuilder.toString());
-
-                data.clear();
-                orderCarAdapter.notifyDataSetChanged();
-                integral_sum.setText(0 + "");
-                checkBox_select_all.setChecked(false);
-                checkBox_add.setChecked(false);
-                OrderformDataSource orderformDataSource1 = new OrderformDataSource(OrderCar.this);
-                orderformDataSource1.open();
-                orderformDataSource1.deleteAllOrderform();
-
+                if(seat_info.seat_num == null){
+                    Toast.makeText(OrderCar.this,"请先选择座位号。",Toast.LENGTH_SHORT).show();
+                }else {
+                    seat_num = seat_info.seat_num;
+                    submitData.execute(stringBuilder.toString());
+                    data.clear();
+                    orderCarAdapter.notifyDataSetChanged();
+                    integral_sum.setText(0 + "");
+                    checkBox_select_all.setChecked(false);
+                    checkBox_add.setChecked(false);
+                    OrderformDataSource orderformDataSource1 = new OrderformDataSource(OrderCar.this);
+                    orderformDataSource1.open();
+                    orderformDataSource1.deleteAllOrderform();
+                }
             }
         });
 
@@ -263,17 +269,24 @@ class submit_data extends AsyncTask<String,Void,ResultFromServer>{
     @Override
     protected ResultFromServer doInBackground(String... params) {
         String result = "";
+        ResultFromServer resultFromServer = null;
         List<NameValuePair> valuePairs = new ArrayList<>();
         valuePairs.add(new BasicNameValuePair("order_detail",params[0]));
+        valuePairs.add(new BasicNameValuePair("seat_num",seat_info.seat_num));
         try {
             result = HttpUtils.submitPostData(OrderCar.url_submit,valuePairs,"utf-8");
         } catch (IOException e) {
             e.printStackTrace();
         }
         Log.d("result",params[0]);
-        Log.d("result", Objects.toString(result.length()));
+        Log.d("result", result);
         Gson gson = new Gson();
-        ResultFromServer resultFromServer = gson.fromJson(result, ResultFromServer.class);
+        try {
+            resultFromServer = gson.fromJson(result, ResultFromServer.class);
+        }catch (JsonSyntaxException jsonSyntaxException){
+            Log.e("exception",jsonSyntaxException.toString());
+            Toast.makeText(context,"服务器数据解析失败，请刷新重试.",Toast.LENGTH_SHORT);
+        }
         return resultFromServer;
     }
 }

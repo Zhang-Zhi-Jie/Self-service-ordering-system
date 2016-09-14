@@ -120,6 +120,7 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                     listitem.put("order_year",year);
                     listitem.put("order_month",month);
                     listitem.put("order_day",day);
+                    listitem.put("order_seatnum",result1.get(i).getSeat_num());
                     listitem.put("order_finish",finish);
                     //test
                     if (first) {

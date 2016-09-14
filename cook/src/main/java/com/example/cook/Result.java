@@ -11,7 +11,7 @@ public class Result implements Serializable{
     private String order_belong;
     private String order_price;
     private Order_detail order_detail;
-
+    private String seat_num;
     public void setOrder_belong(String order_belong) {
         this.order_belong = order_belong;
     }
@@ -44,10 +44,18 @@ public class Result implements Serializable{
         return order_price;
     }
 
+    public void setSeat_num(String seat_num) {
+        this.seat_num = seat_num;
+    }
+
+    public String getSeat_num() {
+        return seat_num;
+    }
+
     public static class Order_detail implements Serializable{
         public List<String> dish_name;
         public List<String> num;
-
+        public List<String> id;
         public void setDish_name(List<String> dish_name) {
             this.dish_name = dish_name;
         }
@@ -62,6 +70,14 @@ public class Result implements Serializable{
 
         public List<String> getNum() {
             return num;
+        }
+
+        public void setId(List<String> id) {
+            this.id = id;
+        }
+
+        public List<String> getId() {
+            return id;
         }
     }
 }
