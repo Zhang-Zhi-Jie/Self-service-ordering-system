@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <Button
+        android:onClick="testAlipay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="确定支付宝支付"
+        style="?android:textAppearanceSmall"
+        android:textColor="@color/colorwhite"
+        android:textSize="15dp"
+        android:background="@color/colorButton"
+        android:width="340dp"
+        android:height="40dp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        ></Button>
+
+</LinearLayout>
