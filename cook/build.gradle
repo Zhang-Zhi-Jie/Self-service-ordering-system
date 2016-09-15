@@ -30,10 +30,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
-    compile files('src/main/libs/android-support-v4.jar')
     compile files('src/main/libs/gson-2.3.1.jar')
-    compile files('src/main/libs/jg_filter_sdk_1.1.jar')
-    compile files('src/main/libs/wup-1.0.0.E-SNAPSHOT.jar')
-    compile files('src/main/libs/Xg_sdk_v2.46_20160602_1638.jar')
+    compile files('src/main/libs/jpush-android-2.1.9.jar')
 }
 
