@@ -88,12 +88,13 @@ public class MainActivity extends AppCompatActivity {
                                 listitem.put("order_year",year);
                                 listitem.put("order_month",month);
                                 listitem.put("order_day",day);
+                                listitem.put("order_db_seat_num",result1.get(i).getSeat_num());
                                 //                          listitem.put("unit", result_spoon_details.get(i).getUnit());
                                 listItems.add(listitem);
                                 arg1[i] = listitem.toString();
                             }
-                            SimpleAdapter orderAdapter = new SimpleAdapter(MainActivity.this, listItems,R.layout.item_list_module, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day"},
-                                    new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price,R.id.order_db_year,R.id.order_db_month,R.id.order_db_day});
+                            SimpleAdapter orderAdapter = new SimpleAdapter(MainActivity.this, listItems,R.layout.item_list_module, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day","order_db_seat_num"},
+                                    new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price,R.id.order_db_year,R.id.order_db_month,R.id.order_db_day,R.id.order_db_seat_num});
                             menulist.setAdapter(orderAdapter);
                             menulist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
