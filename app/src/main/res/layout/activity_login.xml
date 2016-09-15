@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/welcome"
+        android:text= "@string/welcome"
         android:layout_gravity="center"
         android:layout_marginTop="90dp"
         android:textSize="30dp"
@@ -83,21 +83,12 @@
             android:text="新用户"
             android:textSize="13dp"
             android:textColor="@color/colorButton"
-            android:layout_marginLeft="7dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginBottom="8dp"
             android:layout_alignTop="@+id/forget"
-            android:layout_alignParentStart="true" />
-        <TextView
-            android:id="@+id/forget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="忘记密码"
-            android:textSize="13dp"
-            android:textColor="@color/colorButton"
-            android:layout_gravity="bottom"
-            android:layout_marginRight="6dp"
-            android:layout_marginBottom="8dp"
+            android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            />
+
     </RelativeLayout>
 </LinearLayout>

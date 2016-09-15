@@ -35,5 +35,4 @@ dependencies {
     compile 'com.github.shell-software:fab:1.0.5'
     compile 'com.facebook.fresco:fresco:0.12.0'
     compile 'com.navercorp.pulltorefresh:library:3.2.0@aar'
-    compile files('libs/alipaySdk-20160812.jar')
 }

@@ -19,6 +19,7 @@ package com.example.a13051_000.buffetmealsystem.restaurant;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -93,7 +94,12 @@ public class MainActivity_r extends AppCompatActivity {
                 }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getApplicationContext(), "将转入到购物车", Toast.LENGTH_SHORT).show();
+                        Toast toast = Toast.makeText(getApplicationContext(), "将转入到购物车", Toast.LENGTH_SHORT);
+                        View view = toast.getView();
+                        view.setBackgroundColor(Color.parseColor("#FF8C00"));
+                        toast.setView(view);
+                        toast.show();
+
                         Intent intent = new Intent(MainActivity_r.this, OrderCar.class);
                         MainActivity_r.this.startActivity(intent);
                         MainActivity_r.this.finish();

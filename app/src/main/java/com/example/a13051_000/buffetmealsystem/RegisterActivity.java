@@ -3,6 +3,7 @@ package com.example.a13051_000.buffetmealsystem;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Message;
@@ -58,13 +59,28 @@ public class RegisterActivity extends BaseActivity {
                     Log.d("data1", result);
                     Log.d("data1", strResult);
                     if (resultFromServer.getStatus().equals("success")) {
-                        Toast.makeText(RegisterActivity.this, "注册成功!", Toast.LENGTH_SHORT).show();
+                        Toast toast = Toast.makeText(RegisterActivity.this, "注册成功!", Toast.LENGTH_SHORT);
+                        View view = toast.getView();
+                        view.setBackgroundColor(Color.parseColor("#FF8C00"));
+                        toast.setView(view);
+                        toast.show();
+
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
                     } else if (resultFromServer.getStatus().equals("2")) {
-                        Toast.makeText(RegisterActivity.this, "用户名已存在", Toast.LENGTH_SHORT).show();
-                    } else
-                        Toast.makeText(RegisterActivity.this, "注册失败,请检查注册信息", Toast.LENGTH_SHORT).show();
+                        Toast toast = Toast.makeText(RegisterActivity.this, "用户名已存在", Toast.LENGTH_SHORT);
+                        View view = toast.getView();
+                        view.setBackgroundColor(Color.parseColor("#FF8C00"));
+                        toast.setView(view);
+                        toast.show();
+
+                    } else {
+                        Toast toast = Toast.makeText(RegisterActivity.this, "注册失败,请检查注册信息", Toast.LENGTH_SHORT);
+                        View view = toast.getView();
+                        view.setBackgroundColor(Color.parseColor("#FF8C00"));
+                        toast.setView(view);
+                        toast.show();
+                    }
             }
         }
     };
@@ -109,7 +125,11 @@ public class RegisterActivity extends BaseActivity {
                     String strUrlPath = "http://www.loushubin.cn/register.php";
                     Log.d("data1", String.valueOf(AccessNetworkState()));
                     if (!AccessNetworkState()) {
-                        Toast.makeText(RegisterActivity.this, "网络未连接，请先连接网络", Toast.LENGTH_SHORT).show();
+                        Toast toast = Toast.makeText(RegisterActivity.this, "网络未连接，请先连接网络", Toast.LENGTH_SHORT);
+                        View view1 = toast.getView();
+                        view1.setBackgroundColor(Color.parseColor("#FF8C00"));
+                        toast.setView(view1);
+                        toast.show();
                     } else {
                         sendRequest(strUrlPath, params);
                         //启动等待活动

@@ -14,7 +14,7 @@
         android:layout_marginBottom="26dp"
         android:layout_marginRight="20dp"
         android:text="version 1.0"
-        android:textColor="#000000"
+        android:textColor="@color/colorwhite"
        />
 
 </RelativeLayout>

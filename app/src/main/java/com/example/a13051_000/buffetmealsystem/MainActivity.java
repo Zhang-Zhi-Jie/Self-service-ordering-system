@@ -1,6 +1,7 @@
 package com.example.a13051_000.buffetmealsystem;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -152,7 +153,13 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
             return;
         }
-        else { Toast.makeText(getBaseContext(), "再按一次即可退出", Toast.LENGTH_SHORT).show(); }
+        else {
+            Toast toast = Toast.makeText(MainActivity.this,"再按一次即可退出。",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            view.setBackgroundColor(Color.parseColor("#FF8C00"));
+            toast.setView(view);
+            toast.show();
+        }
 
         mBackPressed = System.currentTimeMillis();
     }
@@ -192,10 +199,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             Intent intent1 = new Intent(MainActivity.this,SettingsActivity.class);
             this.startActivity(intent1);
-        }
-        if(id == R.id.action_sao){
-            Intent intent = new Intent(MainActivity.this,ScanActivity.class);
-            this.startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

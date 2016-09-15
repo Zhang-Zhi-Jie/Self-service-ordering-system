@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
+        android:textColor="@color/shape2"
         android:layout_toRightOf="@+id/order_db_idshow"
         android:textSize="14dp" />
 
@@ -24,16 +25,19 @@
         android:id="@+id/order_db_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:text="231232"
-        android:textColor="@color/colorloginbackground"
+        android:text="已完成"
+        android:textColor="@color/colorwhite"
         android:textSize="14dp"
+        android:background="#00CD66"
+        android:drawableLeft="@drawable/ic_assignment_black_24dp2"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/order_db_cost" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+         />
 
     <TextView
         android:id="@+id/order_db_name"
-        android:layout_width="80dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/order_db_id"
         android:layout_marginLeft="5dip"
@@ -49,7 +53,6 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/order_db_name"
         android:layout_below="@+id/order_db_id"
-        android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/order_db_name"
         android:drawableLeft="@drawable/ic_star_black_24dp"
         android:text="总价："
@@ -59,35 +62,33 @@
         android:id="@+id/order_db_RMB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/order_db_priceshow"
-        android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/order_db_priceshow"
         android:text="¥"
-        android:textColor="@color/colorAccent"
-        android:textSize="17dp" />
+        android:textColor="@color/red"
+        android:textSize="20dp"
+        android:layout_alignBottom="@+id/order_db_priceshow"
+        android:layout_toEndOf="@+id/order_db_priceshow" />
 
     <TextView
         android:id="@+id/order_db_price"
         android:layout_width="50dip"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/order_db_priceshow"
-        android:layout_toRightOf="@+id/order_db_RMB"
-        android:textColor="@color/colorAccent"
-        android:textSize="17dp" />
+        android:textColor="@color/red"
+        android:textSize="20dp"
+        android:layout_above="@+id/textView"
+        android:layout_toEndOf="@+id/order_db_RMB" />
 
-    <TextView
-        android:id="@+id/order_db_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/order_db_priceshow"
-        android:layout_marginLeft="40dp"
-        android:layout_toRightOf="@+id/order_db_price"
-        android:background="#EE6A50"
-        android:drawableLeft="@drawable/ic_assignment_turned_in_black_24dp"
-        android:gravity="center"
-        android:text="已付款"
-        android:textColor="@color/colorwhite"
-        android:textSize="12dp" />
+    <!--<TextView-->
+        <!--android:id="@+id/order_db_cost"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignTop="@+id/order_db_priceshow"-->
+        <!--android:layout_toRightOf="@+id/order_db_price"-->
+        <!--android:background="#EE6A50"-->
+        <!--android:drawableLeft="@drawable/ic_assignment_turned_in_black_24dp"-->
+        <!--android:gravity="center"-->
+        <!--android:text="已付款"-->
+        <!--android:textColor="@color/colorwhite"-->
+        <!--android:textSize="12dp" />-->
 
     <TextView
         android:id="@+id/desk_num_show"
@@ -108,6 +109,16 @@
         android:layout_below="@+id/order_db_priceshow"
         android:text="1"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/order_db_seat_num"
+        android:layout_below="@+id/order_db_priceshow"
+        android:text="号"
+        android:id="@+id/textView" />
+
     <TextView
         android:id="@+id/order_db_year"
         android:layout_width="wrap_content"

@@ -55,7 +55,7 @@ interface AsyncResponse {
     void processFinish(Parse_Json_comments parse_json_comments);
 }
 
-public class OrderDetailActivity extends AppCompatActivity implements AsyncResponse {
+public class  OrderDetailActivity extends AppCompatActivity implements AsyncResponse {
     private TextView showid;
     private TextView showname;
     private TextView showprice;

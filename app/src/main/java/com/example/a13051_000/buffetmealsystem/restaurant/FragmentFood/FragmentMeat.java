@@ -8,14 +8,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -34,9 +32,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import de.greenrobot.event.EventBus;
-import github.chenupt.multiplemodel.ModelListAdapter;
 
 /**
  * Created by 13051_000 on 2016/7/15.
@@ -108,7 +103,7 @@ public class FragmentMeat extends Fragment implements SwipeRefreshLayout.OnRefre
                                     arg1[i] = listitem.toString();
                                 }
                             }
-                            SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.fragment_order_item_list_module, new String[]{"image","ID", "Name", "PRICE", "unit"},
+                            SimpleAdapter orderAdapter = new SimpleAdapter(getActivity(), listItems, R.layout.fragment_res_item_list_module, new String[]{"image","ID", "Name", "PRICE", "unit"},
                                     new int[]{R.id.pic_show,R.id.order_db_id, R.id.order_db_name, R.id.order_db_price, R.id.order_db_create_at});
                             menuList.setAdapter(orderAdapter);
                             //      ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,arg1);
