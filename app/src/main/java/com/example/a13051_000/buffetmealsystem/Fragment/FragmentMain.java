@@ -75,7 +75,6 @@ public class FragmentMain extends Fragment {
         button1 = (Button) rootView.findViewById(R.id.button1);
         button2 = (Button) rootView.findViewById(R.id.button2);
         button3 = (Button) rootView.findViewById(R.id.button3);
-        button4 = (Button) rootView.findViewById(R.id.button4);
 
 
         button1.setOnClickListener(new View.OnClickListener() {
@@ -118,12 +117,7 @@ public class FragmentMain extends Fragment {
                  getActivity().overridePendingTransition(R.anim.fab_fade_in,R.anim.fab_fade_out);
             }
         });
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
 
         imageButton_ves = (ImageButton) rootView.findViewById(R.id.chinese);
         imageButton_meat = (ImageButton) rootView.findViewById(R.id.foreign);

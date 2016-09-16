@@ -39,6 +39,7 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private AppBarLayout appBarLayout;
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
@@ -170,21 +171,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem menuItem = menu.findItem(R.id.ab_search);
-        searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
-        MenuItemCompat.setOnActionExpandListener(menuItem, new MenuItemCompat.OnActionExpandListener() {//设置打开关闭动作监听
-            @Override
-            public boolean onMenuItemActionExpand(MenuItem item) {
-                Toast.makeText(MainActivity.this, "onExpand", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-
-            @Override
-            public boolean onMenuItemActionCollapse(MenuItem item) {
-                Toast.makeText(MainActivity.this, "Collapse", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
         return super.onCreateOptionsMenu(menu);
     }
 

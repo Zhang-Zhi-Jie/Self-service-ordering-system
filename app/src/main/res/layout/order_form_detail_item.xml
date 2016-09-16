@@ -19,7 +19,7 @@
 		android:layout_height="wrap_content"
 		android:textSize="15dp"
 		android:layout_marginLeft="5dip"
-		android:textColor="@color/colorButton"
+		android:textColor="@color/shape2"
 		android:layout_toRightOf="@+id/order_db_idshow"
 		/>
 
@@ -29,10 +29,12 @@
 		android:layout_height="wrap_content"
 		android:textSize="15dp"
 		android:text="12222"
-		android:layout_marginLeft="5dip"
-		android:textColor="@color/colorButton"
+		android:textColor="@color/colorwhite"
+		android:background="#00CD66"
+		android:drawableLeft="@drawable/ic_assignment_black_24dp2"
 		android:layout_alignParentTop="true"
-		android:layout_alignStart="@+id/order_db_priceshow" />
+		android:layout_marginRight="15dp"
+		android:layout_alignParentEnd="true" />
 
 	<TextView
 		android:id="@+id/order_db_nameshow"
@@ -58,38 +60,35 @@
 		   />
 
 	<TextView
-		android:id="@+id/order_db_priceshow"
+		android:id="@+id/order_db_shushow"
 		android:layout_width="wrap_content"
 		android:textSize="15dp"
 		android:text="数量："
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="20dp"
-		android:layout_marginTop="10dp"
 		android:drawableLeft="@drawable/ic_whatshot_black_24dp"
-		android:layout_toRightOf="@+id/order_db_name"
-		android:layout_below="@+id/order_db_id"
-		/>
+		android:layout_alignTop="@+id/order_db_name"
+		android:layout_below="@+id/order_db_finish"
+		android:layout_toStartOf="@+id/order_db_num" />
 
 	   <TextView
 		   android:id="@+id/order_db_num"
 		   android:layout_width="wrap_content"
 		   android:layout_height="wrap_content"
 		   android:layout_marginLeft="5dp"
-		   android:layout_marginTop="10dp"
 		   android:textSize="15dp"
+		   android:text="123"
 		   android:textColor="@color/colorAccent"
-		   android:layout_below="@+id/order_db_id"
-		   android:layout_toRightOf="@+id/order_db_priceshow"
-		   />
+		   android:layout_alignTop="@+id/order_db_shu"
+		   android:layout_toStartOf="@+id/order_db_shu" />
 	<TextView
 		android:id="@+id/order_db_shu"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginTop="10dp"
 		android:textSize="15dp"
 		android:text="份"
+		android:layout_marginRight="15dp"
 		android:textColor="@color/colorAccent"
-		android:layout_below="@+id/order_db_id"
-		android:layout_toRightOf="@+id/order_db_num"
-		/>
+		android:layout_alignBottom="@+id/order_db_name"
+		android:layout_alignParentEnd="true" />
 </RelativeLayout>

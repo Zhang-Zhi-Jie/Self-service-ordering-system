@@ -17,6 +17,12 @@
         android:layout_marginTop="99dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/id_swipe_ly"
+        android:layout_below="@+id/pin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
@@ -24,5 +30,6 @@
         android:background="#fffef9"
         android:layout_below="@+id/pin"
         ></ListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

@@ -3,8 +3,11 @@ package com.example.cook;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
+import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,7 +30,7 @@ import java.util.Map;
 import cn.jpush.android.api.InstrumentedActivity;
 import cn.jpush.android.api.JPushInterface;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
     //网络连接检查函数:::
     private boolean AccessNetworkState(){
         ConnectivityManager connManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -37,7 +40,11 @@ public class MainActivity extends AppCompatActivity {
         else
             return false;
     }
+    private static final int REFRESH_COMPLETE = 0X110;
     private ListView menulist;
+    private SwipeRefreshLayout mSwipeLayout;
+
+    private SimpleAdapter orderAdapter;
     ProgressDialog progressDialog;
     final int SHOW_RESPONSE = 0;
     private String sResult;
@@ -93,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                                 listItems.add(listitem);
                                 arg1[i] = listitem.toString();
                             }
-                            SimpleAdapter orderAdapter = new SimpleAdapter(MainActivity.this, listItems,R.layout.item_list_module, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day","order_db_seat_num"},
+                            orderAdapter = new SimpleAdapter(MainActivity.this, listItems,R.layout.item_list_module, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day","order_db_seat_num"},
                                     new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price,R.id.order_db_year,R.id.order_db_month,R.id.order_db_day,R.id.order_db_seat_num});
                             menulist.setAdapter(orderAdapter);
                             menulist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -119,6 +126,13 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         menulist = (ListView) findViewById(R.id.listView);
+        mSwipeLayout = (SwipeRefreshLayout)findViewById(R.id.swipe);
+        mSwipeLayout.setOnRefreshListener(this);
+
+        mSwipeLayout.setProgressBackgroundColorSchemeColor(Color.parseColor("#FF8C00"));
+        mSwipeLayout.setColorSchemeColors(R.color.red,R.color.colorwhite,
+                R.color.colorwhite, R.color.colorwhite);
+
 
         //添加界面布局:
         if(AccessNetworkState()) {
@@ -148,5 +162,24 @@ public class MainActivity extends AppCompatActivity {
                 handler.sendMessage(message);
             }
         }).start();
+    }
+
+    private Handler mHandler = new Handler()
+    {
+        public void handleMessage(android.os.Message msg)
+        {
+            switch (msg.what)
+            {
+                case REFRESH_COMPLETE:
+                    orderAdapter.notifyDataSetChanged();
+                    mSwipeLayout.setRefreshing(false);
+                    break;
+            }
+        };
+    };
+
+    @Override
+    public void onRefresh() {
+        mHandler.sendEmptyMessageDelayed(REFRESH_COMPLETE, 2000);
     }
 }

@@ -85,10 +85,8 @@
             android:textColor="@color/colorButton"
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="8dp"
-            android:layout_alignTop="@+id/forget"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             />
-
     </RelativeLayout>
 </LinearLayout>

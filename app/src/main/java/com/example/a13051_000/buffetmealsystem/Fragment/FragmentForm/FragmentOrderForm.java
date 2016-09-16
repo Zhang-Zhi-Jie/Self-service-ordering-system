@@ -6,10 +6,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +30,7 @@ import com.google.common.primitives.Booleans;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,9 +44,13 @@ interface AsyncResponse{
     void getFinishStatus(ResultFromServer output);
 }
 
-public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLongClickListener,AsyncResponse{
+public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLongClickListener,AsyncResponse,SwipeRefreshLayout.OnRefreshListener{
 
+    private static final int REFRESH_COMPLETE = 0X110;
+    private SwipeRefreshLayout mSwipeLayout;
     private ListView menulist;
+    private SimpleAdapter orderAdapter;
+
     ProgressDialog progressDialog;
     final int SHOW_RESPONSE = 0;
     private String sResult;
@@ -65,6 +73,13 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_orderform, container, false);
         menulist = (ListView)rootView.findViewById(R.id.listView);
+        mSwipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.id_swipe_ly);
+        mSwipeLayout.setOnRefreshListener(this);
+
+        mSwipeLayout.setProgressBackgroundColorSchemeColor(Color.parseColor("#FF8C00"));
+        mSwipeLayout.setColorSchemeColors(R.color.red,R.color.colorwhite,
+                R.color.colorwhite, R.color.colorwhite);
+
         //添加界面布局:
         menulist.setOnItemLongClickListener(this);
         if(AccessNetworkState()) {
@@ -135,7 +150,7 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
                     Log.d("list_form_each", listitem.toString());
                 }
                 if (getContext() != null) {
-                    SimpleAdapter orderAdapter = new SimpleAdapter(getContext(), listItems, R.layout.fragment_form_item_list, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day","order_finish","order_seatnum"},
+                   orderAdapter = new SimpleAdapter(getContext(), listItems, R.layout.fragment_form_item_list, new String[]{"order_num", "order_belong", "order_price","order_year","order_month","order_day","order_finish","order_seatnum"},
                             new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_price,R.id.order_db_year,R.id.order_db_month,R.id.order_db_day,R.id.order_db_finish,R.id.order_db_seat_num});
                     menulist.setAdapter(orderAdapter);
 
@@ -198,6 +213,25 @@ public class FragmentOrderForm extends Fragment implements AdapterView.OnItemLon
             }
         }).show();
             return true;
+    }
+
+    private Handler mHandler = new Handler()
+    {
+        public void handleMessage(android.os.Message msg)
+        {
+            switch (msg.what)
+            {
+                case REFRESH_COMPLETE:
+                    orderAdapter.notifyDataSetChanged();
+                    mSwipeLayout.setRefreshing(false);
+                    break;
+            }
+        };
+    };
+
+    @Override
+    public void onRefresh() {
+        mHandler.sendEmptyMessageDelayed(REFRESH_COMPLETE, 2000);
     }
 }
 class getOrderFrom extends AsyncTask<String,Integer,String> {
@@ -270,13 +304,26 @@ class updatePermission extends AsyncTask<String,Integer, com.example.a13051_000.
         progressDialog.dismiss();
         new getOrderFrom(activity).execute(FragmentOrderForm.url_get);
         if (resultFromServer != null && resultFromServer.getStatus().equals("0")){
-            Toast.makeText(context,"删除成功...",Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(context,"删除成功...",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            view.setBackgroundColor(Color.parseColor("#FF8C00"));
+            toast.setView(view);
+            toast.show();
         }
         else if(resultFromServer != null && resultFromServer.getStatus().equals("2")){
-            Toast.makeText(context,"订单不存在...",Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(context,"订单不存在...",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            view.setBackgroundColor(Color.parseColor("#FF8C00"));
+            toast.setView(view);
+            toast.show();
         }
         else{
-            Toast.makeText(context,"删除失败，请重试.",Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(context,"删除失败，请重试.",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            view.setBackgroundColor(Color.parseColor("#FF8C00"));
+            toast.setView(view);
+            toast.show();
+
         }
     }
 

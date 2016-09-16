@@ -27,13 +27,13 @@
                 android:checked="false"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="全选"
-                android:textSize="14dp"
-                android:textColor="@color/result_view" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:text="全选"-->
+                <!--android:textSize="14dp"-->
+                <!--android:textColor="@color/result_view" />-->
         </LinearLayout>
 
         <LinearLayout

@@ -83,7 +83,7 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
             getFinishStatus.delegate = this;
             getFinishStatus_r.execute(result.getOrder_num());
         }
-        SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.order_form_item_list_module, new String[]{"order_id", "order_name", "order_num","order_finish"},
+        SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.order_form_detail_item, new String[]{"order_id", "order_name", "order_num","order_finish"},
                 new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_num,R.id.order_db_finish});
         listView.setAdapter(orderAdapter);
         listView.setOnItemClickListener(this);
@@ -135,7 +135,7 @@ public class Detail extends AppCompatActivity implements AdapterView.OnItemClick
                 listItems.add(listitem);
                 arg1[i] = listitem.toString();
             }
-            SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.order_form_item_list_module, new String[]{"order_id", "order_name", "order_num", "order_finish"},
+            SimpleAdapter orderAdapter = new SimpleAdapter(Detail.this, listItems, R.layout.order_form_detail_item, new String[]{"order_id", "order_name", "order_num", "order_finish"},
                     new int[]{R.id.order_db_id, R.id.order_db_name, R.id.order_db_num, R.id.order_db_finish});
             listView.setAdapter(orderAdapter);
             listView.setOnItemClickListener(this);
