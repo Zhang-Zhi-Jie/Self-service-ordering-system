@@ -56,6 +56,10 @@
         </activity>
 
         <activity
+            android:name=".ToolActivity">
+        </activity>
+
+        <activity
             android:name=".User.User_information_change"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -114,11 +118,6 @@
             android:name=".Order.OrderDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity
-            android:name=".Order.EnsureOrderActivity"
-            android:screenOrientation="portrait">
         </activity>
 
         <activity

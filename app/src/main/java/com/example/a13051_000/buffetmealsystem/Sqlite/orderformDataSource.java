@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by shubin on 2016/8/6.
+ * 对数据库封装
  */
 public class OrderformDataSource {
     private SQLiteDatabase database;

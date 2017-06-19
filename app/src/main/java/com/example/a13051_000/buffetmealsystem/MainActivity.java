@@ -196,8 +196,8 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
+            Intent intent = new Intent(MainActivity.this,ToolActivity.class);
+            MainActivity.this.startActivity(intent);
 
         }
 

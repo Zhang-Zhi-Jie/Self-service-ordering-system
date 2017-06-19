@@ -7,6 +7,7 @@ import android.util.Log;
 
 /**
  * Created by shubin on 2016/8/6.
+ * 创建数据库的表
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "order_form";
